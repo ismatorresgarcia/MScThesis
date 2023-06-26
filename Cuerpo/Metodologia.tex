@@ -1,0 +1,120 @@
+\chapter{Metodología} \label{cap3}
+Para modelar el proceso de amplificación de la semilla de armónicos de alto orden introducida a través del canal de plasma, es necesario plantear y resolver numéricamente las denominadas \emph{\acrlong{mbe}} (\acrshort{mbe}). El código Dagon empleado durante las simulaciones implementa estas ecuaciones mediante un programa escrito en Fortran que, a su vez, está acoplado con otros códigos ---cuya función se explicará más detalladamente en la sección \S\ref{sec32}---, recibiendo información de partida para iniciar el procedimiento de cálculo. De esta forma, los resultados proporcionan los datos necesarios para entender cómo afectan la densidad de iones y electrones libres en el plasma a la intensidad y perfil de fase del haz \acrshort{xuv} obtenido. 
+
+Una vez finalizadas las simulaciones, para poder realizar el análisis de las imágenes y los resultados obtenidos, se emplearon dos nuevos programas ---esta vez escritos en Python y Octave---, que permiten almacenar en un archivo los datos obtenidos en las simulaciones de Dagon y representarlos gráficamente mediante curvas bidimensionales. Además, estos conjuntos de datos pueden introducirse en programas como VisIt para la construcción de imágenes tridimensionales y bidimensionales, por ejemplo, de la propagación del \acrshort{hoh} en la dirección longitudinal del canal.
+
+\section{Ecuaciones de Maxwell-Bloch} \label{sec31}
+En este trabajo, el fenómeno físico de la amplificación del armónico inyectado en el plasma de iones de kriptón conduce inevitablemente hasta estas ecuaciones, puesto que determinan cuáles serán las propiedades de la emisión obtenida (\acrshort{ase}). Las \acrshort{mbe} describen la dinámica de la interacción entre los modos de vibración de un campo electromagnético y los átomos de un sistema cuántico con dos estados. 
+
+El formalismo físico-matemático utilizado en mecánica cuántica para obtener las ecuaciones no es trivial\autocite{Cohen-Tannoudji2019QuantumApplications,Cohen-Tannoudji2019QuantumMethods,Sakurai2020ModernMechanics,Milonni1988Lasers}, aunque tiene la ventaja de predecir con suficiente exactitud la evolución temporal del pulso, además de propiedades físicas de los fotones como su momento angular orbital (\acrshort{oam}), mientras que otros métodos más sencillos ---como el programa de trazado de rayos SHADOX--- no ofrecen esta posibilidad, si bien podría utilizarse para resolver el problema de la amplificación en el plasma.
+
+En la interacción láser-plasma estudiada, para obtener una buena aproximación basta considerar el campo eléctrico de la semilla \acrshort{hoh}, aunque cálculos más precisos tendrían que incorporar el acoplamiento del campo magnético. Además, el acoplamiento entre el campo electromagnético y la materia utiliza una aproximación semiclásica simplificada, donde los átomos o iones son sistemas cuánticos de dos estados descritos por la ecuación de Schrödinger, mientras que la luz es un sistema clásico ---una onda electromagnética--- descrito por las ecuaciones de Maxwell.
+
+En primer lugar, el acoplamiento del campo eléctrico con el plasma es la ecuación de ondas 
+\begin{equation}
+    \nab^2 {\symbfcal{E}} - \frac{1}{c^2}\frac{\partial^2 {\symbfcal{E}}}{\partial t^2} = 
+    \frac{\omega_{pe}^2}{c^2}{\symbfcal{E}} + \frac{1}{\epsilon_0 c^2}\frac{\partial^2 {\symbfcal{P}}}{\partial t^2},
+    \label{eq131}
+\end{equation}
+\noindent
+donde el campo eléctrico ${\symbfcal{E}}$, la polarización ${\symbfcal{P}}$ y la frecuencia de las oscilaciones del plasma $\omega_{pe}$ son función del espacio y del tiempo.
+
+Para resolver la ecuación, se considera la aproximación paraxial del campo eléctrico según la dirección de propagación del eje $z$. Suponiendo que la radiación está polarizada linealmente en la dirección del eje $x$, esta aproximación permite tener en cuenta únicamente la componente $x$ del campo eléctrico escribiendo por separado la envolvente y las vibraciones del mismo.
+\begin{equation}
+    \symcal{E}_x(\symbf{r},t) 
+    =
+    \RE\left[E_+(\symbf{r},t)\eu^{\iu(\omega t - kz)}+E_-(\symbf{r},t)\eu^{\iu(\omega t + kz)}\right],
+    \label{eq231}
+\end{equation}
+\noindent
+donde $E_+$ y $E_-$ son la amplitud de las oscilaciones de las ondas viajeras hacia la dirección positiva y negativa del eje $z$, respectivamente. 
+
+Combinando las ecuaciones \eqref{eq131} y \eqref{eq231} y agrupando las componentes que se propagan en las dos direcciones del eje $z$, queda 
+\begin{align}
+    \nab^2\symcal{E}_x
+    &=
+    \left(\frac{\partial^2 E_{\pm}}{\partial x^2} + \frac{\partial^2 E_{\pm}}{\partial y^2} + \frac{\partial^2 E_{\pm}}{\partial z^2} \pm 2k\iu\frac{\partial E_{\pm}}{\partial z} + k^2 E_{\pm}\right)\eu^{\iu(\omega t \pm kz)}, \\
+    \frac{\partial^2 \symcal{E}_x}{\partial t^2}
+    &=
+    \left(\frac{\partial^2 E_{\pm}}{\partial t^2} + 2\omega\iu\frac{\partial E_{\pm}}{\partial z} + \omega^2E_{\pm}\right)\eu^{\iu(\omega t \pm kz)}, 
+\end{align}
+\noindent
+obteniéndose el lado izquierdo ($LHS$) de la ecuación de ondas para el campo eléctrico
+\begin{equation}
+    \begin{split}
+        LHS 
+        =
+        \Bigg[\nab^2_{\perp} E_{\pm} &+ \frac{\partial^2 E_{\pm}}{\partial z^2} \pm 2k\iu \frac{\partial E_{\pm}}{\partial z} 
+        -\frac{1}{c^2} \Bigg(\frac{\partial^2 E_{\pm}}{\partial t^2} + 2\omega\iu\frac{\partial E_{\pm}}{\partial z} \Bigg) \\
+        &- \Bigg(\frac{\omega^2}{c^2} - k^2 \Bigg)E_{\pm} \Bigg] \eu^{\iu(\omega t \pm kz)}.
+    \end{split}
+\label{eq331}
+\end{equation}
+
+La ecuación \eqref{eq331} puede reducirse más simplificando la relación de dispersión del campo eléctrico en el plasma $\omega^2 = \omega_{pe}^2 + k^2c^2\approx k^2c^2$, puesto que para la emisión de radiación \acrshort{xuv} o rayos X blandos ($\lambda<\qty{40}{\nm}$) y la densidad electrónica del plasma de kriptón ($n_e<\qty{d21}{cm^{-3}}$) se tiene 
+que $\omega>\qty{4,7d16}{\radian\per\s}>\omega_{pe}$ y $\omega_{pe}<\qty{1,8d15}{\radian\per\s}$. Por otro lado, se toma la aproximación de la envolvente lentamente variable (\acrshort{svea}) que asume la variación temporal y espacial de la envolvente del campo eléctrico lenta comparada con la longitud de onda, de manera que
+\begin{align}
+    \left|\frac{\partial^2 E_{\pm}}{\partial z^2}\right| &\ll \left|k\frac{\partial E_{\pm}}{\partial z}\right|, \\
+     \left|\frac{\partial^2 E_{\pm}}{\partial t^2}\right| &\ll \left|\omega\frac{\partial E_{\pm}}{\partial t}\right|.
+\end{align}
+\noindent
+Introduciendo estas nuevas hipótesis, la ecuación \eqref{eq331} queda
+\begin{equation}
+    LHS 
+    =
+    \left[\nab^2_{\perp}E_{\pm} - \frac{2\omega\iu}{c^2}\left(\frac{\partial E_{\pm}}{\partial t} \pm c\frac{\partial E_{\pm}}{\partial z}\right)\right]\eu^{\iu(\omega t \pm kz)}.
+\end{equation}
+
+Para la polarización se realiza su descomposición de forma completamente análoga al campo eléctrico.
+\begin{align}
+    \symcal{P}_x(\symbf{r},t) 
+    &=
+    \RE\left[P_+(\symbf{r},t)\eu^{\iu(\omega t - kz)}+P_-(\symbf{r},t)\eu^{\iu(\omega t + kz)}\right], \\
+    \frac{\partial^2 \symcal{P}_x}{\partial t^2}
+    &=
+    \left(\frac{\partial^2 P_{\pm}}{\partial t^2} + 2\omega\iu\frac{\partial P_{\pm}}{\partial z} + \omega^2P_{\pm}\right)\eu^{\iu(\omega t \pm kz)}.
+\end{align}
+
+Considerando junto a la SVEA que la amplitud de la polarización en un periodo de la onda es mucho mayor que la variación temporal de su envolvente, es decir,
+\begin{equation}
+    \left|\frac{\partial P_{\pm}}{\partial t}\right| \ll |\omega P_{\pm}|,
+\end{equation}
+\noindent
+entonces resulta que
+\begin{equation}
+     \frac{\partial^2 \symcal{P}_x}{\partial t^2}
+     \approx
+     - \omega^2P_{\pm}\eu^{\iu(\omega t \pm kz)}.
+     \label{eq431}
+\end{equation}
+
+La sustitución de las ecuaciones \eqref{eq331} y \eqref{eq431} en la ecuación \eqref{eq131} permite obtener, tras reordenar los términos a izquierda y derecha
+\begin{equation}
+    \frac{\partial E_{\pm}}{\partial t} \pm c\frac{\partial E_{\pm}}{\partial z}
+    =
+    -\iu\frac{c^2}{2\omega}\nab^2_{\perp}E_{\pm} + \frac{\iu\omega}{2}\left[\left(\frac{\omega_{pe}}{\omega}\right)^2E_{\pm} - \mu_0c^2P_{\pm}\right],
+\end{equation}
+\noindent
+obteniendo una ecuación de advección-difusión-reacción con un término fuente $P_{\pm}$ dependiente del espacio y del tiempo. 
+
+Suponiendo que el tiempo característico de expansión hidrodinámica del plasma es mucho mayor que el de evolución de la polarización, la relación constitutiva procedente de las conocidas en mecánica cuántica como \emph{\acrlong{obe}} (\acrshort{obe}) (términos en la diagonal secundaria de la matriz de densidad para la interacción entre el campo eléctrico y un sistema cuántico de dos niveles) es
+\begin{equation}
+    \frac{\partial P_{\pm}}{\partial t} 
+    =
+    \Gamma - \gamma P_{\pm} - \frac{\iu z_{12}^2}{\hslash}E_{\pm}(N_2-N_1),
+\end{equation}
+donde $\Gamma$ es un término fuente estocástico que representa la emisión espontánea, $\gamma P_{\pm}$ es un término sumidero que tiene en cuenta la despolarización del plasma debido a colisiones con electrones libres con $\gamma$ el tiempo característico de variación de la polarización, $z_{12}$ es el término de la diagonal secundaria correspondiente a la matriz dipolar eléctrica y $N_{1,2}$ son las poblaciones de los niveles inferior y superior (los de la diagonal principal de la matriz de densidad). Estos elementos se obtienen a partir de las ecuaciones de tasas
+\begin{equation}
+    \frac{\partial N_{1,2}}{\partial t}
+    =
+    \sum_k C_{k2,k1}N_{k} \pm \frac{1}{2\hslash}\IM(E_{\pm}^*P_{\pm}),
+\end{equation}
+\noindent
+donde el sumatorio recorre todos los niveles energéticos que participan en las transiciones desde un nivel $k$ hasta los dos estados, incluidas las transiciones entre ambos $k=1, 2$ y $C_{ki}$ son las tasas de excitación y desexcitación del sistema debidas tanto a colisiones como a emisión de radiación. Las poblaciones para los niveles $k\neq 1, 2$ y sus tasas se extraen del código OFK para emplear como entrada de Dagon, como se ha comentado antes.
+
+\section{Esquema computacional} \label{sec32}
+Los parámetros de entrada sobre el estado del plasma en el momento de la amplificación necesarios para iniciar Dagon proceden de un código llamado OfiKinRad (OFK). Este código simula la interacción a escala atómica de los constituyentes del plasma, aportando datos sobre la temperatura de los electrones, su densidad, la ionización media, la ganancia y las tasas de colisiones entre iones y electrones.
+
+\section{Esquema experimental} \label{sec33}
+
+\section{Parámetros de las simulaciones} \label{sec34}

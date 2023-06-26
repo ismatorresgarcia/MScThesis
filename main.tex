@@ -1,0 +1,49 @@
+%%% clase del documento
+\documentclass{clase_tfm}[2023/04/21]
+\begin{document}
+
+%%% titulo y dedicatoria
+\frontmatter
+\pagenumbering{Roman} % números romanos en mayúsculas (polyglossia no tiene todavía opción para hacerlo automáticamente en español) 
+
+\include{Preliminares/titulo.tex}
+
+%%% resumen y agradecimientos
+\include{Preliminares/agradecimientos.tex}
+\include{Preliminares/resumen.tex}
+
+%%% indice general
+\tableofcontents
+
+%%% cuerpo del documento
+\mainmatter
+
+\include{Cuerpo/Introduccion.tex}
+\include{Cuerpo/Objetivos}
+\include{Cuerpo/Metodologia.tex}
+\include{Cuerpo/Resultados}
+\include{Cuerpo/Conclusiones.tex}
+\include{Cuerpo/Impactos}
+\include{Cuerpo/Futuro}
+
+%%% bibliografía
+\printbibliography
+\include{Cuerpo/Planificacion}
+\include{Cuerpo/Presupuesto}
+
+%%% índice de figuras y tablas
+\listoffigures
+\listoftables
+\listoflistings
+
+ %%% abreviaturas, acrónimos y símbolos
+\printglossary[type=\acronymtype, title=\AUA]
+
+%%% apéndice
+\appendix
+\include{Apendice/Resultados1}
+\include{Apendice/Resultados2}
+
+\backmatter
+
+\end{document}
