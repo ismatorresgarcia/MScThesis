@@ -10,4 +10,3 @@ This is a project for a Master's Thesis written during the academic year 2022/20
 
 The goal was to study the amplification of a HOH seed injected through a niquel-like plasma column of kripton and to modify the numerical codes 
 employed, for example, the plasma channel geometry, to see if the experimental evidence agrees with the results obtained during the numerical simulations.
-# tfmaster
