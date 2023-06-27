@@ -1,5 +1,5 @@
 %%% Versión V1.2 de la clase .cls
-%%% Ismael Torres García
+%%% Plantilla para el TFM de Ismael Torres García en la UPM-ETSII
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{clase_tfm}[2023/04/21 Clase TFM, V1.2, Ismael Torres García]
 
@@ -26,77 +26,10 @@
     math-style=ISO, 
     bold-style=ISO
 } 
-\setmainfont[                         %% Fuente comercial MinionPro de Adobe para el texto
-    Extension = .otf,
-    Path = ./MinionPro/,
-    UprightFeatures = {
-        SizeFeatures = {
-            {Size = -8.4, Font = *-capt},
-            {Size = 8.4-13, Font = *-regular},
-            {Size = 13-19.9, Font = *-subh},
-            {Size = 19.9-, Font = *-disp}
-        },
-    },
-    BoldFeatures = {
-        SizeFeatures = {
-            {Size = -8.4, Font = *-boldcapt},
-            {Size = 8.4-13, Font = *-bold},
-            {Size = 13-19.9, Font = *-boldsubh},
-            {Size = 19.9-, Font = *-bolddisp}
-        },
-    },
-    ItalicFeatures = {
-        SizeFeatures = { 
-            {Size = -8.4, Font = *-itcapt},
-            {Size = 8.4-13, Font = *-it},
-            {Size = 13-19.9, Font = *-itsubh},
-            {Size = 19.9-, Font = *-itdisp}
-        },
-    },
-    BoldItalicFeatures = {
-        SizeFeatures = { 
-            {Size = -8.4, Font = *-bolditcapt},
-            {Size = 8.4-13, Font = *-boldit},
-            {Size = 13-19.9, Font = *-bolditsubh},
-            {Size = 19.9-, Font = *-bolditdisp}
-        },
-    },
-    FontFace = {mb}{n}{
-        SizeFeatures = {
-            {Size = -8.4, Font = *-mediumcapt},
-            {Size = 8.4-13, Font = *-medium},
-            {Size = 13-19.9, Font = *-mediumsubh},
-            {Size = 19.9-, Font = *-mediumdisp}
-        },
-    },
-    FontFace = {mb}{it}{
-        SizeFeatures = {
-            {Size = -8.4, Font = *-mediumitcapt},
-            {Size = 8.4-13, Font = *-mediumit},
-            {Size = 13-19.9, Font = *-mediumitsubh},
-            {Size = 19.9-, Font = *-mediumitdisp}
-        },
-    },
-    FontFace = {sb}{n}{
-        SizeFeatures = {
-            {Size = -8.4, Font = *-semiboldcapt},
-            {Size = 8.4-13, Font = *-semibold},
-            {Size = 13-19.9, Font = *-semiboldsubh},
-            {Size = 19.9-, Font = *-semibolddisp}
-        },
-    },
-    FontFace = {sb}{it}{
-        SizeFeatures = {
-            {Size = -8.4, Font = *-semibolditcapt},
-            {Size = 8.4-13, Font = *-semiboldit},
-            {Size = 13-19.9, Font = *-semibolditsubh},
-            {Size = 19.9-, Font = *-semibolditdisp}
-        },
-    },
-]{minionpro}
-%% fuente matemática del documento
+\setmainfont{Minion Pro}              %% Fuente comercial MinionPro de Adobe para el texto
+% fuente matemática del documento
 \RequirePackage{unicode-minionmath}   %% Paquete comercial MinionMath de Johannes Küster con comandos adicionales en XeLaTeX/LuaLaTeX
-\setmathfont[                         %% Fuente comercial MinionMath de Johannes Küsner para las matemáticas
+\setmathfont{MinionMath-Regular}[     %% Fuente comercial MinionMath de Johannes Küsner para las matemáticas
     Extension = .otf,
     Path = ./MinionMath/,
     Scale = 1,
@@ -108,26 +41,15 @@
         Style = MathScript},
         {Size = 8.4-, Font = MinionMath-Regular}
     }
-]{MinionMath-Regular}
-\setmathfont[                         
+]
+\setmathfont{MinionMath-Bold} [                         
     Extension = .otf,
     Path = ./MinionMath/,
     version = bold
-]{MinionMath-Bold} 
-\setmathfont[                         %% Fuente STIX2Math para los estilos matemáticos que no tiene MinionMath
-    Extension = .otf,
-    Path = ./STIXMath/,
+]
+\setmathfont{STIX Two Math}[          %% Fuente STIX Two Math para los estilos matemáticos que faltan en MinionMath
     range = {\symcal,\symfrak,\symscr,\symbfcal,\symbffrak,\symbfscr}
-]{STIXTwoMath-Regular}
-%% comandos para utilizar los estilos adicionales de la fuente Minion Pro cargada con 'fontspec'
-\DeclareRobustCommand\medseries{\fontseries{mb}\selectfont}
-\DeclareTextFontCommand{\textmed}{\medseries}
-\DeclareRobustCommand\meditseries{\fontseries{mb}\fontshape{it}\selectfont}
-\DeclareTextFontCommand{\textmedit}{\medlseries}
-\DeclareRobustCommand\sbseries{\fontseries{sb}\selectfont}
-\DeclareTextFontCommand{\textsb}{\sembseries}
-\DeclareRobustCommand\sbitseries{\fontseries{sb}\fontshape{it}\selectfont}
-\DeclareTextFontCommand{\textsbit}{\semblseries}
+]
 
 %%% gestión de los idiomas. Las opciones de 'polyglossia' las cargo más adelante por recomendación del manual
 \RequirePackage{polyglossia}
