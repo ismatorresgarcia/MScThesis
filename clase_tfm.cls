@@ -111,8 +111,6 @@
 \definecolor{miazull}{RGB}{119,141,255}
 \definecolor{mirojo}{RGB}{153,0,0}
 \definecolor{mirojoo}{RGB}{199,102,80}
-\definecolor{mimorado}{RGB}{102,0,205}
-\definecolor{mimoradoo}{RGB}{204,153,255}
 \definecolor{miverde}{RGB}{0,153,0}
 \definecolor{minaranja}{RGB}{252,147,3}
 %% colores de códigos
@@ -186,7 +184,7 @@
     colorlinks=true,                        %% color de hipervínculos
     urlcolor=minaranja,                     %% color de hipervínculos de direcciones web
     citecolor=miverde,                      %% color de citas bibliográficas internas
-    linkcolor=mimorado,                     %% color de vínculos internos
+    linkcolor=miazul,                     %% color de vínculos internos
     filecolor=mirojo,                       %% color de urls que abren archivos
     menucolor=mirojoo,                      %% color de las pestañas en Adobe
     anchorcolor=black,                      %% color del texto anclado cuando pasas por encima
@@ -238,24 +236,24 @@
 %%% comandos para configurar tamaños y fuentes de los distintos niveles
 \addtokomafont{disposition}{\normalfont\bfseries}
 
-\addtokomafont{chapter}{\fontsize{25pt}{30pt}\selectfont\color{mimorado}}
-\newkomafont{chapternumber}{\fontsize{60}{72}\selectfont\color{mimoradoo}}
+\addtokomafont{chapter}{\fontsize{25pt}{30pt}\selectfont\color{miazul}}
+\newkomafont{chapternumber}{\fontsize{60}{72}\selectfont\color{miazull}}
 \setkomafont{descriptionlabel}{\normalfont\bfseries} %% Cambio el estilo de los argumentos en itemize y description, 
 %% que es lo que utiliza el paquete 'glossaries' también. Por defecto Koma-Script utiliza \sffamily\bfseries
 % \addtokomafont{chapterentry}{\sffamily}
 % \newkomafont{chaptername}{\itshape\sffamily\normalsize\color{migris}}
     
-\addtokomafont{section}{\fontsize{17pt}{21pt}\selectfont\color{mimorado}}
+\addtokomafont{section}{\fontsize{17pt}{21pt}\selectfont\color{miazul}}
 % \newkomafont{sectionnumber}{\fontsize{18pt}{22pt}\selectfont\color{white}}
 
-\addtokomafont{subsection}{\fontsize{14pt}{16pt}\selectfont\color{mimorado}}
+\addtokomafont{subsection}{\fontsize{14pt}{16pt}\selectfont\color{miazul}}
 % \newkomafont{subsectionnumber}{\fontsize{14pt}{16pt}\selectfont\color{white}}
 
-\addtokomafont{subsubsection}{\fontsize{11pt}{13pt}\selectfont\color{mimorado}}
+\addtokomafont{subsubsection}{\fontsize{11pt}{13pt}\selectfont\color{miazul}}
 % \newkomafont{subsubsectionnumber}{\fontsize{14pt}{16pt}\selectfont\color{white}}
 
-\addtokomafont{paragraph}{\selectfont\color{mimorado}}
-\addtokomafont{subparagraph}{\selectfont\color{mimorado}}
+\addtokomafont{paragraph}{\selectfont\color{miazul}}
+\addtokomafont{subparagraph}{\selectfont\color{miazul}}
 
 %%% comando para configurar el número o letra de cada capítulo en los títulos con KOMA-Script
 \renewcommand*{\chapterformat}{%
@@ -283,8 +281,8 @@
 \makeatother
 
 %%% comandos para modificar el estilo de los encabezados y pies de página con KOMA-Script
-\setkomafont{pageheadfoot}{\normalfont\small\bfseries\color{mimorado}}
-\setkomafont{pagenumber}{\normalfont\small\bfseries\color{mimorado}}
+\setkomafont{pageheadfoot}{\normalfont\small\bfseries\color{miazul}}
+\setkomafont{pagenumber}{\normalfont\small\bfseries\color{miazul}}
 \addtokomafont{headsepline}{\color{black}}
 \addtokomafont{footsepline}{\color{black}}
 
