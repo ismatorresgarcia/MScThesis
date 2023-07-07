@@ -332,26 +332,33 @@
   afterskip=1sp plus -1sp minus 1sp,
 ]{paragraph}
 
-%%% Definición de comandos útiles para escribir
-%% conjuntos de números
-\newcommand*{\C}{\symbb{C}}
-\newcommand*{\K}{\symbb{K}}
-\newcommand*{\N}{\symbb{N}}
-\newcommand*{\Q}{\symbb{Q}}
-\newcommand*{\R}{\symbb{R}}
-\newcommand*{\Z}{\symbb{Z}}
-\newcommand*{\X}{\symbb{X}}
+%%% Definición de comandos útiles para escribir con los snippets
+%% vectores de la base
+\newcommand*{\unitvector}{\symbf{e}}
+\newcommand*{\uvec}{\hat{e}}
+%% matrices
+%% derivadas totales
+\newcommand*{\dvOne}[1]{\frac{\operatorname{d}}{\operatorname{d}\!#1}}
+\newcommand*{\dv}[2]{\frac{\operatorname{d}\!#1}{\operatorname{d}\!#2}}
+\newcommand*{\dvN}[3]{\frac{\operatorname{d^{#3}}\!#1}{\operatorname{d}\!{#2}^{#3}}}
+%% derivadas parciales
+\newcommand*{\pdvOne}[1]{\frac{\partial}{\partial#1}#1}
+\newcommand*{\pdv}[2]{\frac{\partial#1}{\partial#2}}
+\newcommand*{\pdvN}[3]{\frac{\partial^{#3}#1}{\partial{#2}^{#3}}}
+%% diferenciales
+\newcommand*{\diff}{\operatorname{d}\!}
+\newcommand*{\pdiff}{\partial}
 %% números complejos
-\DeclareMathOperator{\RE}{\operatorname{Re}}
-\DeclareMathOperator{\IM}{\operatorname{Im}}
+\newcommand*{\RE}{\operatorname{Re}}
+\newcommand*{\IM}{\operatorname{Im}}
+%% conjuntos de números
 \newcommand*{\iu}{\symrm{i}}
 \newcommand*{\eu}{\symrm{e}}
+\newcommand*{\del}{\symbf{\Delta}}
 %% operadores matemáticos
-\newcommand*{\dif}{\symrm{d}}
-\newcommand*{\Dif}{\symrm{D}}
-\newcommand*{\del}{\symrm{\Delta}}
-\newcommand*{\nab}{\symbf{\nabla}}
-
-
-
+\newcommand*{\grad}{\symbf{\nabla}}
+\newcommand*{\curl}{\symbf{\nabla}\times}
+\newcommand*{\diver}{\symbf{\nabla}\cdot}
+\newcommand*{\laplacian}{\bigtriangleup}
+\newcommand*{\dalambert}{\Box}
 
