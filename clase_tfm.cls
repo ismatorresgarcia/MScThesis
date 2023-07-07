@@ -130,7 +130,7 @@
 %%% configuración de la bibliografía con 'biblatex'. Biblatex carga 'etoolbox' entre otros paquetes
 \RequirePackage[                            %% gestion de la bibliografía con biblatex
     backend=biber,                          %% compilador por defecto con biblatex (recomendado)
-    natbib=true,                            %% comandos del paquete natbib
+    natbib=true,                            %% comandos del paquete natbib (autocite, por ejemplo)
     maxnames=10,                            %% número max. de nombres de autores
     minnames=1,                             %% número mix. de nombres de autores
     sorting=nyt,                            %% ordenar por nombre, año, título
@@ -139,7 +139,8 @@
     bibstyle=numeric,                       %% estilo de bibliografía numérica (pon numeric, en draft mientras edito)  
     backref=false                           %% sacar las páginas de las citas en la bibliografía (cf. p.)
 ]{biblatex}                   
-\addbibresource{Referencias/biblio.bib}     %% archivo bibliografico
+\addbibresource{Zotero.bib}     %% archivo bibliografico que estoy utilizando
+%\addbibresource{Referencias/biblio.bib}    %% el archivo antiguo que utilizaba
 
 %%% matemáticas, física y química
 \RequirePackage{siunitx}                    %% unidades del sistema internacional
@@ -317,14 +318,14 @@
   tocindent=1.75em,
   tocnumwidth=2.5em,
   beforeskip=-.75\parskip plus -1ex minus -.2ex,
-  afterskip=.5\parskip plus .2ex
+  afterskip=.25\parskip plus .2ex
 ]{section}
 
 \RedeclareSectionCommands[
   tocindent=4.25em,
   tocnumwidth=3.5em,
   beforeskip=-.75\parskip plus -1ex minus -.2ex,
-  afterskip=.5\parskip plus .2ex
+  afterskip=.25\parskip plus .2ex
 ]{subsection}
 
 \RedeclareSectionCommands[
