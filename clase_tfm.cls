@@ -346,7 +346,7 @@
 \newcommand*{\pdvOne}[1]{\frac{\partial}{\partial#1}#1}
 \newcommand*{\pdv}[2]{\frac{\partial#1}{\partial#2}}
 \newcommand*{\pdvN}[3]{\frac{\partial^{#3}#1}{\partial{#2}^{#3}}}
-%% diferenciales
+%% diferenciales de primer orden
 \newcommand*{\diff}{\operatorname{d}\!}
 \newcommand*{\pdiff}{\partial}
 %% números complejos
