@@ -9,19 +9,19 @@
     paper=a4,                         %% tamaño del papel
     fontsize=12pt,                    %% tamaño de la fuente
     twoside=true,                     %% recto-verso
-    parskip=half,                     %% sangría y espaciado de parrafos
+    parskip=half,                     %% sangría y espaciado de párrafos
     captions=tableheading,            %% descripción de tablas arriba
     toc=listof,                       %% figuras y tablas en el ToC
     toc=bibliographynumbered,         %% bibliografía como capítulo numerado en el ToC
     chapterprefix=false,              %% nombres de los capítulos (por defecto en scrreport)
     %numbers=noenddot                 %% números de secciones sin punto
 }
-%%% paquetes basicos
-%% fórmulas, símbolos y teoremas matemáticos.'unicode-math' sobreescribirá las definiciones necesarias después
+%%% paquetes básicos
+%% fórmulas, símbolos y teoremas matemáticos.'unicode-math' sobrescribirá las definiciones necesarias después
 \RequirePackage{amsmath}              %% fórmulas y entornos matemáticos. Cargar antes de 'unicode-math' por recomendación de este  
 \RequirePackage{amssymb}              %% fuentes y símbolos matemáticos
 
-\RequirePackage{unicode-math}         %% gestión de matemáticas. Los paquetes de la AMS son incompatibles, así que declaralos antes para que sobreescriba lo que considere necesario. También carga 'fontspec' para gestionar las fuentes de texto con XeLaTeX o LuaLaTeX
+\RequirePackage{unicode-math}         %% gestión de matemáticas. Los paquetes de la AMS son incompatibles, así que ponlos antes para que sobrescriba lo que considere necesario. También carga 'fontspec' para gestionar las fuentes de texto con XeLaTeX o LuaLaTeX
 \unimathsetup{                        %% las opciones del paquete 'unicode-math' siguiendo la norma ISO
     math-style=ISO, 
     bold-style=ISO
