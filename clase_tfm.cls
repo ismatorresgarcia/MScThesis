@@ -23,12 +23,13 @@
 
 \RequirePackage{unicode-math}         %% gestión de matemáticas. Los paquetes de la AMS son incompatibles, así que ponlos antes para que sobrescriba lo que considere necesario. También carga 'fontspec' para gestionar las fuentes de texto con XeLaTeX o LuaLaTeX
 \unimathsetup{                        %% las opciones del paquete 'unicode-math' siguiendo la norma ISO
-    math-style=ISO, 
-    bold-style=ISO
+    math-style=TeX, 
+    bold-style=TeX
 } 
-\setmainfont{Minion Pro}              %% Fuente comercial MinionPro de Adobe para el texto
-% fuente matemática del documento
-\RequirePackage{unicode-minionmath}   %% Paquete comercial MinionMath de Johannes Küster con comandos adicionales en XeLaTeX/LuaLaTeX
+\setmainfont{Minion Pro}              %% Fuente comercial MinionPro de Adobe (Robert Slimbach) para el texto en Serif
+\setsansfont{Aller}                   %% Fuente comercial Aller de Adobe (desarrollador Dalton Maag) para el texto en Sans Serif
+\RequirePackage{unicode-minionmath}   %% Paquete comercial MinionMath de Typoma (desarrollador Johannes Küster) con comandos adicionales en XeLaTeX/LuaLaTeX
+%% fuente matemática del documento
 \setmathfont{MinionMath-Regular}[     %% Fuente comercial MinionMath de Johannes Küsner para las matemáticas
     Extension = .otf,
     Path = ./MinionMath/,
@@ -48,7 +49,7 @@
     version = bold
 ]
 \setmathfont{STIX Two Math}[          %% Fuente STIX Two Math para los estilos matemáticos que faltan en MinionMath
-    range = {\symcal,\symfrak,\symscr,\symbfcal,\symbffrak,\symbfscr}
+    range = {\symcal,\symfrak,\symbfcal,\symbffrak}
 ]
 
 %%% gestión de los idiomas. Las opciones de 'polyglossia' las cargo más adelante por recomendación del manual
@@ -65,7 +66,7 @@
 \newcommand*{\titproy}{Trabajo Fin de Master}
 \newcommand*{\titenc}{Estudio del impacto de la forma de un canal de plasma en la amplificación de un haz XUV}
 \newcommand*{\unienc}{Universidad Politécnica de Madrid}
-\newcommand*{\etsiienc}{Escuela Técnica Superior de Ingenieros Industriales (UPM)}
+\newcommand*{\etsiienc}{Escuela Técnica Superior de Ingenieros Industriales}
 \newcommand*{\AUA}{Abreviaturas, unidades y acrónimos}
 
 %%% configuración y disposición del texto con KOMA-Script
@@ -107,12 +108,13 @@
 \RequirePackage{booktabs}             %% tablas profesionales
 \RequirePackage[table]{xcolor}        %% mejores colores. 'table' para colorear filas y columnas de tablas
 %% colores del documento
-\definecolor{miazul}{RGB}{0,26,153}
-\definecolor{miazull}{RGB}{119,141,255}
+\definecolor{miazul}{RGB}{0,30,155}
+\definecolor{miazull}{RGB}{120,140,255}
 \definecolor{mirojo}{RGB}{153,0,0}
-\definecolor{mirojoo}{RGB}{199,102,80}
+\definecolor{mirojoo}{RGB}{200,100,80}
 \definecolor{miverde}{RGB}{0,153,0}
-\definecolor{minaranja}{RGB}{252,147,3}
+\definecolor{mimorado}{RGB}{140,45,165}
+\definecolor{minaranja}{RGB}{250,150,5}
 %% colores de códigos
 % \definecolor{codverde}{rgb}{0,0.6,0}
 % \definecolor{codazul}{rgb}{0,0,0.9}
@@ -139,16 +141,15 @@
     bibstyle=numeric,                       %% estilo de bibliografía numérica (pon numeric, en draft mientras edito)  
     backref=false                           %% sacar las páginas de las citas en la bibliografía (cf. p.)
 ]{biblatex}                   
-\addbibresource{Zotero.bib}     %% archivo bibliografico que estoy utilizando
-%\addbibresource{Referencias/biblio.bib}    %% el archivo antiguo que utilizaba
+\addbibresource{Zotero.bib}                 %% archivo bibligráfico que estoy utilizando
 
 %%% matemáticas, física y química
 \RequirePackage{siunitx}                    %% unidades del sistema internacional
-\sisetup{                                   %% opciones de las unidades
+\sisetup{                                   %% opciones de las unidades del paquete
     output-decimal-marker = {,},
     per-mode = symbol
 }
-\RequirePackage[version=4]{mhchem}          %% escribir reacciones, compuestos químicos, etc.
+\RequirePackage[version=4]{mhchem}          %% para escribir reacciones, compuestos químicos, etc.
 
 %%% Algoritmos y códigos de lenguajes de programación con 'minted' o 'listings'
 %% en 'minted' los entornos flotantes se invocan con \begin{listing} \end{listing} y 
@@ -170,8 +171,6 @@
 %%% cambio el nombre que usa 'caption' para la leyenda y el índice con la opción 'newfloat' de 'minted'
 \SetupFloatingEnvironment{listing}{name=Código}    
 \SetupFloatingEnvironment{listing}{listname=Índice de códigos}
-%% un entorno para sustituir a 'listings' cuando el código ocupa varias páginas
-% \newenvironment*{code}{\captionsetup{type=listing}}{}
   
 %%% PDF
 \RequirePackage{pdfpages}                   %% insertar archivos pdf
@@ -235,26 +234,26 @@
 }
 
 %%% comandos para configurar tamaños y fuentes de los distintos niveles
-\addtokomafont{disposition}{\normalfont\bfseries}
+\addtokomafont{disposition}{\sffamily\bfseries}
 
-\addtokomafont{chapter}{\fontsize{25pt}{30pt}\selectfont\color{miazul}}
+\addtokomafont{chapter}{\sffamily\fontsize{25pt}{30pt}\selectfont\color{miazul}}
 \newkomafont{chapternumber}{\fontsize{60}{72}\selectfont\color{miazull}}
 \setkomafont{descriptionlabel}{\normalfont\bfseries} %% Cambio el estilo de los argumentos en itemize y description, 
 %% que es lo que utiliza el paquete 'glossaries' también. Por defecto Koma-Script utiliza \sffamily\bfseries
 % \addtokomafont{chapterentry}{\sffamily}
 % \newkomafont{chaptername}{\itshape\sffamily\normalsize\color{migris}}
     
-\addtokomafont{section}{\fontsize{17pt}{21pt}\selectfont\color{miazul}}
+\addtokomafont{section}{\sffamily\fontsize{16pt}{21pt}\selectfont\color{miazul}}
 % \newkomafont{sectionnumber}{\fontsize{18pt}{22pt}\selectfont\color{white}}
 
-\addtokomafont{subsection}{\fontsize{14pt}{16pt}\selectfont\color{miazul}}
+\addtokomafont{subsection}{\sffamily\fontsize{14pt}{16pt}\selectfont\color{miazul}}
 % \newkomafont{subsectionnumber}{\fontsize{14pt}{16pt}\selectfont\color{white}}
 
-\addtokomafont{subsubsection}{\fontsize{11pt}{13pt}\selectfont\color{miazul}}
+\addtokomafont{subsubsection}{\sffamily\fontsize{11pt}{13pt}\selectfont\color{miazul}}
 % \newkomafont{subsubsectionnumber}{\fontsize{14pt}{16pt}\selectfont\color{white}}
 
-\addtokomafont{paragraph}{\selectfont\color{miazul}}
-\addtokomafont{subparagraph}{\selectfont\color{miazul}}
+\addtokomafont{paragraph}{\normalfont\sffamily\itshape\selectfont\color{miazul}}
+\addtokomafont{subparagraph}{\normalfont\sffamily\itshape\selectfont\color{miazul}}
 
 %%% comando para configurar el número o letra de cada capítulo en los títulos con KOMA-Script
 \renewcommand*{\chapterformat}{%
@@ -282,29 +281,31 @@
 \makeatother
 
 %%% comandos para modificar el estilo de los encabezados y pies de página con KOMA-Script
-\setkomafont{pageheadfoot}{\normalfont\small\bfseries\color{miazul}}
-\setkomafont{pagenumber}{\normalfont\small\bfseries\color{miazul}}
-\addtokomafont{headsepline}{\color{black}}
-\addtokomafont{footsepline}{\color{black}}
+\setkomafont{pageheadfoot}{\sffamily\small\bfseries\selectfont\color{miazul}}
+\setkomafont{pagenumber}{\sffamily\small\bfseries\selectfont\color{miazul}}
+\addtokomafont{headsepline}{\selectfont\color{miazul}}
+\addtokomafont{footsepline}{\selectfont\color{miazul}}
 
 %%% comandos para las páginas del título y el resumen con KOMA-Script
 \newcommand*{\HRule}{\rule{\linewidth}{1pt}}
 \setkomafont{subject}{\Large}
 \setkomafont{dedication}{\Large\itshape}
+\setkomafont{title}{\normalfont\bfseries} %% Cambio el estilo del title en la portada
+\setkomafont{titlehead}{\normalsize} %% Cambio el estilo del titlehead en la portada
 
 %%% comandos para modificar nombres de macros en español con 'polyglossia'
 \gappto\captionsspanish{%
   \renewcommand*{\appendixname}{Anexo}%
   \renewcommand*{\tablename}{Tabla}%
   \renewcommand*{\listtablename}{Índice de tablas}%
-  % \renewcommand*{\lstlistingname}{Código}% 
-  % \renewcommand*{\lstlistlistingname}{Índice de códigos}% 
 }
+
 \renewcommand*{\figureformat}{\figurename~\thefigure\autodot}
 \renewcommand*{\tableformat}{\tablename~\thetable\autodot}
-%\renewcommand*{\captionformat}{~--~}
-\addtokomafont{caption}{\small}
-\setkomafont{captionlabel}{\bfseries}
+\renewcommand*{\captionformat}{\quad}
+\addtokomafont{caption}{\footnotesize}
+\setkomafont{captionlabel}{\scriptsize\sffamily\bfseries\selectfont\color{mimorado}}
+\setcapindent{0pt} %% Pongo a 0 el sangrado del cuerpo de las figuras con Koma-Script
 
 %%% comandos para el espacio entre párrafos y secciones con KOMA-Script
 \RedeclareSectionCommand[%
@@ -315,6 +316,7 @@
 ]{chapter}
 
 \RedeclareSectionCommands[
+  tocentryformat = \small\sffamily,
   tocindent=1.75em,
   tocnumwidth=2.5em,
   beforeskip=-.75\parskip plus -1ex minus -.2ex,
@@ -322,6 +324,7 @@
 ]{section}
 
 \RedeclareSectionCommands[
+  tocentryformat = \small\sffamily,
   tocindent=4.25em,
   tocnumwidth=3.5em,
   beforeskip=-.75\parskip plus -1ex minus -.2ex,
@@ -349,13 +352,12 @@
 %% diferenciales de primer orden
 \newcommand*{\diff}{\operatorname{d}\!}
 \newcommand*{\pdiff}{\partial}
-%% números complejos
+%% nombres de conceptos
 \newcommand*{\RE}{\operatorname{Re}}
 \newcommand*{\IM}{\operatorname{Im}}
 %% conjuntos de números
 \newcommand*{\iu}{\symrm{i}}
 \newcommand*{\eu}{\symrm{e}}
-\newcommand*{\del}{\symbf{\Delta}}
 %% operadores matemáticos
 \newcommand*{\grad}{\symbf{\nabla}}
 \newcommand*{\curl}{\symbf{\nabla}\times}
