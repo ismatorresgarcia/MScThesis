@@ -14,7 +14,7 @@
     toc=listof,                       %% figuras y tablas en el ToC
     toc=bibliographynumbered,         %% bibliografía como capítulo numerado en el ToC
     chapterprefix=false,              %% nombres de los capítulos (por defecto en scrreport)
-    %numbers=noenddot                 %% números de secciones sin punto
+    numbers=noenddot                  %% números de capítulos, secciones, ... sin punto
 }
 %%% paquetes básicos
 %% fórmulas, símbolos y teoremas matemáticos.'unicode-math' sobrescribirá las definiciones necesarias después
@@ -23,14 +23,14 @@
 
 \RequirePackage{unicode-math}         %% gestión de matemáticas. Los paquetes de la AMS son incompatibles, así que ponlos antes para que sobrescriba lo que considere necesario. También carga 'fontspec' para gestionar las fuentes de texto con XeLaTeX o LuaLaTeX
 \unimathsetup{                        %% las opciones del paquete 'unicode-math' siguiendo la norma ISO
-    math-style=TeX, 
-    bold-style=TeX
+    math-style=ISO, 
+    bold-style=ISO
 } 
-\setmainfont{Minion Pro}              %% Fuente comercial MinionPro de Adobe (Robert Slimbach) para el texto en Serif
-\setsansfont{Aller}                   %% Fuente comercial Aller de Adobe (desarrollador Dalton Maag) para el texto en Sans Serif
-\RequirePackage{unicode-minionmath}   %% Paquete comercial MinionMath de Typoma (desarrollador Johannes Küster) con comandos adicionales en XeLaTeX/LuaLaTeX
+\setmainfont{Minion Pro}              %% Fuente comercial Minion Pro de Adobe (desarrollador Robert Slimbach) para el texto en Serif
+\setsansfont{Cronos Pro}              %% Fuente comercial Cronos Pro de Adobe (desarrollador Robert Slimbach) para el texto en Sans Serif
+\RequirePackage{unicode-minionmath}   %% Paquete comercial Minion Math de Typoma (desarrollador Johannes Küster) con comandos adicionales en XeLaTeX/LuaLaTeX
 %% fuente matemática del documento
-\setmathfont{MinionMath-Regular}[     %% Fuente comercial MinionMath de Johannes Küsner para las matemáticas
+\setmathfont{MinionMath-Regular}[     %% Fuente comercial Minion Math de Johannes Küsner para las matemáticas
     Extension = .otf,
     Path = ./MinionMath/,
     Scale = 1,
@@ -107,14 +107,18 @@
 \RequirePackage{array}                %% tablas
 \RequirePackage{booktabs}             %% tablas profesionales
 \RequirePackage[table]{xcolor}        %% mejores colores. 'table' para colorear filas y columnas de tablas
+\RequirePackage{tikz}                 %% para hacer dibujos (aquí solo lo utilizo para los capítulos)
 %% colores del documento
 \definecolor{miazul}{RGB}{0,30,155}
-\definecolor{miazull}{RGB}{120,140,255}
+\definecolor{minegro}{RGB}{10,10,10}
 \definecolor{mirojo}{RGB}{153,0,0}
 \definecolor{mirojoo}{RGB}{200,100,80}
 \definecolor{miverde}{RGB}{0,153,0}
 \definecolor{mimorado}{RGB}{140,45,165}
 \definecolor{minaranja}{RGB}{250,150,5}
+\colorlet{miazull}{white!85!miazul}
+\colorlet{secboxcolor}{miazul}
+\colorlet{secnumcolor}{white}
 %% colores de códigos
 % \definecolor{codverde}{rgb}{0,0.6,0}
 % \definecolor{codazul}{rgb}{0,0,0.9}
@@ -236,49 +240,96 @@
 %%% comandos para configurar tamaños y fuentes de los distintos niveles
 \addtokomafont{disposition}{\sffamily\bfseries}
 
-\addtokomafont{chapter}{\sffamily\fontsize{25pt}{30pt}\selectfont\color{miazul}}
-\newkomafont{chapternumber}{\fontsize{60}{72}\selectfont\color{miazull}}
+\renewcommand*{\raggedchapter}{\raggedleft} %% Justificación a la derecha del título de los capítulos
+\setkomafont{chapter}{\sffamily\fontsize{25pt}{30pt}\selectfont\color{miazul}}
+\setkomafont{chapterprefix}{\sffamily\fontsize{11pt}{13pt}\selectfont\color{miazul}}
+\newkomafont{chapternumber}{\fontsize{50pt}{60pt}\selectfont\color{miazul}}
+
 \setkomafont{descriptionlabel}{\normalfont\bfseries} %% Cambio el estilo de los argumentos en itemize y description, 
 %% que es lo que utiliza el paquete 'glossaries' también. Por defecto Koma-Script utiliza \sffamily\bfseries
-% \addtokomafont{chapterentry}{\sffamily}
-% \newkomafont{chaptername}{\itshape\sffamily\normalsize\color{migris}}
     
-\addtokomafont{section}{\sffamily\fontsize{16pt}{21pt}\selectfont\color{miazul}}
-% \newkomafont{sectionnumber}{\fontsize{18pt}{22pt}\selectfont\color{white}}
-
-\addtokomafont{subsection}{\sffamily\fontsize{14pt}{16pt}\selectfont\color{miazul}}
-% \newkomafont{subsectionnumber}{\fontsize{14pt}{16pt}\selectfont\color{white}}
-
+\addtokomafont{section}{\sffamily\fontsize{17pt}{21pt}\selectfont\color{miazul}}
+\addtokomafont{subsection}{\sffamily\fontsize{14pt}{17pt}\selectfont\color{miazul}}
 \addtokomafont{subsubsection}{\sffamily\fontsize{11pt}{13pt}\selectfont\color{miazul}}
-% \newkomafont{subsubsectionnumber}{\fontsize{14pt}{16pt}\selectfont\color{white}}
+\addtokomafont{paragraph}{\normalfont\sffamily\itshape\fontsize{12pt}{14pt}\selectfont\color{miazul}}
+\addtokomafont{subparagraph}{\normalfont\sffamily\itshape\fontsize{12pt}{14pt}\selectfont\color{miazul}}
 
-\addtokomafont{paragraph}{\normalfont\sffamily\itshape\selectfont\color{miazul}}
-\addtokomafont{subparagraph}{\normalfont\sffamily\itshape\selectfont\color{miazul}}
-
-%%% comando para configurar el número o letra de cada capítulo en los títulos con KOMA-Script
-\renewcommand*{\chapterformat}{%
-  {
-    \colorbox{white}{
-     \parbox[c][60pt]{70pt}{\centering
-      {\usekomafont{chapternumber}{\thechapter}
-        }%
-      }%
-    }%
-  }%
-  \enskip
-}%
-
-%%% comando para configurar el nombre de los títulos de los capítulos con KOMA-Script
-\newbox{\chapternumberbox}
+%%% empiezo a configurar con TikZ el formato de cada capítulo en los títulos 
+\tikzset{
+    headings/base/.style = {
+      outer sep = -5pt,
+      inner sep = 10pt,
+    },
+    headings/chapterbackground/.style = {
+      headings/base,
+      shade,
+      left color = white,
+      right color = miazull,
+    },
+    headings/chapapp/.style = {
+      headings/base,
+      font = \usekomafont{chapterprefix}
+    },
+    headings/chapternumber/.style= {
+      headings/base,
+      font = \usekomafont{chapternumber}
+    },
+    headings/chapterline/.style = {
+      miazull,
+      line width = 2.5pt
+    }
+}
+%%% comandos para configurar el formato de cada capítulo en los títulos con KOMA-Script
 \makeatletter
-\renewcommand*{\chapterlinesformat}[3]{%
-  \sbox\chapternumberbox{#2}{%
-    \@hangfrom{\usebox\chapternumberbox}{%
-      \parbox[c]{\dimexpr\textwidth-\wd\chapternumberbox\relax}{\raggedchapter\MakeUppercase{#3}}
-    }%
+\renewcommand*\chapterlinesformat[3]{%
+  \Ifstr{#1}{chapter}{%
+    \begin{tikzpicture}[baseline=(title.base)]
+      \node[headings/chapterbackground](title){%
+        \parbox[c][\height]
+          {\dimexpr\textwidth-1\pgfkeysvalueof{/pgf/inner xsep}\relax}
+          {\raggedchapter #3}%
+      },
+      \node[headings/chapapp,anchor=south east]
+      at (title.north east){\Ifstr{#2}{}{}{\MakeUppercase{\chapapp}}\strut};
+      \useasboundingbox
+        (current bounding box.south west)
+        rectangle
+        ([yshift=-10pt]current bounding box.south east);
+      \draw[headings/chapterline]
+        (current bounding box.south east)++(+.5\pgflinewidth,0)--+(0,\paperheight);
+      \node[anchor=base west,headings/chapternumber]
+        at ([xshift=10pt]title.base-|current bounding box.east){#2};
+    \end{tikzpicture}
+    \par
+  }{%
+    \@hangfrom{#2}{#3}% los niveles de otras secciones que utilicen style=chapter
   }%
 }
 \makeatother
+
+%%% comando para configurar el estilo de las secciones y subsecciones con KOMA-Script
+\renewcommand*{\sectionformat}{\colorbox{secboxcolor}{\textcolor{secnumcolor}{~\thesection\autodot}~}\quad}
+\renewcommand*{\subsectionformat}{\colorbox{secboxcolor}{\textcolor{secnumcolor}{~\thesubsection\autodot}~}\quad}
+
+\newsavebox{\secnumbox}
+\newlength{\secrulewidth}
+\setlength{\secrulewidth}{1pt}
+\newcommand*{\boxedandruledsec}[2]{%
+  \IfUseNumber{\leavevmode\rlap{\color{secboxcolor}\rule[\dimexpr-\fboxsep-\secrulewidth\relax]{\textwidth}{\secrulewidth}}}{}%
+  \savebox{\secnumbox}{#1}%
+  \parbox[b]{\wd\secnumbox}{\usebox{\secnumbox}}%
+  \parbox[b]{\dimexpr\textwidth-\wd\secnumbox\relax}{#2}\par\nobreak%
+}
+
+\newcommand\originalsectionlinesformat{}
+\let\originalsectionlinesformat\sectionlinesformat
+
+\renewcommand*{\sectionlinesformat}[4]{\setlength\fboxsep{\dp\strutbox}%
+  \Ifstr{#1}{section}{\boxedandruledsec{#3}{#4}}{%
+    \Ifstr{#1}{subsection}{\boxedandruledsec{#3}{#4}}{%
+      \originalsectionlinesformat{#1}{#2}{#3}{#4}% los niveles de otras secciones
+    }}%
+}
 
 %%% comandos para modificar el estilo de los encabezados y pies de página con KOMA-Script
 \setkomafont{pageheadfoot}{\sffamily\small\bfseries\selectfont\color{miazul}}
@@ -287,13 +338,12 @@
 \addtokomafont{footsepline}{\selectfont\color{miazul}}
 
 %%% comandos para las páginas del título y el resumen con KOMA-Script
-\newcommand*{\HRule}{\rule{\linewidth}{1pt}}
 \setkomafont{subject}{\Large}
 \setkomafont{dedication}{\Large\itshape}
 \setkomafont{title}{\normalfont\bfseries} %% Cambio el estilo del title en la portada
 \setkomafont{titlehead}{\normalsize} %% Cambio el estilo del titlehead en la portada
 
-%%% comandos para modificar nombres de macros en español con 'polyglossia'
+%%% comandos para modificar los nombres de descripciones en español con 'polyglossia'
 \gappto\captionsspanish{%
   \renewcommand*{\appendixname}{Anexo}%
   \renewcommand*{\tablename}{Tabla}%
@@ -302,15 +352,15 @@
 
 \renewcommand*{\figureformat}{\figurename~\thefigure\autodot}
 \renewcommand*{\tableformat}{\tablename~\thetable\autodot}
-\renewcommand*{\captionformat}{\quad}
+\renewcommand*{\captionformat}{~\quad}
 \addtokomafont{caption}{\footnotesize}
-\setkomafont{captionlabel}{\scriptsize\sffamily\bfseries\selectfont\color{mimorado}}
-\setcapindent{0pt} %% Pongo a 0 el sangrado del cuerpo de las figuras con Koma-Script
+\setkomafont{captionlabel}{\footnotesize\sffamily\bfseries\color{mimorado}}
+\setcapindent{0pt} %% Pongo a 0 el sangrado del cuerpo de las figuras y tablas con Koma-Script
 
 %%% comandos para el espacio entre párrafos y secciones con KOMA-Script
 \RedeclareSectionCommand[%
   tocnumwidth=1.75em,
-  beforeskip=-.25\baselineskip ,
+  beforeskip=-.25\baselineskip,
   afterskip=2.5\baselineskip plus .1\baselineskip minus 
   .12\baselineskip
 ]{chapter}
@@ -359,9 +409,9 @@
 \newcommand*{\iu}{\symrm{i}}
 \newcommand*{\eu}{\symrm{e}}
 %% operadores matemáticos
-\newcommand*{\grad}{\symbf{\nabla}}
-\newcommand*{\curl}{\symbf{\nabla}\times}
-\newcommand*{\diver}{\symbf{\nabla}\cdot}
+\newcommand*{\grad}{\nabla}
+\newcommand*{\curl}{\nabla\times}
+\newcommand*{\diver}{\nabla\cdot}
 \newcommand*{\laplacian}{\bigtriangleup}
 \newcommand*{\dalambert}{\Box}
 
