@@ -70,7 +70,7 @@
 \newcommand*{\AUA}{Abreviaturas, unidades y acrónimos}
 
 %%% configuración y disposición del texto con KOMA-Script
-\RequirePackage{scrhack}              %% macros personalizadas (KOMA-Script)
+\RequirePackage{scrhack}              %% macros especiales y personalizadas (KOMA-Script)
 \RequirePackage{scrdate}              %% comandos para las fechas (KOMA-Script)
 \RequirePackage[  
     % automark,                       %% encabezados automáticos \automark[section]{chapter} para scrbook
@@ -110,7 +110,7 @@
 \RequirePackage{tikz}                 %% para hacer dibujos (aquí solo lo utilizo para los capítulos)
 %% colores del documento
 \definecolor{miazul}{RGB}{0,30,155}
-\definecolor{minegro}{RGB}{10,10,10}
+\definecolor{miazulll}{RGB}{0,50,85}
 \definecolor{mirojo}{RGB}{153,0,0}
 \definecolor{mirojoo}{RGB}{200,100,80}
 \definecolor{miverde}{RGB}{0,153,0}
@@ -127,11 +127,13 @@
 \definecolor{colorfondo}{rgb}{0.95,0.95,0.92}
 
 %%% creación de macros y paquetes personalizados como entornos, por ejemplo
-\RequirePackage[export]{adjustbox}          %% para definir un tamaño mínimo o máximo
-\RequirePackage{xpatch}                     %% recomendado por el paquete de biblatex. También extiende algunas funciones del paquete 'etoolbox'
+\RequirePackage[export]{adjustbox}          %% para definir un tamaño mínimo o máximo en las cajas
+\RequirePackage{xpatch}                     %% recomendado por el paquete de 'biblatex'. También extiende algunas funciones del paquete 'etoolbox'
 
-%%% miscelánea
-\RequirePackage{hologo}                     %% macro '\hologo! para escribir logos especiales (LATEX, XELATEX, LUALATEX, etc)
+%%% más personalización
+\RequirePackage[lines=3]{lettrine}                   %% para escribir los comienzos de capítulos en letras grandes
+\renewcommand*{\LettrineFontHook}{\fontspec{Cronos Pro}\bfseries\color{miazul}} %% para el estilo de la letra inicial
+\renewcommand*{\LettrineTextFont}{\sffamily\bfseries\fontsize{10pt}{12pt}\selectfont\color{miazul}\MakeUppercase} %% para el estilo del segundo argumento
 
 %%% configuración de la bibliografía con 'biblatex'. Biblatex carga 'etoolbox' entre otros paquetes
 \RequirePackage[                            %% gestion de la bibliografía con biblatex
@@ -268,15 +270,15 @@
     },
     headings/chapapp/.style = {
       headings/base,
-      font = \usekomafont{chapterprefix}
+      font = \usekomafont{chapterprefix},
     },
     headings/chapternumber/.style= {
       headings/base,
-      font = \usekomafont{chapternumber}
+      font = \usekomafont{chapternumber},
     },
     headings/chapterline/.style = {
       miazull,
-      line width = 2.5pt
+      line width = 2.5pt,
     }
 }
 %%% comandos para configurar el formato de cada capítulo en los títulos con KOMA-Script
@@ -288,7 +290,7 @@
         \parbox[c][\height]
           {\dimexpr\textwidth-1\pgfkeysvalueof{/pgf/inner xsep}\relax}
           {\raggedchapter #3}%
-      },
+      };
       \node[headings/chapapp,anchor=south east]
       at (title.north east){\Ifstr{#2}{}{}{\MakeUppercase{\chapapp}}\strut};
       \useasboundingbox
@@ -352,8 +354,8 @@
 
 \renewcommand*{\figureformat}{\figurename~\thefigure\autodot}
 \renewcommand*{\tableformat}{\tablename~\thetable\autodot}
-\renewcommand*{\captionformat}{~\quad}
-\addtokomafont{caption}{\footnotesize}
+\renewcommand*{\captionformat}{~\quad~}
+\addtokomafont{caption}{\footnotesize\sffamily\color{miazulll}}
 \setkomafont{captionlabel}{\footnotesize\sffamily\bfseries\color{mimorado}}
 \setcapindent{0pt} %% Pongo a 0 el sangrado del cuerpo de las figuras y tablas con Koma-Script
 
@@ -366,23 +368,23 @@
 ]{chapter}
 
 \RedeclareSectionCommands[
-  tocentryformat = \small\sffamily,
+  tocentryformat=\small\sffamily,
   tocindent=1.75em,
   tocnumwidth=2.5em,
-  beforeskip=-.75\parskip plus -1ex minus -.2ex,
-  afterskip=.25\parskip plus .2ex
+  beforeskip=-1.0\parskip plus -1ex minus -.2ex,
+  afterskip=1sp plus -1sp minus 1sp,
 ]{section}
 
 \RedeclareSectionCommands[
-  tocentryformat = \small\sffamily,
+  tocentryformat=\small\sffamily,
   tocindent=4.25em,
   tocnumwidth=3.5em,
-  beforeskip=-.75\parskip plus -1ex minus -.2ex,
-  afterskip=.25\parskip plus .2ex
+  beforeskip=-1.0\parskip plus -1ex minus -.2ex,
+  afterskip=1sp plus -1sp minus 1sp,
 ]{subsection}
 
 \RedeclareSectionCommands[
-  beforeskip=1sp plus -1sp minus 1sp,
+  beforeskip=-1.0\parskip plus -1ex minus -.2ex,
   afterskip=1sp plus -1sp minus 1sp,
 ]{paragraph}
 
