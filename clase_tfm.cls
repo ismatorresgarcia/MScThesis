@@ -10,16 +10,16 @@
     fontsize=12pt,                    %% tamaño de la fuente
     twoside=true,                     %% recto-verso
     parskip=half,                     %% sangría y espaciado de párrafos
+    chapterprefix=false,              %% nombres de los capítulos (por defecto en scrreport)
     captions=tableheading,            %% descripción de tablas arriba
     toc=listof,                       %% figuras y tablas en el ToC
     toc=bibliographynumbered,         %% bibliografía como capítulo numerado en el ToC
-    chapterprefix=false,              %% nombres de los capítulos (por defecto en scrreport)
     numbers=noenddot                  %% números de capítulos, secciones, ... sin punto
 }
 %%% paquetes básicos
 %% fórmulas, símbolos y teoremas matemáticos.'unicode-math' sobrescribirá las definiciones necesarias después
 \RequirePackage{amsmath}              %% fórmulas y entornos matemáticos. Cargar antes de 'unicode-math' por recomendación de este  
-\RequirePackage{amssymb}              %% fuentes y símbolos matemáticos
+\RequirePackage{amssymb}              %% fuentes y símbolos matemáticos (carga 'amsfonts' también)
 
 \RequirePackage{unicode-math}         %% gestión de matemáticas. Los paquetes de la AMS son incompatibles, así que ponlos antes para que sobrescriba lo que considere necesario. También carga 'fontspec' para gestionar las fuentes de texto con XeLaTeX o LuaLaTeX
 \unimathsetup{                        %% las opciones del paquete 'unicode-math' siguiendo la norma ISO
@@ -180,6 +180,7 @@
   
 %%% PDF
 \RequirePackage{pdfpages}                   %% insertar archivos pdf
+\RequirePackage{bookmark}                   %% gestión moderna de los marcadores del paquete 'hyperref'
 \RequirePackage{hyperref}                   %% pdf con hipervínculos, referencias cruzadas, etc.
 \hypersetup{
     %backref=true,                          %% añadir hipervínculos (por defecto)
@@ -190,19 +191,19 @@
     colorlinks=true,                        %% color de hipervínculos
     urlcolor=minaranja,                     %% color de hipervínculos de direcciones web
     citecolor=miverde,                      %% color de citas bibliográficas internas
-    linkcolor=miazul,                     %% color de vínculos internos
+    linkcolor=miazul,                       %% color de vínculos internos
     filecolor=mirojo,                       %% color de urls que abren archivos
     menucolor=mirojoo,                      %% color de las pestañas en Adobe
     anchorcolor=black,                      %% color del texto anclado cuando pasas por encima
     bookmarksopen=false,                    %% las pestañas de los marcadores del pdf aparecen todas desplegadas
-    linktocpage=false,                      %% hipervínculos en el número de página en lugar del texto del TOC
+    %linktocpage=false,                     %% hipervínculos en el número de página en lugar del texto del TOC
 %% metacampos del pdf :                     %% ATENCIÓN: hay que completarlos 
     pdftitle    = {Modelización de armónicos de alto orden en plasmas},
     pdfauthor   = {Ismael Torres García},
     pdfsubject  = {Trabajo Fin de Master},
     pdfkeywords = {SXRL, Kriptón, XUV, HOH, HHG, Dagon},
 }
-\RequirePackage{bookmark}                   %% gestión moderna de los marcadores del paquete 'hyperref'
+\AfterTOCHead[toc]{\hypersetup{linkcolor=.}}%% ejecuta el comando \hypersetup justo después del ToC (para activar los links, pero utilizar el color azul de linkcolor solo en los capítulos) con KOMA-Script
 
 %%% configuración de los idiomas con 'polyglossia'
 \setdefaultlanguage[
@@ -223,9 +224,10 @@
 \setacronymstyle{long-short}
 \loadglsentries{Preliminares/acronimos.tex}
 
+
 %%% comandos para configurar la entrada 'anexos' en el ToC con KOMA-Script
 \newcommand*{\useprefix}[1]{#1}                       %% defino un comando para almacenar la palabra 'anexo'
-\NewDocumentCommand\appendixprefixintoc{}             %% para añadir la palabra 'Anexo' antes de las letras del apéndice en el ToC
+\newcommand*{\appendixprefixintoc}                    %% para añadir la palabra 'Anexo' antes de las letras del apéndice en el ToC
 {%
   \DeclareTOCStyleEntry[%                             %% defino el estilo de los capítulos del anexo en el ToC
       entrynumberformat=\useprefix{\appendixname~},
@@ -240,7 +242,7 @@
 }
 
 %%% comandos para configurar tamaños y fuentes de los distintos niveles
-\addtokomafont{disposition}{\sffamily\bfseries}
+\addtokomafont{disposition}{\sffamily\bfseries\color{miazul}}
 
 \renewcommand*{\raggedchapter}{\raggedleft} %% Justificación a la derecha del título de los capítulos
 \setkomafont{chapter}{\sffamily\fontsize{25pt}{30pt}\selectfont\color{miazul}}
@@ -369,6 +371,7 @@
 
 \RedeclareSectionCommands[
   tocentryformat=\small\sffamily,
+  toclinefill = \hfill, % me cargo la línea de puntos del ToC
   tocindent=1.75em,
   tocnumwidth=2.5em,
   beforeskip=-1.0\parskip plus -1ex minus -.2ex,
@@ -377,6 +380,7 @@
 
 \RedeclareSectionCommands[
   tocentryformat=\small\sffamily,
+  toclinefill = \hfill, % me cargo la línea de puntos del ToC
   tocindent=4.25em,
   tocnumwidth=3.5em,
   beforeskip=-1.0\parskip plus -1ex minus -.2ex,
