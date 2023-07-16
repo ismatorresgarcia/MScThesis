@@ -26,13 +26,17 @@
     math-style=ISO, 
     bold-style=ISO
 } 
-\setmainfont{Minion Pro}              %% Fuente comercial Minion Pro de Adobe (desarrollador Robert Slimbach) para el texto en Serif
-\setsansfont{Cronos Pro}              %% Fuente comercial Cronos Pro de Adobe (desarrollador Robert Slimbach) para el texto en Sans Serif
+\setmainfont{Minion Pro}[             %% Fuente comercial Minion Pro de Adobe (desarrollador Robert Slimbach) para el texto en Serif
+    Renderer = OpenType
+]
+\setsansfont{Cronos Pro}[             %% Fuente comercial Cronos Pro de Adobe (desarrollador Robert Slimbach) para el texto en Sans Serif
+    Renderer = OpenType
+]              
 \RequirePackage{unicode-minionmath}   %% Paquete comercial Minion Math de Typoma (desarrollador Johannes Küster) con comandos adicionales en XeLaTeX/LuaLaTeX
 %% fuente matemática del documento
 \setmathfont{MinionMath-Regular}[     %% Fuente comercial Minion Math de Johannes Küsner para las matemáticas
     Extension = .otf,
-    Path = ./MinionMath/,
+    Path = /Users/ytoga/Library/Fonts/,
     Scale = 1,
     Script = Math,
     SizeFeatures = {
@@ -43,12 +47,14 @@
         {Size = 8.4-, Font = MinionMath-Regular}
     }
 ]
-\setmathfont{MinionMath-Bold} [                         
+\setmathfont{MinionMath-Bold}[                         
     Extension = .otf,
-    Path = ./MinionMath/,
+    Path = /Users/ytoga/Library/Fonts/,
     version = bold
 ]
-\setmathfont{STIX Two Math}[          %% Fuente STIX Two Math para los estilos matemáticos que faltan en MinionMath
+\setmathfont{STIXTwoMath}[          %% Fuente STIX Two Math para los estilos matemáticos que faltan en MinionMath
+    Extension = .otf,
+    Path = /System/Library/Fonts/Supplemental/,
     range = {\symcal,\symfrak,\symbfcal,\symbffrak}
 ]
 
