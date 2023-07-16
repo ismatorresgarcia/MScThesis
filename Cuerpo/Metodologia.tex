@@ -12,98 +12,81 @@ En la interacción láser-plasma estudiada, para obtener una buena aproximación
 
 En primer lugar, el acoplamiento del campo eléctrico con el plasma es la ecuación de ondas 
 \begin{equation}\label{eq:3.1}
-    \laplacian{\symbfcal{E}} - \frac{1}{c^2}\frac{\partial^2 {\symbfcal{E}}}{\partial t^2} = 
-    \frac{\omega_{pe}^2}{c^2}{\symbfcal{E}} + \frac{1}{\epsilon_0 c^2}\frac{\partial^2 {\symbfcal{P}}}{\partial t^2},
+  \laplacian \symbfcal{E} - \frac{1}{c^{2}}\pdvN{\symbfcal{E}}{t}{2} = \frac{\omega^{2}_{pe}}{c^{2}}\symbfcal{E} + \frac{1}{\epsilon_{0}c^{2}}\pdvN{\symbfcal{P}}{t}{2},
 \end{equation}
 \noindent
-donde el campo eléctrico ${\symbfcal{E}}$, la polarización ${\symbfcal{P}}$ y la frecuencia de las oscilaciones del plasma $\omega_{pe}$ son función del espacio y del tiempo.
+donde el campo eléctrico $\symbfcal{E}$, la polarización $\symbfcal{P}$ y la frecuencia de las oscilaciones del plasma $\omega_{pe}$ son función del espacio y del tiempo.
 
 Para resolver la ecuación, se considera la aproximación paraxial del campo eléctrico según la dirección de propagación del eje $z$. Suponiendo que la radiación está polarizada linealmente en la dirección del eje $x$, esta aproximación permite tener en cuenta únicamente la componente $x$ del campo eléctrico escribiendo por separado la envolvente y las vibraciones del mismo.
 \begin{equation}\label{eq:3.2}
-    \symcal{E}_x(\symbf{r},t) 
-    =
-    \RE\left[E_+(\symbf{r},t)\eu^{\iu(\omega t - kz)}+E_-(\symbf{r},t)\eu^{\iu(\omega t + kz)}\right],
+  \symcal{E}_{x}(\symbf{r},t) = \RE \left[E_{+}(\symbf{r},t)\eu^{\iu (\omega t - kz)} + E_{-}(\symbf{r},t)\eu^{\iu (\omega t - kz)}\right],
 \end{equation}
 \noindent
-donde $E_+$ y $E_-$ son la amplitud de las oscilaciones de las ondas viajeras hacia la dirección positiva y negativa del eje $z$, respectivamente. 
+donde $E_{+}$ y $E_{-}$ son la amplitud de las oscilaciones de las ondas viajeras hacia la dirección positiva y negativa del eje $z$, respectivamente. 
 
 Combinando las ecuaciones \eqref{eq:3.1} y \eqref{eq:3.2} y agrupando las componentes que se propagan en las dos direcciones del eje $z$, queda 
 \begin{align}
-    \grad^2\symcal{E}_x
-    &=
-    \left(\frac{\partial^2 E_{\pm}}{\partial x^2} + \frac{\partial^2 E_{\pm}}{\partial y^2} + \frac{\partial^2 E_{\pm}}{\partial z^2} \pm 2k\iu\frac{\partial E_{\pm}}{\partial z} + k^2 E_{\pm}\right)\eu^{\iu(\omega t \pm kz)}, \\
-    \frac{\partial^2 \symcal{E}_x}{\partial t^2}
-    &=
-    \left(\frac{\partial^2 E_{\pm}}{\partial t^2} + 2\omega\iu\frac{\partial E_{\pm}}{\partial z} + \omega^2E_{\pm}\right)\eu^{\iu(\omega t \pm kz)}, 
+  \laplacian \symcal{E}_{x} 
+  &= 
+  \left(\pdvN{E_{\pm }}{x}{2} + \pdvN{E_{\pm }}{y}{2} + \pdvN{E_{\pm }}{z}{2} \pm 2k \iu \pdv{E_{\pm }}{z} + k^{2}E_{\pm }\right)\eu^{\iu (\omega t \pm kz)}, \\
+  \pdvN{\symcal{E}_{x}}{t}{2}
+  &= 
+  \left(\pdvN{E_{\pm }}{t}{2} + 2 \omega \iu \pdv{E_{\pm }}{z} + \omega^{2}E_{\pm }\right)\eu^{\iu (\omega t \pm kz)},
 \end{align}
 \noindent
-obteniéndose el lado izquierdo ($LHS$) de la ecuación de ondas para el campo eléctrico
+obteniéndose el lado izquierdo ($\mathrm{LHS}$) de la ecuación de ondas para el campo eléctrico
 \begin{equation}\label{eq:3.3}
-    \begin{split}
-        LHS 
-        =
-        \Bigg[\grad^2_{\perp} E_{\pm} &+ \frac{\partial^2 E_{\pm}}{\partial z^2} \pm 2k\iu \frac{\partial E_{\pm}}{\partial z} 
-        -\frac{1}{c^2} \Bigg(\frac{\partial^2 E_{\pm}}{\partial t^2} + 2\omega\iu\frac{\partial E_{\pm}}{\partial z} \Bigg) \\
-        &- \Bigg(\frac{\omega^2}{c^2} - k^2 \Bigg)E_{\pm} \Bigg] \eu^{\iu(\omega t \pm kz)}.
-    \end{split}
+  \mathrm{LHS} = \left[\laplacian_{\perp}E_{\pm} + \pdvN{E_{\pm }}{z}{2} \pm 2k \iu \pdv{E_{\pm }}{z} - \frac{1}{c^{2}}\left(\pdvN{E_{\pm }}{t}{2} + 2 \omega \iu \pdv{E_{\pm }}{z}\right) 
+  -\left(\frac{\omega^{2}}{c^{2}} - k^{2}\right)E_{\pm }\right] \eu^{\iu(\omega t \pm kz)}.
 \end{equation}
 
-La ecuación \eqref{eq:3.3} puede reducirse más simplificando la relación de dispersión del campo eléctrico en el plasma $\omega^2 = \omega_{pe}^2 + k^2c^2\approx k^2c^2$, puesto que para la emisión de radiación \acrshort{xuv} o rayos X blandos ($\lambda<\qty{40}{nm}$) y la densidad electrónica del plasma de kriptón ($n_e<\qty{d21}{cm^{-3}}$) se tiene 
-que $\omega>\qty{4,7d16}{rad/s}>\omega_{pe}$ y $\omega_{pe}<\qty{1,8d15}{rad/s}$. Por otro lado, se toma la aproximación de la envolvente lentamente variable (\acrshort{svea}) que asume la variación temporal y espacial de la envolvente del campo eléctrico lenta comparada con la longitud de onda, de manera que
+La ecuación \eqref{eq:3.3} puede reducirse más simplificando la relación de dispersión del campo eléctrico en el plasma $\omega^{2} = \omega^{2}_{pe} + k^{2}c^{2}\approx k^{2}c^{2}$, puesto que para la emisión de radiación \acrshort{xuv} o rayos X blandos ($\lambda<\qty{40}{nm}$) y la densidad electrónica del plasma de kriptón ($n_e<\qty{e21}{cm^{-3}}$) se tiene 
+que $\omega>\qty{4,7e16}{rad/s}>\omega_{pe}$ y $\omega_{pe}<\qty{1,8e15}{rad/s}$. Por otro lado, se toma la aproximación de la envolvente lentamente variable (\acrshort{svea}) que asume la variación temporal y espacial de la envolvente del campo eléctrico lenta comparada con la longitud de onda, de manera que
 \begin{align}
-    \left|\frac{\partial^2 E_{\pm}}{\partial z^2}\right| &\ll \left|k\frac{\partial E_{\pm}}{\partial z}\right|, \\
-     \left|\frac{\partial^2 E_{\pm}}{\partial t^2}\right| &\ll \left|\omega\frac{\partial E_{\pm}}{\partial t}\right|.
+  \left|\pdvN{E_{\pm }}{z}{2}\right| &\ll \left|k \pdv{E_{\pm }}{z}\right| \ll \left|k^{2}E_{\pm }\right|,\\
+  \left|\pdvN{E_{\pm }}{t}{2}\right| &\ll \left|\omega \pdv{E_{\pm }}{t}\right| \ll \left|\omega^{2}E_{\pm }\right|.
 \end{align}
 \noindent
 Introduciendo estas nuevas hipótesis, la ecuación \eqref{eq:3.3} queda
 \begin{equation}
-    LHS 
-    =
-    \left[\grad^2_{\perp}E_{\pm} - \frac{2\omega\iu}{c^2}\left(\frac{\partial E_{\pm}}{\partial t} \pm c\frac{\partial E_{\pm}}{\partial z}\right)\right]\eu^{\iu(\omega t \pm kz)}.
+  \mathrm{LHS} =
+  \left[\laplacian_{\perp}E_{\pm } - \frac{2 \omega \iu }{c^{2}} \left(\pdv{E_{\pm }}{t} \pm c \pdv{E_{\pm }}{z}\right)\right]\eu^{\iu (\omega t \pm kz)}.
 \end{equation}
 
 Para la polarización se realiza su descomposición de forma completamente análoga al campo eléctrico.
 \begin{align}
-    \symcal{P}_x(\symbf{r},t) 
+    \symcal{P}_{x}(\symbf{r},t) 
     &=
-    \RE\left[P_+(\symbf{r},t)\eu^{\iu(\omega t - kz)}+P_-(\symbf{r},t)\eu^{\iu(\omega t + kz)}\right], \\
-    \frac{\partial^2 \symcal{P}_x}{\partial t^2}
+    \RE \left[P_{+}(\symbf{r},t)\eu^{\iu (\omega t -kz)} + P_{-}(\symbf{r},t)\eu^{\iu (\omega t + kz)}\right], \\
+    \pdvN{\symcal{P}_{x}}{t}{2}
     &=
-    \left(\frac{\partial^2 P_{\pm}}{\partial t^2} + 2\omega\iu\frac{\partial P_{\pm}}{\partial z} + \omega^2P_{\pm}\right)\eu^{\iu(\omega t \pm kz)}.
+    \left(\pdvN{P_{\pm }}{t}{2} + 2 \omega \iu \pdv{P_{\pm }}{z} + \omega^{2}P_{\pm }\right)\eu^{\iu (\omega t \pm kz)}.
 \end{align}
 
 Considerando junto a la SVEA que la amplitud de la polarización en un periodo de la onda es mucho mayor que la variación temporal de su envolvente, es decir,
 \begin{equation}
-    \left|\frac{\partial P_{\pm}}{\partial t}\right| \ll |\omega P_{\pm}|,
+  \left|\pdv{P_{\pm }}{t}\right| \ll |\omega P_{\pm }|,
 \end{equation}
 \noindent
 entonces resulta que
 \begin{equation}\label{eq:3.4}
-     \frac{\partial^2 \symcal{P}_x}{\partial t^2}
-     \approx
-     - \omega^2P_{\pm}\eu^{\iu(\omega t \pm kz)}.
+  \pdvN{\symcal{P}_{x}}{t}{2} \approx -\omega^{2}P_{\pm }\eu^{\iu (\omega t \pm kz)}.
 \end{equation}
 
 La sustitución de las ecuaciones \eqref{eq:3.3} y \eqref{eq:3.4} en la ecuación \eqref{eq:3.1} permite obtener, tras reordenar los términos a izquierda y derecha
 \begin{equation}
-    \frac{\partial E_{\pm}}{\partial t} \pm c\frac{\partial E_{\pm}}{\partial z}
-    =
-    -\iu\frac{c^2}{2\omega}\grad^2_{\perp}E_{\pm} + \frac{\iu\omega}{2}\left[\left(\frac{\omega_{pe}}{\omega}\right)^2E_{\pm} - \mu_0c^2P_{\pm}\right],
+  \pdv{E_{\pm }}{t} \pm c \pdv{E_{\pm }}{z} = -\iu \frac{c^{2}}{2 \omega}\laplacian_{\perp}E_{\pm } + \frac{\iu \omega}{2} \left[\left(\frac{\omega_{pe}}{\omega}\right)^{2}E_{\pm } - \mu_{0}c^{2}P_{\pm }\right],
 \end{equation}
 \noindent
 obteniendo una ecuación de advección-difusión-reacción con un término fuente $P_{\pm}$ dependiente del espacio y del tiempo. 
 
 Suponiendo que el tiempo característico de expansión hidrodinámica del plasma es mucho mayor que el de evolución de la polarización, la relación constitutiva procedente de las conocidas en mecánica cuántica como \emph{\acrlong{obe}} (\acrshort{obe}) (términos en la diagonal secundaria de la matriz de densidad para la interacción entre el campo eléctrico y un sistema cuántico de dos niveles) es
 \begin{equation}
-    \frac{\partial P_{\pm}}{\partial t} 
-    =
-    \Gamma - \gamma P_{\pm} - \frac{\iu z_{12}^2}{\hslash}E_{\pm}(N_2-N_1),
+  \pdv{P_{\pm }}{t} = \Gamma - \gamma P_{\pm } - \frac{\iu z^{2}_{12}}{\hslash }E_{\pm }(N_{2}-N_{1}),
 \end{equation}
 donde $\Gamma$ es un término fuente estocástico que representa la emisión espontánea, $\gamma P_{\pm}$ es un término sumidero que tiene en cuenta la despolarización del plasma debido a colisiones con electrones libres con $\gamma$ el tiempo característico de variación de la polarización, $z_{12}$ es el término de la diagonal secundaria correspondiente a la matriz dipolar eléctrica y $N_{1,2}$ son las poblaciones de los niveles inferior y superior (los de la diagonal principal de la matriz de densidad). Estos elementos se obtienen a partir de las ecuaciones de tasas
 \begin{equation}
-    \frac{\partial N_{1,2}}{\partial t}
-    =
-    \sum_k C_{k2,k1}N_{k} \pm \frac{1}{2\hslash}\IM(E_{\pm}^*P_{\pm}),
+  \pdv{N_{1,2}}{t} = \sum_{k} C_{k2,k1}N_{k} \pm \frac{1}{2 \hslash }\IM (E_{\pm }^{*}P_{\pm }),
 \end{equation}
 \noindent
 donde el sumatorio recorre todos los niveles energéticos que participan en las transiciones desde un nivel $k$ hasta los dos estados, incluidas las transiciones entre ambos $k=1, 2$ y $C_{ki}$ son las tasas de excitación y desexcitación del sistema debidas tanto a colisiones como a emisión de radiación. Las poblaciones para los niveles $k\neq 1, 2$ y sus tasas se extraen del código OFK para emplear como entrada de Dagon, como se ha comentado antes.

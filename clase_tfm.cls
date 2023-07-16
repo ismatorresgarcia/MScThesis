@@ -6,15 +6,15 @@
 %%% clase de base (KOMA-Script)
 \LoadClass{scrbook}                   %% clase libro KOMA-Script para el documento base
 \KOMAoptions{     
-    paper=a4,                         %% tamaño del papel
-    fontsize=12pt,                    %% tamaño de la fuente
-    twoside=true,                     %% recto-verso
-    parskip=half,                     %% sangría y espaciado de párrafos
-    chapterprefix=false,              %% nombres de los capítulos (por defecto en scrreport)
-    captions=tableheading,            %% descripción de tablas arriba
-    toc=listof,                       %% figuras y tablas en el ToC
-    toc=bibliographynumbered,         %% bibliografía como capítulo numerado en el ToC
-    numbers=noenddot                  %% números de capítulos, secciones, ... sin punto
+    paper = a4,                         %% tamaño del papel
+    fontsize = 12pt,                    %% tamaño de la fuente
+    twoside = true,                     %% recto-verso
+    parskip = half,                     %% sangría y espaciado de párrafos
+    chapterprefix = false,              %% nombres de los capítulos (por defecto en scrreport)
+    captions = tableheading,            %% descripción de tablas arriba
+    toc = listof,                       %% figuras y tablas en el ToC
+    toc = bibliographynumbered,         %% bibliografía como capítulo numerado en el ToC
+    numbers = noenddot                  %% números de capítulos, secciones, ... sin punto
 }
 %%% paquetes básicos
 %% fórmulas, símbolos y teoremas matemáticos.'unicode-math' sobrescribirá las definiciones necesarias después
@@ -23,8 +23,8 @@
 
 \RequirePackage{unicode-math}         %% gestión de matemáticas. Los paquetes de la AMS son incompatibles, así que ponlos antes para que sobrescriba lo que considere necesario. También carga 'fontspec' para gestionar las fuentes de texto con XeLaTeX o LuaLaTeX
 \unimathsetup{                        %% las opciones del paquete 'unicode-math' siguiendo la norma ISO
-    math-style=ISO, 
-    bold-style=ISO
+    math-style = ISO, 
+    bold-style = ISO
 } 
 \setmainfont{Minion Pro}[             %% Fuente comercial Minion Pro de Adobe (desarrollador Robert Slimbach) para el texto en Serif
     Renderer = OpenType
@@ -94,12 +94,12 @@
 \rofoot[\pagemark]{\pagemark}
 
 \RequirePackage[
-    top=25mm,                         %% margen superior
-    bottom=25mm,                      %% margen inferior
-    inner=25mm,                       %% margen interior
-    outer=25mm,                       %% margen exterior
-    headsep=5mm,                      %% separación entre texto y encabezado
-    footskip=10mm                     %% separación entre texto y pie de pagina
+    top = 25mm,                         %% margen superior
+    bottom = 25mm,                      %% margen inferior
+    inner = 25mm,                       %% margen interior
+    outer = 25mm,                       %% margen exterior
+    headsep = 5mm,                      %% separación entre texto y encabezado
+    footskip = 10mm                     %% separación entre texto y pie de pagina
 ]{geometry}                           %% geometría de las páginas
 
 %%% tablas y figuras
@@ -143,15 +143,15 @@
 
 %%% configuración de la bibliografía con 'biblatex'. Biblatex carga 'etoolbox' entre otros paquetes
 \RequirePackage[                            %% gestion de la bibliografía con biblatex
-    backend=biber,                          %% compilador por defecto con biblatex (recomendado)
-    natbib=true,                            %% comandos del paquete natbib (autocite, por ejemplo)
-    maxnames=10,                            %% número max. de nombres de autores
-    minnames=1,                             %% número mix. de nombres de autores
-    sorting=nyt,                            %% ordenar por nombre, año, título
-    autocite=superscript,                   %% estilos de las citas del texto como superíndices
-    citestyle=numeric-comp,                 %% estilo de las citas numérico tipo [1-3] (pon numeric-comp, en draft mientras edito)
-    bibstyle=numeric,                       %% estilo de bibliografía numérica (pon numeric, en draft mientras edito)  
-    backref=false                           %% sacar las páginas de las citas en la bibliografía (cf. p.)
+    backend = biber,                          %% compilador por defecto con biblatex (recomendado)
+    natbib = true,                            %% comandos del paquete natbib (autocite, por ejemplo)
+    maxnames = 10,                            %% número max. de nombres de autores
+    minnames = 1,                             %% número mix. de nombres de autores
+    sorting = nyt,                            %% ordenar por nombre, año, título
+    autocite = superscript,                   %% estilos de las citas del texto como superíndices
+    citestyle = numeric-comp,                 %% estilo de las citas numérico tipo [1-3] (pon numeric-comp, en draft mientras edito)
+    bibstyle = numeric,                       %% estilo de bibliografía numérica (pon numeric, en draft mientras edito)  
+    backref = false                           %% sacar las páginas de las citas en la bibliografía (cf. p.)
 ]{biblatex}                   
 \addbibresource{Zotero.bib}                 %% archivo bibligráfico que estoy utilizando
 
@@ -173,11 +173,11 @@
 \RequirePackage[newfloat]{minted}             %% 'newfloat' es parte del paquete 'caption'
 \usemintedstyle{emacs}                        %% estilo predeterminado de 'minted' con 'Pygment' 
 \setminted{                                   %% opciones globales para el formato del código
-      frame=lines,
-      framesep=2mm,
-      baselinestretch=1.0,
-      bgcolor=colorfondo,
-      fontsize=\footnotesize,
+      frame = lines,
+      framesep = 2mm,
+      baselinestretch = 1.0,
+      bgcolor = colorfondo,
+      fontsize = \footnotesize,
       linenos,
 }
 %%% cambio el nombre que usa 'caption' para la leyenda y el índice con la opción 'newfloat' de 'minted'
@@ -193,15 +193,15 @@
     %pagebackref=true,                      %% en la bibliografía (por defecto)
     %hyperindex=true,                       %% en el índice (por defecto)
     %bookmarks=true,                        %% marcadores de Acrobat (por defecto)
-    breaklinks=true,                        %% romper línea si es demasiado largo el hipervínculo
-    colorlinks=true,                        %% color de hipervínculos
-    urlcolor=minaranja,                     %% color de hipervínculos de direcciones web
-    citecolor=miverde,                      %% color de citas bibliográficas internas
-    linkcolor=miazul,                       %% color de vínculos internos
-    filecolor=mirojo,                       %% color de urls que abren archivos
-    menucolor=mirojoo,                      %% color de las pestañas en Adobe
-    anchorcolor=black,                      %% color del texto anclado cuando pasas por encima
-    bookmarksopen=false,                    %% las pestañas de los marcadores del pdf aparecen todas desplegadas
+    breaklinks = true,                        %% romper línea si es demasiado largo el hipervínculo
+    colorlinks = true,                        %% color de hipervínculos
+    urlcolor = minaranja,                     %% color de hipervínculos de direcciones web
+    citecolor = miverde,                      %% color de citas bibliográficas internas
+    linkcolor = miazul,                       %% color de vínculos internos
+    filecolor = mirojo,                       %% color de urls que abren archivos
+    menucolor = mirojoo,                      %% color de las pestañas en Adobe
+    anchorcolor = black,                      %% color del texto anclado cuando pasas por encima
+    bookmarksopen = false,                    %% las pestañas de los marcadores del pdf aparecen todas desplegadas
     %linktocpage=false,                     %% hipervínculos en el número de página en lugar del texto del TOC
 %% metacampos del pdf :                     %% ATENCIÓN: hay que completarlos 
     pdftitle    = {Modelización de armónicos de alto orden en plasmas},
@@ -213,8 +213,8 @@
 
 %%% configuración de los idiomas con 'polyglossia'
 \setdefaultlanguage[
-    variant=spanish,
-    spanishoperators=all,
+    variant = spanish,
+    spanishoperators = all,
 ]{spanish}
 \setotherlanguage[variant=british]{english}
 \RequirePackage[autostyle]{csquotes}        %% entorno para comillas tipográficas (y más cosas) 
@@ -280,7 +280,7 @@
       headings/base,
       font = \usekomafont{chapterprefix},
     },
-    headings/chapternumber/.style= {
+    headings/chapternumber/.style = {
       headings/base,
       font = \usekomafont{chapternumber},
     },
@@ -369,33 +369,32 @@
 
 %%% comandos para el espacio entre párrafos y secciones con KOMA-Script
 \RedeclareSectionCommand[%
-  tocnumwidth=1.75em,
-  beforeskip=-.25\baselineskip,
-  afterskip=2.5\baselineskip plus .1\baselineskip minus 
-  .12\baselineskip
+  tocnumwidth = 1.75em,
+  beforeskip = -.25\baselineskip,
+  afterskip = 2.5\baselineskip plus .1\baselineskip minus .12\baselineskip
 ]{chapter}
 
 \RedeclareSectionCommands[
-  tocentryformat=\small\sffamily,
+  tocentryformat = \small\sffamily,
   toclinefill = \hfill, % me cargo la línea de puntos del ToC
-  tocindent=1.75em,
-  tocnumwidth=2.5em,
-  beforeskip=-1.0\parskip plus -1ex minus -.2ex,
-  afterskip=1sp plus -1sp minus 1sp,
+  tocindent = 1.75em,
+  tocnumwidth = 2.5em,
+  beforeskip = -1.0\parskip plus -1ex minus -.2ex,
+  afterskip = 1sp plus -1sp minus 1sp
 ]{section}
 
 \RedeclareSectionCommands[
-  tocentryformat=\small\sffamily,
+  tocentryformat = \small\sffamily,
   toclinefill = \hfill, % me cargo la línea de puntos del ToC
-  tocindent=4.25em,
-  tocnumwidth=3.5em,
-  beforeskip=-1.0\parskip plus -1ex minus -.2ex,
-  afterskip=1sp plus -1sp minus 1sp,
+  tocindent = 4.25em,
+  tocnumwidth = 3.5em,
+  beforeskip = -1.0\parskip plus -1ex minus -.2ex,
+  afterskip = 1sp plus -1sp minus 1sp
 ]{subsection}
 
 \RedeclareSectionCommands[
-  beforeskip=-1.0\parskip plus -1ex minus -.2ex,
-  afterskip=1sp plus -1sp minus 1sp,
+  beforeskip = -1.0\parskip plus -1ex minus -.2ex,
+  afterskip = 1sp plus -1sp minus 1sp
 ]{paragraph}
 
 %%% Definición de comandos útiles para escribir con los snippets
@@ -424,6 +423,5 @@
 \newcommand*{\grad}{\nabla}
 \newcommand*{\curl}{\nabla\times}
 \newcommand*{\diver}{\nabla\cdot}
-\newcommand*{\laplacian}{\bigtriangleup}
-\newcommand*{\dalambert}{\Box}
-
+\newcommand*{\laplacian}{\operatorname{\bigtriangleup}\!}
+\newcommand*{\dalambert}{\operatorname{\Box}\!}
