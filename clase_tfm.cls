@@ -55,7 +55,8 @@
 \setmathfont{STIXTwoMath}[          %% Fuente STIX Two Math para los estilos matemáticos que faltan en MinionMath
     Extension = .otf,
     Path = /System/Library/Fonts/Supplemental/,
-    range = {\symcal,\symfrak,\symbfcal,\symbffrak}
+    range = {\symcal,\symfrak,\symbfcal,\symbffrak},
+    StylisticSet = 1
 ]
 
 %%% gestión de los idiomas. Las opciones de 'polyglossia' las cargo más adelante por recomendación del manual
@@ -423,5 +424,4 @@
 \newcommand*{\grad}{\nabla}
 \newcommand*{\curl}{\nabla\times}
 \newcommand*{\diver}{\nabla\cdot}
-\newcommand*{\laplacian}{\operatorname{\bigtriangleup}\!}
-\newcommand*{\dalambert}{\operatorname{\Box}\!}
+\newcommand*{\laplacian}{\increment}
