@@ -1,0 +1,44 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} \PYGZhy{}*\PYGZhy{} coding: utf\PYGZhy{}8 \PYGZhy{}*\PYGZhy{}}
+\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{Created on Thu Mar 16 18:38:32 2023}
+
+\PYG{l+s+sd}{@author: Ytoga}
+\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+
+\PYG{k+kn}{import} \PYG{n+nn}{numpy} \PYG{k}{as} \PYG{n+nn}{np}
+\PYG{k+kn}{from} \PYG{n+nn}{mayavi} \PYG{k+kn}{import} \PYG{n}{mlab}
+
+\PYG{n}{fig} \PYG{o}{=} \PYG{n}{mlab}\PYG{o}{.}\PYG{n}{figure}\PYG{p}{(}
+    \PYG{n}{fgcolor}\PYG{o}{=}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{),}
+    \PYG{n}{bgcolor}\PYG{o}{=}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{),}
+    \PYG{n}{size}\PYG{o}{=}\PYG{p}{(}\PYG{l+m+mi}{1000}\PYG{p}{,} \PYG{l+m+mi}{1000}\PYG{p}{)}
+\PYG{p}{)}
+\PYG{n}{fig}\PYG{o}{.}\PYG{n}{scene}\PYG{o}{.}\PYG{n}{parallel\PYGZus{}projection} \PYG{o}{=} \PYG{k+kc}{True}
+
+\PYG{n}{u} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{linspace}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{np}\PYG{o}{.}\PYG{n}{pi}\PYG{p}{,} \PYG{l+m+mi}{1000}\PYG{p}{)}
+\PYG{n}{v} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{linspace}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{8}\PYG{p}{,} \PYG{l+m+mi}{8}\PYG{p}{,} \PYG{l+m+mi}{1000}\PYG{p}{)}
+
+\PYG{n}{x} \PYG{o}{=} \PYG{l+m+mf}{2.5} \PYG{o}{*} \PYG{n}{np}\PYG{o}{.}\PYG{n}{exp}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{v}\PYG{o}{**}\PYG{l+m+mi}{2} \PYG{o}{/} \PYG{l+m+mi}{10}\PYG{p}{)} \PYG{o}{*} \PYG{n}{np}\PYG{o}{.}\PYG{n}{sin}\PYG{p}{(}\PYG{l+m+mi}{20}\PYG{o}{*}\PYG{n}{u}\PYG{p}{)}
+\PYG{n}{y} \PYG{o}{=} \PYG{l+m+mf}{2.5} \PYG{o}{*} \PYG{n}{np}\PYG{o}{.}\PYG{n}{exp}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{v}\PYG{o}{**}\PYG{l+m+mi}{2} \PYG{o}{/} \PYG{l+m+mi}{10}\PYG{p}{)} \PYG{o}{*} \PYG{n}{np}\PYG{o}{.}\PYG{n}{cos}\PYG{p}{(}\PYG{l+m+mi}{20}\PYG{o}{*}\PYG{n}{u}\PYG{p}{)}
+\PYG{n}{z} \PYG{o}{=} \PYG{n}{v}
+
+\PYG{n}{mlab}\PYG{o}{.}\PYG{n}{plot3d}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{y}\PYG{p}{,} \PYG{n}{z}\PYG{p}{,} \PYG{n}{tube\PYGZus{}radius}\PYG{o}{=}\PYG{l+m+mf}{0.09}\PYG{p}{,} \PYG{n}{color}\PYG{o}{=}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{))}
+
+\PYG{n}{u}\PYG{p}{,} \PYG{n}{v} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{mgrid}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{:}\PYG{n}{np}\PYG{o}{.}\PYG{n}{pi}\PYG{o}{*}\PYG{l+m+mi}{2}\PYG{p}{:}\PYG{l+m+mi}{1000}\PYG{n}{j}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{8}\PYG{p}{:}\PYG{l+m+mi}{8}\PYG{p}{:}\PYG{l+m+mi}{1000}\PYG{n}{j}\PYG{p}{]}
+\PYG{n}{x} \PYG{o}{=} \PYG{l+m+mf}{2.48} \PYG{o}{*} \PYG{n}{np}\PYG{o}{.}\PYG{n}{exp}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{v}\PYG{o}{**}\PYG{l+m+mi}{2} \PYG{o}{/} \PYG{l+m+mi}{10}\PYG{p}{)} \PYG{o}{*} \PYG{n}{np}\PYG{o}{.}\PYG{n}{sin}\PYG{p}{(}\PYG{l+m+mi}{20}\PYG{o}{*}\PYG{n}{u}\PYG{p}{)}
+\PYG{n}{y} \PYG{o}{=} \PYG{l+m+mf}{2.48} \PYG{o}{*} \PYG{n}{np}\PYG{o}{.}\PYG{n}{exp}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{v}\PYG{o}{**}\PYG{l+m+mi}{2} \PYG{o}{/} \PYG{l+m+mi}{10}\PYG{p}{)} \PYG{o}{*} \PYG{n}{np}\PYG{o}{.}\PYG{n}{cos}\PYG{p}{(}\PYG{l+m+mi}{20}\PYG{o}{*}\PYG{n}{u}\PYG{p}{)}
+\PYG{n}{z} \PYG{o}{=} \PYG{n}{v}
+\PYG{n}{mlab}\PYG{o}{.}\PYG{n}{mesh}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{y}\PYG{p}{,} \PYG{n}{z}\PYG{p}{,}
+      \PYG{c+c1}{\PYGZsh{} color=np.exp(\PYGZhy{}np.linspace(\PYGZhy{}8, 8, 1000)**2/10),}
+      \PYG{n}{colormap}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Blues\PYGZsq{}}\PYG{p}{,}
+      \PYG{n}{resolution}\PYG{o}{=}\PYG{l+m+mi}{20}\PYG{p}{,}
+      \PYG{n}{representation}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}surface\PYGZsq{}}\PYG{p}{,}
+      \PYG{n}{line\PYGZus{}width}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,}
+      \PYG{c+c1}{\PYGZsh{} tube\PYGZus{}radius=0,}
+      \PYG{c+c1}{\PYGZsh{} tube\PYGZus{}sides=10,}
+      \PYG{n}{opacity}\PYG{o}{=}\PYG{l+m+mf}{0.9}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} mlab.savefig(\PYGZsq{}mlaser.png\PYGZsq{})}
+\PYG{n}{mlab}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+\end{Verbatim}

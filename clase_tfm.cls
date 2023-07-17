@@ -6,15 +6,15 @@
 %%% clase de base (KOMA-Script)
 \LoadClass{scrbook}                   %% clase libro KOMA-Script para el documento base
 \KOMAoptions{     
-    paper = a4,                         %% tamaño del papel
-    fontsize = 12pt,                    %% tamaño de la fuente
-    twoside = true,                     %% recto-verso
-    parskip = half,                     %% sangría y espaciado de párrafos
-    chapterprefix = false,              %% nombres de los capítulos (por defecto en scrreport)
-    captions = tableheading,            %% descripción de tablas arriba
-    toc = listof,                       %% figuras y tablas en el ToC
-    toc = bibliographynumbered,         %% bibliografía como capítulo numerado en el ToC
-    numbers = noenddot                  %% números de capítulos, secciones, ... sin punto
+  paper = a4,                         %% tamaño del papel
+  fontsize = 12pt,                    %% tamaño de la fuente
+  twoside = true,                     %% recto-verso
+  parskip = half,                     %% sangría y espaciado de párrafos
+  chapterprefix = false,              %% nombres de los capítulos (por defecto en scrreport)
+  captions = tableheading,            %% descripción de tablas arriba
+  toc = listof,                       %% figuras y tablas en el ToC
+  toc = bibliographynumbered,         %% bibliografía como capítulo numerado en el ToC
+  numbers = noenddot                  %% números de capítulos, secciones, ... sin punto
 }
 %%% paquetes básicos
 %% fórmulas, símbolos y teoremas matemáticos.'unicode-math' sobrescribirá las definiciones necesarias después
@@ -23,40 +23,40 @@
 
 \RequirePackage{unicode-math}         %% gestión de matemáticas. Los paquetes de la AMS son incompatibles, así que ponlos antes para que sobrescriba lo que considere necesario. También carga 'fontspec' para gestionar las fuentes de texto con XeLaTeX o LuaLaTeX
 \unimathsetup{                        %% las opciones del paquete 'unicode-math' siguiendo la norma ISO
-    math-style = ISO, 
-    bold-style = ISO
+  math-style = ISO, 
+  bold-style = ISO
 } 
 \setmainfont{Minion Pro}[             %% Fuente comercial Minion Pro de Adobe (desarrollador Robert Slimbach) para el texto en Serif
-    Renderer = OpenType
+  Renderer = OpenType
 ]
 \setsansfont{Cronos Pro}[             %% Fuente comercial Cronos Pro de Adobe (desarrollador Robert Slimbach) para el texto en Sans Serif
-    Renderer = OpenType
+  Renderer = OpenType
 ]              
 \RequirePackage{unicode-minionmath}   %% Paquete comercial Minion Math de Typoma (desarrollador Johannes Küster) con comandos adicionales en XeLaTeX/LuaLaTeX
 %% fuente matemática del documento
 \setmathfont{MinionMath-Regular}[     %% Fuente comercial Minion Math de Johannes Küsner para las matemáticas
-    Extension = .otf,
-    Path = /Users/ytoga/Library/Fonts/,
-    Scale = 1,
-    Script = Math,
-    SizeFeatures = {
-        {Size = -6, Font = MinionMath-Tiny,
-        Style = MathScriptScript},
-        {Size = 6-8.4, Font = MinionMath-Capt,
-        Style = MathScript},
-        {Size = 8.4-, Font = MinionMath-Regular}
-    }
+  Extension = .otf,
+  Path = /Users/ytoga/Library/Fonts/,
+  Scale = 1,
+  Script = Math,
+  SizeFeatures = {
+    {Size = -6, Font = MinionMath-Tiny,
+    Style = MathScriptScript},
+    {Size = 6-8.4, Font = MinionMath-Capt,
+    Style = MathScript},
+    {Size = 8.4-, Font = MinionMath-Regular}
+  }
 ]
 \setmathfont{MinionMath-Bold}[                         
-    Extension = .otf,
-    Path = /Users/ytoga/Library/Fonts/,
-    version = bold
+  Extension = .otf,
+  Path = /Users/ytoga/Library/Fonts/,
+  version = bold
 ]
 \setmathfont{STIXTwoMath}[          %% Fuente STIX Two Math para los estilos matemáticos que faltan en MinionMath
-    Extension = .otf,
-    Path = /System/Library/Fonts/Supplemental/,
-    range = {\symcal,\symfrak,\symbfcal,\symbffrak},
-    StylisticSet = 1
+  Extension = .otf,
+  Path = /System/Library/Fonts/Supplemental/,
+  range = {\symcal,\symfrak,\symbfcal,\symbffrak},
+  StylisticSet = 1
 ]
 
 %%% gestión de los idiomas. Las opciones de 'polyglossia' las cargo más adelante por recomendación del manual
@@ -80,10 +80,10 @@
 \RequirePackage{scrhack}              %% macros especiales y personalizadas (KOMA-Script)
 \RequirePackage{scrdate}              %% comandos para las fechas (KOMA-Script)
 \RequirePackage[  
-    % automark,                       %% encabezados automáticos \automark[section]{chapter} para scrbook
-    % autooneside=false,              %% desactivo esta opción para que automark controle los encabezados de capítulos y secciones
-    headsepline,                      %% línea horizontal del encabezado
-    footsepline                       %% línea horizontal del pie de página
+  % automark,                       %% encabezados automáticos \automark[section]{chapter} para scrbook
+  % autooneside=false,              %% desactivo esta opción para que automark controle los encabezados de capítulos y secciones
+  headsepline,                      %% línea horizontal del encabezado
+  footsepline                       %% línea horizontal del pie de página
 ]{scrlayer-scrpage}                   %% encabezados y pies de página personalizados (KOMA-Script)
 \pagestyle{scrheadings}               %% estilo personalizado para todas las páginas menos la primera de un capítulo (que utiliza plain.scrheadings)
 \automark[chapter]{chapter}           %% nombre de capítulos en encabezados pares e impares
@@ -95,12 +95,12 @@
 \rofoot[\pagemark]{\pagemark}
 
 \RequirePackage[
-    top = 25mm,                         %% margen superior
-    bottom = 25mm,                      %% margen inferior
-    inner = 25mm,                       %% margen interior
-    outer = 25mm,                       %% margen exterior
-    headsep = 5mm,                      %% separación entre texto y encabezado
-    footskip = 10mm                     %% separación entre texto y pie de pagina
+  top = 25mm,                         %% margen superior
+  bottom = 25mm,                      %% margen inferior
+  inner = 25mm,                       %% margen interior
+  outer = 25mm,                       %% margen exterior
+  headsep = 5mm,                      %% separación entre texto y encabezado
+  footskip = 10mm                     %% separación entre texto y pie de pagina
 ]{geometry}                           %% geometría de las páginas
 
 %%% tablas y figuras
@@ -144,23 +144,23 @@
 
 %%% configuración de la bibliografía con 'biblatex'. Biblatex carga 'etoolbox' entre otros paquetes
 \RequirePackage[                            %% gestion de la bibliografía con biblatex
-    backend = biber,                          %% compilador por defecto con biblatex (recomendado)
-    natbib = true,                            %% comandos del paquete natbib (autocite, por ejemplo)
-    maxnames = 10,                            %% número max. de nombres de autores
-    minnames = 1,                             %% número mix. de nombres de autores
-    sorting = nyt,                            %% ordenar por nombre, año, título
-    autocite = superscript,                   %% estilos de las citas del texto como superíndices
-    citestyle = numeric-comp,                 %% estilo de las citas numérico tipo [1-3] (pon numeric-comp, en draft mientras edito)
-    bibstyle = numeric,                       %% estilo de bibliografía numérica (pon numeric, en draft mientras edito)  
-    backref = false                           %% sacar las páginas de las citas en la bibliografía (cf. p.)
+  backend = biber,                          %% compilador por defecto con biblatex (recomendado)
+  natbib = true,                            %% comandos del paquete natbib (autocite, por ejemplo)
+  maxnames = 10,                            %% número max. de nombres de autores
+  minnames = 1,                             %% número mix. de nombres de autores
+  sorting = nyt,                            %% ordenar por nombre, año, título
+  autocite = superscript,                   %% estilos de las citas del texto como superíndices
+  citestyle = numeric-comp,                 %% estilo de las citas numérico tipo [1-3] (pon numeric-comp, en draft mientras edito)
+  bibstyle = numeric,                       %% estilo de bibliografía numérica (pon numeric, en draft mientras edito)  
+  backref = false                           %% sacar las páginas de las citas en la bibliografía (cf. p.)
 ]{biblatex}                   
 \addbibresource{Zotero.bib}                 %% archivo bibligráfico que estoy utilizando
 
 %%% matemáticas, física y química
 \RequirePackage{siunitx}                    %% unidades del sistema internacional
 \sisetup{                                   %% opciones de las unidades del paquete
-    output-decimal-marker = {,},
-    per-mode = symbol
+  output-decimal-marker = {,},
+  per-mode = symbol
 }
 \RequirePackage[version=4]{mhchem}          %% para escribir reacciones, compuestos químicos, etc.
 
@@ -174,12 +174,12 @@
 \RequirePackage[newfloat]{minted}             %% 'newfloat' es parte del paquete 'caption'
 \usemintedstyle{emacs}                        %% estilo predeterminado de 'minted' con 'Pygment' 
 \setminted{                                   %% opciones globales para el formato del código
-      frame = lines,
-      framesep = 2mm,
-      baselinestretch = 1.0,
-      bgcolor = colorfondo,
-      fontsize = \footnotesize,
-      linenos,
+  frame = lines,
+  framesep = 2mm,
+  baselinestretch = 1.0,
+  bgcolor = colorfondo,
+  fontsize = \footnotesize,
+  linenos,
 }
 %%% cambio el nombre que usa 'caption' para la leyenda y el índice con la opción 'newfloat' de 'minted'
 \SetupFloatingEnvironment{listing}{name=Código}    
@@ -190,55 +190,54 @@
 \RequirePackage{bookmark}                   %% gestión moderna de los marcadores del paquete 'hyperref'
 \RequirePackage{hyperref}                   %% pdf con hipervínculos, referencias cruzadas, etc.
 \hypersetup{
-    %backref=true,                          %% añadir hipervínculos (por defecto)
-    %pagebackref=true,                      %% en la bibliografía (por defecto)
-    %hyperindex=true,                       %% en el índice (por defecto)
-    %bookmarks=true,                        %% marcadores de Acrobat (por defecto)
-    breaklinks = true,                        %% romper línea si es demasiado largo el hipervínculo
-    colorlinks = true,                        %% color de hipervínculos
-    urlcolor = minaranja,                     %% color de hipervínculos de direcciones web
-    citecolor = miverde,                      %% color de citas bibliográficas internas
-    linkcolor = miazul,                       %% color de vínculos internos
-    filecolor = mirojo,                       %% color de urls que abren archivos
-    menucolor = mirojoo,                      %% color de las pestañas en Adobe
-    anchorcolor = black,                      %% color del texto anclado cuando pasas por encima
-    bookmarksopen = false,                    %% las pestañas de los marcadores del pdf aparecen todas desplegadas
-    %linktocpage=false,                     %% hipervínculos en el número de página en lugar del texto del TOC
+  %backref=true,                          %% añadir hipervínculos (por defecto)
+  %pagebackref=true,                      %% en la bibliografía (por defecto)
+  %hyperindex=true,                       %% en el índice (por defecto)
+  %bookmarks=true,                        %% marcadores de Acrobat (por defecto)
+  breaklinks = true,                        %% romper línea si es demasiado largo el hipervínculo
+  colorlinks = true,                        %% color de hipervínculos
+  urlcolor = minaranja,                     %% color de hipervínculos de direcciones web
+  citecolor = miverde,                      %% color de citas bibliográficas internas
+  linkcolor = miazul,                       %% color de vínculos internos
+  filecolor = mirojo,                       %% color de urls que abren archivos
+  menucolor = mirojoo,                      %% color de las pestañas en Adobe
+  anchorcolor = black,                      %% color del texto anclado cuando pasas por encima
+  bookmarksopen = false,                    %% las pestañas de los marcadores del pdf aparecen todas desplegadas
+  %linktocpage=false,                     %% hipervínculos en el número de página en lugar del texto del TOC
 %% metacampos del pdf :                     %% ATENCIÓN: hay que completarlos 
-    pdftitle    = {Modelización de armónicos de alto orden en plasmas},
-    pdfauthor   = {Ismael Torres García},
-    pdfsubject  = {Trabajo Fin de Master},
-    pdfkeywords = {SXRL, Kriptón, XUV, HOH, HHG, Dagon},
+  pdftitle    = {Modelización de armónicos de alto orden en plasmas},
+  pdfauthor   = {Ismael Torres García},
+  pdfsubject  = {Trabajo Fin de Master},
+  pdfkeywords = {SXRL, Kriptón, XUV, HOH, HHG, Dagon},
 }
 \AfterTOCHead[toc]{\hypersetup{linkcolor=.}}%% ejecuta el comando \hypersetup justo después del ToC (para activar los links, pero utilizar el color azul de linkcolor solo en los capítulos) con KOMA-Script
 
 %%% configuración de los idiomas con 'polyglossia'
 \setdefaultlanguage[
-    variant = spanish,
-    spanishoperators = all,
+  variant = spanish,
+  spanishoperators = all,
 ]{spanish}
 \setotherlanguage[variant=british]{english}
 \RequirePackage[autostyle]{csquotes}        %% entorno para comillas tipográficas (y más cosas) 
 
 %%% Lista de acrónimos, constantes y unidades con 'glossaries'
 \RequirePackage[
-    toc,
-    acronym,
-    nonumberlist,
-    subentrycounter
+  toc,
+  acronym,
+  nonumberlist,
+  subentrycounter
 ]{glossaries}
 \makeglossaries
 \setacronymstyle{long-short}
 \loadglsentries{Preliminares/acronimos.tex}
-
 
 %%% comandos para configurar la entrada 'anexos' en el ToC con KOMA-Script
 \newcommand*{\useprefix}[1]{#1}                       %% defino un comando para almacenar la palabra 'anexo'
 \newcommand*{\appendixprefixintoc}                    %% para añadir la palabra 'Anexo' antes de las letras del apéndice en el ToC
 {%
   \DeclareTOCStyleEntry[%                             %% defino el estilo de los capítulos del anexo en el ToC
-      entrynumberformat=\useprefix{\appendixname~},
-      dynnumwidth                                     %% mínimo ancho por defecto {default} de la entrada de la letra 'A, B, C, ...'
+    entrynumberformat=\useprefix{\appendixname~},
+    dynnumwidth                                     %% mínimo ancho por defecto {default} de la entrada de la letra 'A, B, C, ...'
   ]{default}{chapter}
   \DeclareTOCStyleEntries[%                           %% defino el estilo de las secciones, subsecciones, ... en el ToC
     dynindent                                         %% mínima distancia horizontal por defecto {default} entre margen izquierdo y entradas
@@ -267,28 +266,28 @@
 
 %%% empiezo a configurar con TikZ el formato de cada capítulo en los títulos 
 \tikzset{
-    headings/base/.style = {
-      outer sep = -5pt,
-      inner sep = 10pt,
-    },
-    headings/chapterbackground/.style = {
-      headings/base,
-      shade,
-      left color = white,
-      right color = miazull,
-    },
-    headings/chapapp/.style = {
-      headings/base,
-      font = \usekomafont{chapterprefix},
-    },
-    headings/chapternumber/.style = {
-      headings/base,
-      font = \usekomafont{chapternumber},
-    },
-    headings/chapterline/.style = {
-      miazull,
-      line width = 2.5pt,
-    }
+  headings/base/.style = {
+    outer sep = -5pt,
+    inner sep = 10pt,
+  },
+  headings/chapterbackground/.style = {
+    headings/base,
+    shade,
+    left color = white,
+    right color = miazull,
+  },
+  headings/chapapp/.style = {
+    headings/base,
+    font = \usekomafont{chapterprefix},
+  },
+  headings/chapternumber/.style = {
+    headings/base,
+    font = \usekomafont{chapternumber},
+  },
+  headings/chapterline/.style = {
+    miazull,
+    line width = 2.5pt,
+  }
 }
 %%% comandos para configurar el formato de cada capítulo en los títulos con KOMA-Script
 \makeatletter
