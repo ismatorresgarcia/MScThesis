@@ -401,7 +401,6 @@
 %% vectores de la base
 \newcommand*{\unitvector}{\symbf{e}}
 \newcommand*{\uvec}{\hat{e}}
-%% matrices
 %% derivadas totales
 \newcommand*{\dvOne}[1]{\frac{\operatorname{d}}{\operatorname{d}\!#1}}
 \newcommand*{\dv}[2]{\frac{\operatorname{d}\!#1}{\operatorname{d}\!#2}}
@@ -424,3 +423,7 @@
 \newcommand*{\curl}{\nabla\times}
 \newcommand*{\diver}{\nabla\cdot}
 \newcommand*{\laplacian}{\increment}
+%% delimitadores importantes
+\newcommand*{\abs}[1]{\left|#1\right|}
+\newcommand*{\ket}[1]{\left|#1\right\rangle}
+\newcommand*{\bra}[1]{\left\langle#1\right|}
