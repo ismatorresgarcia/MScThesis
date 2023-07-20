@@ -27,6 +27,7 @@ u, v = np.mgrid[0:np.pi*2:1000j, -8:8:1000j]
 x = 2.48 * np.exp(-v**2 / 10) * np.sin(20*u)
 y = 2.48 * np.exp(-v**2 / 10) * np.cos(20*u)
 z = v
+
 mlab.mesh(x, y, z,
       # color = np.exp(-np.linspace(-8, 8, 1000)**2/10),
       colormap = 'Blues',
@@ -37,5 +38,4 @@ mlab.mesh(x, y, z,
       # tube_sides = 10,
       opacity = 0.9
 )
-# mlab.savefig('mlaser.png')
 mlab.show()

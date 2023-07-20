@@ -73,7 +73,7 @@
 \newcommand*{\titproy}{Trabajo Fin de Master}
 \newcommand*{\titenc}{Estudio del impacto de la forma de un canal de plasma en la amplificación de un haz XUV}
 \newcommand*{\unienc}{Universidad Politécnica de Madrid}
-\newcommand*{\etsiienc}{Escuela Técnica Superior de Ingenieros Industriales}
+\newcommand*{\etsiienc}{Escuela Técnica Superior de Ingenieros Industriales (UPM)}
 \newcommand*{\AUA}{Abreviaturas, unidades y acrónimos}
 
 %%% configuración y disposición del texto con KOMA-Script
@@ -424,6 +424,7 @@
 \newcommand*{\diver}{\nabla\cdot}
 \newcommand*{\laplacian}{\increment}
 %% delimitadores importantes
+\newcommand*{\xval}[1]{\left\langle#1\right\rangle}
 \newcommand*{\abs}[1]{\left|#1\right|}
 \newcommand*{\ket}[1]{\left|#1\right\rangle}
 \newcommand*{\bra}[1]{\left\langle#1\right|}
