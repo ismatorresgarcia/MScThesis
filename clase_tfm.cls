@@ -160,6 +160,7 @@
 \RequirePackage{siunitx}                    %% unidades del sistema internacional
 \sisetup{                                   %% opciones de las unidades del paquete
   output-decimal-marker = {,},
+  uncertainty-mode = separate,
   per-mode = symbol
 }
 \RequirePackage[version=4]{mhchem}          %% para escribir reacciones, compuestos químicos, etc.
