@@ -24,7 +24,8 @@
 \RequirePackage{unicode-math}         %% gestión de matemáticas. Los paquetes de la AMS son incompatibles, así que ponlos antes para que sobrescriba lo que considere necesario. También carga 'fontspec' para gestionar las fuentes de texto con XeLaTeX o LuaLaTeX
 \unimathsetup{                        %% las opciones del paquete 'unicode-math' siguiendo la norma ISO
   math-style = ISO, 
-  bold-style = ISO
+  bold-style = ISO,
+  sans-style = upright
 } 
 \setmainfont{Minion Pro}[             %% Fuente comercial Minion Pro de Adobe (desarrollador Robert Slimbach) para el texto en Serif
   Renderer = OpenType
@@ -55,7 +56,7 @@
 \setmathfont{STIXTwoMath}[          %% Fuente STIX Two Math para los estilos matemáticos que faltan en MinionMath
   Extension = .otf,
   Path = /System/Library/Fonts/Supplemental/,
-  range = {\symcal,\symfrak,\symbfcal,\symbffrak},
+  range = {\symsfup,\symbfsfup,\symcal,\symfrak,\symbfcal,\symbffrak},
   StylisticSet = 1
 ]
 
@@ -420,12 +421,14 @@
 \newcommand*{\iu}{\symrm{i}}
 \newcommand*{\eu}{\symrm{e}}
 %% operadores matemáticos
-\newcommand*{\grad}{\nabla}
-\newcommand*{\curl}{\nabla\times}
-\newcommand*{\diver}{\nabla\cdot}
-\newcommand*{\laplacian}{\increment}
+\newcommand*{\grad}{\symbf{\nabla}}
+\newcommand*{\curl}{\symbf{\nabla}\times}
+\newcommand*{\diver}{\symbf{\nabla}\cdot}
+\newcommand*{\laplacian}{\nabla^2}
 %% delimitadores importantes
-\newcommand*{\xval}[1]{\left\langle#1\right\rangle}
 \newcommand*{\abs}[1]{\left|#1\right|}
-\newcommand*{\ket}[1]{\left|#1\right\rangle}
 \newcommand*{\bra}[1]{\left\langle#1\right|}
+\newcommand*{\ket}[1]{\left|#1\right\rangle}
+\newcommand*{\xval}[1]{\left\langle#1\right\rangle}
+\newcommand*{\Xval}[3]{\left\langle#1\middle|#2\middle|#3\right\rangle}
+\newcommand*{\braket}[2]{\left\langle#1\middle|#2\right\rangle}
