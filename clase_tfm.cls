@@ -55,7 +55,7 @@
 \setmathfont{STIXTwoMath}[          %% Fuente STIX Two Math para los estilos matemáticos que faltan en MinionMath
   Extension = .otf,
   Path = /System/Library/Fonts/Supplemental/,
-  range = {\symsfup,\symbfsfup,\symcal,\symfrak,\symbfcal,\symbffrak},
+  range = {\symcal,\symfrak,\symbfcal,\symbffrak},
   StylisticSet = 1
 ]
 
