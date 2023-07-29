@@ -8,7 +8,7 @@ En este trabajo, el fenómeno físico de la amplificación del armónico inyecta
 
 El formalismo físico-matemático utilizado en mecánica cuántica para obtener las ecuaciones no es trivial\autocite{Cohen-Tannoudji2019a,Sakurai2020,Milonni1988}, aunque tiene la ventaja de predecir con suficiente exactitud la evolución temporal del pulso, además de propiedades físicas de los fotones como su \acrshort{oam}, mientras que otros métodos más sencillos ---como el programa de trazado de rayos SHADOX--- no ofrecen esta opción, si bien podría utilizarse para resolver el problema de la amplificación en el plasma. 
 
-En la interacción láser-plasma estudiada, para obtener una buena aproximación basta considerar el campo eléctrico $\symbfcal{E}$ de la semilla \acrshort{hoh}, aunque cálculos más precisos tendrían que incorporar el acoplamiento del campo magnético $\symbfcal{B}$. Además, el acoplamiento entre el campo electromagnético y la materia utiliza una aproximación semiclásica, donde los átomos o iones son sistemas cuánticos de dos estados descritos por la ecuación de Schrödinger, mientras que la luz es un sistema clásico ---una onda electromagnética--- descrito por las ecuaciones de Maxwell.
+En la interacción láser-plasma estudiada, para obtener una buena aproximación basta considerar el campo eléctrico $\symbfcal{E}$ de la semilla \acrshort{hoh}, aunque cálculos más precisos tendrían que incorporar el acoplamiento del campo magnético $\symbfcal{B}$. Además, el acoplamiento entre el campo electromagnético y la materia utiliza una aproximación semiclásica, donde los átomos o iones son sistemas cuánticos de dos estados descritos por la ecuación de Schrödinger, mientras que la luz es un sistema clásico ---una onda electromagnética--- descrito por las ecuaciones de Maxwell. 
 
 En primer lugar, el acoplamiento del campo eléctrico con el plasma es la ecuación de ondas 
 \begin{equation}\label{eq:3.1}
@@ -40,7 +40,7 @@ obteniéndose el lado izquierdo ($\mathrm{LHS}$) de la ecuación de ondas para e
     \mathrm{LHS} = \RE \Bigg[\bigg(\laplacian_{\perp}E_{LR} &+ \pdvN{E_{LR}}{z}{2} + 2k \iu \pdv{E_{LR}}{z} - \frac{1}{c^{2}}\bigg(\pdvN{E_{LR}}{t}{2} \pm 2 \omega \iu \pdv{E_{LR}}{z}\bigg) \\ &+  \bigg(\frac{\omega^{2}}{c^{2}} - k^{2}\bigg)E_{LR}\bigg)\eu^{\iu(kz \mp \omega t)}\Bigg],
   \end{split}
 \end{equation}
-donde $\laplacian_{\perp}$ contiene las derivadas parciales de segundo orden en las variables $x, y$.
+donde $\laplacian_{\perp}$ contiene las derivadas de segundo orden en las variables $x, y$ del laplaciano $\laplacian $.
 
 Continuando con la segunda hipótesis, es importante considerar la aproximación de la envolvente lentamente variable o \emph{\acrfull{svea}} que asume la variación temporal y espacial de la envolvente lenta\autocite{Larroche2000} comparada con su longitud de onda, de manera que ambas envolventes del campo eléctrico y polarización verifican
 \begin{equation}\label{eq:3.4}
@@ -110,20 +110,21 @@ Hasta este momento, el marco teórico utilizado para el tratamiento de la radiac
 
 Por tanto, hay que introducir una ecuación constitutiva que relacione la naturaleza de la interacción entre la luz (el campo eléctrico), y la materia (la polarización). En la teoría cuántica, la relación \autocite{Cohen-Tannoudji2019} viene dada por
 \begin{equation}\label{eq:3.9}
-  \xval{P} = \symrm{Tr} \left(\rho \symcal{D} \right),
+  P = \xval{D} = \symrm{Tr} \left(\rho D \right),
 \end{equation}
-donde $\rho$ es el operador de densidad, $\symcal{D}$ el operador momento dipolar eléctrico atómico y $\symrm{Tr}$ representa la traza (suma de los elementos de la diagonal principal) del producto de ambos operadores, expresados como matrices en una base ortonormal $\left\{\ket{u_{i}(\symbf{r})}\right\}_{i \in \symbb{N}} \in \symcal{F}$, siendo $\symcal{F}$ un subespacio vectorial \autocite{Cohen-Tannoudji2019} formado por funciones suficientemente regulares para estudiar este fenómeno. Empleando como base los estados $\ket{1}$ y $\ket{2}$ del sistema (que están normalizados a la unidad), la matriz de densidad es
+donde $\rho$ es el operador de densidad, $D$ el operador momento dipolar eléctrico atómico y $\symrm{Tr}$ representa la traza (suma de los elementos de la diagonal principal) del producto de ambos operadores, expresados como matrices en una base ortonormal $\left\{\ket{u_{i}(\symbf{r})}\right\}_{i \in \symbb{N}} \in \symcal{F}$, siendo $\symcal{F}$ un subespacio vectorial \autocite{Cohen-Tannoudji2019} formado por funciones suficientemente regulares para estudiar la amplificación. Empleando como base los estados $\ket{1}$ y $\ket{2}$ del sistema (que están normalizados a la unidad), la matriz de densidad puede representarse como
 \begin{equation}\label{eq:3.10}
-  \rho(\symbf{r},t) = 
+  \rho(\symbf{r},t) \doteq  
   \begin{pmatrix}
     \rho_{11}(\symbf{r},t) & \rho_{12}(\symbf{r},t) \\
     \rho_{21}(\symbf{r},t) & \rho_{22}(\symbf{r},t)
-  \end{pmatrix}.
+  \end{pmatrix},
 \end{equation}
+donde el símbolo $\doteq $ significa \enquote{está representado por}.
 
 Con el objetivo de aportar mayor claridad en la discusión cuántica de la polarización, es necesario realizar una breve explicación de los conceptos introducidos y su significado. El plasma objeto de estudio puede aproximarse \autocite{Milonni1988} como un sistema de dos estados puros $\ket{1}$ y $\ket{2}$ posibles linealmente independientes \autocite{Cohen-Tannoudji2019}, de manera que la probabilidad de encontrarse en cualquiera de ambos estados es $p_{1} + p_{2} = 1$.
 
-En este contexto, el momento dipolar eléctrico $\symcal{D}$ es el observable que se desea medir, y la polarización $\xval{P}$ es el valor esperado. El operador de densidad es particularmente importante en sistemas donde no se conoce (o es imposible conocer) la totalidad de la información sobre el estado inicial del sistema ---los iones y electrones del plasma en este caso---, ni tampoco pueden determinarse con total precisión los resultados de las mediciones debido a la naturaleza probabilística de los sistemas cuánticos. 
+En este contexto, el momento dipolar eléctrico $D$ es el observable que se desea medir, y la polarización $P$ es su valor esperado. El operador de densidad es particularmente importante en sistemas donde no se conoce (o es imposible conocer) la totalidad de la información sobre el estado inicial del sistema ---los iones y electrones del plasma en este caso---, ni tampoco pueden determinarse con total precisión los resultados de las mediciones debido a la naturaleza probabilística de los sistemas cuánticos. 
 
 Ambos estados, pertenecientes al espacio vectorial $\symcal{F}$, pueden emplearse como una base ortonormal, pues como se ha comentado anteriormente, son linealmente independientes y están normalizados a la unidad, de tal forma que en el caso más general posible, el estado del sistema consiste en una superposición de ambos estados
 \begin{align}
@@ -145,16 +146,27 @@ Es posible demostrar \autocite{Cohen-Tannoudji2019} que el conocimiento de la ma
 \begin{equation}\label{eq:3.12}
   i \hslash \pdv{\rho(\symbf{r},t)}{t} = \left[H,\rho\right],
 \end{equation}
-con $H(\symbf{r},t) = H_{a} + V_{DE}(\symbf{r},t)$, siendo $H_{a}$ el operador Hamiltoniano atómico, $V_{DE} = -\symcal{D} \cdot E(\symbf{r},t)$ el potencial electrostático que encierra la interacción entre el campo eléctrico y los estados del sistema, y $\left[H, \rho\right] = H \rho - \rho H$ el conmutador de ambos operadores. Esta expansión del Hamiltoniano es conocida como \emph{aproximación dipolar} \autocite{Jackson1998} y es válida cuando la longitud de onda de la radiación emitida ---rayos X blandos en este caso--- es considerablemente superior que el tamaño promedio del átomo estudiado ($\lambda \sim \qty{10}{nm}$ frente a $R_{a} \sim \qty{0.1}{nm}$ de radio atómico). 
+con $H(\symbf{r},t) = H_{0} + W(\symbf{r},t)$, siendo $H_{a}$ el operador Hamiltoniano atómico, $W = -\symbfcal{D} \cdot \symbfcal{E}(\symbf{r},t)$ el potencial electrostático que encierra la interacción entre el campo eléctrico $\symbfcal{E}$ y los estados del sistema, y $\left[H, \rho\right] = H \rho - \rho H$ el conmutador de ambos operadores. Esta expansión del Hamiltoniano es conocida como \emph{aproximación dipolar} \autocite{Jackson1998} y es válida cuando la longitud de onda de la radiación emitida ---rayos X blandos en este caso--- es considerablemente superior que el tamaño promedio del átomo estudiado ($\lambda \sim \qty{10}{nm}$ frente a $R_{a} \sim \qty{0.1}{nm}$ de radio atómico). 
 
-En realidad, el operador momento dipolar eléctrico $\symcal{D}$ puede escribirse como $\symcal{D} = -e \hat{r}_{a}$, siendo $\hat{r}_{a}$ el operador posición relativa entre el núcleo atómico y el electrón, y $e$ la carga eléctrica del electrón. Esto significa que puede representarse como un vector cuyos componentes son los elementos fuera de la diagonal principal de la matriz dipolar asociada, ya que $\symcal{D}$ representa el momento dipolar eléctrico asociado a la transición entre estados ---que naturalmente son diferentes---, y por tanto, los elementos de la diagonal principal tienen que ser cero. Debido a esto, el potencial de interacción puede ponerse como
+En realidad, el operador momento dipolar eléctrico $D$ puede escribirse como $D = -e \hat{r}_{a}$, siendo $\hat{r}_{a}$ el operador posición relativa entre el núcleo atómico y el electrón, y $e$ la carga eléctrica del electrón. Esto significa que puede representarse como un vector $\symbfcal{D}$ cuyos componentes son los elementos fuera de la diagonal principal de la matriz dipolar asociada, ya que $D$ representa el momento dipolar eléctrico asociado a la transición entre estados ---que naturalmente son diferentes---, y por tanto, los elementos de la diagonal principal tienen que ser cero. Debido a esto, el potencial de interacción puede ponerse como
 \begin{equation}
-  V_{DE} = -\symcal{D} \cdot E =  
+  W = -\symbfcal{D} \cdot \symbfcal{E} =  
   \begin{pmatrix}
-    0 & d_{12}E \\
-    d_{21}E & 0 \\
-  \end{pmatrix}.
+    0 & d_{12}\symcal{E}_{x} \\
+    d_{21}\symcal{E}_{x} & 0 
+  \end{pmatrix} \triangleq
+  \begin{pmatrix}
+    d_{12}\symcal{E}_{x} \\
+    d_{21}\symcal{E}_{x}
+  \end{pmatrix} 
+  =
+  \begin{pmatrix}
+    d_{12} \\
+    d_{21}
+  \end{pmatrix}
+  \symcal{E}_{x},
 \end{equation}
+con el símbolo $\triangleq$ tomando el significado de \enquote{representaciones equivalentes}.
 
 Regresando a la obtención de la matriz de densidad descrita por la ecuación \eqref{eq:3.12}, y despreciando los efectos de interferencia debidos al efecto Zeeman \autocite{Sureau1995}, sus términos no diagonales pueden obtenerse a partir de las conocidas en mecánica cuántica \autocite{Milonni1988} como ecuaciones ópticas de Bloch o \emph{\acrfull{obe}}
 \begin{align}
@@ -169,14 +181,14 @@ Además, también es posible encontrar otra relación mediante la cuantización 
 \begin{equation}\label{eq:3.14}
   d_{21} = \sqrt{3 \pi A_{21} \hslash c^{3} \epsilon_{0}\omega^{-3}_{0}}, 
 \end{equation}
-donde es importante observar, a partir de las ecuaciones \eqref{eq:3.11}, \eqref{eq:3.13b} y \eqref{eq:3.13b} que $\rho_{nm} = \rho^{*}_{mn}$ y, entonces, teniendo en cuenta que el operador $\symcal{D}$ es hermítico, $d_{nm} = d^{*}_{mn}$. Esta igualdad también puede obtenerse a través del producto escalar 
+donde es importante observar, a partir de las ecuaciones \eqref{eq:3.11}, \eqref{eq:3.13a} y \eqref{eq:3.13b} que $\rho_{nm} = \rho^{*}_{mn}$ y, entonces, teniendo en cuenta que el operador $D$ es hermítico, $d_{nm} = d^{*}_{mn}$. Esta igualdad también puede obtenerse a través del producto escalar 
 \begin{equation}\label{eq:3.15}
-d_{nm} = \Xval{n}{\symcal{D}}{m} = -e \int \varphi^{*}_{n}(\hat{\symbf{r}}_{a}) \hat{\symbf{r}}_{a} \varphi_{m}(\hat{\symbf{r}}_{a}) \diff^{3}\hat{r}_{a},
+d_{nm} = \Xval{n}{D}{m} = -e \int \varphi^{*}_{n}(\hat{\symbf{r}}_{a}) \hat{\symbf{r}}_{a} \varphi_{m}(\hat{\symbf{r}}_{a}) \diff^{3}\hat{r}_{a},
 \end{equation}
 siendo $\varphi_{n}(\hat{\symbf{r}}_{a})$ y $\varphi_{m}(\hat{\symbf{r}}_{a})$ las funciones de onda asociadas a los estados $\ket{n}$ y $\ket{m}$, con $n, m \in \{1,2\}$ los únicos dos posibles estados atómicos del plasma. 
 
-De este forma, empleando tanto la ecuación \eqref{eq:3.14} como la \eqref{eq:3.15} pueden determinarse los dos términos de la matriz dipolar.
-Para terminar, combinando las ecuaciones \eqref{eq:3.8}, \eqref{eq:3.13a} y \eqref{eq:3.13b} se obtiene 
+De este forma, empleando tanto la ecuación \eqref{eq:3.14} como la ecuación \eqref{eq:3.15} pueden determinarse los dos términos del momento dipolar eléctrico.
+Para terminar, combinando las ecuaciones \eqref{eq:3.9}, \eqref{eq:3.13a} y \eqref{eq:3.13b} se obtiene, multiplicando por el término $d_{21}$ que
 \begin{equation}\label{eq:3.16}
   \pdv{P_{LR}}{t} = \Gamma - \gamma P_{LR} - \frac{\iu d^{2}_{21}}{\hslash }E_{LR}\left(N_{2}-N_{1}\right),
 \end{equation}

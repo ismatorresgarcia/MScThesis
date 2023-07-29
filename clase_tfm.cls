@@ -24,8 +24,7 @@
 \RequirePackage{unicode-math}         %% gestión de matemáticas. Los paquetes de la AMS son incompatibles, así que ponlos antes para que sobrescriba lo que considere necesario. También carga 'fontspec' para gestionar las fuentes de texto con XeLaTeX o LuaLaTeX
 \unimathsetup{                        %% las opciones del paquete 'unicode-math' siguiendo la norma ISO
   math-style = ISO, 
-  bold-style = ISO,
-  sans-style = upright
+  bold-style = ISO
 } 
 \setmainfont{Minion Pro}[             %% Fuente comercial Minion Pro de Adobe (desarrollador Robert Slimbach) para el texto en Serif
   Renderer = OpenType
