@@ -106,6 +106,7 @@
 %%% tablas y figuras
 \RequirePackage{graphicx}             %% imágenes y figuras
 \graphicspath{{Figuras/}}             %% ruta de las figuras
+\RequirePackage{enumitem}             %% para configurar el entorno 'enumerate' o 'itemize'
 \RequirePackage{caption}              %% leyenda de las figuras. Está cargado para utilizar 'subcaption' después con la última versión
 \RequirePackage{subcaption}           %% varias subfiguras
 \RequirePackage{booktabs}             %% tablas formales
