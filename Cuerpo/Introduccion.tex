@@ -98,6 +98,24 @@ Una vez los electrones decaen hasta el estado $\ket{1}$, vuelven a decaer rápid
 
 La idea básica consiste en que, si el sistema de bombeo es capaz de actuar de forma rápida y súbita (con otro láser, por ejemplo), este proceso produce una inversión de población temporal entre los estados $\ket{2}$ y $\ket{1}$, gracias al cual una ráfaga incidente, relativamente débil de luz o \enquote{semilla} puede interaccionar con estos estados emitiendo una ráfaga de luz amplificada. El resultado es un láser pulsado, como el simulado durante el capítulo \S\ref{cap:4}. En el caso de tener un sistema de bombeo que funcione de forma continua, podría conseguirse como resultado una inversión poblacional permanente mediante el cual las \enquote{semillas} de luz incidentes puedan interaccionar, produciendo una luz láser de onda continua, en lugar de pulsada.
 
+Mientras que el láser viaja a través del medio activo (los electrones fuera del equilibrio, en inversión de población), el flujo de energía $F$ aumenta con la distancia $z$ tal que $\symrm{d}F/\symrm{d}z = F/l_{o}$, entonces $F(z) = F_{o}\eu^{z/l_{o}}$. $F_{o}$ es el flujo inicial, y $l_{0} \equiv 1/|\mu|$ (longitud de amplificación en un factor $\symrm{r}$) depende de la intensidad de la inversión poblacional y de la intensidad del \enquote{acoplamiento} entre la luz y el medio activo. Normalmente, $l_{o}$ es demasiado grande como para conseguir un efecto láser suficientemente intenso en un solo recorrido de la luz por el medio activo. En estos casos, la amplificación hay que potenciarla introduciendo el medio activo en el interior de una \emph{cavidad de Fabry-Perot} (esquema en la Figura \ref{fig:ch1_cavidad}), llamada frecuentemente \emph{cavidad resonante}.
+
+La longitud $L$ de la cavidad se ajusta para optimizar la potencia obtenida, que se obtiene cuando la frecuencia $\omega = (E_{2}-E_{1})/\hslash $ es una frecuencia de resonancia (un modo) de la cavidad. Cuando esto sucede, la transición láser excita un modo de la cavidad asociado a una onda estacionaria, escapando la luz amplificada a través uno o ambos espejos de la cavidad. Si $\eta$ es el rendimiento de la cavidad (aproximadamente el número medio de veces que un fotón es reflejado hacia delante y hacia atrás dentro de la cavidad antes de escapar a través del espejo), entonces la cavidad incrementa la distancia que los fotones pueden recorrer a través del medio activo en un factor $\sim \eta$, incrementando entonces el flujo de energía saliente en un factor $\sim \eu^{\eta L/l_{o}}$.
+
+Realmente, hay múltiples modos de Fabry-Perot excitados por una transición láser, de forma que la amplificación contiene varios modos y es una mezcla de diferentes polarizaciones. Para conseguir un solo modo y polarización, hay que incorporar elementos ópticos en la salida del láser para transmitir únicamente la polarización pura deseada, y después todos los modos excepto uno pueden eliminarse de la luz saliente mediante varias técnicas (utilizando una segunda cavidad de Fabry-Perot, por ejemplo).
+
+Con un láser ideal (con una fuente de bombeo continua capaz de mantener una inversión de población perfecta, consiguiendo un emisión láser también perfecta), la luz conseguida tiene el estado más perfecto que la mecánica cuántica permite. Estos estados, llamados \emph{estados cuánticos coherentes}, tienen un campo eléctrico puro que oscila sinusoidalmente, superpuesto con la menor cantidad de ruido (desviaciones en la fase y la amplitud) que admite la teoría cuántica: las fluctuaciones cuánticas del vacío. El valor de las oscilaciones de la fase $\varphi$ están determinadas por el valor de la fase de la semilla responsable de activar la transición láser. Los láseres reales tienen un ruido adicional debido a una multitud de factores, aunque en cualquier caso, la luz conseguida suele ser altamente coherente, con tiempos de coherencia elevados, como aparecerá mostrado en la sección \S\ref{sec:1.1.2}.
+
+\paragraph{Tipos de láseres y aplicaciones}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.8\textwidth]{Figuras/ch1_cavidad.pdf}
+  \caption{Esquema de un cavidad de Fabry-Perot o cavidad resonante utilizada para mejorar la interacción de la luz láser con el medio activo. Adaptado de Milonni y Eberly (1988)\autocite{Milonni1988}.}
+  \label{fig:ch1_cavidad}
+\end{figure}
+
+
 \begin{equation}\label{eq:1.1}
   \nu_{0} = \frac{E_{2}-E_{1}}{h}
 \end{equation}
@@ -110,7 +128,7 @@ De forma simplificada, esta propiedad se debe fundamentalmente a dos motivos: en
 
 Por ejemplo, las últimas propuestas de láseres de Fabry-Perot para la fabricación de circuitos integrados \autocite{Tran2022}, emplean frecuencias de \qty{300}{THz} ($\lambda = \qty{980}{nm}$) con anchos de banda $\Delta\nu = \qty{10}{kHz}$, resultando una anchura relativa para la frecuencia de emisión $\Delta\nu/\nu = 3,33\times 10^{-11}$. El espectro de la emisión láser tiene una alta pureza, como ilustra la Figura \ref{fig:ch1_amplif}, consiguiéndose reducir la dispersión a través de un medio de propagación dado y mejorando la focalización del haz, ya que el índice de refracción depende de la longitud de onda emitida.
 
-\begin{figure}[ht!]
+\begin{figure}[htpb]
   \centering
   \includegraphics[width=\textwidth]{Figuras/ch1_amplif.png}
   \caption{Espectro de emisión del láser empleado en la propuesta\autocite{Tran2022}. \textbf{b}, Esquema del láser y sus elementos. \textbf{d}, Ancho de banda conseguido con la cavidad resonante. \textbf{e}, Ruido en la frecuencia del espectro de emisión. \textbf{g}, Frecuencias de resonancia. \textbf{h}, Longitudes de onda de operación.}
@@ -126,7 +144,7 @@ A primer orden, el concepto de coherencia de una onda electromagnética introduc
 
 Para definir la coherencia espacial, basta con imaginar dos puntos $P_1$ y $P_2$ situados en el mismo frente de onda, en un instante inicial, de una onda electromagnética determinada, siendo $E_1(t)$ y $E_2(t)$ las amplitudes del campo eléctrico en dichos puntos. Por definición, el desfase entre ambos campos en ese instante es cero. Ahora bien, si en cualquier instante posterior, el desfase entre ambos mantiene un valor nulo, entonces se dice que ambos puntos tienen una coherencia perfecta. Si esto ocurre para cualquier par de puntos del frente de onda, entonces se dice que la onda tiene \emph{coherencia espacial perfecta}. En la práctica, para un punto $P_1$, el punto $P_2$ tiene que estar en un área muy próxima a $P_1$ para mantener una buena correlación entre ambas fases. En estos casos, existe una \emph{coherencia espacial parcial} y, para cualquier punto $P$, puede definirse un área de coherencia $S_{c}(P)$ apropiada.
 
-Para definir la coherencia temporal, se supone el campo eléctrico de la onda anterior en un punto $P$, pero en dos instantes de tiempo $t$ y $t+\tau$. Si para un determinado intervalo $\tau$, el desfase entre las dos ondas se mantiene constante para cualquier instante de tiempo $t$, entonces se dice que tienen coherencia temporal durante el intervalo $\tau$. Si esto ocurre para cualquier $\tau$, la onda electromagnética tendrá una \emph{coherencia temporal perfecta}. En la práctica, el desfase puede mantenerse durante cualquier intervalo de tiempo $\tau$, tal que $0<\tau<\tau_0$, en cuyo caso la onda tiene \emph{coherencia temporal parcial} con un tiempo de coherencia $\tau_0$. En experimentos recientes\autocite{Zhou2020}, el láser de electrones libres (\acrshort{fel}) del \emph{\acrfull{lcls}} ha proporcionado pulsos de rayos X duros (\qty{60}{µJ}, \qty{3}{fs}) con un tiempo de coherencia parcial de $\tau_0 = \qty{174,7}{as}$ (\qty{1}{as} = \qty{e-18}{s}). La Figura \ref{fig:ch1_coher} muestra los tiempos de coherencia obtenidos en dicho experimento. 
+Para definir la coherencia temporal, se supone el campo eléctrico de la onda anterior en un punto $P$, pero en dos instantes de tiempo $t$ y $t+\tau$. Si para un determinado intervalo $\tau$, el desfase entre las dos ondas se mantiene constante para cualquier instante de tiempo $t$, entonces se dice que tienen coherencia temporal durante el intervalo $\tau$. Si esto ocurre para cualquier $\tau$, la onda electromagnética tendrá una \emph{coherencia temporal perfecta}. En la práctica, el desfase puede mantenerse durante cualquier intervalo de tiempo $\tau$, tal que $0<\tau<\tau_0$, en cuyo caso la onda tiene \emph{coherencia temporal parcial} con un tiempo de coherencia $\tau_0$. En experimentos recientes ---Zhou \emph{et al} (2020)---\autocite{Zhou2020}, el láser de electrones libres (\acrshort{fel}) del \emph{\acrfull{lcls}} ha proporcionado pulsos de rayos X duros (\qty{60}{µJ}, \qty{3}{fs}) con un tiempo de coherencia parcial de $\tau_0 = \qty{174,7}{as}$ (\qty{1}{as} = \qty{e-18}{s}). La Figura \ref{fig:ch1_coher} muestra los tiempos de coherencia obtenidos en dicho experimento (aunque puede parecer un tiempo de coherencia muy pequeño, hay que tener en cuenta que no puede superar la duración del pulso). 
 
 Es importante mencionar que ambos conceptos de coherencia son independientes. De hecho, pueden darse casos de ondas con buena coherencia espacial y mala coherencia temporal, o viceversa. Además, como se ha comentado inicialmente, estas propiedades aparecen cuando se estudia el grado de coherencia de la onda a primer orden. Esta caracterización, en general, consiste en medir por ejemplo, mediante un interferómetro de Young, un elevado número de veces el campo eléctrico en dos puntos distintos del espacio $\symbf{r}_1$ y $\symbf{r}_2$ para dos instantes de tiempo $t_1$ y $t_2$ de un intervalo $T$, definiéndose el \emph{grado de coherencia de primer orden} como
 \begin{equation}\label{eq:1.2}
@@ -134,7 +152,7 @@ Es importante mencionar que ambos conceptos de coherencia son independientes. De
 \end{equation}
 con $E^{*}$ el complejo conjugado del campo eléctrico. En esencia, la ecuación \eqref{eq:1.2} \enquote{ensambla} el valor medio de las mediciones realizadas para el campo eléctrico y las normaliza, permitiendo medir simultáneamente coherencia espacial y temporal de la onda.
 
-\begin{figure}[ht!]
+\begin{figure}[htpb]
   \centering
   \includegraphics[width=0.8\textwidth]{Figuras/ch1_coher.png}
   \caption{Resultados experimentales del tiempo de coherencia medidos en el \acrshort{lcls}\autocite{Zhou2020}. \textbf{a}, Energía de los pulsos frente al retraso temporal. \textbf{b}, Cambios en la varianza respecto al retraso temporal.}
@@ -155,7 +173,7 @@ Para longitudes de onda en el rango óptico, por ejemplo, $\lambda = \qty{500}{n
 
 Para áreas de apertura mayores, por ejemplo $A = \qty{5}{cm^2}$, la distancia aumenta hasta alcanzar $z = \qty{1}{km}$. Empleando menores longitudes de onda el rango sería incluso mayor, dando una idea de las largas distancias capaces de recorrer muchos láseres sin pérdida de direccionalidad.
 
-\begin{table}[ht!]
+\begin{table}[htpb]
   \centering
   \caption{Ángulos de divergencia típicos en láseres\autocite{Milonni1988}.}
   \begin{tabular}{ccc}
@@ -206,7 +224,7 @@ Empleando una técnica ---habitual en algunos láseres con pulsos ultracortos---
 
 La longitud de onda y la duración del pulso tienen especial importancia en muchas aplicaciones tecnológicas y en investigación, por ejemplo, en la reconstrucción de imágenes tridimensionales de moléculas\autocite{vonArdenne2018}, bacterias o virus\autocite{Ekeberg2015}, donde la resolución necesaria para visualizar escalas extremadamente pequeñas requiere longitudes de onda de nanómetros ($\sim\qty{e-9}{m}$) o ángstroms ($\sim\qty{e-10}{m}$) y pulsos con duraciones de femtosegundos ($\sim\qty{e-15}{s}$) o incluso attosegundos ($\sim\qty{e-18}{s}$). Estas técnicas están basadas en formar cientos de patrones de difracción entre el pulso láser y el blanco objeto de estudio, para después emplear métodos de análisis de Fourier que permiten obtener imágenes tridimensionales a partir de los patrones de difracción bidimensionales, como muestra la Figura \ref{fig:ch1_pulso}.
 
-\begin{figure}[ht!]
+\begin{figure}[htpb]
   \centering
   \includegraphics[width=0.5\textwidth]{Figuras/ch1_pulso.png}
   \caption{Patrones de difracción y densidad de electrones obtenida de un \enquote{Mimivirus}\autocite{Ekeberg2015}. La resolución conseguida es de \qty{125}{nm}. El tamaño de la envoltura del virus es aproximadamente de \qty{450}{nm}.}
