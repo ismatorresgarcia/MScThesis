@@ -114,8 +114,7 @@
 \RequirePackage{longtable}            %% tablas muy largas
 \RequirePackage{array}                %% tablas
 \RequirePackage{booktabs}             %% tablas profesionales
-\RequirePackage[table]{xcolor}        %% mejores colores. 'table' para colorear filas y columnas de tablas
-\RequirePackage{tikz}                 %% para hacer dibujos (aquí solo lo utilizo para los capítulos)
+\RequirePackage{tikz}                 %% para hacer dibujos muy bonitos (aquí solo lo utilizo para los capítulos). También carga el paquete 'xcolor'
 %% colores del documento
 \definecolor{miazul}{RGB}{0,30,155}
 \definecolor{miazulll}{RGB}{0,50,85}
@@ -128,18 +127,27 @@
 \colorlet{secboxcolor}{miazul}
 \colorlet{secnumcolor}{white}
 %% colores de códigos
+\definecolor{colorfondo}{rgb}{0.95,0.95,0.92}
 % \definecolor{codverde}{rgb}{0,0.6,0}
 % \definecolor{codazul}{rgb}{0,0,0.9}
 % \definecolor{codgris}{rgb}{0.5,0.5,0.5}
 % \definecolor{codmorado}{rgb}{0.58,0,0.82}
-\definecolor{colorfondo}{rgb}{0.95,0.95,0.92}
+\RequirePackage{tcolorbox}     %% para hacer recuadros muy bonitos de colores con texto y matemáticas
+\tcbuselibrary{theorems}       %% cargo las librerías que necesito 
+%% opciones de tcolorbox para los recuadros de ecuaciones
+\tcbset{
+  sharp corners = uphill,
+  arc = 4mm,
+  outer arc = 1mm,
+  colback = miazul!10!white,
+  colframe = miazul
+}
 
 %%% creación de macros y paquetes personalizados como entornos, por ejemplo
-\RequirePackage[export]{adjustbox}          %% para definir un tamaño mínimo o máximo en las cajas
-\RequirePackage{xpatch}                     %% recomendado por el paquete de 'biblatex'. También extiende algunas funciones del paquete 'etoolbox'
+\RequirePackage[export]{adjustbox}          %% es un paquete que tiene macros útiles para ajustar 'boxed content'. The main feature is the general \adjustbox macro which extends the “key=value” interface of \includegraphics from the graphics package and applies it to general text content.
 
 %%% más personalización
-\RequirePackage[lines=3]{lettrine}                   %% para escribir los comienzos de capítulos en letras grandes
+\RequirePackage[lines=3]{lettrine}          %% para escribir los comienzos de capítulos en letras grandes
 \renewcommand*{\LettrineFontHook}{\fontspec{Cronos Pro}\bfseries\color{miazul}} %% para el estilo de la letra inicial
 \renewcommand*{\LettrineTextFont}{\sffamily\bfseries\fontsize{10pt}{12pt}\selectfont\color{miazul}\MakeUppercase} %% para el estilo del segundo argumento
 
@@ -155,7 +163,7 @@
   bibstyle = numeric,                       %% estilo de bibliografía numérica (pon numeric, en draft mientras edito)  
   backref = false                           %% sacar las páginas de las citas en la bibliografía (cf. p.)
 ]{biblatex}                   
-\addbibresource{Zotero.bib}                 %% archivo bibligráfico que estoy utilizando
+\addbibresource{Zotero.bib}                 %% archivo bibliográfico que estoy utilizando
 
 %%% matemáticas, física y química
 \RequirePackage{siunitx}                    %% unidades del sistema internacional

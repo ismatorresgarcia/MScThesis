@@ -47,7 +47,7 @@ Para proporcionar una imagen más nítida del desarrollo y evolución del láser
   \label{fig:ch1_intens}
 \end{figure}
 
-La Figura \ref{fig:ch1_intens} muestra esta evolución histórica, las distintas tecnologías y escalas de energía, así como las posibles tendencias y predicciones \autocite{Mourou2006} realizadas en $2006$. Mencionar que colaboraciones como ELI, situadas en Hungría y República Checa, o ILE en Japón, no han proporcionado todavía mediciones de intensidad en blancos, pero ambos proyectos podrían conseguir potencias del orden de \qty{10}{PW} en un futuro próximo, igualando e incluso superando posiblemente la intensidad del CoReLS. 
+La Figura \ref{fig:ch1_intens} muestra esta evolución histórica, las distintas tecnologías y escalas de energía, así como las posibles tendencias y predicciones \autocite{Mourou2006} realizadas en $2006$. Mencionar que colaboraciones como ELI, situadas en Hungría y República Checa, o ILE en Japón, no han proporcionado todavía mediciones de intensidad en blancos, pero ambos proyectos podrían conseguir potencias del orden de $\sim \qty{10}{PW}$ en un futuro próximo, igualando e incluso superando posiblemente la intensidad del CoReLS. 
 
 \subsection{Interacción radiación-materia}\label{sec:1.1.1}
 En mecánica cuántica pueden identificarse tres tipos de interacción de la luz con la materia (átomos, moléculas, iones, núcleos atómicos, electrones, etc.): 
@@ -77,7 +77,7 @@ En el segundo paso, conviene suponer que cuando el haz de luz llega al medio act
 
 En la naturaleza, normalmente, los electrones ligados a un átomo (o los propios átomos, partículas cargadas, núcleos atómicos, moléculas, etc.) tienen sus niveles de energía ocupados siguiendo las leyes de la mecánica (del equilibrio) estadística. En esta situación de equilibrio termodinámico, la relación entre las poblaciones de estos niveles viene dada por la ley de Boltzmann \autocite{Feynman2011}
 \begin{equation}\label{eq:1.0}
-  \frac{N_{2}}{N_{1}} =  \exp \left[-(E_{2}-E_{1})/(k_{B}T)\right] < 1,
+  N_{2}/N_{1} =  \eu^{-(E_{2}-E_{1})/(k_{B}T)} < 1, 
 \end{equation}
 entre el número de electrones $N_{2}$ en el estado $\ket{2}$ y el número de electrones $N_{1}$ en el estado $\ket{1}$. En la ecuación \eqref{eq:1.0}, $T$ es la temperatura, por ejemplo, de un grupo de moléculas, $k_{B}$ es la constante de Boltzmann, y por simplicidad los estados se asumen no degenerados (con distintos niveles de energía cada uno), aunque esta simplificación desaparecerá más adelante. Como el número de electrones en el estado inferior $\ket{1}$ es mayor que en el estado superior $\ket{2}$, un haz de luz en camino sufrirá más absorción que emisión estimulada.
 
@@ -100,6 +100,13 @@ La idea básica consiste en que, si el sistema de bombeo es capaz de actuar de f
 
 Mientras que el láser viaja a través del medio activo (los electrones fuera del equilibrio, en inversión de población), el flujo de energía $F$ aumenta con la distancia $z$ tal que $\symrm{d}F/\symrm{d}z = F/l_{o}$, entonces $F(z) = F_{o}\eu^{z/l_{o}}$. $F_{o}$ es el flujo inicial, y $l_{0} \equiv 1/|\mu|$ (longitud de amplificación en un factor $\symrm{r}$) depende de la intensidad de la inversión poblacional y de la intensidad del \enquote{acoplamiento} entre la luz y el medio activo. Normalmente, $l_{o}$ es demasiado grande como para conseguir un efecto láser suficientemente intenso en un solo recorrido de la luz por el medio activo. En estos casos, la amplificación hay que potenciarla introduciendo el medio activo en el interior de una \emph{cavidad de Fabry-Perot} (esquema en la Figura \ref{fig:ch1_cavidad}), llamada frecuentemente \emph{cavidad resonante}.
 
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.7\textwidth]{Figuras/ch1_cavidad.pdf}
+  \caption{Esquema de un cavidad de Fabry-Perot o cavidad resonante utilizada para mejorar la interacción de la luz láser con el medio activo. Adaptado de Milonni y Eberly (1988)\autocite{Milonni1988}.}
+  \label{fig:ch1_cavidad}
+\end{figure}
+
 La longitud $L$ de la cavidad se ajusta para optimizar la potencia obtenida, que se obtiene cuando la frecuencia $\omega = (E_{2}-E_{1})/\hslash $ es una frecuencia de resonancia (un modo) de la cavidad. Cuando esto sucede, la transición láser excita un modo de la cavidad asociado a una onda estacionaria, escapando la luz amplificada a través uno o ambos espejos de la cavidad. Si $\eta$ es el rendimiento de la cavidad (aproximadamente el número medio de veces que un fotón es reflejado hacia delante y hacia atrás dentro de la cavidad antes de escapar a través del espejo), entonces la cavidad incrementa la distancia que los fotones pueden recorrer a través del medio activo en un factor $\sim \eta$, incrementando entonces el flujo de energía saliente en un factor $\sim \eu^{\eta L/l_{o}}$.
 
 Realmente, hay múltiples modos de Fabry-Perot excitados por una transición láser, de forma que la amplificación contiene varios modos y es una mezcla de diferentes polarizaciones. Para conseguir un solo modo y polarización, hay que incorporar elementos ópticos en la salida del láser para transmitir únicamente la polarización pura deseada, y después todos los modos excepto uno pueden eliminarse de la luz saliente mediante varias técnicas (utilizando una segunda cavidad de Fabry-Perot, por ejemplo).
@@ -107,17 +114,28 @@ Realmente, hay múltiples modos de Fabry-Perot excitados por una transición lá
 Con un láser ideal (con una fuente de bombeo continua capaz de mantener una inversión de población perfecta, consiguiendo un emisión láser también perfecta), la luz conseguida tiene el estado más perfecto que la mecánica cuántica permite. Estos estados, llamados \emph{estados cuánticos coherentes}, tienen un campo eléctrico puro que oscila sinusoidalmente, superpuesto con la menor cantidad de ruido (desviaciones en la fase y la amplitud) que admite la teoría cuántica: las fluctuaciones cuánticas del vacío. El valor de las oscilaciones de la fase $\varphi$ están determinadas por el valor de la fase de la semilla responsable de activar la transición láser. Los láseres reales tienen un ruido adicional debido a una multitud de factores, aunque en cualquier caso, la luz conseguida suele ser altamente coherente, con tiempos de coherencia elevados, como aparecerá mostrado en la sección \S\ref{sec:1.1.2}.
 
 \paragraph{Tipos de láseres y aplicaciones}
+Como ha podido verse en esta sección \S\ref{sec:1.1.1}, los láseres pueden tener una emisión continua, altamente monocromática, o pueden ser pulsados. El medio activo puede ser un líquido, un gas (ionizado o neutro), o un sólido (semiconductores, vidrios, o cristales, típicamente dopados con impurezas). Los láseres pueden emplear como sistema de bombeo radiación electromagnética (una lámpara de luz suficientemente intensa, por ejemplo), colisiones atómicas que exciten los átomos responsables de las transiciones láser, reacciones químicas fuera del equilibrio, o campos eléctricos producidos por descargas eléctricas (los diodos láser de semiconductores bombeados por baterías comunes utilizados en comunicaciones ópticas).
 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.8\textwidth]{Figuras/ch1_cavidad.pdf}
-  \caption{Esquema de un cavidad de Fabry-Perot o cavidad resonante utilizada para mejorar la interacción de la luz láser con el medio activo. Adaptado de Milonni y Eberly (1988)\autocite{Milonni1988}.}
-  \label{fig:ch1_cavidad}
-\end{figure}
+Los pulsos láser pueden conseguirse activando y desactivando la fuente de bombeo, empleando la técnica conocida como \emph{mode-locking} (esencialmente consiste en inducir una interferencia destructiva entre ciertos modos de la cavidad de Fabry-Perot), o utilizando el esquema llamado \emph{Q-switching} (interrumpiendo el efecto láser, por ejemplo, introduciendo en la cavidad un material electro-óptico capaz de absorber la luz hasta que la fuente de bombeo haya producido una inversión de población suficientemente grande, para después aplicar un campo eléctrico sobre el material absorbente que lo hace transparente y recupera la operación láser.)
 
+Un pulso láser puede llegar a tener duraciones de pocos femtosegundos (permitiendo realizar investigación básica en química de reacciones ultrarrápidas \autocite{Zewail2000}) incluso centenares de attosegundos ---ver sección \S\ref{sec:1.1.2}--- y pueden llegar a transportar energía de \qty{20000}{J} con duraciones de decenas de picosegundos y potencias de $\sim \qty{e15}{W}$ (por ejemplo, en la \emph{\acrfull{nif}} en Livermore, California, para la fusión por confinamiento inercial \autocite{Hurricane2019,Zylstra2022}).
+
+El láser más potente de los Estados Unidos, en operación continua, es el \emph{\acrfull{miracl}}, desarrollado por la Armada para derribar misiles intercontinentales y satélites, con una potencia de $\sim \qty{1}{MW}$ en un rayo de $14 \times 14 $ \unit{cm^{2}} y $\sim \qty{70}{s}$ de duración \autocite{Thorne2017}. Los láseres de \ce{CO2} en continuo, con potencias de $\sim \qty{3}{kW}$, son comunes en la industria para cortar y soldar metales.
+
+Un haz de alta potencia $\sim \qty{1}{GW}$ en un láser de \ce{CO2} operando con la técnica \emph{Q-switching} puede focalizarse en una región cuya sección transversal tiene unas dimensiones tan pequeñas como una longitud de onda de $\sim \qty{1}{µm}$, proporcionando intensidades de $\sim \qty{e21}{W/cm^{2}}$, inducciones magnéticas con valores cuadráticos medios de $\sim \qty{3}{kT}$, campos eléctricos de $\sim \qty{1}{TV/m}$ y diferencias de potencial en una sola longitud de onda de $\sim \qty{1}{MeV}$. Estos órdenes de magnitud son tan enormes que algunos de estos láseres de alta potencia pueden crear plasmas formados por pares electrón-positrón.
+
+También existen muchas aplicaciones en ciencia e industria donde no se necesitan altas potencias, pero sí frecuencias de emisión elevadas con buena estabilidad, es decir, largos tiempos de coherencia. En estas situaciones, es habitual utilizar el esquema \emph{mode-locking} para fijar la frecuencia emitida en el rango óptico de una transición atómica (por ejemplo, los relojes atómicos de \ce{Al+}), consiguiendo estabilidades en frecuencia de $\Delta f/f \sim 10^{-17}$, obteniendo anchos de banda de $\Delta f \sim \qty{3}{mHz}$ durante horas o incluso más, con tiempos de coherencia de $\sim \qty{100}{s}$ y longitudes de coherencia de $\sim \qty{3e7}{km}$. 
+
+Alternativamente, escogiendo la frecuencia de un modo muy estable en el interior de la cavidad de Fabry-Perot, se han conseguido alcanzar estabilidades de $\Delta f/f \sim 10^{-16}$ durante intervalos de $\sim \qty{1}{h}$ (cavidades que utilizan materiales superconductores como el Niobio\autocite{Stein1975}), y $\Delta f/f \sim 10^{-22}$ durante unos pocos milisegundos \autocite{Mueller2016,Kwee2012} en los brazos de \qty{4}{km} del interferómetro para la observación de ondas gravitacionales (el observatorio \emph{\acrfull{ligo}} que descubrió las ondas gravitacionales en $2016$ \autocite{Abbott2016}).
+
+Nuevamente, queda demostrado que desde su creación en $1960$ por Maiman, los láseres permean todos los aspectos de la vida cotidiana y las tecnologías más avanzadas del mundo. Desde los lectores de códigos de barras en los supermercados, hasta los punteros láser, reproductores DVD, cirugía oftalmológica, impresoras láser, cortadoras y soldaduras láser, giroscopios láser (que son bastante utilizados en los aviones comerciales), espectroscopía de Raman, fusión por confinamiento inercial, comunicaciones ópticas, ordenadores basados en circuitos ópticos, holografía y relojes atómicos, constituyen solo algunos ejemplos presentes en la actualidad que, sin ser en absoluto conscientes en la mayoría de ocasiones, facilitan y mejoran la vida de la sociedad en su conjunto.
+
+Para detallar y completar el proceso de interacción radiación-materia, desde una perspectiva más general (como se prometió al principio de esta sección \S\ref{sec:1.1.1}), y prestando atención a las condiciones necesarias para conseguir la amplificación, el siguiente apartado presenta un análisis más exhaustivo. 
+
+\paragraph{Condiciones para la amplificación}
 
 \begin{equation}\label{eq:1.1}
-  \nu_{0} = \frac{E_{2}-E_{1}}{h}
+  \tcboxmath{\nu_{0} = \frac{E_{2}-E_{1}}{h}}
 \end{equation}
 
 \subsection{Propiedades ópticas}\label{sec:1.1.2}
