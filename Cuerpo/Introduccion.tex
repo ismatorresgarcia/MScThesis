@@ -77,7 +77,7 @@ En el segundo paso, conviene suponer que cuando el haz de luz llega al medio act
 
 En la naturaleza, normalmente, los electrones ligados a un átomo (o los propios átomos, partículas cargadas, núcleos atómicos, moléculas, etc.) tienen sus niveles de energía ocupados siguiendo las leyes de la mecánica (del equilibrio) estadística. En esta situación de equilibrio termodinámico, la relación entre las poblaciones de estos niveles viene dada por la ley de Boltzmann \autocite{Feynman2011}
 \begin{equation}\label{eq:1.0}
-  N_{2}/N_{1} =  \eu^{-(E_{2}-E_{1})/(k_{B}T)} < 1, 
+  N_{2}/N_{1} =  \eu^{-(E_{2}-E_{1})/k_{B}T} < 1, 
 \end{equation}
 entre el número de electrones $N_{2}$ en el estado $\ket{2}$ y el número de electrones $N_{1}$ en el estado $\ket{1}$. En la ecuación \eqref{eq:1.0}, $T$ es la temperatura, por ejemplo, de un grupo de moléculas, $k_{B}$ es la constante de Boltzmann, y por simplicidad los estados se asumen no degenerados (con distintos niveles de energía cada uno), aunque esta simplificación desaparecerá más adelante. Como el número de electrones en el estado inferior $\ket{1}$ es mayor que en el estado superior $\ket{2}$, un haz de luz en camino sufrirá más absorción que emisión estimulada.
 
@@ -126,7 +126,7 @@ Un haz de alta potencia $\sim \qty{1}{GW}$ en un láser de \ce{CO2} operando con
 
 También existen muchas aplicaciones en ciencia e industria donde no se necesitan altas potencias, pero sí frecuencias de emisión elevadas con buena estabilidad, es decir, largos tiempos de coherencia. En estas situaciones, es habitual utilizar el esquema \emph{mode-locking} para fijar la frecuencia emitida en el rango óptico de una transición atómica (por ejemplo, los relojes atómicos de \ce{Al+}), consiguiendo estabilidades en frecuencia de $\Delta f/f \sim 10^{-17}$, obteniendo anchos de banda de $\Delta f \sim \qty{3}{mHz}$ durante horas o incluso más, con tiempos de coherencia de $\sim \qty{100}{s}$ y longitudes de coherencia de $\sim \qty{3e7}{km}$. 
 
-Alternativamente, escogiendo la frecuencia de un modo muy estable en el interior de la cavidad de Fabry-Perot, se han conseguido alcanzar estabilidades de $\Delta f/f \sim 10^{-16}$ durante intervalos de $\sim \qty{1}{h}$ (cavidades que utilizan materiales superconductores como el Niobio\autocite{Stein1975}), y $\Delta f/f \sim 10^{-22}$ durante unos pocos milisegundos \autocite{Mueller2016,Kwee2012} en los brazos de \qty{4}{km} del interferómetro para la observación de ondas gravitacionales (el observatorio \emph{\acrfull{ligo}} que descubrió las ondas gravitacionales en $2016$ \autocite{Abbott2016}).
+Alternativamente, escogiendo la frecuencia de un modo muy estable en el interior de la cavidad de Fabry-Perot, se han conseguido alcanzar estabilidades de $\Delta f/f \sim 10^{-16}$ durante intervalos de $\sim \qty{1}{h}$ (cavidades que utilizan materiales superconductores como el Niobio\autocite{Stein1975}), y $\Delta f/f \sim 10^{-22}$ durante unos pocos milisegundos \autocite{Mueller2016,Kwee2012} en los brazos de \qty{4}{km} del interferómetro para la detección de ondas gravitacionales (la colaboración \emph{\acrfull{ligo}} que anunció el descubrimiento de las ondas gravitacionales en $2016$ \autocite{Abbott2016}).
 
 Nuevamente, queda demostrado que desde su creación en $1960$ por Maiman, los láseres permean todos los aspectos de la vida cotidiana y las tecnologías más avanzadas del mundo. Desde los lectores de códigos de barras en los supermercados, hasta los punteros láser, reproductores DVD, cirugía oftalmológica, impresoras láser, cortadoras y soldaduras láser, giroscopios láser (que son bastante utilizados en los aviones comerciales), espectroscopía de Raman, fusión por confinamiento inercial, comunicaciones ópticas, ordenadores basados en circuitos ópticos, holografía y relojes atómicos, constituyen solo algunos ejemplos presentes en la actualidad que, sin ser en absoluto conscientes en la mayoría de ocasiones, facilitan y mejoran la vida de la sociedad en su conjunto.
 
@@ -221,9 +221,9 @@ con $I(\nu)$ la intensidad espectral del haz de luz, de manera que también pued
 
 Para una fuente de radiación ordinaria, esta luminosidad puede estimarse directamente suponiendo la expresión de la densidad espectral de energía $\rho(\nu)$ de un cuerpo negro. Empleando la ecuación \eqref{eq:1.5} y la hipótesis del cuerpo negro ($\Delta\Omega=4 \pi$), resulta
 \begin{equation}\label{eq:1.6}
-    \beta_{\nu} = \frac{c \rho(\nu)}{4 \pi} = \frac{2 \nu^{2}}{c^{2}}\frac{h \nu}{\eu^{h \nu/kT}-1}.
+    \beta_{\nu} = \frac{c \rho(\nu)}{4 \pi} = \frac{2 \nu^{2}}{c^{2}}\frac{h \nu}{\eu^{h \nu/k_{B}T}-1}.
 \end{equation}
-La temperatura de la superficie del sol es aproximadamente $T = \qty{5800}{K} \approx 20 \times \qty{300}{K}$. La mayoría de la emisión del sol está en la franja amarilla de la banda visible, de forma que $h\nu \approx \qty{2,5}{eV}$ ($\nu \approx \qty{5e14}{Hz}$ para un fotón en el amarillo-verde). Para $T = \qty{300}{K}$ se tiene $kT \approx \qty{0,025}{eV}$, por tanto, $h \nu/kT \approx 5$, obteniéndose $\eu^{h \nu/kT}-1 \approx 150$ y, finalmente,
+La temperatura de la superficie del sol es aproximadamente $T = \qty{5800}{K} \approx 20 \times \qty{300}{K}$. La mayoría de la emisión del sol está en la franja amarilla de la banda visible, de forma que $h\nu \approx \qty{2,5}{eV}$ ($\nu \approx \qty{5e14}{Hz}$ para un fotón en el amarillo-verde). Para $T = \qty{300}{K}$ se tiene $k_{B}T \approx \qty{0,025}{eV}$, por tanto, $h \nu/k_{B}T \approx 5$, obteniéndose $\eu^{h \nu/k_{B}T}-1 \approx 150$ y, finalmente,
 \begin{equation}\label{eq:1.7}
     \beta_{\nu} \approx \qty{1,5e-12}{W/cm^{2}\,sr\,Hz}.
 \end{equation}

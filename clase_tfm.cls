@@ -132,16 +132,38 @@
 % \definecolor{codazul}{rgb}{0,0,0.9}
 % \definecolor{codgris}{rgb}{0.5,0.5,0.5}
 % \definecolor{codmorado}{rgb}{0.58,0,0.82}
+\RequirePackage{empheq}        %% para utilizarlo en simbiosis junto a 'tcolorbox' y crear cajas de ecuaciones con varias líneas
 \RequirePackage{tcolorbox}     %% para hacer recuadros muy bonitos de colores con texto y matemáticas
-\tcbuselibrary{theorems}       %% cargo las librerías que necesito 
-%% opciones de tcolorbox para los recuadros de ecuaciones
+\tcbuselibrary{skins,theorems} %% cargo las librerías que necesito 
+%% opciones de 'tcolorbox' para los recuadros de ecuaciones
 \tcbset{
   sharp corners = uphill,
-  arc = 4mm,
-  outer arc = 1mm,
+  arc = 12pt,
+  outer arc = 4pt,
+  colframe = miazul,
   colback = miazul!10!white,
-  colframe = miazul
+  highlight math style = {sharp corners = uphill, arc = 12pt, outer arc = 4pt, colframe = miazul, 
+    colback = miazul!10!white}
 }
+%% configuro un entorno especial para las tablas de resultados y ecuaciones
+\newtcbtheorem{footheorem}{}%
+{enhanced,frame empty,separator sign= ,rounded corners,
+  colframe = miazul!50!white, colback = miazul!5!white,
+  arc = 6pt, 
+  outer arc = 8pt, 
+  borderline = {1.5pt}{0pt}{miazul!15!white},
+  borderline = {1.5pt}{0pt}{miazul!50!white,dashed},
+  fonttitle=\sffamily\bfseries,coltitle=miazul!50!black,colbacktitle = miazul!15!white,
+  attach boxed title to top center = 
+  {yshift=-0.25mm-\tcboxedtitleheight/2,yshifttext=2mm-\tcboxedtitleheight/2}, 
+  boxed title style = {boxrule=0.5mm,
+    frame code = { \path[tcb fill frame] ([xshift=-4mm]frame.west)
+    -- (frame.north west) -- (frame.north east) -- ([xshift=4mm]frame.east)
+    -- (frame.south east) -- (frame.south west) -- cycle; },
+    interior code = { \path[tcb fill interior] ([xshift=-2mm]interior.west)
+    -- (interior.north west) -- (interior.north east)
+    -- ([xshift=2mm]interior.east) -- (interior.south east) -- (interior.south west)
+    -- cycle;}}}{thm}
 
 %%% creación de macros y paquetes personalizados como entornos, por ejemplo
 \RequirePackage[export]{adjustbox}          %% es un paquete que tiene macros útiles para ajustar 'boxed content'. The main feature is the general \adjustbox macro which extends the “key=value” interface of \includegraphics from the graphics package and applies it to general text content.

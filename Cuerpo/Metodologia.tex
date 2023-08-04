@@ -51,7 +51,8 @@ con $A$ la envolvente de las ondas solución de la ecuación \eqref{eq:3.1}.
 La ecuación \eqref{eq:3.3} puede reducirse más simplificando la relación de dispersión del campo eléctrico en el plasma $\omega^{2} = \omega^{2}_{pe} + k^{2}c^{2}\approx k^{2}c^{2}$, puesto que para la emisión de radiación \acrshort{xuv} o rayos X blandos $\lambda<\qty{40}{nm}$ y la densidad electrónica del plasma de kriptón $n_e<\qty{e21}{cm^{-3}}$ se tiene que, por un lado, $\omega_{pe}=n_{e}e^{2}/\epsilon_{0}m_{e}<\qty{1,8e15}{rad/s}$ y, por otra parte, $kc=2 \pi c/\lambda>\qty{4,7e16}{rad/s}$, entonces $\omega^{2} \gg \omega_{pe}^{2}$ y la aproximación de la relación de dispersión estaría justificada, ya que ambos términos difieren como mínimo en dos órdenes de magnitud. 
 
 Para señalar la importancia del concepto de la \acrshort{svea} en la resolución de las \acrshort{mbe} mediante cualquier método numérico, la Figura \ref{fig:3.1} muestra esquemáticamente un pulso cuya envolvente ---del campo eléctrico--- varía lentamente, propagándose en la dirección $z$.
-\begin{figure}[htbp!]
+
+\begin{figure}[htbp]
   \centering
   \begin{subcaptionblock}{.4\textwidth}
     \centering
@@ -63,14 +64,15 @@ Para señalar la importancia del concepto de la \acrshort{svea} en la resolució
     \includegraphics[width=0.8\textwidth]{Figuras/ch3_pulso3d.png}
     \caption{Pulso 3D}\label{fig:3.1b}
   \end{subcaptionblock}%
-  \caption{Representación 2D y 3D de un pulso láser con la aproximación \acrshort{svea}.}
+  \caption{Representación 2D  y 3D  de un pulso láser con la aproximación \acrshort{svea}.}
   \label{fig:3.1}
 \end{figure}
 
 A modo ilustrativo, la Figura \ref{fig:3.1b} del pulso tridimensional ha sido elaborada mediante la escritura del Código \ref{cod:3.1} que recurre a la librería Mayavi de Python para su representación.
+
 \begin{listing}[htbp!]
   \caption{Código escrito para representar una \acrshort{svea} de un pulso 3D.}
-  \inputminted[firstline=1, lastline=32]{python}{Programas/mlaser.py}
+  \inputminted[firstline=1, lastline=33]{python}{Programas/mlaser.py}
   \label{cod:3.1}
 \end{listing}
 
@@ -95,7 +97,7 @@ quedando la ecuación \eqref{eq:3.6} como
 \end{equation}
 Por último, la sustitución de las ecuaciones \eqref{eq:3.5} y \eqref{eq:3.7} en la ecuación \eqref{eq:3.1} permite obtener, tras reagrupar los términos a izquierda ($\symrm{LHS}$) y derecha ($\symrm{RHS}$), respectivamente
 \begin{equation}\label{eq:3.8}
-  \pdv{E_{LR}}{t} \pm c \pdv{E_{LR}}{z} = \frac{\iu c^{2}}{2 \omega}\laplacian_{\perp}E_{LR} + \frac{\iu \omega}{2} \left[\mu_{0}c^{2}P_{LR} - \left(\frac{\omega_{pe}}{\omega}\right)^{2}E_{LR}\right],
+  \tcboxmath{\pdv{E_{LR}}{t} \pm c \pdv{E_{LR}}{z} = \frac{\iu c^{2}}{2 \omega}\laplacian_{\perp}E_{LR} + \frac{\iu \omega}{2} \left[\mu_{0}c^{2}P_{LR} - \left(\frac{\omega_{pe}}{\omega}\right)^{2}E_{LR}\right],}
 \end{equation}
 obteniendo una ecuación en derivadas parciales de segundo orden en el espacio y primer orden en el tiempo con un término fuente $P_{LR}$ función de las coordenadas espaciales y temporales. 
 
@@ -183,25 +185,35 @@ Además, también es posible encontrar otra relación mediante la cuantización 
 \end{equation}
 donde es importante observar, a partir de las ecuaciones \eqref{eq:3.11}, \eqref{eq:3.13a} y \eqref{eq:3.13b} que $\rho_{nm} = \rho^{*}_{mn}$ y, entonces, teniendo en cuenta que el operador $D$ es hermítico, $d_{nm} = d^{*}_{mn}$. Esta igualdad también puede obtenerse a través del producto escalar 
 \begin{equation}\label{eq:3.15}
-d_{nm} = \Xval{n}{D}{m} = -e \int \varphi^{*}_{n}(\hat{\symbf{r}}_{a}) \hat{\symbf{r}}_{a} \varphi_{m}(\hat{\symbf{r}}_{a}) \diff^{3}\hat{r}_{a},
+d_{nm} = \Xval{n}{D}{m} = -e \int_{\symbb{R}^{3}} \varphi^{*}_{n}(\hat{\symbf{r}}_{a}) \hat{\symbf{r}}_{a} \varphi_{m}(\hat{\symbf{r}}_{a}) \diff^{3}\hat{r}_{a},
 \end{equation}
 siendo $\varphi_{n}(\hat{\symbf{r}}_{a})$ y $\varphi_{m}(\hat{\symbf{r}}_{a})$ las funciones de onda asociadas a los estados $\ket{n}$ y $\ket{m}$, con $n, m \in \{1,2\}$ los únicos dos posibles estados atómicos del plasma. 
 
 De este forma, empleando tanto la ecuación \eqref{eq:3.14} como la ecuación \eqref{eq:3.15} pueden determinarse los dos términos del momento dipolar eléctrico.
 Para terminar, combinando las ecuaciones \eqref{eq:3.9}, \eqref{eq:3.13a} y \eqref{eq:3.13b} se obtiene, multiplicando por el término $d_{21}$ que
 \begin{equation}\label{eq:3.16}
-  \pdv{P_{LR}}{t} = \Gamma - \gamma P_{LR} - \frac{\iu d^{2}_{21}}{\hslash }E_{LR}\left(N_{2}-N_{1}\right),
+  \tcboxmath{  \pdv{P_{LR}}{t} = \Gamma - \gamma P_{LR} - \frac{\iu d^{2}_{21}}{\hslash }E_{LR}\left(N_{2}-N_{1}\right),}
 \end{equation}
 siendo $\Gamma$ un término fuente introducido \autocite{Oliva2012} para modelar el comportamiento estocástico de la emisión espontánea, que incorpora el perfil Lorentziano de la línea de emisión del láser empleado mediante una función correlación de desvanecimiento. Las poblaciones podrían calcularse a través de las \acrshort{obe} restantes (no incluidas anteriormente) o, empleando el método utilizado en Dagon, a partir de las ecuaciones de tasas acopladas 
-\begin{align}
-  \label{eq:3.17}
-  \pdv{N_{1}}{t} &= \sum_{i} C_{i1}N_{i} - \frac{1}{2 \hslash }\IM \left(E_{LR}^{*}P_{LR}\right), \\
-  \label{eq:3.18}
+\begin{empheq}[box=\tcbhighmath]{align}
+  \pdv{N_{1}}{t} &= \sum_{i} C_{i1}N_{i} - \frac{1}{2 \hslash }\IM \left(E_{LR}^{*}P_{LR}\right),
+  \label{eq:3.17} \\
   \pdv{N_{2}}{t} &= \sum_{i} C_{i2}N_{i} + \frac{1}{2 \hslash }\IM \left(E_{LR}^{*}P_{LR}\right),
-\end{align}
+  \label{eq:3.18}
+\end{empheq}
 con el sumatorio recorriendo todos los niveles energéticos que participan en las transiciones desde un nivel $i$ hasta los dos estados, incluidas las transiciones entre ambos $i \in \left\{1, 2\right\}$, y donde $C_{ik}$ representa las tasas de excitación y desexcitación del sistema debidas tanto a colisiones como a emisión de radiación. Las poblaciones para los niveles $i \notin \left\{1,2\right\}$ y sus tasas se extraen del código OfiKinRad para emplear como entrada de Dagon, como se explicará durante la sección \S\ref{sec:3.2}. 
 
 A modo de síntesis, el esquema de las \acrshort{mbe} formalmente está constituido por el sistema de ecuaciones \eqref{eq:3.8}, \eqref{eq:3.16}, \eqref{eq:3.17} y \eqref{eq:3.18} donde aparecen el campo eléctrico, polarización y poblaciones acoplados entre sí, permitiendo tras su resolución conocer la dinámica de evolución del campo eléctrico de la semilla de \acrshort{hh} inyectada a través del plasma.
+
+\begin{footheorem*}{Ecuaciones de Maxwell-Bloch}
+  \begin{align*}
+    \pdv{E_{LR}}{t} \pm c \pdv{E_{LR}}{z} &= \frac{\iu c^{2}}{2 \omega}\laplacian_{\perp}E_{LR} + \frac{\iu \omega}{2} \left[\mu_{0}c^{2}P_{LR} - \left(\frac{\omega_{pe}}{\omega}\right)^{2}E_{LR}\right], \\
+    \pdv{P_{LR}}{t} &= \Gamma - \gamma P_{LR} - \frac{\iu d^{2}_{21}}{\hslash }E_{LR}
+    \left(N_{2}-N_{1}\right), \\
+    \pdv{N_{1}}{t} &= \sum_{i} C_{i1}N_{i} - \frac{1}{2 \hslash }\IM \left(E_{LR}^{*}P_{LR}\right), \\
+    \pdv{N_{2}}{t} &= \sum_{i} C_{i2}N_{i} + \frac{1}{2 \hslash }\IM \left(E_{LR}^{*}P_{LR}\right).
+  \end{align*}
+\end{footheorem*}
 
 \section{Esquema computacional}\label{sec:3.2}
 Los parámetros de entrada sobre el estado del plasma en el momento de la amplificación necesarios para iniciar Dagon proceden de un código llamado OfiKinRad (OFK). Este código simula la interacción a escala atómica de los constituyentes del plasma, aportando datos sobre la temperatura de los electrones, su densidad, la ionización media, la ganancia y las tasas de colisiones entre iones y electrones.
