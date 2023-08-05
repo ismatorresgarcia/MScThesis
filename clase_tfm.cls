@@ -134,26 +134,26 @@
 % \definecolor{codmorado}{rgb}{0.58,0,0.82}
 \RequirePackage{empheq}        %% para utilizarlo en simbiosis junto a 'tcolorbox' y crear cajas de ecuaciones con varias líneas
 \RequirePackage{tcolorbox}     %% para hacer recuadros muy bonitos de colores con texto y matemáticas
-\tcbuselibrary{skins,theorems} %% cargo las librerías que necesito 
+\tcbuselibrary{skins,theorems} %% cargo las librerías que necesito (p. ej. carga paquete 'minted')
 %% opciones de 'tcolorbox' para los recuadros de ecuaciones
 \tcbset{
-  sharp corners = uphill,
+  sharp corners = north,
   arc = 12pt,
   outer arc = 4pt,
-  colframe = miazul,
+  colframe = miazul!80!white,
   colback = miazul!10!white,
-  highlight math style = {sharp corners = uphill, arc = 12pt, outer arc = 4pt, colframe = miazul, 
+  highlight math style = {sharp corners = north, arc = 12pt, outer arc = 4pt, colframe = miazul!80!white, 
     colback = miazul!10!white}
 }
 %% configuro un entorno especial para las tablas de resultados y ecuaciones
 \newtcbtheorem{footheorem}{}%
 {enhanced,frame empty,separator sign= ,rounded corners,
-  colframe = miazul!50!white, colback = miazul!5!white,
+  colframe = mimorado!50!white, colback = miazul!10!white,
   arc = 6pt, 
   outer arc = 8pt, 
-  borderline = {1.5pt}{0pt}{miazul!15!white},
-  borderline = {1.5pt}{0pt}{miazul!50!white,dashed},
-  fonttitle=\sffamily\bfseries,coltitle=miazul!50!black,colbacktitle = miazul!15!white,
+  borderline = {1.5pt}{0pt}{mimorado!10!white},
+  borderline = {1.5pt}{0pt}{mimorado!50!white,dashed},
+  fonttitle=\sffamily\bfseries,coltitle=mimorado!80!black,colbacktitle = mimorado!10!white,
   attach boxed title to top center = 
   {yshift=-0.25mm-\tcboxedtitleheight/2,yshifttext=2mm-\tcboxedtitleheight/2}, 
   boxed title style = {boxrule=0.5mm,
@@ -201,20 +201,27 @@
 %% el código dentro del entorno \begin{minted}{lenguaje} \end{minted}
 %% con \inputminted{opciones}{lenguaje}{archivo.extensión} puedes introducir el código de programas guardados
 %% los comandos para el nombre de leyendas y el índice de códigos son \listingscaption y \listloflistingscaption
-%% (solo si la opción 'newfloat' no está cargada). 'minted' utiliza una librería externa llamada 'Pygment' para
-%% resaltar la sintaxis (un programa de python)
-\RequirePackage[newfloat]{minted}             %% 'newfloat' es parte del paquete 'caption'
-\usemintedstyle{emacs}                        %% estilo predeterminado de 'minted' con 'Pygment' 
-\setminted{                                   %% opciones globales para el formato del código
-  frame = lines,
-  framesep = 2mm,
-  baselinestretch = 1.0,
-  bgcolor = colorfondo,
-  fontsize = \footnotesize,
+%% (solo si la opción 'newfloat' no está cargada). 'minted' utiliza una librería externa llamada 'Pygment' para resaltar la sintaxis (un programa de python)
+\RequirePackage[newfloat=true]{minted}      %% 'newfloat' es parte del paquete 'caption'
+\setminted{
+  style=colorful,
+  autogobble,
+  frame=lines,
+  framesep=2mm,
+  framerule=0.8pt,
+  baselinestretch=1.0,
+  breaklines,
   linenos,
+  numbersep=5pt,
+  bgcolor=miazul!10!white,
+  rulecolor=miazul!80!white,
+  fontsize=\footnotesize
 }
+%%% cambio el estilo de los números de las líneas de código con 'minted'
+\renewcommand*{\theFancyVerbLine}{\sffamily\color{mimorado}{\scriptsize \oldstylenums{\arabic{FancyVerbLine}}}}                       
 %%% cambio el nombre que usa 'caption' para la leyenda y el índice con la opción 'newfloat' de 'minted'
 \SetupFloatingEnvironment{listing}{name=Código}    
+\SetupFloatingEnvironment{listing}{placement=htbp}
 \SetupFloatingEnvironment{listing}{listname=Índice de códigos}
   
 %%% PDF

@@ -133,16 +133,51 @@ Nuevamente, queda demostrado que desde su creación en $1960$ por Maiman, los l�
 Para detallar y completar el proceso de interacción radiación-materia, desde una perspectiva más general (como se prometió al principio de esta sección \S\ref{sec:1.1.1}), y prestando atención a las condiciones necesarias para conseguir la amplificación, el siguiente apartado presenta un análisis más exhaustivo. 
 
 \paragraph{Condiciones para la amplificación}
+La aproximación más sencilla \autocite{Schwartz2013} para cuantificar los procesos de interacción entre la luz y la materia emplea los conocidos \emph{coeficientes de Einstein}. Estos coeficientes proporcionan las tasas de emisión y absorción de luz por parte de un átomo (o iones, moléculas, etc.) excitado. Estos fenómenos ya habían sido observados a principios del siglo $\symrm{XX}$ en reacciones químicas y en la radiactividad natural, pero la relación entre la emisión y absorción apareció de la mano de Einstein (como se adelantó en la sección \S\ref{sec:1.1.1}) en dos artículos \autocite{Einstein1916,Einstein1916a} publicados en $1916$ utilizando la incipiente teoría cuántica.
 
-\begin{equation}\label{eq:1.1}
-  \tcboxmath{\nu_{0} = \frac{E_{2}-E_{1}}{h}}
+El razonamiento de Einstein seguía esta idea: en una cavidad (por ejemplo, de Fabry-Perot para un láser) en cuyo interior hay átomos con energías $E_{1}$ y $E_{2}$, y un número de átomos $N_{1}$ y $N_{2}$, respectivamente, tal que 
+\begin{equation}\label{eq:2}
+  \tcboxmath{\omega = \frac{E_{2}-E_{1}}{\hslash },}
 \end{equation}
+la probabilidad de emitir espontáneamente un fotón de frecuencia $\omega$ cuando un átomo evoluciona del estado de mayor a menor energía es conocida como \emph{coeficiente de emisión de espontánea} $A_{21}$. Por otro lado, la probabilidad de un fotón de inducir la transición $2 \rightarrow 1$ es proporcional al \emph{coeficiente de emisión estimulada} $B_{21}$ y a la densidad de energía espectral $\rho(\omega)$ de los fotones de frecuencia $\omega$ dentro de la cavidad. Estos coeficientes contribuyen a la variación de átomos en el nivel superior de la forma
+\begin{equation}\label{eq:2.1}
+  \diff N_{2} = -\left[A_{21} + B_{21} \rho(\omega)\right]N_{2} + \cdots .
+\end{equation}
+En cambio, la probabilidad de un fotón de inducir la transición $1 \rightarrow 2$ se denomina \emph{coeficiente de absorción} $B_{12}$, disminuyendo la población del nivel inferior e incrementando la del superior debido a la absorción en un factor $B_{12} \rho(\omega)N_{1}$. Como el número total de átomos es constante en este sistema, $\diff N_{2}+\diff N_{1}=0$, por tanto,
+\begin{equation}\label{eq:2.2}
+  \diff N_{2} = -\diff N_{1} = -\left[A_{21} + B_{21} \rho(\omega)\right]N_{2} + B_{12} \rho(\omega)N_{1}.
+\end{equation}
+La densidad $\rho(\omega)$ podría corresponderse con la energía de un haz láser penetrando a través del medio activo en el interior de una cavidad. En este punto, Einstein asume una situación de equilibrio de los átomos bajo la hipótesis del cuerpo negro. En equilibrio, las poblaciones son constantes, $\diff N_{1} = \diff N_{2} = 0$ y pueden calcularse a partir de una distribución de Boltzmann \autocite{Feynman2011}
+\begin{equation}\label{eq:2.3}
+  N_{1} = N \eu^{-\beta E_{1}}, \quad N_{2} = N \eu^{-\beta E_{2}},
+\end{equation}
+con $\beta = 1/k_{B}T$ y $N$ un factor para renormalizar la función de probabilidad asociada a ambos niveles a la unidad. Empleando la condición de equilibrio y la ecuación \eqref{eq:2.3} se tiene
+\begin{equation}\label{eq:2.4}
+  \left[B_{12}\eu^{-\beta E_{1}}-B_{21}\eu^{-\beta E_{2}}\right] \rho(\omega) = A_{21}\eu^{-\beta E_{2}},
+\end{equation}
+y despejando la densidad de energía
+\begin{equation}\label{eq:2.5}
+  \rho(\omega) = \frac{A_{21}}{B_{12}\eu^{\hslash \beta \omega} - B_{21}}.
+\end{equation}
+Sin embargo, el cuerpo negro en equilibrio tiene una densidad de energía \autocite{Milonni1988}
+\begin{equation}\label{eq:2.6}
+  \rho(\omega) = \frac{h}{\pi^{2}}\frac{\omega^{3}}{\eu^{\hslash \beta \omega} - 1},
+\end{equation}
+y la condición de equilibrio debe cumplirse para cualquier temperatura, por lo que las ecuaciones \eqref{eq:2.5} y \eqref{eq:2.6} implican que
+\begin{align}
+  \label{eq:2.7a}
+  B_{12} &= B_{21}, \\
+  \label{eq:2.7b}
+  \frac{A_{21}}{B_{21}} &= \frac{h}{\pi^{2}} \omega^{3}.
+\end{align}
+
+Las implicaciones de estos resultados son considerablemente importantes. En primer lugar, la ecuación \eqref{eq:2.7a} dice que los coeficientes de absorción y emisión estimulada son iguales. Estos coeficientes pueden calcularse en mecánica cuántica \autocite{Sakurai2020} con relativa facilidad utilizando métodos perturbativos con un campo electromagnético externo, luego el coeficiente de emisión espontánea quedaría determinado. En segundo lugar, la ecuación \eqref{eq:2.7b} implica que para grandes frecuencias $\omega$, la emisión espontánea domina frente a la emisión estimulada, haciendo más difícil conseguir un láser para frecuencias muy elevadas.
 
 \subsection{Propiedades ópticas}\label{sec:1.1.2}
 La radiación emitida por un láser está caracterizada principalmente por una alta monocromaticidad, coherencia, direccionalidad e intensidad. A estas propiedades puede añadirse una quinta relacionada con la duración de la emisión\autocite{Svelto2010}. Esta última hace referencia a la capacidad de generar pulsos de muy corta duración, propiedad que, aunque menos fundamental, tiene gran importancia en muchas aplicaciones. 
 
 \paragraph{Monocromaticidad}\label{par:1.1.2.1}
-De forma simplificada, esta propiedad se debe fundamentalmente a dos motivos: en primer lugar, solamente una onda electromagnética de frecuencia $\nu_0$ dada por \eqref{eq:1.1} puede ser amplificada y, en segundo lugar, como los esquemas de espejos utilizados forman una cavidad resonante, las oscilaciones pueden producirse únicamente a las frecuencias de resonancia de esta cavidad. Esta última circunstancia implica que el ancho de banda $\Delta\nu$ de la emisión láser es habitualmente mucho menor ---hasta diez órdenes de magnitud--- que el ancho de banda observado en la transición $2\rightarrow 1$ durante la emisión espontánea asociada.
+De forma simplificada, esta propiedad se debe fundamentalmente a dos motivos: en primer lugar, solamente una onda electromagnética de frecuencia $\nu=\omega/2 \pi$ dada por \eqref{eq:1.1} puede ser amplificada y, en segundo lugar, como los esquemas de espejos utilizados forman una cavidad resonante, las oscilaciones pueden producirse únicamente a las frecuencias de resonancia de esta cavidad. Esta última circunstancia implica que el ancho de banda $\Delta\nu$ de la emisión láser es habitualmente mucho menor ---hasta diez órdenes de magnitud--- que el ancho de banda observado en la transición $2\rightarrow 1$ durante la emisión espontánea asociada.
 
 Por ejemplo, las últimas propuestas de láseres de Fabry-Perot para la fabricación de circuitos integrados \autocite{Tran2022}, emplean frecuencias de \qty{300}{THz} ($\lambda = \qty{980}{nm}$) con anchos de banda $\Delta\nu = \qty{10}{kHz}$, resultando una anchura relativa para la frecuencia de emisión $\Delta\nu/\nu = 3,33\times 10^{-11}$. El espectro de la emisión láser tiene una alta pureza, como ilustra la Figura \ref{fig:ch1_amplif}, consiguiéndose reducir la dispersión a través de un medio de propagación dado y mejorando la focalización del haz, ya que el índice de refracción depende de la longitud de onda emitida.
 
@@ -236,9 +271,9 @@ Con láseres de mayor potencia, como el láser de \ce{Nd{:}cristal}, que puede a
 De esta manera, el concepto de luminosidad deja patente la existencia de grandes diferencias entre las fuentes de radiación convencionales y los láseres. Incluso atenuando la luminosidad del láser \ce{He-Ne} hasta alcanzar el valor de la radiación solar y, por otro lado, colimando y filtrando la radiación solar hasta alcanzar la direccionalidad y el ancho de banda del láser \ce{He-Ne}, podrían distinguirse ambas fuentes, contando los fotones emitidos para detectar pequeñas fluctuaciones estadísticas debidas a la naturaleza cuántica de la luz. 
 
 \paragraph{Duración}\label{par:1.1.2.5}
-Esta propiedad está relacionada con la monocromaticidad explicada en la sección \S\ref{par:1.1.2.1}. La duración de un pulso láser determina su densidad de energía en el tiempo, que puede considerarse inversamente proporcional a la densidad de energía en la longitud de onda, esto es, su monocromaticidad\autocite{Svelto2010}. Teóricamente, cualquier tipo de láser puede ser tan monocromático como sea necesario, pero los pulsos de muy corta duración solo pueden generarse, por ejemplo, en láseres de estado sólido o láseres de líquido, donde el ancho de banda es suficientemente amplio.
+Esta propiedad está relacionada con la monocromaticidad explicada en la sección \S\ref{par:1.1.2.1}. La duración de un pulso láser determina su densidad de energía en el tiempo, que puede considerarse inversamente proporcional a la densidad de energía en la longitud de onda, esto es, su monocromaticidad\autocite{Svelto2010}. Teóricamente, cualquier tipo de láser puede ser tan monocromático como sea necesario, pero los pulsos de muy corta duración solo pueden generarse (sin emplear técnicas adicionales), por ejemplo, en láseres de estado sólido o láseres de líquido, donde el ancho de banda es suficientemente amplio.
 
-Empleando una técnica ---habitual en algunos láseres con pulsos ultracortos--- conocida como \emph{mode locking} que, sin entrar en profundidad en este método, consiste en establecer una relación fija entre las fases de los modos longitudinales de oscilación que se forman en la cavidad resonante, es posible producir pulsos de luz con una duración aproximadamente igual al inverso del ancho de banda para la transición $2 \rightarrow 1$. Por ejemplo, en láseres de gas, cuyo ancho de banda es relativamente pequeño, la duración del pulso puede ser $\sim\qty{0,1}{ns}-\qty{1}{ns}$. Esta duración no es especialmente corta teniendo en cuenta que algunas lámparas flash pueden emitir pulsos de luz inferiores a \qty{1}{ns}. Por otra parte, el ancho de banda de algunos láseres de estados sólido o láseres de líquido puede ser $10^3-10^5$ veces mayor que en los láseres de gas, generando pulsos extremadamente cortos (hasta $\sim\qty{10}{fs}$).
+Empleando la técnica \emph{mode locking} ---habitual en muchos láseres de pulsos ultracortos--- comentada en la sección \S\ref{sec:1.1.1}, es posible producir pulsos de luz con una duración aproximadamente igual al inverso del ancho de banda para la transición $2 \rightarrow 1$. Por ejemplo, en láseres de gas, cuyo ancho de banda es relativamente pequeño, la duración del pulso puede ser $\sim\qty{0,1}{ns}-\qty{1}{ns}$. Esta duración no es especialmente corta teniendo en cuenta que algunas lámparas flash pueden emitir pulsos de luz inferiores a \qty{1}{ns}. Por otra parte, el ancho de banda de algunos láseres de estados sólido o láseres de líquido puede ser $10^3-10^5$ veces mayor que en los láseres de gas, generando pulsos extremadamente cortos (hasta $\sim\qty{10}{fs}$).
 
 La longitud de onda y la duración del pulso tienen especial importancia en muchas aplicaciones tecnológicas y en investigación, por ejemplo, en la reconstrucción de imágenes tridimensionales de moléculas\autocite{vonArdenne2018}, bacterias o virus\autocite{Ekeberg2015}, donde la resolución necesaria para visualizar escalas extremadamente pequeñas requiere longitudes de onda de nanómetros ($\sim\qty{e-9}{m}$) o ángstroms ($\sim\qty{e-10}{m}$) y pulsos con duraciones de femtosegundos ($\sim\qty{e-15}{s}$) o incluso attosegundos ($\sim\qty{e-18}{s}$). Estas técnicas están basadas en formar cientos de patrones de difracción entre el pulso láser y el blanco objeto de estudio, para después emplear métodos de análisis de Fourier que permiten obtener imágenes tridimensionales a partir de los patrones de difracción bidimensionales, como muestra la Figura \ref{fig:ch1_pulso}.
 
