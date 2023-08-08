@@ -77,9 +77,9 @@ En el segundo paso, conviene suponer que cuando el haz de luz llega al medio act
 
 En la naturaleza, normalmente, los electrones ligados a un átomo (o los propios átomos, partículas cargadas, núcleos atómicos, moléculas, etc.) tienen sus niveles de energía ocupados siguiendo las leyes de la mecánica (del equilibrio) estadística. En esta situación de equilibrio termodinámico, la relación entre las poblaciones de estos niveles viene dada por la ley de Boltzmann \autocite{Feynman2011}
 \begin{equation}\label{eq:1.0}
-  N_{2}/N_{1} =  \eu^{-(E_{2}-E_{1})/k_{B}T} < 1, 
+  \frac{N_{2}}{N_{1}} = \exp \left(-\frac{E_{2}-E_{1}}{k_{B}T}\right) < 1, 
 \end{equation}
-entre el número de electrones $N_{2}$ en el estado $\ket{2}$ y el número de electrones $N_{1}$ en el estado $\ket{1}$. En la ecuación \eqref{eq:1.0}, $T$ es la temperatura, por ejemplo, de un grupo de moléculas, $k_{B}$ es la constante de Boltzmann, y por simplicidad los estados se asumen no degenerados (con distintos niveles de energía cada uno), aunque esta simplificación desaparecerá más adelante. Como el número de electrones en el estado inferior $\ket{1}$ es mayor que en el estado superior $\ket{2}$, un haz de luz en camino sufrirá más absorción que emisión estimulada.
+entre el número de electrones $N_{2}$ en el estado $\ket{2}$ y el número de electrones $N_{1}$ en el estado $\ket{1}$. En la ecuación \eqref{eq:1.0}, $T$ es la temperatura, por ejemplo, de un grupo de moléculas, $k_{B}$ es la constante de Boltzmann, y por simplicidad los estados se asumen no degenerados (un solo estado posible para cada nivel de energía), aunque esta simplificación desaparecerá más adelante. Como el número de electrones en el estado inferior $\ket{1}$ es mayor que en el estado superior $\ket{2}$, un haz de luz en camino sufrirá más absorción que emisión estimulada.
 
 En cambio, en ocasiones puede presentarse la situación contraria en la naturaleza o en un laboratorio, encontrándose un grupo de átomos en una \emph{inversión de población} con $N_{2} > N_{1}$. Ambos estados tendrían una \enquote{temperatura negativa} respecto al otro. La luz que se propaga a través de medios con una inversión de población experimenta más emisión estimulada que absorción, amplificándose en el proceso. El resultado es la amplificación de luz por emisión estimulada de radiación, o efecto \enquote{láser}.
 
@@ -136,42 +136,133 @@ Para detallar y completar el proceso de interacción radiación-materia, desde u
 La aproximación más sencilla \autocite{Schwartz2013} para cuantificar los procesos de interacción entre la luz y la materia emplea los conocidos \emph{coeficientes de Einstein}. Estos coeficientes proporcionan las tasas de emisión y absorción de luz por parte de un átomo (o iones, moléculas, etc.) excitado. Estos fenómenos ya habían sido observados a principios del siglo $\symrm{XX}$ en reacciones químicas y en la radiactividad natural, pero la relación entre la emisión y absorción apareció de la mano de Einstein (como se adelantó en la sección \S\ref{sec:1.1.1}) en dos artículos \autocite{Einstein1916,Einstein1916a} publicados en $1916$ utilizando la incipiente teoría cuántica.
 
 El razonamiento de Einstein seguía esta idea: en una cavidad (por ejemplo, de Fabry-Perot para un láser) en cuyo interior hay átomos con energías $E_{1}$ y $E_{2}$, y un número de átomos $N_{1}$ y $N_{2}$, respectivamente, tal que 
-\begin{equation}\label{eq:2}
-  \tcboxmath{\omega = \frac{E_{2}-E_{1}}{\hslash },}
+\begin{equation}\label{eq:2.0}
+  \nu = \frac{E_{2}-E_{1}}{h},
 \end{equation}
-la probabilidad de emitir espontáneamente un fotón de frecuencia $\omega$ cuando un átomo evoluciona del estado de mayor a menor energía es conocida como \emph{coeficiente de emisión de espontánea} $A_{21}$. Por otro lado, la probabilidad de un fotón de inducir la transición $2 \rightarrow 1$ es proporcional al \emph{coeficiente de emisión estimulada} $B_{21}$ y a la densidad de energía espectral $\rho(\omega)$ de los fotones de frecuencia $\omega$ dentro de la cavidad. Estos coeficientes contribuyen a la variación de átomos en el nivel superior de la forma
+la probabilidad de emitir espontáneamente un fotón de frecuencia $\nu$ cuando un átomo evoluciona del estado de mayor a menor energía es conocida como \emph{coeficiente de emisión de espontánea} $A_{21}$. Por otro lado, la probabilidad de un fotón de inducir la transición $2 \rightarrow 1$ es proporcional al \emph{coeficiente de emisión estimulada} $B_{21}$ y a la densidad de energía espectral $\rho(\nu)$ (proporcional al número de fotones) de los fotones de frecuencia $\nu$ dentro de la cavidad. Estos coeficientes contribuyen al cambio de la población del nivel superior tal que 
 \begin{equation}\label{eq:2.1}
-  \diff N_{2} = -\left[A_{21} + B_{21} \rho(\omega)\right]N_{2} + \cdots .
+  \diff N_{2} = -\left[A_{21} + B_{21} \rho(\nu)\right]N_{2} + \cdots.
 \end{equation}
-En cambio, la probabilidad de un fotón de inducir la transición $1 \rightarrow 2$ se denomina \emph{coeficiente de absorción} $B_{12}$, disminuyendo la población del nivel inferior e incrementando la del superior debido a la absorción en un factor $B_{12} \rho(\omega)N_{1}$. Como el número total de átomos es constante en este sistema, $\diff N_{2}+\diff N_{1}=0$, por tanto,
+En cambio, la probabilidad de un fotón de inducir la transición $1 \rightarrow 2$ se denomina \emph{coeficiente de absorción} $B_{12}$, disminuyendo la población del nivel inferior e incrementando la del superior debido a la absorción en un factor $B_{12} \rho(\nu)N_{1}$. Como el número total de átomos es constante en este sistema, $\diff N_{2}+\diff N_{1}=0$, por tanto,
 \begin{equation}\label{eq:2.2}
-  \diff N_{2} = -\diff N_{1} = -\left[A_{21} + B_{21} \rho(\omega)\right]N_{2} + B_{12} \rho(\omega)N_{1}.
+  \diff N_{2} = -\diff N_{1} = -\left[A_{21} + B_{21} \rho(\nu)\right]N_{2} + B_{12} \rho(\nu)N_{1}.
 \end{equation}
-La densidad $\rho(\omega)$ podría corresponderse con la energía de un haz láser penetrando a través del medio activo en el interior de una cavidad. En este punto, Einstein asume una situación de equilibrio de los átomos bajo la hipótesis del cuerpo negro. En equilibrio, las poblaciones son constantes, $\diff N_{1} = \diff N_{2} = 0$ y pueden calcularse a partir de una distribución de Boltzmann \autocite{Feynman2011}
-\begin{equation}\label{eq:2.3}
-  N_{1} = N \eu^{-\beta E_{1}}, \quad N_{2} = N \eu^{-\beta E_{2}},
-\end{equation}
-con $\beta = 1/k_{B}T$ y $N$ un factor para renormalizar la función de probabilidad asociada a ambos niveles a la unidad. Empleando la condición de equilibrio y la ecuación \eqref{eq:2.3} se tiene
+La densidad $\rho_{\nu}$ podría corresponderse con la energía de un haz láser penetrando a través del medio activo en el interior de una cavidad. En este punto, Einstein asume una situación de equilibrio de los átomos bajo la hipótesis del cuerpo negro. En equilibrio, las poblaciones son constantes, $\diff N_{1} = \diff N_{2} = 0$, y pueden calcularse a partir de la distribución de Maxwell-Boltzmann \autocite{Feynman2011} 
+\begin{align}
+  \label{eq:2.3a}
+  N_{1} &= N \eu^{-\beta E_{1}}, \\
+  \label{eq:2.3b}
+  N_{2} &= N \eu^{-\beta E_{2}}.
+\end{align}
+En las ecuaciones \eqref{eq:2.3a} y \eqref{eq:2.3b}, el factor $\beta = 1/(k_{B}T)$, mientras que $N$ es un factor para normalizar la función de probabilidad asociada a ambos estados a la unidad. Para obtener una relación del equilibrio entre poblaciones, basta combinar la condición de equilibrio entre los dos niveles junto a la estadística de Maxwell-Boltzmann, obteniendo 
 \begin{equation}\label{eq:2.4}
-  \left[B_{12}\eu^{-\beta E_{1}}-B_{21}\eu^{-\beta E_{2}}\right] \rho(\omega) = A_{21}\eu^{-\beta E_{2}},
+  \left[B_{12}\eu^{-\beta E_{1}}-B_{21}\eu^{-\beta E_{2}}\right] \rho(\nu) = A_{21}\eu^{-\beta E_{2}},
 \end{equation}
-y despejando la densidad de energía
+y despejando la densidad de energía, empleando la ecuación \eqref{eq:2.0}
 \begin{equation}\label{eq:2.5}
-  \rho(\omega) = \frac{A_{21}}{B_{12}\eu^{\hslash \beta \omega} - B_{21}}.
+  \rho(\nu) = \frac{A_{21}}{B_{12}\eu^{h \nu/(k_{B}T)} - B_{21}}.
 \end{equation}
-Sin embargo, el cuerpo negro en equilibrio tiene una densidad de energía \autocite{Milonni1988}
+Sin embargo, el cuerpo negro en equilibrio tiene una densidad espectral de energía \autocite{Feynman2011}
 \begin{equation}\label{eq:2.6}
-  \rho(\omega) = \frac{h}{\pi^{2}}\frac{\omega^{3}}{\eu^{\hslash \beta \omega} - 1},
+  \rho(\nu) = \frac{8 \pi h \nu^{3}}{c^{3}}\frac{1}{\eu^{h \nu/(k_{B}T)} - 1},
 \end{equation}
-y la condición de equilibrio debe cumplirse para cualquier temperatura, por lo que las ecuaciones \eqref{eq:2.5} y \eqref{eq:2.6} implican que
+y la condición de equilibrio debe cumplirse para cualquier temperatura en el interior de la cavidad, por lo que comparando las ecuaciones \eqref{eq:2.5} y \eqref{eq:2.6} los coeficientes deben cumplir
 \begin{align}
   \label{eq:2.7a}
   B_{12} &= B_{21}, \\
   \label{eq:2.7b}
-  \frac{A_{21}}{B_{21}} &= \frac{h}{\pi^{2}} \omega^{3}.
+  \frac{A_{21}}{B_{21}} &= \frac{8 \pi h \nu^{3}}{c^{3}}.
 \end{align}
+Las implicaciones de estos resultados son considerablemente importantes. En primer lugar, la ecuación \eqref{eq:2.7a} dice que los coeficientes de absorción y emisión estimulada son iguales. Estos coeficientes pueden calcularse en mecánica cuántica \autocite{Sakurai2020} con relativa facilidad utilizando métodos perturbativos en presencia de un campo electromagnético externo, luego el coeficiente de emisión espontánea $A_{21}$ quedaría determinado. En segundo lugar, la ecuación \eqref{eq:2.7b} implica que para grandes frecuencias, la emisión espontánea domina frente a la emisión estimulada, haciendo más difícil conseguir un láser para frecuencias muy elevadas. 
 
-Las implicaciones de estos resultados son considerablemente importantes. En primer lugar, la ecuación \eqref{eq:2.7a} dice que los coeficientes de absorción y emisión estimulada son iguales. Estos coeficientes pueden calcularse en mecánica cuántica \autocite{Sakurai2020} con relativa facilidad utilizando métodos perturbativos con un campo electromagnético externo, luego el coeficiente de emisión espontánea quedaría determinado. En segundo lugar, la ecuación \eqref{eq:2.7b} implica que para grandes frecuencias $\omega$, la emisión espontánea domina frente a la emisión estimulada, haciendo más difícil conseguir un láser para frecuencias muy elevadas.
+Además, este último hecho motiva la extrema dificultad de la amplificación de láseres de rayos X blandos, como mostrará la sección \S\ref{sec:1.4}, necesitando emplear métodos de bombeo que depositen grandes cantidades de energía, suficientes para conseguir una inversión de población que \enquote{compense} las bajas frecuencias de la radiación \acrshort{xuv}. 
+
+Ahora bien, la situación general tiene que considerar la posibilidad de que los estados involucrados en la transición sean degenerados, por lo que hay introducir la multiplicidad de estados posibles con la misma energía, de forma que ahora la ecuación \eqref{eq:1.0} es
+\begin{equation}\label{eq:2.8}
+  \frac{N_{2}}{N_{1}} = \frac{g_{2}}{g_{1}}\exp \left(-\frac{E_{2}-E_{1}}{k_{B}T}\right), 
+\end{equation}
+con $N_{2}$ y $N_{1}$ las poblaciones de los niveles con energías $E_{2}$ y $E_{1}$, respectivamente, donde $g_{2}$ y $g_{1}$ son el número de estados (pueden entenderse como subniveles de igual energía) posibles con dichas energías. En este caso, la inversión de población necesita que \autocite{Tallents2003}
+\begin{equation}\label{eq:2.9}
+  \tcboxmath{\frac{N_{2}}{g_{2}} > \frac{N_{1}}{g_{1}},}
+\end{equation}
+pues la función exponencial está acotada superiormente por $1$ para temperaturas positivas del medio activo. 
+
+La consideración de estados degenerados tiene la ventaja de eliminar la noción de temperatura \enquote{negativa} que aparecía de forma natural cuando cada energía tenía un solo estado asociado posible (aunque una temperatura negativa no tiene sentido físicamente, porque la distribución de Boltzmann solo es válida para un medio en equilibrio termodinámico), pero ahora la degeneración de los estados involucrados es la relación que determina la posibilidad de conseguir la inversión.
+
+Rápidamente, a partir de la ecuación \eqref{eq:2.8} se deduce que si las poblaciones están en equilibrio, es imposible tener una inversión de población entre ambos estados. Las relaciones entre los coeficientes de Einstein quedan como 
+\begin{empheq}[box=\tcbhighmath]{align}
+  \label{eq:2.10a}
+  g_{1}B_{12} &= g_{2}B_{21}, \\
+  \label{eq:2.10b}
+  \frac{A_{21}}{B_{21}} &= \frac{8 \pi h \nu^{3}}{c^{3}},
+\end{empheq}
+luego los coeficientes de absorción y emisión estimulada de radiación no son, en general, iguales cuando los estados que participan en la transición láser son degenerados, recuperándose la ecuación \eqref{eq:2.7a} cuando cada nivel de energía pertenece a un único estado.
+
+\paragraph{Coeficiente de ganancia}
+El coeficiente de absorción $\mu$ de cualquier sustancia tiene un carácter fuertemente dependiente de la frecuencia de la luz que interacciona con el medio absorbente, es decir, existen regiones del espectro de frecuencias donde la absorción puede ser muy intensa, o no producirse en absoluto. Exactamente la misma dependencia ocurre durante el proceso de emisión estimulada, como mostraba la dependencia de la frecuencia de la densidad espectral de energía $\rho(\nu)$ en el interior de la cavidad. Para estudiar el proceso de amplificación de la luz láser, conviene definir un \emph{coeficiente de ganancia} $G(\nu) = +|\mu(\nu)|$ (simplemente consiste en el coeficiente de atenuación $\mu$ cambiado de signo) para reflejar esta naturaleza espectral.
+
+La emisión espontánea es un proceso puramente estocástico (aleatorio) en la dirección, fase, polarización y frecuencia de los fotones emitidos. La aleatoriedad de las frecuencias emitidas sigue una distribución (normalizada a la unidad bajo integración) o \emph{función de línea} $f(\nu)$, cuya expresión depende de los procesos de interacción dominantes ocurridos en el medio activo. Cuando los choques entre las partículas constituyentes del medio activo son el fenómeno más importante (llamado \emph{ensanchamiento colisional}) que determina la amplitud del perfil de frecuencias, la emisión describe una función \enquote{de Lorentz} dada por \autocite{Milonni1988,Tallents2003,Svelto2010}
+\begin{equation}\label{eq:2.10}
+  f_{L}(\nu) = \frac{2}{\pi \Delta \nu_{L}}\frac{1}{1 + \left(4 \nu^{2}/(\Delta \nu_{L})^{2}\right)},
+\end{equation}
+donde $\Delta \nu_{L}$ es la diferencia de frecuencias (ancho de banda) tal que el valor de la distribución es exactamente la mitad de su valor máximo en los extremos de dichas frecuencias, el máximo ancho de banda para la mitad del pico máximo producido, habitualmente conocido como \emph{\acrfull{fwhm}}, representado en la fig. 
+
+Por otro lado, en un plasma, cuando la energía térmica del movimiento oscilatorio de las partículas, es decir, la temperatura, es dominante (como sucede con los iones del plasma empleado en este proyecto, ver sección \S\ref{1.4}), la función de línea $f_{D}(\nu)$ sigue una distribución Gaussiana, debida al efecto Doppler de la luz emitida por los iones en su movimiento térmico (llamado \emph{ensanchamiento Doppler})  cuando la velocidad de los iones está descrita por una distribución de Maxwell, pudiendo escribir \autocite{Tallents2003,Milonni1988,Oliva2010}
+\begin{equation}\label{eq:2.11}
+f_{D}(\nu) = \frac{2}{\Delta \nu_{D}} \left(\frac{\ln 2}{\pi}\right)^{1/2} \exp \left(-4 \ln(2) \frac{\nu^{2}}{(\Delta \nu_{D})^{2}}\right),
+\end{equation}
+con $\Delta \nu_{D}$ el \acrshort{fwhm} del perfil de línea $f_{D}(\nu)$. En este caso, $\Delta \nu_{D}$ depende de la temperatura $T_{i}$ de los iones involucrados en la transición láser según la ecuación
+\begin{equation}\label{eq:2.12}
+  \Delta \nu_{D} = 2(\ln 2)^{1/2} \frac{1}{\lambda}\left(\frac{m_{i}}{2k_{B}T_{i}}\right)^{1/2},
+\end{equation}
+siendo $m_{i}$ la masa de los iones y $\lambda$ la longitud de onda de la emisión láser. En el centro del perfil, la función puede aproximarse como
+\begin{equation}\label{eq:2.13}
+  f_{D}(0) = \lambda \left(\frac{m_{i}}{2 \pi k_{B}T_{i}}\right)^{1/2}.
+\end{equation}
+La amplificación de la intensidad láser $I(\nu)$ para una frecuencia $\nu$ debida a la emisión estimulada de luz puede calcularse mediante un balance de transferencia radiativa \autocite{Milonni1988}
+\begin{equation}\label{eq:2.14}
+  \dv{I(\nu)}{z} = G(\nu)I(\nu) + E(\nu),
+\end{equation}
+con $z$ la distancia recorrida en el medio amplificador, $E(\nu)$ la tasa de emisión espontánea para un ángulo sólido determinado y $G(\nu)$ el coeficiente de ganancia. A partir de la ecuación \eqref{eq:2.14}, puede observarse que la intensidad $I(\nu)$ tendrá aproximadamente como solución una función exponencial creciente en la dirección $z$, siempre y cuando el coeficiente de ganancia no sea demasiado pequeño en comparación con la tasa de emisión espontánea $E(\nu)$ (ley de lambert beer). Si $G(\nu)$ fuera negativo, esto es, sustituyéndolo por el coeficiente de absorción $\mu(\nu)$, la ecuación recuperaría el proceso de absorción de luz característico de un medio absorbente, como cabría esperar.
+
+En un sistema de dos estados, como el representado en la Figura \ref{fig:ch1_4_level}, la tasa de emisión espontánea en una región de frecuencias próxima a la de transición es \autocite{Tallents2003}
+\begin{equation}\label{eq:2.15}
+  E(\nu) = N_{2}A_{21}f(\nu)h \nu\frac{\Omega}{4 \pi},
+\end{equation}
+con $\Omega$ el ángulo sólido escogido. Por otro lado, el coeficiente de ganancia viene dado por
+\begin{equation}\label{eq:2.16}
+  G(\nu) = \sigma(\nu)\left(N_{2}-\frac{g_{2}}{g_{1}}N_{1}\right),
+\end{equation}
+donde $\sigma(\nu)$ es la sección eficaz microscópica de la emisión estimulada. Cuando los dos estados $\ket{1}$ y $\ket{2}$ de la transición láser están en equilibrio térmico, puede demostrarse que la sección eficaz $\sigma(\nu)$ está relacionada con el coeficiente de Einstein para la emisión espontánea $A_{21}$ como \autocite{Tallents2003}
+\begin{equation}\label{eq:2.16}
+  \sigma(\nu) = f(\nu)\frac{\lambda^{2}}{8 \pi}A_{21},
+\end{equation}
+resultando entonces el coeficiente de ganancia cumplir la ecuación
+\begin{equation}\label{eq:2.17}
+  G(\nu) = f(\nu)\frac{\lambda^{2}}{8 \pi}A_{21}\left(N_{2}-\frac{g_{2}}{g_{1}}N_{1}\right).
+\end{equation}
+Como las poblaciones de los niveles de la transición son, en principio, desconocidos, una manera más sencilla de calcular la ganancia consiste en introducir una hipótesis de ensanchamiento del perfil de línea homogéneo \autocite{Tallents2003} en una situación de equilibrio entre ambos niveles poblacionales, tal que
+\begin{equation}\label{eq:2.18}
+  G(\nu) = \frac{g_{0}}{1+I_{av}/I_{s}}\frac{f(\nu)}{f(0)},
+\end{equation}
+siendo $I_{av}$ la intensidad láser promediada con la función de línea, $g_{0}$ el \enquote{pequeño} coeficiente de ganancia para el centro del perfil y $I_{s}$ la intensidad de saturación del láser, dados en la hipótesis anterior por
+\begin{align}
+    g_{0} &\simeq f(0)\frac{\lambda^{2}}{8 \pi}A_{21}t_{R}R, \\
+    I_{s} &\simeq \frac{8 \pi}{\lambda^{2}}\frac{h \nu}{f(0)A_{21}t_{R}},
+\end{align}
+representando $R$ la tasa de bombeo desde el nivel fundamental hasta los niveles de absorción y $t_{R}$ el tiempo que tarda el estado superior de la transición láser $\ket{2}$ en recuperar la inversión de población después de la transición láser. 
+
+\begin{footheorem*}{Ganancia y condiciones de amplificación}
+    Para conseguir producir una amplificación de la radiación efectiva, es necesario conseguir una inversión poblacional suficientemente grande que verifique
+    \begin{equation}
+      \frac{N_{2}}{g_{2}} > \frac{N_{1}}{g_{1}},
+    \end{equation}
+    obteniéndose una intensidad $I(\nu)$ de la luz emitida aproximadamente descrita por la función
+    \begin{equation}
+      I(z) = I_{0}\eu^{G(\nu)z},
+    \end{equation}
+    con $G(\nu)$ el coeficiente de ganancia para frecuencias próximas al efecto láser.
+\end{footheorem*}
 
 \subsection{Propiedades ópticas}\label{sec:1.1.2}
 La radiación emitida por un láser está caracterizada principalmente por una alta monocromaticidad, coherencia, direccionalidad e intensidad. A estas propiedades puede añadirse una quinta relacionada con la duración de la emisión\autocite{Svelto2010}. Esta última hace referencia a la capacidad de generar pulsos de muy corta duración, propiedad que, aunque menos fundamental, tiene gran importancia en muchas aplicaciones. 
@@ -184,7 +275,7 @@ Por ejemplo, las últimas propuestas de láseres de Fabry-Perot para la fabricac
 \begin{figure}[htpb]
   \centering
   \includegraphics[width=\textwidth]{Figuras/ch1_amplif.png}
-  \caption{Espectro de emisión del láser empleado en la propuesta\autocite{Tran2022}. \textbf{b}, Esquema del láser y sus elementos. \textbf{d}, Ancho de banda conseguido con la cavidad resonante. \textbf{e}, Ruido en la frecuencia del espectro de emisión. \textbf{g}, Frecuencias de resonancia. \textbf{h}, Longitudes de onda de operación.}
+  \caption{Espectro de emisión del láser empleado en la propuesta de Tran \emph{et al} (2015)\autocite{Tran2022}. \textbf{b}, Esquema del láser y sus elementos constructivos. \textbf{d}, Ancho de banda conseguido con la cavidad resonante. \textbf{e}, Ruido en la frecuencia del espectro de emisión. \textbf{g}, Frecuencias de resonancia. \textbf{h}, Longitudes de onda de operación.}
   \label{fig:ch1_amplif}
 \end{figure}
 
@@ -250,15 +341,15 @@ Para áreas de apertura mayores, por ejemplo $A = \qty{5}{cm^2}$, la distancia a
 \paragraph{Luminosidad}\label{par:1.1.2.4}
 Un haz de luz procedente de una fuente puede caracterizarse por la divergencia del haz $\Delta\Omega$, el tamaño de la fuente ---normalmente una superficie de área $A$---, el ancho de banda $\Delta\nu$ y la densidad de potencia de la emisión $P(\nu)$, es decir, la potencia por unidad de frecuencia del ancho de banda\autocite{Milonni1988}. A partir de estos parámetros, es interesante definir la \emph{luminosidad espectral} $\beta_{\nu}$ de la fuente como 
 \begin{equation}\label{eq:1.5}
-    \beta_{\nu} = \frac{P(\nu)}{A\Delta\Omega\Delta\nu} = \frac{I(\nu)}{\Delta\Omega},
+    \beta_{\nu} = \frac{P(\nu)}{A\Delta\Omega\Delta\nu} = \frac{I_{\nu}(\nu)}{\Delta\Omega},
 \end{equation}
-con $I(\nu)$ la intensidad espectral del haz de luz, de manera que también puede definirse $\beta_{\nu}$ como la intensidad espectral por unidad de ángulo sólido.
+con $I_{\nu}(\nu)$ la intensidad espectral (intensidad por unidad de frecuencia) del haz de luz, de manera que también puede definirse $\beta_{\nu}$ como la intensidad espectral por unidad de ángulo sólido.
 
 Para una fuente de radiación ordinaria, esta luminosidad puede estimarse directamente suponiendo la expresión de la densidad espectral de energía $\rho(\nu)$ de un cuerpo negro. Empleando la ecuación \eqref{eq:1.5} y la hipótesis del cuerpo negro ($\Delta\Omega=4 \pi$), resulta
 \begin{equation}\label{eq:1.6}
-    \beta_{\nu} = \frac{c \rho(\nu)}{4 \pi} = \frac{2 \nu^{2}}{c^{2}}\frac{h \nu}{\eu^{h \nu/k_{B}T}-1}.
+    \beta_{\nu} = \frac{c \rho(\nu)}{4 \pi} = \frac{2 \nu^{2}}{c^{2}}\frac{h \nu}{\eu^{h \nu/(k_{B}T)}-1}.
 \end{equation}
-La temperatura de la superficie del sol es aproximadamente $T = \qty{5800}{K} \approx 20 \times \qty{300}{K}$. La mayoría de la emisión del sol está en la franja amarilla de la banda visible, de forma que $h\nu \approx \qty{2,5}{eV}$ ($\nu \approx \qty{5e14}{Hz}$ para un fotón en el amarillo-verde). Para $T = \qty{300}{K}$ se tiene $k_{B}T \approx \qty{0,025}{eV}$, por tanto, $h \nu/k_{B}T \approx 5$, obteniéndose $\eu^{h \nu/k_{B}T}-1 \approx 150$ y, finalmente,
+La temperatura de la superficie del sol es aproximadamente $T = \qty{5800}{K} \approx 20 \times \qty{300}{K}$. La mayoría de la emisión del sol está en la franja amarilla de la banda visible, de forma que $h\nu \approx \qty{2,5}{eV}$ ($\nu \approx \qty{5e14}{Hz}$ para un fotón en el amarillo-verde). Para $T = \qty{300}{K}$ se tiene $k_{B}T \approx \qty{0,025}{eV}$, por tanto, $h \nu/(k_{B}T) \approx 5$, obteniéndose $\eu^{h \nu/(k_{B}T)}-1 \approx 150$ y, finalmente,
 \begin{equation}\label{eq:1.7}
     \beta_{\nu} \approx \qty{1,5e-12}{W/cm^{2}\,sr\,Hz}.
 \end{equation}
@@ -301,7 +392,7 @@ El aspecto clave del ancho de pulso en estas aplicaciones está en conseguir la 
 \subsection{Láseres de electrones libres}\label{sec:1.3.2}
 
 \subsection{Armónicos de alto orden}\label{sec:1.3.3}
-
+ 
 \subsection{Radiación betatrón}\label{sec:1.3.4}
 
 \section{Láseres de rayos X basados en plasmas}\label{sec:1.4}
