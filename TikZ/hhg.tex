@@ -1,0 +1,183 @@
+% !TeX program = lualatex
+% High order harmonics generation through a cell filled with argon gas
+% Autor: Ismael Torres García
+\documentclass[tikz,border=3pt]{standalone}
+\usetikzlibrary{calc, arrows.meta, fadings}
+\usepackage[math-style=ISO,bold-style=ISO]{unicode-math}
+\setmainfont[Renderer=OpenType]{Minion Pro}          %% Fuente comercial MinionPro de Adobe para el texto
+\setmathfont[                                        %% Fuente MinionMath de Johannes Küsner para las matemáticas
+    Extension = .otf,
+    Path = /Users/ytoga/Library/Fonts/,
+    Scale = 1,
+    Script = Math,
+    SizeFeatures = {
+        {Size = -6, Font = MinionMath-Tiny,
+        Style = MathScriptScript},
+        {Size = 6-8.4, Font = MinionMath-Capt,
+        Style = MathScript},
+        {Size = 8.4-, Font = MinionMath-Regular},
+    },
+]{MinionMath-Regular}
+\setmathfont[                         
+    Extension = .otf,
+    Path = /Users/ytoga/Library/Fonts/,
+    version = bold,
+]{MinionMath-Bold}
+
+\usepackage{siunitx}
+\sisetup{
+  detect-all, 
+  output-decimal-marker={\text{,}},
+}
+\usepackage{xcolor}
+\definecolor{kr}{RGB}{51,153,255}       % Color del kriptón
+\definecolor{ar}{RGB}{255,102,255}     % Color de los átomos
+\definecolor{elc}{RGB}{204,204,0}       % Color de los electrones
+\definecolor{laseruv}{RGB}{76,0,155}   % Color del armónico
+\definecolor{laserir}{RGB}{255,51,51}  % Color del IR
+\definecolor{celda}{RGB}{240,240,240}  % Color de la celda de cristal
+\definecolor{filtro}{RGB}{132,135,137}  % Color del filtro de aluminio
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% COMIENZO DEL DOCUMENTO
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+%% DECORACIÓN DE LOS ÁTOMOS DE ARGÓN, EL LÁSER Y LA CELDA
+\tikzset{  
+  argon/.pic={
+  \tikzset{/argon/.cd,#1}
+  \node[circle, fill, inner sep=1.2, ball color=ar] at 
+  (0,0) {};
+  }
+  /argon/.search also={/tikz},
+  /argon/.cd,
+}
+\tikzset{
+  kripton/.pic={
+  \tikzset{/kripton/.cd,#1}
+  \node[circle,fill,inner sep=1.2,ball color=kr] at (0,0) {};
+  }
+  /kripton/.search also={/tikz},
+  /kripton/.cd,
+}
+\tikzset{  
+  elec/.pic={
+  \tikzset{/elec/.cd,#1}
+  \node[circle,fill,inner sep=0.8,ball color=elc] at (0,0) {};
+  }
+  /elec/.search also={/tikz},
+  /elec/.cd,
+}
+
+\begin{tikzpicture}
+
+%%%%%%%%%%%%%%%%
+%%% DIBUJO 1 %%%
+%%%%%%%%%%%%%%%%
+
+%%% DEFINICIONES
+%\def\r{7}                  % Radio de los haces
+%\def\divir{12}             % Divergencia del IR
+%\def\divuv{6}              % Divergencia del UV
+%\def\largo{1.5}            % Mitad del largo de la celda
+%\def\ancho{0.6}            % Mitad del ancho de la celda
+%\def\cols{15}              % Número de columnas
+%\def\rows{6}               % Número de filas
+%\def\lam{0.3}              % Ancho del filtro de Al
+%\def\SquareUnit{0.2}       % Lado de la celda pequeña
+%
+%%% COORDENADAS
+%\coordinate (O) at (0:0);
+%\coordinate (A) at (-\divir:-\r);
+%\coordinate (B) at (\divir:-\r);
+%\coordinate (C) at (\divuv:\r);
+%\coordinate (D) at (-\divuv:\r);
+%\coordinate (E1) at (-\largo,-\ancho);
+%\coordinate (E2) at (\largo,\ancho);
+%
+%%% GENERACIÓN DEL ARMÓNICO DE ALTO ORDEN
+%\fill[laserir, path fading=west] (O) -- (A) -- (B) -- cycle;
+%\fill[laseruv, path fading=east] (O) -- (C) -- (D) -- cycle;
+%
+%%% ARGÓN
+%\begin{scope}[fill opacity=0.5]
+%  \filldraw[fill=celda, draw=gray!30] (E1) rectangle (E2);
+%  \foreach \i in {1,...,\cols}{
+%	  \foreach \j in {1,...,\rows}{
+%      \pgfmathsetmacro\l{\SquareUnit-0.001*rnd}
+%      \pgfmathsetmacro\x{(\i-1)*\SquareUnit+\l*rnd}
+%      \pgfmathsetmacro\y{(\j-1)*\SquareUnit+\l*rnd}
+%      \pic at ([shift=(E1)] \x,\y) {argon};
+%    }
+%  }
+%\end{scope}
+%
+%%% TEXTO
+%\node[anchor=south west, rotate=-\divir] at (A) {\footnotesize Pulso NIR (\qty{30}{\mJ}, \qty{30}{\fs})};
+%\node[anchor=south east, rotate=\divuv] at (C) {\footnotesize Armónico de alto orden};
+%\node[anchor=north] at ($(O)+(0,-\ancho)$) {\footnotesize Celda con gas argón};
+    
+%%%%%%%%%%%%%%%%
+%%% DIBUJO 2 %%%
+%%%%%%%%%%%%%%%%
+
+%% DEFINICIONES
+\def\r{7}                             % Radio de los haces
+\def\divir{12}                        % Divergencia del IR
+\def\divuv{6}                         % Divergencia del UV
+\def\largo{1.5}                       % Mitad del largo del canal
+\def\ancho{0.6}                       % Mitad del ancho del canal
+\def\lam{0.3}                         % Ancho del filtro de Al
+\def\cols{10}                         % Número de columnas
+\def\rows{4}                          % Número de filas
+\def\SquareUnit{0.3}                  % Lado de la celda pequeña
+\pgfmathsetmacro\Paraux{0.12}         % Parámetro auxiliar
+
+%% COORDENADAS
+\coordinate (O) at (0:0);
+\coordinate (A) at (\divir:0.5*\r);
+\coordinate (B) at (-\divir:0.5*\r);
+\coordinate (C) at (-\divir:-\r);
+\coordinate (D) at (\divir:-\r);
+\coordinate (E) at (\divuv:\r);
+\coordinate (F) at (-\divuv:\r);
+\coordinate (G) at (\divuv:-\r);
+\coordinate (H) at (-\divuv:-\r);
+\coordinate (E1) at (-\largo,-\ancho);
+\coordinate (E2) at ($(E1)+(0.1,0.1)$);
+\coordinate (E3) at (0.5*\r-\lam,-1);
+\coordinate (E4) at (0.5*\r,1);
+
+%% GENERACIÓN DEL SXRL
+\fill[laserir, path fading=east] (O) -- (A) -- (B) -- cycle;
+\fill[laserir, path fading=west] (O) -- (C) -- (D) -- cycle;
+\fill[laseruv, path fading=east] (O) -- (E) -- (F) -- cycle;
+\fill[laseruv, path fading=west] (O) -- (G) -- (H) -- cycle;
+
+%% CHORRO DE PLASMA
+\foreach \i in {1,...,\cols}{
+  \foreach \j in {1,...,\rows}{
+    \pgfmathsetmacro\radius{\Paraux*rnd}
+    \pgfmathsetmacro\l{\SquareUnit-2*\radius}
+    \pgfmathsetmacro\xk{(\i-1)*\SquareUnit+\radius+\l*rnd}
+    \pgfmathsetmacro\yk{(\j-1)*\SquareUnit+\radius+\l*rnd}
+    \pgfmathsetmacro\xe{(\i-1)*\SquareUnit+\radius+\l*rnd}
+    \pgfmathsetmacro\ye{(\j-1)*\SquareUnit+\radius+\l*rnd}
+    \pic at ([shift=(E1)] \xk,\yk) {kripton};
+    \pic at ([shift=(E2)] \xe,\ye) {elec};
+  }
+}
+
+%% FILTRO DE ALUMINIO
+\filldraw[filtro, fill opacity=0.8] (E3) rectangle (E4);
+    
+%% TEXTO
+\node[anchor=south east, rotate=\divuv] at (E) {\footnotesize Emisión SXRL ó XUV};
+\node[anchor=south west, rotate=-\divuv] at (H) {\footnotesize Armónico de alto orden};
+\node[anchor=south west, rotate=-\divir] at (C) {\footnotesize Bombeo NIR (\qty{1,6}{\J}, \qty{30}{\fs})};
+\node[anchor=north] at ($(O) + (0,-\ancho)$) {\footnotesize Canal de plasma};
+\node[anchor=north, align=center] at ($0.5*(E3)+0.5*(E4)+(0,-1)$) {\footnotesize Filtro de \\\footnotesize aluminio};
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,134 @@
+% !TeX program = lualatex
+% Exponential function divided in two different gaussian-like conitnuous functions
+% Autor: Ismael Torres García
+\documentclass[tikz,border=3pt]{standalone}
+\usetikzlibrary{calc, arrows.meta}
+\usepackage[math-style=ISO,bold-style=ISO]{unicode-math}
+\setmainfont[Renderer=OpenType]{Minion Pro}          %% Fuente comercial MinionPro de Adobe para el texto
+\setmathfont[                                        %% Fuente MinionMath de Johannes Küsner para las matemáticas
+    Extension = .otf,
+    Path = /Users/ytoga/Library/Fonts/,
+    Scale = 1,
+    Script = Math,
+    SizeFeatures = {
+        {Size = -6, Font = MinionMath-Tiny,
+        Style = MathScriptScript},
+        {Size = 6-8.4, Font = MinionMath-Capt,
+        Style = MathScript},
+        {Size = 8.4-, Font = MinionMath-Regular},
+    },
+]{MinionMath-Regular}
+\setmathfont[                         
+    Extension = .otf,
+    Path = /Users/ytoga/Library/Fonts/,
+    version = bold,
+]{MinionMath-Bold}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepackage{siunitx}
+
+%% FUNCIONES
+\pgfmathdeclarefunction{sigmoide}{5}{%
+  \pgfmathparse{#2 + #3/(1 + exp(0.001*#4*(#1-#5)))}%
+}
+\pgfmathdeclarefunction{fL}{3}{%
+  \pgfmathparse{exp(-0.5*(max(#1,#2)/#3)^2)/exp(-0.5*(#2/#3)^2)}%
+}
+\pgfmathdeclarefunction{pgauss}{2}{%
+  \pgfmathparse{exp(0.5*(#1/#2)^2)}%
+}
+\pgfmathdeclarefunction{ngauss}{2}{%
+  \pgfmathparse{exp(-0.5*(#1/#2)^2)}%
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% COMIENZO DEL DOCUMENTO
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\begin{tikzpicture}
+
+%%%%%%%%%%%%%%%%
+%%% DIBUJO 1 %%%
+%%%%%%%%%%%%%%%%
+
+%%% DEFINICIONES
+%\def\rmin{0}                % en micras
+%\def\rmax{5}                % en micras
+%\def\L{\rmax-\rmin}         % en micras
+%\def\ki{4000}               % en metros
+%\def\zi{3.5}                % en mm
+%\def\zmax{5}            
+%\def\ymax{1.1*sigmoide(0,\rmin,\L,\ki,\zi)}
+%
+%\begin{axis}[
+%  every axis plot post/.append style={
+%  mark=none, samples=100, smooth},
+%  enlargelimits=upper,
+%  ymax=\ymax, ymin=0, 
+%  xmax=1.1*\zmax, xmin=0, 
+%  xlabel=$z(\unit{\mm})$, 
+%  ylabel=$r_L(\unit{\mu\m})$,
+%  axis lines=middle,
+%  axis line style={thick, -Latex[round]},
+%  xtick={0, 1, 2, 3, 4, 5}, 
+%  ytick={0, 0.2*\zmax, 0.4*\zmax, 0.6*\zmax, 0.8*\zmax, \zmax},
+%  extra x ticks={0},
+%  extra y ticks={0},
+%  every axis x label/.style={at={(current axis.right of origin)},anchor=north west},
+%  every axis y label/.style={at={(current axis.above origin)},anchor=south east}
+%]
+%
+%%% REPRESENTACIÓN DE LA SIGMOIDE 
+%\addplot[blue, thick, domain=0:\rmax] {sigmoide(x,\rmin,\L,\ki,\zi)};   
+%\node[above right, blue] at (axis cs:1,5.1) {$r_L$};
+
+%%%%%%%%%%%%%%%%
+%%% DIBUJO 2 %%%
+%%%%%%%%%%%%%%%%
+
+%% DEFINICIONES
+\def\rL{5}
+\def\ru{17}
+\def\sigL{15}
+\def\sigu{17}
+\def\rmax{60}
+\def\ymax{1.1*fL(\rL,\rL,\sigL)}
+\def\Aru{pgauss(\ru,\sigu)}
+
+\begin{axis}[
+  every axis plot post/.append style={
+  mark=none, samples=100, smooth},
+  enlargelimits=upper,
+  clip=false,
+  xmin=0, ymax=\ymax, 
+  ymin=0, xmax=1.1*\rmax, 
+  xlabel=$r(\unit{µm})$, 
+  ylabel=$f(r)$,
+  axis lines=middle,
+  axis line style={thick, -Latex[round]},
+  xtick={0, 10, 20, 30, 40, 50, 60}, 
+  ytick={0, 0.2, 0.4, 0.6, 0.8, 1},
+  extra x ticks={0},
+  extra y ticks={0},
+  every axis x label/.style={at={(current axis.right of origin)},anchor=north west},
+  every axis y label/.style={at={(current axis.above origin)},anchor=south east}
+]
+
+% FUNCIÓN EXPONENCIAL INTERIOR 
+\addplot[blue, thick, domain=0:\ru] {fL(x,\rL,\sigL)};   
+\node[above right, blue] at (axis cs:8,0.9) {$f_L(r)$};
+
+% FUNCIÓN EXPONENCIAL EXTERIOR 
+\addplot[red, thick, domain=\ru:\rmax] 
+{fL(\ru,\rL,\sigL)*\Aru*ngauss(x,\sigu)};
+\node[above right, red] at (axis cs:20,0.45) {$f_u(r)$};
+
+% TEXTO
+\addplot[gray, densely dashed, thick] coordinates {(\ru,{fL(\ru,\rL,\sigL)}) (\ru,-0.1)} node[below=12pt, anchor=south] {\color{black}$r_u$}; 
+\addplot[gray, densely dashed, thick] coordinates {(\rL,{fL(\rL,\rL,\sigL)}) (\rL,-0.1)} node[below=12pt,anchor=south] {\color{black}$r_L$};
+
+\end{axis}
+\end{tikzpicture}
+
+\end{document}
