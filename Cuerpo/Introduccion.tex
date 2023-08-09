@@ -205,7 +205,23 @@ La emisión espontánea es un proceso puramente estocástico (aleatorio) en la d
 \begin{equation}\label{eq:2.10}
   f_{L}(\nu) = \frac{2}{\pi \Delta \nu_{L}}\frac{1}{1 + \left(4 \nu^{2}/(\Delta \nu_{L})^{2}\right)},
 \end{equation}
-donde $\Delta \nu_{L}$ es la diferencia de frecuencias (ancho de banda) tal que el valor de la distribución es exactamente la mitad de su valor máximo en los extremos de dichas frecuencias, el máximo ancho de banda para la mitad del pico máximo producido, habitualmente conocido como \emph{\acrfull{fwhm}}, representado en la fig. 
+donde $\Delta \nu_{L}$ es la diferencia de frecuencias (ancho de banda) tal que el valor de la distribución es exactamente la mitad de su valor máximo en los extremos de dichas frecuencias, el máximo ancho de banda para la mitad del pico máximo producido, habitualmente conocido como \emph{\acrfull{fwhm}}, representado en la Figura \ref{fig:ch1_linefun}. 
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subcaptionblock}{.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figuras/ch1_lorentz.pdf}
+    \caption{Perfil Lorentziano}\label{fig:ch1_linefuna}
+  \end{subcaptionblock}
+  \begin{subcaptionblock}{.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figuras/ch1_doppler.pdf}
+    \caption{Perfil Doppler}\label{fig:ch1_linefunb}
+  \end{subcaptionblock}
+  \caption{Perfiles de línea gaussiano y exponencial junto al \acrshort{fwhm}. \textbf{a}, Función de línea de Lorentz para los efectos térmicos dominantes. \textbf{b}, Función de línea de Doppler para los efectos de las colisiones dominantes.}
+  \label{fig:ch1_linefun}
+\end{figure}
 
 Por otro lado, en un plasma, cuando la energía térmica del movimiento oscilatorio de las partículas, es decir, la temperatura, es dominante (como sucede con los iones del plasma empleado en este proyecto, ver sección \S\ref{1.4}), la función de línea $f_{D}(\nu)$ sigue una distribución Gaussiana, debida al efecto Doppler de la luz emitida por los iones en su movimiento térmico (llamado \emph{ensanchamiento Doppler})  cuando la velocidad de los iones está descrita por una distribución de Maxwell, pudiendo escribir \autocite{Tallents2003,Milonni1988,Oliva2010}
 \begin{equation}\label{eq:2.11}
@@ -221,9 +237,20 @@ siendo $m_{i}$ la masa de los iones y $\lambda$ la longitud de onda de la emisi�
 \end{equation}
 La amplificación de la intensidad láser $I(\nu)$ para una frecuencia $\nu$ debida a la emisión estimulada de luz puede calcularse mediante un balance de transferencia radiativa \autocite{Milonni1988}
 \begin{equation}\label{eq:2.14}
-  \dv{I(\nu)}{z} = G(\nu)I(\nu) + E(\nu),
+  \pdv{I(z,\nu)}{z} = G(\nu)I(z,\nu) + E(\nu),
 \end{equation}
-con $z$ la distancia recorrida en el medio amplificador, $E(\nu)$ la tasa de emisión espontánea para un ángulo sólido determinado y $G(\nu)$ el coeficiente de ganancia. A partir de la ecuación \eqref{eq:2.14}, puede observarse que la intensidad $I(\nu)$ tendrá aproximadamente como solución una función exponencial creciente en la dirección $z$, siempre y cuando el coeficiente de ganancia no sea demasiado pequeño en comparación con la tasa de emisión espontánea $E(\nu)$ (ley de lambert beer). Si $G(\nu)$ fuera negativo, esto es, sustituyéndolo por el coeficiente de absorción $\mu(\nu)$, la ecuación recuperaría el proceso de absorción de luz característico de un medio absorbente, como cabría esperar.
+con $z$ la distancia recorrida en el medio amplificador, $E(\nu)$ la tasa de emisión espontánea para un ángulo sólido determinado y $G(\nu)$ el coeficiente de ganancia. En la ecuación \eqref{eq:2.14}, puede observarse que la intensidad $I(z,\nu)$ tendrá aproximadamente como solución una función exponencial creciente en la dirección $z$, siempre y cuando el coeficiente de ganancia no sea demasiado pequeño en comparación con la tasa de emisión espontánea $E(\nu)$. En tal circunstancia, el comportamiento de la intensidad, como aparece esquemáticamente en la Figura \ref{fig:ch1_lambeer}, es
+\begin{equation}\label{eq:dd}
+  I(z,\nu) = I_{0}\eu^{G(\nu)z},
+\end{equation}
+donde $I_{0}$ es la intensidad inicial de la luz láser antes de comenzar la amplificación. Si $G(\nu)$ fuera negativo, esto es, sustituyéndolo por el coeficiente de absorción $\mu(\nu)$, la ecuación recuperaría el proceso de absorción de luz característico de un medio absorbente, como cabría esperar. 
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.8\textwidth]{Figuras/ch1_lambeer.pdf}
+  \caption{Solución del balance radiativo cuando la tasa de emisión espontánea $E(\nu)$ es despreciable. La intensidad del haz láser $I(z,\nu)$ aumenta exponencialmente con la distancia de propagación $z$.}
+  \label{fig:ch1_lambeer}
+\end{figure}
 
 En un sistema de dos estados, como el representado en la Figura \ref{fig:ch1_4_level}, la tasa de emisión espontánea en una región de frecuencias próxima a la de transición es \autocite{Tallents2003}
 \begin{equation}\label{eq:2.15}
@@ -233,7 +260,7 @@ con $\Omega$ el ángulo sólido escogido. Por otro lado, el coeficiente de ganan
 \begin{equation}\label{eq:2.16}
   G(\nu) = \sigma(\nu)\left(N_{2}-\frac{g_{2}}{g_{1}}N_{1}\right),
 \end{equation}
-donde $\sigma(\nu)$ es la sección eficaz microscópica de la emisión estimulada. Cuando los dos estados $\ket{1}$ y $\ket{2}$ de la transición láser están en equilibrio térmico, puede demostrarse que la sección eficaz $\sigma(\nu)$ está relacionada con el coeficiente de Einstein para la emisión espontánea $A_{21}$ como \autocite{Tallents2003}
+donde $\sigma(\nu)$ es la sección eficaz microscópica de la emisión estimulada. Cuando los dos estados partícipes $\ket{1}$ y $\ket{2}$ de la transición láser están en equilibrio térmico, puede demostrarse que la sección eficaz $\sigma(\nu)$ está relacionada con el coeficiente de Einstein para la emisión espontánea $A_{21}$ como \autocite{Tallents2003}
 \begin{equation}\label{eq:2.16}
   \sigma(\nu) = f(\nu)\frac{\lambda^{2}}{8 \pi}A_{21},
 \end{equation}
@@ -245,21 +272,26 @@ Como las poblaciones de los niveles de la transición son, en principio, descono
 \begin{equation}\label{eq:2.18}
   G(\nu) = \frac{g_{0}}{1+I_{av}/I_{s}}\frac{f(\nu)}{f(0)},
 \end{equation}
-siendo $I_{av}$ la intensidad láser promediada con la función de línea, $g_{0}$ el \enquote{pequeño} coeficiente de ganancia para el centro del perfil y $I_{s}$ la intensidad de saturación del láser, dados en la hipótesis anterior por
+siendo $I_{av}$ la intensidad láser promediada con la función de línea, $g_{0}$ el \enquote{pequeño} coeficiente de ganancia para el centro del perfil y $I_{s}$ la intensidad de saturación del láser. 
+
+Estos elementos aparecen debido a la pérdida de población del estado superior $\ket{2}$ cuando la emisión estimulada es demasiado intensa, de forma que, a pesar del bombeo de energía, la inversión de población disminuye, perdiendo capacidad de amplificación en el proceso. Bajo esta casuística, cuando la intensidad alcanza saturación, el coeficiente de ganancia $G(\nu)$ disminuye hasta alcanzar la mitad del valor dado por $g_{0}$. Si la intensidad siguiera aumentando por encima de la saturación $I_{s}$, el coeficiente de ganancia disminuiría incluso más, comprometiendo la eficiencia del proceso. 
+
+Regresando con la hipótesis anterior, y representando por $R$ la tasa de bombeo (relación entre la potencia de bombeo y la potencia de saturación por unidad de volumen del medio activo) desde el nivel fundamental hasta los niveles de absorción y $\tau_{0}$ el tiempo de vida medio del estado superior $\ket{2}$ (el tiempo medio que tarda un átomo en emitir espontáneamente un fotón y pasar al estado inferior $\ket{1}$), la intensidad de saturación $I_{s}$ y el pequeño coeficiente de ganancia $g_{0}$ son
 \begin{align}
-    g_{0} &\simeq f(0)\frac{\lambda^{2}}{8 \pi}A_{21}t_{R}R, \\
-    I_{s} &\simeq \frac{8 \pi}{\lambda^{2}}\frac{h \nu}{f(0)A_{21}t_{R}},
+    g_{0} &\simeq f(0)\frac{\lambda^{2}}{8 \pi}A_{21} \tau_{0}R, \\
+    I_{s} &\simeq \frac{8 \pi}{\lambda^{2}}\frac{h \nu}{f(0)A_{21} \tau_{0}}.
 \end{align}
-representando $R$ la tasa de bombeo desde el nivel fundamental hasta los niveles de absorción y $t_{R}$ el tiempo que tarda el estado superior de la transición láser $\ket{2}$ en recuperar la inversión de población después de la transición láser. 
 
 \begin{footheorem*}{Ganancia y condiciones de amplificación}
     Para conseguir producir una amplificación de la radiación efectiva, es necesario conseguir una inversión poblacional suficientemente grande que verifique
     \begin{equation}
+      \tag{GC.1}
       \frac{N_{2}}{g_{2}} > \frac{N_{1}}{g_{1}},
     \end{equation}
-    obteniéndose una intensidad $I(\nu)$ de la luz emitida aproximadamente descrita por la función
+    obteniéndose una intensidad $I(z,\nu)$ de la luz emitida aproximadamente descrita por la función
     \begin{equation}
-      I(z) = I_{0}\eu^{G(\nu)z},
+      \tag{GC.2}
+      I(z,\nu) = I_{0}\eu^{G(\nu)z},
     \end{equation}
     con $G(\nu)$ el coeficiente de ganancia para frecuencias próximas al efecto láser.
 \end{footheorem*}

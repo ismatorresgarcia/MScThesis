@@ -47,13 +47,14 @@
 % Estado de la línea
 \state{linea}[%
     width                      = 0.5pt,
-    persistent postcomputation = {\pgfmathadd@{\x}{\increment}\let\x=\pgfmathresult}]%
+    persistent postcomputation = {\pgfmathadd@{\x}{\increment}\let\x=\pgfmathresult}
+]%
 {%
   \pgfsetlinewidth{\pgflinewidth}%
   \pgfsetarrows{-}%
   \pgfpathmoveto{\pgfpointorigin}%
   \pgfpathlineto{\pgfqpoint{0.75pt}{0pt}}%
-  \pgfsetstrokecolor{\colorfinal!\x!\colorinicial}%
+  \pgfsetstrokecolor{\colorfinal!\x!\colorinicial}% %% sentido de la difuminación
   \pgfusepath{stroke}%
 }%
 
@@ -87,19 +88,19 @@
 
 %% RECORRIDO  
 % Antes de los átomos
-\draw[laser, 
-    decoration={markings, mark=at position 0.5 with {\arrow[]{latex}}}, postaction={decorate}] 
+\draw[laser!20!white, 
+  decoration={markings, mark=at position 0.5 with \arrow[]{latex}}, postaction={decorate}] 
     (-\BeforeLight,{0.5*\rows*\SquareUnit}) --++ (\BeforeLight,0) 
     node[midway, above, black]{$I_0$};
 
 % Durante los átomos
 \draw[
-    decoration={cambio color, start color=laser, 
-    end color=laser!20!white}, decorate] (0,{0.5*\rows*\SquareUnit}) --++ (\cols*\SquareUnit,0);
+    decoration={cambio color, start color=laser, end color=laser!20!white}, decorate] 
+    (\cols*\SquareUnit,{0.5*\rows*\SquareUnit}) --++ (-\cols*\SquareUnit,0);
 
 % Después de los átomos
-\draw[laser!20!white, 
-    decoration={markings, mark=at position 0.5 with {\arrow[]{latex}}}, postaction={decorate}] 
+\draw[laser, 
+    decoration={markings, mark=at position 0.5 with \arrow[]{latex}}, postaction={decorate}] 
     ({\cols*\SquareUnit},{0.5*\rows*\SquareUnit}) --++ (\BeforeLight,0) 
     node[midway, above, black]{$I$};
 
@@ -115,12 +116,12 @@
 }
 
 %% LONGITUD CANAL 
-\draw[|<->|, >={Triangle[angle'=30]}, line width = 0.8pt, black] 
-($(0,\rows*\SquareUnit)+(0,1)$)--++(\cols*\SquareUnit,0) 
-node[midway, above]{$L$};
+\draw[|->, >={Triangle[angle'=30]}, line width = 0.8pt, black] 
+($(0,\rows*\SquareUnit)+(0,1)$)--++(0.25*\cols*\SquareUnit,0) 
+node[midway, above]{$z$};
 
 %% LAMBERT-BEER   
-\node[anchor=north, inner sep = 1ex] at (current bounding box.south) {$I=I_0\symrm{e}^{-gL}$};
+\node[anchor=north, inner sep = 1ex] at (current bounding box.south) {$I(z,\nu)=I_0\symrm{e}^{G(\nu)z}$};
 
 \end{tikzpicture}
 
