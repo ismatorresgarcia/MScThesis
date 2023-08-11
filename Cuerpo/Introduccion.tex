@@ -44,10 +44,10 @@ Para proporcionar una imagen más nítida del desarrollo y evolución del láser
   \centering
   \includegraphics[width=0.75\textwidth]{Figuras/ch1_intens_año.pdf}
   \caption{Intensidad láser (\unit{W/cm^2}) y energía de deriva de los electrones (\unit{eV}) frente al tiempo. Adaptado de Mourou, Tajima y Bulanov (2006)\autocite{Mourou2006}.}
-  \label{fig:ch1_intens}
+  \label{fig:1.1}
 \end{figure}
 
-La Figura \ref{fig:ch1_intens} muestra esta evolución histórica, las distintas tecnologías y escalas de energía, así como las posibles tendencias y predicciones \autocite{Mourou2006} realizadas en $2006$. Mencionar que colaboraciones como ELI, situadas en Hungría y República Checa, o ILE en Japón, no han proporcionado todavía mediciones de intensidad en blancos, pero ambos proyectos podrían conseguir potencias del orden de $\sim \qty{10}{PW}$ en un futuro próximo, igualando e incluso superando posiblemente la intensidad del CoReLS. 
+La Figura \ref{fig:1.1} muestra esta evolución histórica, las distintas tecnologías y escalas de energía, así como las posibles tendencias y predicciones \autocite{Mourou2006} realizadas en $2006$. Mencionar que colaboraciones como ELI, situadas en Hungría y República Checa, o ILE en Japón, no han proporcionado todavía mediciones de intensidad en blancos, pero ambos proyectos podrían conseguir potencias del orden de $\sim \qty{10}{PW}$ en un futuro próximo, igualando e incluso superando posiblemente la intensidad del CoReLS. 
 
 \subsection{Interacción radiación-materia}\label{sec:1.1.1}
 En mecánica cuántica pueden identificarse tres tipos de interacción de la luz con la materia (átomos, moléculas, iones, núcleos atómicos, electrones, etc.): 
@@ -64,15 +64,15 @@ En la mayoría de materiales, la tasa de absorción $\mu = F^{-1} \symrm{d}F/\sy
 
 Estos materiales existen, y se conocen como \emph{medios activos}, y la amplificación que las ondas que pasan a través de ellos es la emisión estimulada. La descripción clásica de este fenómeno supone la existencia del medio activo. Para comprender la naturaleza de estos medios, es necesario recurrir a la mecánica cuántica.
 
-Como primer paso hacia la comprensión de estos materiales, es útil suponer un haz de luz monocromática de frecuencia $\omega$ que interacciona con un grupo de electrones (también pueden ser átomos o moléculas), donde todos están en el mismo estado cuántico $\ket{1}$. Suponiendo que los electrones tienen un segundo estado $\ket{2}$ con energía $E_{2} = E_{1} + \hslash \omega$, la luz excitará a los electrones para desplazarse del estado inicial $\ket{1}$ al estado superior $\ket{2}$, absorbiéndose fotones en el proceso, como muestra la Figura \ref{fig:ch1_radmat}. La intensidad de la interacción es proporcional al flujo de energía $F$ del haz. En concreto, la tasa de absorción de fotones es proporcional al flujo de fotones en el haz, $\symrm{d}n/(\symrm{d}A \symrm{d}t) = F/(\hslash \omega)$, y por tanto, es proporcional a $F$, de acuerdo con la descripción clásica de la absorción.
+Como primer paso hacia la comprensión de estos materiales, es útil suponer un haz de luz monocromática de frecuencia $\omega$ que interacciona con un grupo de electrones (también pueden ser átomos o moléculas), donde todos están en el mismo estado cuántico $\ket{1}$. Suponiendo que los electrones tienen un segundo estado $\ket{2}$ con energía $E_{2} = E_{1} + \hslash \omega$, la luz excitará a los electrones para desplazarse del estado inicial $\ket{1}$ al estado superior $\ket{2}$, absorbiéndose fotones en el proceso, como muestra la Figura \ref{fig:1.2}. La intensidad de la interacción es proporcional al flujo de energía $F$ del haz. En concreto, la tasa de absorción de fotones es proporcional al flujo de fotones en el haz, $\symrm{d}n/(\symrm{d}A \symrm{d}t) = F/(\hslash \omega)$, y por tanto, es proporcional a $F$, de acuerdo con la descripción clásica de la absorción.
 
-En el segundo paso, conviene suponer que cuando el haz de luz llega al medio activo, los átomos (los electrones de un grupo de átomos) se encuentran en el estado superior $\ket{2}$, en lugar del inferior $\ket{1}$. La interacción en este caso desexcitará a los átomos, acompañados de una emisión de fotones (Figura \ref{fig:ch1_radmat}). Al igual que ocurre en el caso de la absorción, la intensidad de la interacción es proporcional al flujo de fotones del haz incidente (o de forma equivalente, la tasa de emisión de nuevos fotones es proporcional al flujo de fotones del haz incidente), y por tanto, también es proporcional al flujo de energía $F$ del haz. Realizando un cálculo mecano-cuántico del proceso \autocite{Schwartz2013}, puede demostrarse que los fotones de la emisión estimulada tienen el mismo estado cuántico que el ocupado los fotones del haz de luz original (como son bosones, los fotones tienden a agregarse en un mismo estado, según la estadística de Bose-Einstein). Desde la perspectiva clásica, el flujo del haz será amplificado con una tasa proporcional al flujo inicial de fotones, sin cambiar la frecuencia, número de onda o fase.
+En el segundo paso, conviene suponer que cuando el haz de luz llega al medio activo, los átomos (los electrones de un grupo de átomos) se encuentran en el estado superior $\ket{2}$, en lugar del inferior $\ket{1}$. La interacción en este caso desexcitará a los átomos, acompañados de una emisión de fotones (Figura \ref{fig:1.2}). Al igual que ocurre en el caso de la absorción, la intensidad de la interacción es proporcional al flujo de fotones del haz incidente (o de forma equivalente, la tasa de emisión de nuevos fotones es proporcional al flujo de fotones del haz incidente), y por tanto, también es proporcional al flujo de energía $F$ del haz. Realizando un cálculo mecano-cuántico del proceso \autocite{Schwartz2013}, puede demostrarse que los fotones de la emisión estimulada tienen el mismo estado cuántico que el ocupado los fotones del haz de luz original (como son bosones, los fotones tienden a agregarse en un mismo estado, según la estadística de Bose-Einstein). Desde la perspectiva clásica, el flujo del haz será amplificado con una tasa proporcional al flujo inicial de fotones, sin cambiar la frecuencia, número de onda o fase.
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{Figuras/ch1_rad_mat.pdf}
   \caption{A la derecha, absorción de un fotón con energía $E_{2} - E_{1} = \hslash \omega$, excitando el electrón y pasando del estado inferior $\ket{1}$ al superior $\ket{2}$. En el centro, emisión espontánea de un fotón con energía $E_{2}-E_{1}=\hslash \omega$, desexcitándose el electrón y pasando del estado $\ket{2}$ al estado $\ket{1}$. A la izquierda, emisión estimulada de un fotón con energía $E_{2}-E_{1}=\hslash \omega$ desde el estado excitado $\ket{2}$ hasta el estado inicial $\ket{1}$, debido a la estimulación del fotón incidente idéntico al emitido.}
-  \label{fig:ch1_radmat}
+  \label{fig:1.2}
 \end{figure}
 
 En la naturaleza, normalmente, los electrones ligados a un átomo (o los propios átomos, partículas cargadas, núcleos atómicos, moléculas, etc.) tienen sus niveles de energía ocupados siguiendo las leyes de la mecánica (del equilibrio) estadística. En esta situación de equilibrio termodinámico, la relación entre las poblaciones de estos niveles viene dada por la ley de Boltzmann \autocite{Feynman2011}
@@ -83,7 +83,7 @@ entre el número de electrones $N_{2}$ en el estado $\ket{2}$ y el número de el
 
 En cambio, en ocasiones puede presentarse la situación contraria en la naturaleza o en un laboratorio, encontrándose un grupo de átomos en una \emph{inversión de población} con $N_{2} > N_{1}$. Ambos estados tendrían una \enquote{temperatura negativa} respecto al otro. La luz que se propaga a través de medios con una inversión de población experimenta más emisión estimulada que absorción, amplificándose en el proceso. El resultado es la amplificación de luz por emisión estimulada de radiación, o efecto \enquote{láser}.
 
-El aspecto clave del efecto láser es la inversión de población del medio activo. Sin embargo, la inversión de población es incompatible con el equilibrio termodinámico: por tanto, para conseguir la amplificación es necesario manipular la materia de alguna forma fuera del equilibrio. En la mayoría de los casos, esto se hace siguiendo alguna variante del proceso mostrado en los niveles de energía de la Figura \ref{fig:ch1_4_level}. 
+El aspecto clave del efecto láser es la inversión de población del medio activo. Sin embargo, la inversión de población es incompatible con el equilibrio termodinámico: por tanto, para conseguir la amplificación es necesario manipular la materia de alguna forma fuera del equilibrio. En la mayoría de los casos, esto se hace siguiendo alguna variante del proceso mostrado en los niveles de energía de la Figura \ref{fig:1.3}. 
 
 Escogiendo un mecanismo de bombeo (para depositar energía) adecuado, los electrones son excitados rápidamente desde el nivel fundamental hasta una banda de estados de absorción característica del átomo o molécula en cuestión. Después, los electrones decaen rápidamente desde los estados de absorción hasta el estado $\ket{2}$, que es metaestable (su tiempo de permanencia en ese estado es mucho mayor que el tiempo de emisión espontánea), quedando los electrones \enquote{esperando} ahí. La transición responsable del efecto láser sucede del estado $\ket{2}$ al estado $\ket{1}$. 
 
@@ -91,20 +91,20 @@ Escogiendo un mecanismo de bombeo (para depositar energía) adecuado, los electr
   \centering
   \includegraphics[width=0.7\textwidth]{Figuras/ch1_4_level_sch.pdf}
   \caption{Esquema de cuatro niveles para generar la inversión de población y conseguir el efecto láser. Las líneas horizontales representan los niveles de energía del sistema y las flechas representan las transiciones entre los distintos niveles. Adaptado de Thorne y Blandford (2017)\autocite{Thorne2017}.}
-  \label{fig:ch1_4_level}
+  \label{fig:1.3}
 \end{figure}
 
 Una vez los electrones decaen hasta el estado $\ket{1}$, vuelven a decaer rápidamente hasta el estado fundamental para después, posiblemente, volver a ser bombeados devuelta hasta los estados de absorción. Este mecanismo es conocido como \enquote{bombeo de cuatro niveles} (\emph{four-level pumping} en inglés), mientras que si el estado $\ket{1}$ es el estado fundamental se denomina \enquote{bombeo de tres niveles} (\emph{three-level pumping}). Además, también suele hacerse una distinción especial con un tercer esquema denominado \enquote{bombeo de cuasi-tres niveles} (\emph{quasi-three level pumping}) cuando el estado inferior de la transición láser $\ket{1}$ tiene una energía ligeramente superior al estado fundamental. La sección \S\ref{sec:3.3} mostrará como, de hecho, el esquema empleado por el experimento estudiado en este proyecto pertenece precisamente a este último caso.
 
 La idea básica consiste en que, si el sistema de bombeo es capaz de actuar de forma rápida y súbita (con otro láser, por ejemplo), este proceso produce una inversión de población temporal entre los estados $\ket{2}$ y $\ket{1}$, gracias al cual una ráfaga incidente, relativamente débil de luz o \enquote{semilla} puede interaccionar con estos estados emitiendo una ráfaga de luz amplificada. El resultado es un láser pulsado, como el simulado durante el capítulo \S\ref{cap:4}. En el caso de tener un sistema de bombeo que funcione de forma continua, podría conseguirse como resultado una inversión poblacional permanente mediante el cual las \enquote{semillas} de luz incidentes puedan interaccionar, produciendo una luz láser de onda continua, en lugar de pulsada.
 
-Mientras que el láser viaja a través del medio activo (los electrones fuera del equilibrio, en inversión de población), el flujo de energía $F$ aumenta con la distancia $z$ tal que $\symrm{d}F/\symrm{d}z = F/l_{o}$, entonces $F(z) = F_{o}\eu^{z/l_{o}}$. $F_{o}$ es el flujo inicial, y $l_{0} \equiv 1/|\mu|$ (longitud de amplificación en un factor $\symrm{r}$) depende de la intensidad de la inversión poblacional y de la intensidad del \enquote{acoplamiento} entre la luz y el medio activo. Normalmente, $l_{o}$ es demasiado grande como para conseguir un efecto láser suficientemente intenso en un solo recorrido de la luz por el medio activo. En estos casos, la amplificación hay que potenciarla introduciendo el medio activo en el interior de una \emph{cavidad de Fabry-Perot} (esquema en la Figura \ref{fig:ch1_cavidad}), llamada frecuentemente \emph{cavidad resonante}.
+Mientras que el láser viaja a través del medio activo (los electrones fuera del equilibrio, en inversión de población), el flujo de energía $F$ aumenta con la distancia $z$ tal que $\symrm{d}F/\symrm{d}z = F/l_{o}$, entonces $F(z) = F_{o}\eu^{z/l_{o}}$. $F_{o}$ es el flujo inicial, y $l_{0} \equiv 1/|\mu|$ (longitud de amplificación en un factor $\symrm{r}$) depende de la intensidad de la inversión poblacional y de la intensidad del \enquote{acoplamiento} entre la luz y el medio activo. Normalmente, $l_{o}$ es demasiado grande como para conseguir un efecto láser suficientemente intenso en un solo recorrido de la luz por el medio activo. En estos casos, la amplificación hay que potenciarla introduciendo el medio activo en el interior de una \emph{cavidad de Fabry-Perot} (esquema en la Figura \ref{fig:1.4}), llamada frecuentemente \emph{cavidad resonante}.
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=0.7\textwidth]{Figuras/ch1_cavidad.pdf}
   \caption{Esquema de un cavidad de Fabry-Perot o cavidad resonante utilizada para mejorar la interacción de la luz láser con el medio activo. Adaptado de Milonni y Eberly (1988)\autocite{Milonni1988}.}
-  \label{fig:ch1_cavidad}
+  \label{fig:1.4}
 \end{figure}
 
 La longitud $L$ de la cavidad se ajusta para optimizar la potencia obtenida, que se obtiene cuando la frecuencia $\omega = (E_{2}-E_{1})/\hslash $ es una frecuencia de resonancia (un modo) de la cavidad. Cuando esto sucede, la transición láser excita un modo de la cavidad asociado a una onda estacionaria, escapando la luz amplificada a través uno o ambos espejos de la cavidad. Si $\eta$ es el rendimiento de la cavidad (aproximadamente el número medio de veces que un fotón es reflejado hacia delante y hacia atrás dentro de la cavidad antes de escapar a través del espejo), entonces la cavidad incrementa la distancia que los fotones pueden recorrer a través del medio activo en un factor $\sim \eta$, incrementando entonces el flujo de energía saliente en un factor $\sim \eu^{\eta L/l_{o}}$.
@@ -126,7 +126,7 @@ Un haz de alta potencia $\sim \qty{1}{GW}$ en un láser de \ce{CO2} operando con
 
 También existen muchas aplicaciones en ciencia e industria donde no se necesitan altas potencias, pero sí frecuencias de emisión elevadas con buena estabilidad, es decir, largos tiempos de coherencia. En estas situaciones, es habitual utilizar el esquema \emph{mode-locking} para fijar la frecuencia emitida en el rango óptico de una transición atómica (por ejemplo, los relojes atómicos de \ce{Al+}), consiguiendo estabilidades en frecuencia de $\Delta f/f \sim 10^{-17}$, obteniendo anchos de banda de $\Delta f \sim \qty{3}{mHz}$ durante horas o incluso más, con tiempos de coherencia de $\sim \qty{100}{s}$ y longitudes de coherencia de $\sim \qty{3e7}{km}$. 
 
-Alternativamente, escogiendo la frecuencia de un modo muy estable en el interior de la cavidad de Fabry-Perot, se han conseguido alcanzar estabilidades de $\Delta f/f \sim 10^{-16}$ durante intervalos de $\sim \qty{1}{h}$ (cavidades que utilizan materiales superconductores como el Niobio\autocite{Stein1975}), y $\Delta f/f \sim 10^{-22}$ durante unos pocos milisegundos \autocite{Mueller2016,Kwee2012} en los brazos de \qty{4}{km} del interferómetro para la detección de ondas gravitacionales (la colaboración \emph{\acrfull{ligo}} que anunció el descubrimiento de las ondas gravitacionales en $2016$ \autocite{Abbott2016}).
+Alternativamente, escogiendo la frecuencia de un modo muy estable en el interior de la cavidad de Fabry-Perot, se han conseguido alcanzar estabilidades de $\Delta f/f \sim 10^{-16}$ durante intervalos de $\sim \qty{1}{h}$ (cavidades que utilizan materiales superconductores como el Niobio), y $\Delta f/f \sim 10^{-22}$ durante unos pocos milisegundos \autocite{Mueller2016,Kwee2012} en los brazos de \qty{4}{km} del interferómetro para la detección de ondas gravitacionales (la colaboración \emph{\acrfull{ligo}} que anunció el descubrimiento de las ondas gravitacionales en $2016$ \autocite{Abbott2016}).
 
 Nuevamente, queda demostrado que desde su creación en $1960$ por Maiman, los láseres permean todos los aspectos de la vida cotidiana y las tecnologías más avanzadas del mundo. Desde los lectores de códigos de barras en los supermercados, hasta los punteros láser, reproductores DVD, cirugía oftalmológica, impresoras láser, cortadoras y soldaduras láser, giroscopios láser (que son bastante utilizados en los aviones comerciales), espectroscopía de Raman, fusión por confinamiento inercial, comunicaciones ópticas, ordenadores basados en circuitos ópticos, holografía y relojes atómicos, constituyen solo algunos ejemplos presentes en la actualidad que, sin ser en absoluto conscientes en la mayoría de ocasiones, facilitan y mejoran la vida de la sociedad en su conjunto.
 
@@ -136,76 +136,76 @@ Para detallar y completar el proceso de interacción radiación-materia, desde u
 La aproximación más sencilla \autocite{Schwartz2013} para cuantificar los procesos de interacción entre la luz y la materia emplea los conocidos \emph{coeficientes de Einstein}. Estos coeficientes proporcionan las tasas de emisión y absorción de luz por parte de un átomo (o iones, moléculas, etc.) excitado. Estos fenómenos ya habían sido observados a principios del siglo $\symrm{XX}$ en reacciones químicas y en la radiactividad natural, pero la relación entre la emisión y absorción apareció de la mano de Einstein (como se adelantó en la sección \S\ref{sec:1.1.1}) en dos artículos \autocite{Einstein1916,Einstein1916a} publicados en $1916$ utilizando la incipiente teoría cuántica.
 
 El razonamiento de Einstein seguía esta idea: en una cavidad (por ejemplo, de Fabry-Perot para un láser) en cuyo interior hay átomos con energías $E_{1}$ y $E_{2}$, y un número de átomos $N_{1}$ y $N_{2}$, respectivamente, tal que 
-\begin{equation}\label{eq:2.0}
+\begin{equation}\label{eq:1.1}
   \nu = \frac{E_{2}-E_{1}}{h},
 \end{equation}
 la probabilidad de emitir espontáneamente un fotón de frecuencia $\nu$ cuando un átomo evoluciona del estado de mayor a menor energía es conocida como \emph{coeficiente de emisión de espontánea} $A_{21}$. Por otro lado, la probabilidad de un fotón de inducir la transición $2 \rightarrow 1$ es proporcional al \emph{coeficiente de emisión estimulada} $B_{21}$ y a la densidad de energía espectral $\rho(\nu)$ (proporcional al número de fotones) de los fotones de frecuencia $\nu$ dentro de la cavidad. Estos coeficientes contribuyen al cambio de la población del nivel superior tal que 
-\begin{equation}\label{eq:2.1}
+\begin{equation}\label{eq:1.2}
   \diff N_{2} = -\left[A_{21} + B_{21} \rho(\nu)\right]N_{2} + \cdots.
 \end{equation}
 En cambio, la probabilidad de un fotón de inducir la transición $1 \rightarrow 2$ se denomina \emph{coeficiente de absorción} $B_{12}$, disminuyendo la población del nivel inferior e incrementando la del superior debido a la absorción en un factor $B_{12} \rho(\nu)N_{1}$. Como el número total de átomos es constante en este sistema, $\diff N_{2}+\diff N_{1}=0$, por tanto,
-\begin{equation}\label{eq:2.2}
+\begin{equation}\label{eq:1.3}
   \diff N_{2} = -\diff N_{1} = -\left[A_{21} + B_{21} \rho(\nu)\right]N_{2} + B_{12} \rho(\nu)N_{1}.
 \end{equation}
 La densidad $\rho_{\nu}$ podría corresponderse con la energía de un haz láser penetrando a través del medio activo en el interior de una cavidad. En este punto, Einstein asume una situación de equilibrio de los átomos bajo la hipótesis del cuerpo negro. En equilibrio, las poblaciones son constantes, $\diff N_{1} = \diff N_{2} = 0$, y pueden calcularse a partir de la distribución de Maxwell-Boltzmann \autocite{Feynman2011} 
 \begin{align}
-  \label{eq:2.3a}
+  \label{eq:1.4a}
   N_{1} &= N \eu^{-\beta E_{1}}, \\
-  \label{eq:2.3b}
+  \label{eq:1.4b}
   N_{2} &= N \eu^{-\beta E_{2}}.
 \end{align}
-En las ecuaciones \eqref{eq:2.3a} y \eqref{eq:2.3b}, el factor $\beta = 1/(k_{B}T)$, mientras que $N$ es un factor para normalizar la función de probabilidad asociada a ambos estados a la unidad. Para obtener una relación del equilibrio entre poblaciones, basta combinar la condición de equilibrio entre los dos niveles junto a la estadística de Maxwell-Boltzmann, obteniendo 
-\begin{equation}\label{eq:2.4}
+En las ecuaciones \eqref{eq:1.4a} y \eqref{eq:1.4b}, el factor $\beta = 1/(k_{B}T)$, mientras que $N$ es un factor para normalizar la función de probabilidad asociada a ambos estados a la unidad. Para obtener una relación del equilibrio entre poblaciones, basta combinar la condición de equilibrio entre los dos niveles junto a la estadística de Maxwell-Boltzmann, obteniendo 
+\begin{equation}\label{eq:1.5}
   \left[B_{12}\eu^{-\beta E_{1}}-B_{21}\eu^{-\beta E_{2}}\right] \rho(\nu) = A_{21}\eu^{-\beta E_{2}},
 \end{equation}
-y despejando la densidad de energía, empleando la ecuación \eqref{eq:2.0}
-\begin{equation}\label{eq:2.5}
+y despejando la densidad de energía, empleando la ecuación \eqref{eq:1.1}
+\begin{equation}\label{eq:1.6}
   \rho(\nu) = \frac{A_{21}}{B_{12}\eu^{h \nu/(k_{B}T)} - B_{21}}.
 \end{equation}
 Sin embargo, el cuerpo negro en equilibrio tiene una densidad espectral de energía \autocite{Feynman2011}
-\begin{equation}\label{eq:2.6}
+\begin{equation}\label{eq:1.7}
   \rho(\nu) = \frac{8 \pi h \nu^{3}}{c^{3}}\frac{1}{\eu^{h \nu/(k_{B}T)} - 1},
 \end{equation}
-y la condición de equilibrio debe cumplirse para cualquier temperatura en el interior de la cavidad, por lo que comparando las ecuaciones \eqref{eq:2.5} y \eqref{eq:2.6} los coeficientes deben cumplir
+y la condición de equilibrio debe cumplirse para cualquier temperatura en el interior de la cavidad, por lo que comparando las ecuaciones \eqref{eq:1.6} y \eqref{eq:1.7} los coeficientes deben cumplir
 \begin{align}
-  \label{eq:2.7a}
+  \label{eq:1.8a}
   B_{12} &= B_{21}, \\
-  \label{eq:2.7b}
+  \label{eq:1.8b}
   \frac{A_{21}}{B_{21}} &= \frac{8 \pi h \nu^{3}}{c^{3}}.
 \end{align}
-Las implicaciones de estos resultados son considerablemente importantes. En primer lugar, la ecuación \eqref{eq:2.7a} dice que los coeficientes de absorción y emisión estimulada son iguales. Estos coeficientes pueden calcularse en mecánica cuántica \autocite{Sakurai2020} con relativa facilidad utilizando métodos perturbativos en presencia de un campo electromagnético externo, luego el coeficiente de emisión espontánea $A_{21}$ quedaría determinado. En segundo lugar, la ecuación \eqref{eq:2.7b} implica que para grandes frecuencias, la emisión espontánea domina frente a la emisión estimulada, haciendo más difícil conseguir un láser para frecuencias muy elevadas. 
+Las implicaciones de estos resultados son considerablemente importantes. En primer lugar, la ecuación \eqref{eq:1.8a} dice que los coeficientes de absorción y emisión estimulada son iguales. Estos coeficientes pueden calcularse en mecánica cuántica \autocite{Sakurai2020} con relativa facilidad utilizando métodos perturbativos en presencia de un campo electromagnético externo, luego el coeficiente de emisión espontánea $A_{21}$ quedaría determinado. En segundo lugar, la ecuación \eqref{eq:1.8b} implica que para grandes frecuencias, la emisión espontánea domina frente a la emisión estimulada, haciendo más difícil conseguir un láser para frecuencias muy elevadas. 
 
 Además, este último hecho motiva la extrema dificultad de la amplificación de láseres de rayos X blandos, como mostrará la sección \S\ref{sec:1.4}, necesitando emplear métodos de bombeo que depositen grandes cantidades de energía, suficientes para conseguir una inversión de población que \enquote{compense} las bajas frecuencias de la radiación \acrshort{xuv}. 
 
 Ahora bien, la situación general tiene que considerar la posibilidad de que los estados involucrados en la transición sean degenerados, por lo que hay introducir la multiplicidad de estados posibles con la misma energía, de forma que ahora la ecuación \eqref{eq:1.0} es
-\begin{equation}\label{eq:2.8}
+\begin{equation}\label{eq:1.9}
   \frac{N_{2}}{N_{1}} = \frac{g_{2}}{g_{1}}\exp \left(-\frac{E_{2}-E_{1}}{k_{B}T}\right), 
 \end{equation}
 con $N_{2}$ y $N_{1}$ las poblaciones de los niveles con energías $E_{2}$ y $E_{1}$, respectivamente, donde $g_{2}$ y $g_{1}$ son el número de estados (pueden entenderse como subniveles de igual energía) posibles con dichas energías. En este caso, la inversión de población necesita que \autocite{Tallents2003}
-\begin{equation}\label{eq:2.9}
+\begin{equation}\label{eq:1.10}
   \tcboxmath{\frac{N_{2}}{g_{2}} > \frac{N_{1}}{g_{1}},}
 \end{equation}
 pues la función exponencial está acotada superiormente por $1$ para temperaturas positivas del medio activo. 
 
 La consideración de estados degenerados tiene la ventaja de eliminar la noción de temperatura \enquote{negativa} que aparecía de forma natural cuando cada energía tenía un solo estado asociado posible (aunque una temperatura negativa no tiene sentido físicamente, porque la distribución de Boltzmann solo es válida para un medio en equilibrio termodinámico), pero ahora la degeneración de los estados involucrados es la relación que determina la posibilidad de conseguir la inversión.
 
-Rápidamente, a partir de la ecuación \eqref{eq:2.8} se deduce que si las poblaciones están en equilibrio, es imposible tener una inversión de población entre ambos estados. Las relaciones entre los coeficientes de Einstein quedan como 
+Rápidamente, a partir de la ecuación \eqref{eq:1.9} se deduce que si las poblaciones están en equilibrio, es imposible tener una inversión de población entre ambos estados. Las relaciones entre los coeficientes de Einstein quedan como 
 \begin{empheq}[box=\tcbhighmath]{align}
-  \label{eq:2.10a}
+  \label{eq:1.11a}
   g_{1}B_{12} &= g_{2}B_{21}, \\
-  \label{eq:2.10b}
+  \label{eq:1.11b}
   \frac{A_{21}}{B_{21}} &= \frac{8 \pi h \nu^{3}}{c^{3}},
 \end{empheq}
-luego los coeficientes de absorción y emisión estimulada de radiación no son, en general, iguales cuando los estados que participan en la transición láser son degenerados, recuperándose la ecuación \eqref{eq:2.7a} cuando cada nivel de energía pertenece a un único estado.
+luego los coeficientes de absorción y emisión estimulada de radiación no son, en general, iguales cuando los estados que participan en la transición láser son degenerados, recuperándose la ecuación \eqref{eq:1.8a} cuando cada nivel de energía pertenece a un único estado.
 
 \paragraph{Coeficiente de ganancia}
 El coeficiente de absorción $\mu$ de cualquier sustancia tiene un carácter fuertemente dependiente de la frecuencia de la luz que interacciona con el medio absorbente, es decir, existen regiones del espectro de frecuencias donde la absorción puede ser muy intensa, o no producirse en absoluto. Exactamente la misma dependencia ocurre durante el proceso de emisión estimulada, como mostraba la dependencia de la frecuencia de la densidad espectral de energía $\rho(\nu)$ en el interior de la cavidad. Para estudiar el proceso de amplificación de la luz láser, conviene definir un \emph{coeficiente de ganancia} $G(\nu) = +|\mu(\nu)|$ (simplemente consiste en el coeficiente de atenuación $\mu$ cambiado de signo) para reflejar esta naturaleza espectral.
 
 La emisión espontánea es un proceso puramente estocástico (aleatorio) en la dirección, fase, polarización y frecuencia de los fotones emitidos. La aleatoriedad de las frecuencias emitidas sigue una distribución (normalizada a la unidad bajo integración) o \emph{función de línea} $f(\nu)$, cuya expresión depende de los procesos de interacción dominantes ocurridos en el medio activo. Cuando los choques entre las partículas constituyentes del medio activo son el fenómeno más importante (llamado \emph{ensanchamiento colisional}) que determina la amplitud del perfil de frecuencias, la emisión describe una función \enquote{de Lorentz} dada por \autocite{Milonni1988,Tallents2003,Svelto2010}
-\begin{equation}\label{eq:2.10}
+\begin{equation}\label{eq:1.12}
   f_{L}(\nu) = \frac{2}{\pi \Delta \nu_{L}}\frac{1}{1 + \left(4 \nu^{2}/(\Delta \nu_{L})^{2}\right)},
 \end{equation}
-donde $\Delta \nu_{L}$ es la diferencia de frecuencias (ancho de banda) tal que el valor de la distribución es exactamente la mitad de su valor máximo en los extremos de dichas frecuencias, el máximo ancho de banda para la mitad del pico máximo producido, habitualmente conocido como \emph{\acrfull{fwhm}}, representado en la Figura \ref{fig:ch1_linefun}. 
+donde $\Delta \nu_{L}$ es la diferencia de frecuencias (ancho de banda) tal que el valor de la distribución es exactamente la mitad de su valor máximo en los extremos de dichas frecuencias, el máximo ancho de banda para la mitad del pico máximo producido, habitualmente conocido como \emph{\acrfull{fwhm}}, representado en la Figura \ref{fig:1.5}. 
 
 \begin{figure}[htbp]
   \centering
@@ -220,27 +220,27 @@ donde $\Delta \nu_{L}$ es la diferencia de frecuencias (ancho de banda) tal que 
     \caption{Perfil Doppler}\label{fig:ch1_linefunb}
   \end{subcaptionblock}
   \caption{Perfiles de línea gaussiano y exponencial junto al \acrshort{fwhm}. \textbf{a}, Función de línea de Lorentz para los efectos térmicos dominantes. \textbf{b}, Función de línea de Doppler para los efectos de las colisiones dominantes.}
-  \label{fig:ch1_linefun}
+  \label{fig:1.5}
 \end{figure}
 
 Por otro lado, en un plasma, cuando la energía térmica del movimiento oscilatorio de las partículas, es decir, la temperatura, es dominante (como sucede con los iones del plasma empleado en este proyecto, ver sección \S\ref{1.4}), la función de línea $f_{D}(\nu)$ sigue una distribución Gaussiana, debida al efecto Doppler de la luz emitida por los iones en su movimiento térmico (llamado \emph{ensanchamiento Doppler})  cuando la velocidad de los iones está descrita por una distribución de Maxwell, pudiendo escribir \autocite{Tallents2003,Milonni1988,Oliva2010}
-\begin{equation}\label{eq:2.11}
+\begin{equation}\label{eq:1.13}
 f_{D}(\nu) = \frac{2}{\Delta \nu_{D}} \left(\frac{\ln 2}{\pi}\right)^{1/2} \exp \left(-4 \ln(2) \frac{\nu^{2}}{(\Delta \nu_{D})^{2}}\right),
 \end{equation}
 con $\Delta \nu_{D}$ el \acrshort{fwhm} del perfil de línea $f_{D}(\nu)$. En este caso, $\Delta \nu_{D}$ depende de la temperatura $T_{i}$ de los iones involucrados en la transición láser según la ecuación
-\begin{equation}\label{eq:2.12}
+\begin{equation}\label{eq:1.14}
   \Delta \nu_{D} = 2(\ln 2)^{1/2} \frac{1}{\lambda}\left(\frac{m_{i}}{2k_{B}T_{i}}\right)^{1/2},
 \end{equation}
 siendo $m_{i}$ la masa de los iones y $\lambda$ la longitud de onda de la emisión láser. En el centro del perfil, la función puede aproximarse como
-\begin{equation}\label{eq:2.13}
+\begin{equation}\label{eq:1.15}
   f_{D}(0) = \lambda \left(\frac{m_{i}}{2 \pi k_{B}T_{i}}\right)^{1/2}.
 \end{equation}
 La amplificación de la intensidad láser $I(\nu)$ para una frecuencia $\nu$ debida a la emisión estimulada de luz puede calcularse mediante un balance de transferencia radiativa \autocite{Milonni1988}
-\begin{equation}\label{eq:2.14}
+\begin{equation}\label{eq:1.16}
   \pdv{I(z,\nu)}{z} = G(\nu)I(z,\nu) + E(\nu),
 \end{equation}
-con $z$ la distancia recorrida en el medio amplificador, $E(\nu)$ la tasa de emisión espontánea para un ángulo sólido determinado y $G(\nu)$ el coeficiente de ganancia. En la ecuación \eqref{eq:2.14}, puede observarse que la intensidad $I(z,\nu)$ tendrá aproximadamente como solución una función exponencial creciente en la dirección $z$, siempre y cuando el coeficiente de ganancia no sea demasiado pequeño en comparación con la tasa de emisión espontánea $E(\nu)$. En tal circunstancia, el comportamiento de la intensidad, como aparece esquemáticamente en la Figura \ref{fig:ch1_lambeer}, es
-\begin{equation}\label{eq:dd}
+con $z$ la distancia recorrida en el medio amplificador, $E(\nu)$ la tasa de emisión espontánea para un ángulo sólido determinado y $G(\nu)$ el coeficiente de ganancia. En la ecuación \eqref{eq:2.14}, puede observarse que la intensidad $I(z,\nu)$ tendrá aproximadamente como solución una función exponencial creciente en la dirección $z$, siempre y cuando el coeficiente de ganancia no sea demasiado pequeño en comparación con la tasa de emisión espontánea $E(\nu)$. En tal circunstancia, el comportamiento de la intensidad, como aparece esquemáticamente en la Figura \ref{fig:1.6}, es
+\begin{equation}\label{eq:1.17}
   I(z,\nu) = I_{0}\eu^{G(\nu)z},
 \end{equation}
 donde $I_{0}$ es la intensidad inicial de la luz láser antes de comenzar la amplificación. Si $G(\nu)$ fuera negativo, esto es, sustituyéndolo por el coeficiente de absorción $\mu(\nu)$, la ecuación recuperaría el proceso de absorción de luz característico de un medio absorbente, como cabría esperar. 
@@ -249,27 +249,27 @@ donde $I_{0}$ es la intensidad inicial de la luz láser antes de comenzar la amp
   \centering
   \includegraphics[width=0.8\textwidth]{Figuras/ch1_lambeer.pdf}
   \caption{Solución del balance radiativo cuando la tasa de emisión espontánea $E(\nu)$ es despreciable. La intensidad del haz láser $I(z,\nu)$ aumenta exponencialmente con la distancia de propagación $z$.}
-  \label{fig:ch1_lambeer}
+  \label{fig:1.6}
 \end{figure}
 
-En un sistema de dos estados, como el representado en la Figura \ref{fig:ch1_4_level}, la tasa de emisión espontánea en una región de frecuencias próxima a la de transición es \autocite{Tallents2003}
-\begin{equation}\label{eq:2.15}
+En un sistema de dos estados, como el representado en la Figura \ref{fig:1.3}, la tasa de emisión espontánea en una región de frecuencias próxima a la de transición es \autocite{Tallents2003}
+\begin{equation}\label{eq:1.18}
   E(\nu) = N_{2}A_{21}f(\nu)h \nu\frac{\Omega}{4 \pi},
 \end{equation}
 con $\Omega$ el ángulo sólido escogido. Por otro lado, el coeficiente de ganancia viene dado por
-\begin{equation}\label{eq:2.16}
+\begin{equation}\label{eq:1.19}
   G(\nu) = \sigma(\nu)\left(N_{2}-\frac{g_{2}}{g_{1}}N_{1}\right),
 \end{equation}
 donde $\sigma(\nu)$ es la sección eficaz microscópica de la emisión estimulada. Cuando los dos estados partícipes $\ket{1}$ y $\ket{2}$ de la transición láser están en equilibrio térmico, puede demostrarse que la sección eficaz $\sigma(\nu)$ está relacionada con el coeficiente de Einstein para la emisión espontánea $A_{21}$ como \autocite{Tallents2003}
-\begin{equation}\label{eq:2.16}
+\begin{equation}\label{eq:1.20}
   \sigma(\nu) = f(\nu)\frac{\lambda^{2}}{8 \pi}A_{21},
 \end{equation}
 resultando entonces el coeficiente de ganancia cumplir la ecuación
-\begin{equation}\label{eq:2.17}
+\begin{equation}\label{eq:1.21}
   G(\nu) = f(\nu)\frac{\lambda^{2}}{8 \pi}A_{21}\left(N_{2}-\frac{g_{2}}{g_{1}}N_{1}\right).
 \end{equation}
-Como las poblaciones de los niveles de la transición son, en principio, desconocidos, una manera más sencilla de calcular la ganancia consiste en introducir una hipótesis de ensanchamiento del perfil de línea homogéneo \autocite{Tallents2003} en una situación de equilibrio entre ambos niveles poblacionales, tal que
-\begin{equation}\label{eq:2.18}
+Como las poblaciones de los niveles de la transición son, en principio, desconocidas, una manera más sencilla de calcular la ganancia consiste en introducir una hipótesis de ensanchamiento del perfil de línea homogéneo \autocite{Tallents2003} en una situación de equilibrio entre ambos niveles poblacionales, tal que
+\begin{equation}\label{eq:1.22}
   G(\nu) = \frac{g_{0}}{1+I_{av}/I_{s}}\frac{f(\nu)}{f(0)},
 \end{equation}
 siendo $I_{av}$ la intensidad láser promediada con la función de línea, $g_{0}$ el \enquote{pequeño} coeficiente de ganancia para el centro del perfil y $I_{s}$ la intensidad de saturación del láser. 
@@ -278,8 +278,10 @@ Estos elementos aparecen debido a la pérdida de población del estado superior 
 
 Regresando con la hipótesis anterior, y representando por $R$ la tasa de bombeo (relación entre la potencia de bombeo y la potencia de saturación por unidad de volumen del medio activo) desde el nivel fundamental hasta los niveles de absorción y $\tau_{0}$ el tiempo de vida medio del estado superior $\ket{2}$ (el tiempo medio que tarda un átomo en emitir espontáneamente un fotón y pasar al estado inferior $\ket{1}$), la intensidad de saturación $I_{s}$ y el pequeño coeficiente de ganancia $g_{0}$ son
 \begin{align}
-    g_{0} &\simeq f(0)\frac{\lambda^{2}}{8 \pi}A_{21} \tau_{0}R, \\
-    I_{s} &\simeq \frac{8 \pi}{\lambda^{2}}\frac{h \nu}{f(0)A_{21} \tau_{0}}.
+  \label{1.23a}
+  g_{0} &\simeq f(0)\frac{\lambda^{2}}{8 \pi}A_{21} \tau_{0}R, \\
+  \label{1.23b}
+  I_{s} &\simeq \frac{8 \pi}{\lambda^{2}}\frac{h \nu}{f(0)A_{21} \tau_{0}}.
 \end{align}
 
 \begin{footheorem*}{Ganancia y condiciones de amplificación}
@@ -299,51 +301,51 @@ Regresando con la hipótesis anterior, y representando por $R$ la tasa de bombeo
 \subsection{Propiedades ópticas}\label{sec:1.1.2}
 La radiación emitida por un láser está caracterizada principalmente por una alta monocromaticidad, coherencia, direccionalidad e intensidad. A estas propiedades puede añadirse una quinta relacionada con la duración de la emisión\autocite{Svelto2010}. Esta última hace referencia a la capacidad de generar pulsos de muy corta duración, propiedad que, aunque menos fundamental, tiene gran importancia en muchas aplicaciones. 
 
-\paragraph{Monocromaticidad}\label{par:1.1.2.1}
+\paragraph{Monocromaticidad}
 De forma simplificada, esta propiedad se debe fundamentalmente a dos motivos: en primer lugar, solamente una onda electromagnética de frecuencia $\nu=\omega/2 \pi$ dada por \eqref{eq:1.1} puede ser amplificada y, en segundo lugar, como los esquemas de espejos utilizados forman una cavidad resonante, las oscilaciones pueden producirse únicamente a las frecuencias de resonancia de esta cavidad. Esta última circunstancia implica que el ancho de banda $\Delta\nu$ de la emisión láser es habitualmente mucho menor ---hasta diez órdenes de magnitud--- que el ancho de banda observado en la transición $2\rightarrow 1$ durante la emisión espontánea asociada.
 
-Por ejemplo, las últimas propuestas de láseres de Fabry-Perot para la fabricación de circuitos integrados \autocite{Tran2022}, emplean frecuencias de \qty{300}{THz} ($\lambda = \qty{980}{nm}$) con anchos de banda $\Delta\nu = \qty{10}{kHz}$, resultando una anchura relativa para la frecuencia de emisión $\Delta\nu/\nu = 3,33\times 10^{-11}$. El espectro de la emisión láser tiene una alta pureza, como ilustra la Figura \ref{fig:ch1_amplif}, consiguiéndose reducir la dispersión a través de un medio de propagación dado y mejorando la focalización del haz, ya que el índice de refracción depende de la longitud de onda emitida.
+Por ejemplo, las últimas propuestas de láseres de Fabry-Perot para la fabricación de circuitos integrados ---Tran \emph{et al} (2022)\autocite{Tran2022}---, emplean frecuencias de \qty{300}{THz} ($\lambda = \qty{980}{nm}$) con anchos de banda $\Delta\nu = \qty{10}{kHz}$, resultando una anchura relativa para la frecuencia de emisión $\Delta\nu/\nu = 3,33\times 10^{-11}$. El espectro de la emisión láser tiene una alta pureza, como ilustra la Figura \ref{fig:1.7}, consiguiéndose reducir la dispersión a través de un medio de propagación dado y mejorando la focalización del haz, ya que el índice de refracción depende de la longitud de onda emitida.
 
 \begin{figure}[htpb]
   \centering
   \includegraphics[width=\textwidth]{Figuras/ch1_amplif.png}
-  \caption{Espectro de emisión del láser empleado en la propuesta de Tran \emph{et al} (2015)\autocite{Tran2022}. \textbf{b}, Esquema del láser y sus elementos constructivos. \textbf{d}, Ancho de banda conseguido con la cavidad resonante. \textbf{e}, Ruido en la frecuencia del espectro de emisión. \textbf{g}, Frecuencias de resonancia. \textbf{h}, Longitudes de onda de operación.}
-  \label{fig:ch1_amplif}
+  \caption{Espectro de emisión del láser empleado en la propuesta de Tran \emph{et al} (2022)\autocite{Tran2022}. \textbf{d}, Ancho de banda conseguido con la cavidad resonante. \textbf{e}, Ruido en la frecuencia del espectro de emisión. \textbf{g}, Frecuencias de resonancia. \textbf{h}, Longitudes de onda de operación.}
+  \label{fig:1.7}
 \end{figure}
 
-En realidad, la longitud de onda de la transición láser admite ---por el principio de incertidumbre de Heisenberg--- frecuencias de excitación distintas a la ecuación \eqref{eq:1.1}, tal que $\nu_0\rightarrow\nu_0 + \delta\nu$. La magnitud de $\delta\nu$ es proporcional a la constante de Planck $h = \qty{6,626e-34}{J.s}$, siendo entonces extremadamente pequeña la variación introducida en el ancho de banda de la emisión láser debido a este fenómeno. 
+En realidad, la longitud de onda de la transición láser admite ---por el principio de incertidumbre de Heisenberg--- frecuencias de excitación distintas a la ecuación \eqref{eq:1.1}, tal que $\nu\rightarrow\nu + \delta\nu$. La magnitud de $\delta\nu$ es proporcional a la constante de Planck $h = \qty{6,626e-34}{J.s}$, siendo entonces extremadamente pequeña la variación introducida en el ancho de banda de la emisión láser debido a este fenómeno. 
 
 Además, Schawlow y Townes demostraron que la anchura de banda mínima de un láser es la anchura de banda de la cavidad resonante dividida por dos veces el número de fotones $\langle n\rangle$ en el interior de la cavidad, límite conocido como \emph{\acrfull{sql}}. Sin embargo, existen grupos de investigación\autocite{Liu2021} que sugieren la posibilidad de utilizar circuitos superconductores para superar el \acrshort{sql} por un factor $\sim \xval{n}$ e incluso $\sim \xval{n}^{2}$, aproximándose al denominado \emph{límite de Heisenberg}.
 
-\paragraph{Coherencia}\label{par:1.1.2.2}
+\paragraph{Coherencia}
 A primer orden, el concepto de coherencia de una onda electromagnética introduce dos conceptos, llamados coherencia espacial y temporal\autocite{Svelto2010}.
 
 Para definir la coherencia espacial, basta con imaginar dos puntos $P_1$ y $P_2$ situados en el mismo frente de onda, en un instante inicial, de una onda electromagnética determinada, siendo $E_1(t)$ y $E_2(t)$ las amplitudes del campo eléctrico en dichos puntos. Por definición, el desfase entre ambos campos en ese instante es cero. Ahora bien, si en cualquier instante posterior, el desfase entre ambos mantiene un valor nulo, entonces se dice que ambos puntos tienen una coherencia perfecta. Si esto ocurre para cualquier par de puntos del frente de onda, entonces se dice que la onda tiene \emph{coherencia espacial perfecta}. En la práctica, para un punto $P_1$, el punto $P_2$ tiene que estar en un área muy próxima a $P_1$ para mantener una buena correlación entre ambas fases. En estos casos, existe una \emph{coherencia espacial parcial} y, para cualquier punto $P$, puede definirse un área de coherencia $S_{c}(P)$ apropiada.
 
-Para definir la coherencia temporal, se supone el campo eléctrico de la onda anterior en un punto $P$, pero en dos instantes de tiempo $t$ y $t+\tau$. Si para un determinado intervalo $\tau$, el desfase entre las dos ondas se mantiene constante para cualquier instante de tiempo $t$, entonces se dice que tienen coherencia temporal durante el intervalo $\tau$. Si esto ocurre para cualquier $\tau$, la onda electromagnética tendrá una \emph{coherencia temporal perfecta}. En la práctica, el desfase puede mantenerse durante cualquier intervalo de tiempo $\tau$, tal que $0<\tau<\tau_0$, en cuyo caso la onda tiene \emph{coherencia temporal parcial} con un tiempo de coherencia $\tau_0$. En experimentos recientes ---Zhou \emph{et al} (2020)---\autocite{Zhou2020}, el láser de electrones libres (\acrshort{fel}) del \emph{\acrfull{lcls}} ha proporcionado pulsos de rayos X duros (\qty{60}{µJ}, \qty{3}{fs}) con un tiempo de coherencia parcial de $\tau_0 = \qty{174,7}{as}$ (\qty{1}{as} = \qty{e-18}{s}). La Figura \ref{fig:ch1_coher} muestra los tiempos de coherencia obtenidos en dicho experimento (aunque puede parecer un tiempo de coherencia muy pequeño, hay que tener en cuenta que no puede superar la duración del pulso). 
+Para definir la coherencia temporal, se supone el campo eléctrico de la onda anterior en un punto $P$, pero en dos instantes de tiempo $t$ y $t+\tau$. Si para un determinado intervalo $\tau$, el desfase entre las dos ondas se mantiene constante para cualquier instante de tiempo $t$, entonces se dice que tienen coherencia temporal durante el intervalo $\tau$. Si esto ocurre para cualquier $\tau$, la onda electromagnética tendrá una \emph{coherencia temporal perfecta}. En la práctica, el desfase puede mantenerse durante cualquier intervalo de tiempo $\tau$, tal que $0<\tau<\tau_0$, en cuyo caso la onda tiene \emph{coherencia temporal parcial} con un tiempo de coherencia $\tau_0$. En experimentos recientes ---Zhou \emph{et al} (2020)---\autocite{Zhou2020}, el láser de electrones libres (\acrshort{fel}) del \emph{\acrfull{lcls}} ha proporcionado pulsos de rayos X duros (\qty{60}{µJ}, \qty{3}{fs}) con un tiempo de coherencia parcial de $\tau_0 = \qty{174,7}{as}$ (\qty{1}{as} = \qty{e-18}{s}). La Figura \ref{fig:1.8} muestra los tiempos de coherencia obtenidos en dicho experimento (aunque puede parecer un tiempo de coherencia muy pequeño, hay que tener en cuenta que no puede superar la duración del pulso). 
 
 Es importante mencionar que ambos conceptos de coherencia son independientes. De hecho, pueden darse casos de ondas con buena coherencia espacial y mala coherencia temporal, o viceversa. Además, como se ha comentado inicialmente, estas propiedades aparecen cuando se estudia el grado de coherencia de la onda a primer orden. Esta caracterización, en general, consiste en medir por ejemplo, mediante un interferómetro de Young, un elevado número de veces el campo eléctrico en dos puntos distintos del espacio $\symbf{r}_1$ y $\symbf{r}_2$ para dos instantes de tiempo $t_1$ y $t_2$ de un intervalo $T$, definiéndose el \emph{grado de coherencia de primer orden} como
-\begin{equation}\label{eq:1.2}
+\begin{equation}\label{eq:1.24}
   \gamma^{(1)}(\symbf{r}_{1},\symbf{r}_{2},t_{1},t_{2}) = \frac{\langle E(\symbf{r}_{1},t_{1})E^{*}(\symbf{r}_{2},t_{2}\rangle)}{\langle E(\symbf{r}_{1},t_{1})E^{*}(\symbf{r}_{1},t_{1}) \rangle^{1/2} \langle E(\symbf{r}_{2},t_{2})E^{*}(\symbf{r}_{2},t_{2}) \rangle^{1/2}},
 \end{equation}
-con $E^{*}$ el complejo conjugado del campo eléctrico. En esencia, la ecuación \eqref{eq:1.2} \enquote{ensambla} el valor medio de las mediciones realizadas para el campo eléctrico y las normaliza, permitiendo medir simultáneamente coherencia espacial y temporal de la onda.
+con $E^{*}$ el complejo conjugado del campo eléctrico. En esencia, la ecuación \eqref{eq:1.24} \enquote{ensambla} el valor medio de las mediciones realizadas para el campo eléctrico y las normaliza, permitiendo medir simultáneamente coherencia espacial y temporal de la onda.
 
 \begin{figure}[htpb]
   \centering
   \includegraphics[width=0.8\textwidth]{Figuras/ch1_coher.png}
   \caption{Resultados experimentales del tiempo de coherencia medidos en el \acrshort{lcls}\autocite{Zhou2020}. \textbf{a}, Energía de los pulsos frente al retraso temporal. \textbf{b}, Cambios en la varianza respecto al retraso temporal.}
-  \label{fig:ch1_coher}
+  \label{fig:1.8}
 \end{figure}
 
 El concepto de coherencia de primer orden hace referencia a que la medición realizada contempla la correlación entre amplitudes de ondas --el campo eléctrico---, mientras que la coherencia de orden $n$ expresa la correlación entre los productos de orden $n$ del campo eléctrico. Por ejemplo, a segundo orden ---el cuadrado del campo eléctrico---, la medición encierra la información sobre la intensidad del campo, de manera que la \emph{función correlación de orden} $n$ sería $\Gamma^{(n)}(\symbf{r}_1,t_1,\ldots,\symbf{r}_n,t_n) = \langle E(\symbf{r}_1,t_1)E^{*}(\symbf{r}_1,t_1)\ldots E(\symbf{r}_n,t_n)E^{*}(\symbf{r}_n,t_n)\rangle$.
 
-\paragraph{Direccionalidad}\label{par:1.1.2.3}
+\paragraph{Direccionalidad}
 La emisión de un láser puede llegar a consistir en frentes de onda planos prácticamente ideales. La difracción es el único fenómeno ondulatorio que impone un umbral inferior en la divergencia del haz láser. El orden de magnitud del ángulo sólido $\Delta\Omega$ y el ángulo de divergencia $\Delta\theta$ dependen fundamentalmente de la longitud de onda $\lambda$ y el área de apertura $A$ de la emisión\autocite{Milonni1988} a través de la relación
-\begin{equation}\label{eq:1.3}
+\begin{equation}\label{eq:1.25}
     \Delta\Omega \approx \frac{\lambda^{2}}{A} \approx (\Delta\theta)^{2}.
 \end{equation}
 Para longitudes de onda en el rango óptico, por ejemplo, $\lambda = \qty{500}{nm}$, y con una superficie de salida de la cavidad habitual de $A = \qty{5}{mm^2}$, la relación \eqref{eq:1.3} proporciona una divergencia de $\Delta\theta = \sqrt{\qty{250000e-18}{m^2}/(\qty{25e-6}{m^2})} = \qty{0,1}{mrad}$. Con ángulos de divergencia similares a este ejemplo, que son habituales en láseres, como muestra la Tabla \ref{tab:1.1}, el llamado \emph{rango de Rayleigh} permite caracterizar la distancia recorrida $z$. En este rango, el ancho $w_0$ del haz láser se incrementa en un factor $\sqrt{2}$ en el plano transversal, siendo aproximadamente en este caso
-\begin{equation}\label{eq:1.4}
+\begin{equation}\label{eq:1.26}
     z\approx\frac{A}{\lambda} = \frac{\qty{5e-6}{m^2}}{\qty{500e-9}{m}} = \qty{10}{m}.
 \end{equation}
 
@@ -364,69 +366,155 @@ Para áreas de apertura mayores, por ejemplo $A = \qty{5}{cm^2}$, la distancia a
     \midrule
     \ce{Nd{:}YAG}     & $1-20$                                & $(3-1300)\times 10^{-6}$ \\
     \midrule
-    \ce{Nd{:}cristal} & $0,5-10$                              & $(1-300)\times 10^{-6}$ \\
+    \ce{Nd{:}vidrio} & $0,5-10$                              & $(1-300)\times 10^{-6}$ \\
     \bottomrule
   \end{tabular}
   \label{tab:1.1}
 \end{table}
 
-\paragraph{Luminosidad}\label{par:1.1.2.4}
+\paragraph{Luminosidad}
 Un haz de luz procedente de una fuente puede caracterizarse por la divergencia del haz $\Delta\Omega$, el tamaño de la fuente ---normalmente una superficie de área $A$---, el ancho de banda $\Delta\nu$ y la densidad de potencia de la emisión $P(\nu)$, es decir, la potencia por unidad de frecuencia del ancho de banda\autocite{Milonni1988}. A partir de estos parámetros, es interesante definir la \emph{luminosidad espectral} $\beta_{\nu}$ de la fuente como 
-\begin{equation}\label{eq:1.5}
+\begin{equation}\label{eq:1.27}
     \beta_{\nu} = \frac{P(\nu)}{A\Delta\Omega\Delta\nu} = \frac{I_{\nu}(\nu)}{\Delta\Omega},
 \end{equation}
 con $I_{\nu}(\nu)$ la intensidad espectral (intensidad por unidad de frecuencia) del haz de luz, de manera que también puede definirse $\beta_{\nu}$ como la intensidad espectral por unidad de ángulo sólido.
 
-Para una fuente de radiación ordinaria, esta luminosidad puede estimarse directamente suponiendo la expresión de la densidad espectral de energía $\rho(\nu)$ de un cuerpo negro. Empleando la ecuación \eqref{eq:1.5} y la hipótesis del cuerpo negro ($\Delta\Omega=4 \pi$), resulta
-\begin{equation}\label{eq:1.6}
+Para una fuente de radiación ordinaria, esta luminosidad puede estimarse directamente suponiendo la expresión de la densidad espectral de energía $\rho(\nu)$ de un cuerpo negro. Empleando la ecuación \eqref{eq:1.27} y la hipótesis del cuerpo negro ($\Delta\Omega=4 \pi$), resulta
+\begin{equation}\label{eq:1.28}
     \beta_{\nu} = \frac{c \rho(\nu)}{4 \pi} = \frac{2 \nu^{2}}{c^{2}}\frac{h \nu}{\eu^{h \nu/(k_{B}T)}-1}.
 \end{equation}
 La temperatura de la superficie del sol es aproximadamente $T = \qty{5800}{K} \approx 20 \times \qty{300}{K}$. La mayoría de la emisión del sol está en la franja amarilla de la banda visible, de forma que $h\nu \approx \qty{2,5}{eV}$ ($\nu \approx \qty{5e14}{Hz}$ para un fotón en el amarillo-verde). Para $T = \qty{300}{K}$ se tiene $k_{B}T \approx \qty{0,025}{eV}$, por tanto, $h \nu/(k_{B}T) \approx 5$, obteniéndose $\eu^{h \nu/(k_{B}T)}-1 \approx 150$ y, finalmente,
-\begin{equation}\label{eq:1.7}
+\begin{equation}\label{eq:1.29}
     \beta_{\nu} \approx \qty{1,5e-12}{W/cm^{2}\,sr\,Hz}.
 \end{equation}
-Dependiendo del tipo de láser pueden hacerse varias estimaciones. Escogiendo un láser \ce{He-Ne} de baja potencia, valores típicos\autocite{Milonni1988} son potencias de \qty{1}{mW} con anchos de banda en torno a \qty{e4}{Hz}. A partir de la ecuación \eqref{eq:1.3}, puede calcularse la longitud de onda como $\lambda^{2} \approx A\Delta\Omega$, que para la luz del láser \ce{He-Ne} es $\lambda^{2} \approx (\qty{6238e-8}{cm})^{2} \approx \qty{3,89e-9}{cm^{2}}$. Combinando estos datos, resulta 
-\begin{equation}\label{eq:1.8}
+Dependiendo del tipo de láser pueden hacerse varias estimaciones. Escogiendo un láser \ce{He-Ne} de baja potencia, valores típicos\autocite{Milonni1988} son potencias de \qty{1}{mW} con anchos de banda en torno a \qty{e4}{Hz}. A partir de la ecuación \eqref{eq:1.25}, puede calcularse la longitud de onda como $\lambda^{2} \approx A\Delta\Omega$, que para la luz del láser \ce{He-Ne} es $\lambda^{2} \approx (\qty{6238e-8}{cm})^{2} \approx \qty{3,89e-9}{cm^{2}}$. Combinando estos datos, resulta 
+\begin{equation}\label{eq:1.30}
     \beta_{\nu} \approx \qty{26}{W/cm^{2}\,sr\,Hz}.
 \end{equation}
-Con láseres de mayor potencia, como el láser de \ce{Nd{:}cristal}, que puede alcanzar potencias de \qty{e4}{MW}, su luminosidad es $\beta_{\nu} \approx \qty{2e8}{W/cm^{2}\,sr\,Hz}$, y para las potencias de teravatios (\qty{1}{TW} = \qty{e6}{MW}) alcanzadas en algunos láseres, la luminosidad es varios órdenes de magnitud más elevada.
+Con láseres de mayor potencia, como el láser de \ce{Nd{:}vidrio}, que puede alcanzar potencias de \qty{e4}{MW}, su luminosidad es $\beta_{\nu} \approx \qty{2e8}{W/cm^{2}\,sr\,Hz}$, y para las potencias de teravatios (\qty{1}{TW} = \qty{e6}{MW}) alcanzadas en algunos láseres, la luminosidad es varios órdenes de magnitud más elevada.
 
 De esta manera, el concepto de luminosidad deja patente la existencia de grandes diferencias entre las fuentes de radiación convencionales y los láseres. Incluso atenuando la luminosidad del láser \ce{He-Ne} hasta alcanzar el valor de la radiación solar y, por otro lado, colimando y filtrando la radiación solar hasta alcanzar la direccionalidad y el ancho de banda del láser \ce{He-Ne}, podrían distinguirse ambas fuentes, contando los fotones emitidos para detectar pequeñas fluctuaciones estadísticas debidas a la naturaleza cuántica de la luz. 
 
-\paragraph{Duración}\label{par:1.1.2.5}
-Esta propiedad está relacionada con la monocromaticidad explicada en la sección \S\ref{par:1.1.2.1}. La duración de un pulso láser determina su densidad de energía en el tiempo, que puede considerarse inversamente proporcional a la densidad de energía en la longitud de onda, esto es, su monocromaticidad\autocite{Svelto2010}. Teóricamente, cualquier tipo de láser puede ser tan monocromático como sea necesario, pero los pulsos de muy corta duración solo pueden generarse (sin emplear técnicas adicionales), por ejemplo, en láseres de estado sólido o láseres de líquido, donde el ancho de banda es suficientemente amplio.
+\paragraph{Duración}
+Esta propiedad está relacionada con la monocromaticidad explicada al comienzo de esta sección. La duración de un pulso láser determina su densidad de energía en el tiempo, que puede considerarse inversamente proporcional a la densidad de energía en la longitud de onda, esto es, su monocromaticidad\autocite{Svelto2010}. Teóricamente, cualquier tipo de láser puede ser tan monocromático como sea necesario, pero los pulsos de muy corta duración solo pueden generarse (sin emplear técnicas adicionales), por ejemplo, en láseres de estado sólido o láseres de líquido, donde el ancho de banda es suficientemente amplio.
 
 Empleando la técnica \emph{mode locking} ---habitual en muchos láseres de pulsos ultracortos--- comentada en la sección \S\ref{sec:1.1.1}, es posible producir pulsos de luz con una duración aproximadamente igual al inverso del ancho de banda para la transición $2 \rightarrow 1$. Por ejemplo, en láseres de gas, cuyo ancho de banda es relativamente pequeño, la duración del pulso puede ser $\sim\qty{0,1}{ns}-\qty{1}{ns}$. Esta duración no es especialmente corta teniendo en cuenta que algunas lámparas flash pueden emitir pulsos de luz inferiores a \qty{1}{ns}. Por otra parte, el ancho de banda de algunos láseres de estados sólido o láseres de líquido puede ser $10^3-10^5$ veces mayor que en los láseres de gas, generando pulsos extremadamente cortos (hasta $\sim\qty{10}{fs}$).
 
-La longitud de onda y la duración del pulso tienen especial importancia en muchas aplicaciones tecnológicas y en investigación, por ejemplo, en la reconstrucción de imágenes tridimensionales de moléculas\autocite{vonArdenne2018}, bacterias o virus\autocite{Ekeberg2015}, donde la resolución necesaria para visualizar escalas extremadamente pequeñas requiere longitudes de onda de nanómetros ($\sim\qty{e-9}{m}$) o ángstroms ($\sim\qty{e-10}{m}$) y pulsos con duraciones de femtosegundos ($\sim\qty{e-15}{s}$) o incluso attosegundos ($\sim\qty{e-18}{s}$). Estas técnicas están basadas en formar cientos de patrones de difracción entre el pulso láser y el blanco objeto de estudio, para después emplear métodos de análisis de Fourier que permiten obtener imágenes tridimensionales a partir de los patrones de difracción bidimensionales, como muestra la Figura \ref{fig:ch1_pulso}.
+La longitud de onda y la duración del pulso tienen especial importancia en muchas aplicaciones tecnológicas y en investigación, por ejemplo, en la reconstrucción de imágenes tridimensionales de moléculas\autocite{vonArdenne2018}, bacterias \autocite{Fan2016}, proteínas \autocite{Neutze2000} o virus\autocite{Ekeberg2015}, donde la resolución necesaria para visualizar escalas tan pequeñas requiere longitudes de onda de nanómetros ($\sim\qty{e-9}{m}$) o ángstroms ($\sim\qty{e-10}{m}$) y pulsos con duraciones de femtosegundos ($\sim\qty{e-15}{s}$) o incluso attosegundos ($\sim\qty{e-18}{s}$). Estas técnicas están basadas en formar cientos de patrones de difracción entre el pulso láser y el blanco objeto de estudio, para después emplear métodos de análisis de Fourier que permiten obtener imágenes tridimensionales a partir de los patrones de difracción bidimensionales, como muestra la Figura \ref{fig:1.9}.
 
 \begin{figure}[htpb]
   \centering
   \includegraphics[width=0.5\textwidth]{Figuras/ch1_pulso.png}
   \caption{Patrones de difracción y densidad de electrones obtenida de un \enquote{Mimivirus}\autocite{Ekeberg2015}. La resolución conseguida es de \qty{125}{nm}. El tamaño de la envoltura del virus es aproximadamente de \qty{450}{nm}.}
-  \label{fig:ch1_pulso}
+  \label{fig:1.9}
 \end{figure}
 
-El aspecto clave del ancho de pulso en estas aplicaciones está en conseguir la difracción antes destruir completamente la muestra\autocite{Neutze2000}, motivando la necesidad de pulsos extremadamente cortos o ultracortos ($\le\unit{fs}$) para visualizar imágenes. Por otro lado, el papel de la longitud de onda es conseguir la resolución necesaria para observar menores tamaños, ya que longitudes de onda mayores que el tamaño característico del objeto que quiere estudiarse no permiten exhiben el fenómeno de difracción necesario. En la actualidad ---se explicará más detalladamente en la sección \S\ref{sec:1.3}---, las únicas fuentes de radiación que reúnen estos requisitos son los láseres de rayos X blandos o \emph{\acrfull{sxrl}}.
+El aspecto clave del ancho de pulso en estas aplicaciones está en conseguir la difracción antes destruir completamente la muestra\autocite{Neutze2000} (ver Figura \ref{fig:1.10}), motivando la necesidad de pulsos extremadamente cortos o ultracortos ($\le\unit{fs}$) para visualizar imágenes. Por otro lado, el papel de la longitud de onda es conseguir la resolución necesaria para observar menores tamaños, ya que longitudes de onda mayores que el tamaño característico del objeto que quiere estudiarse no permiten exhiben el fenómeno de difracción necesario. En la actualidad ---se explicará más detalladamente en la sección \S\ref{sec:1.3}---, las únicas fuentes de radiación que reúnen estos requisitos son los láseres de rayos X blandos o \emph{\acrfull{sxrl}}.
 
-\section{Plasma}\label{sec:1.2}
+\paragraph{Modos de Laguerre-Gauss}
+Durante la sección \S\ref{sec:1.1.1}, emergió de forma natural el concepto de cavidad de Fabry-Perot o cavidad resonante. La función de estos sistemas ópticos es fundamental para conseguir una amplificación de la luz láser y, al mismo tiempo, permitir su salida después de penetrar a través del medio activo encargado de proporcionar el \enquote{sustrato} necesario para la emisión estimulada. La Figura \ref{fig:1.4} mostraba como, por ejemplo, una forma de liberar la luz láser consiste en utilizar espejos parcialmente transparentes a la frecuencia amplificada. Las sucesivas vueltas de los fotones atrapados en el interior de la cavidad consiguen multiplicar la energía liberada. 
 
-\subsection{Propiedades físicas}\label{sec:1.2.1}
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.8\textwidth]{Figuras/ch1_explyso}
+  \caption{Explosión observada por Neutze \emph{et al} (2000) \autocite{Neutze2000} de la lisozima T4 (una proteína) tras recibir un pulso láser \acrshort{xuv} de $3 \times 10^{12}$ fotones por cada \qty{100}{nm} de diámetro, y un pulso con \acrshort{fwhm} de \qty{2}{fs}, provocando la desintegración de la enzima.}
+  \label{fig:1.10}
+\end{figure}
 
-\subsection{Ondas electromagnéticas en plasmas}\label{sec:1.2.2}
+Por otro lado, la distancia entre ejes ópticos de la cavidad se escoge para obtener la ganancia deseada, acompañada de los elevados niveles de coherencia, direccionalidad y monocromaticidad típicos de un láser, favoreciendo la interferencia constructiva \autocite{Hecht2016} de los modos de vibración interesantes, centrados en torno a la frecuencia buscada. A raíz de esto, las propiedades ópticas del láser dependen considerablemente del diseño utilizado, prestando atención a la geometría de los espejos; la posición y tamaño de cavidad y medio activo; o a elementos con formas especiales colocados dentro de la cavidad, que permitan eliminar frecuencias de modos indeseados.
 
-\subsection{Interacción láser-plasma}\label{sec:1.2.3}
+Estas cavidades, también pueden estudiarse mediante las condiciones de frontera externas impuestas sobre la propagación de la luz a través del espacio que llena el medio activo. Habitualmente, en física de láseres suele considerarse una cavidad \enquote{vacía} \autocite{Milonni1988}, esto es, no contiene materia, pero sí luz. Lógicamente, es una aproximación si la cavidad forma parte de un láser, pero es suficientemente precisa en muchas situaciones porque los átomos o moléculas del medio activo suelen rellenar las cavidades de manera muy dispersa. 
 
-\section{Fuentes de radiación X coherente}\label{sec:1.3}
+Bajo estas suposiciones, el campo eléctrico cumple la ecuación \eqref{eq:1.31} de ondas en el vacío 
+\begin{equation}\label{eq:1.31}
+  \laplacian \symbf{E} - \frac{1}{c^{2}}\pdvN{\symbf{E}}{t}{2} = 0,
+\end{equation}
+con solución una onda plana monocromática tipo $\symbf{E}(\symbf{r},t) = \symbf{E}_{0}(\symbf{r})\eu^{-\iu \omega t}$, dando lugar a la ecuación de Helmholtz $(\laplacian + k^{2}) \symbf{E}_{0} = 0$ para la amplitud (compleja) $\symbf{E}_{0}$ del campo eléctrico, siendo $k=\omega/c$ el número de onda. La dirección de propagación (escogiendo la dirección $z$) consiste en un término $\eu^{\iu kz}$ que puede incluirse dentro de la amplitud $\symbf{E}_{0}$, como $\symbf{E}_{0}(\symbf{r}) = \symbf{U}(\symbf{r})\eu^{\iu  kz}$. 
 
-\subsection{Radiación sincrotrón}\label{sec:1.3.1}
+Utilizando la aproximación paraxial (que volverá a aparecer en la sección \S\ref{sec:3.1}), las variaciones de segundo orden de $\symbf{U}$ en la coordenada $z$ pueden suponerse despreciables frente a las de primer orden, cumpliéndose la ecuación \eqref{eq:1.32} de ondas paraxial
+\begin{equation}\label{eq:1.32}
+  \pdvN{\symbf{U}}{x}{2} + \pdvN{\symbf{U}}{y}{2} - 2 \iu k \pdv{\symbf{U}}{z} = 0,
+\end{equation}
+donde las diferentes soluciones, imponiendo unas condiciones de frontera determinadas, representan las posibles configuraciones del campo eléctrico en el plano perpendicular $xy$ a la dirección de propagación $z$, denominados \emph{modos transversales}.
 
-\subsection{Láseres de electrones libres}\label{sec:1.3.2}
+Las soluciones $\symbf{U}$, a su vez, son desarrollos en serie de funciones conocidas como \emph{modos de Hermite-Gauss} $HG_{n,m}$ (también $\symrm{TEM}_{n,m}$, de \emph{transverse electromagnetic mode}), en coordenadas cartesianas, o \emph{modos de Laguerre-Gauss} $\symrm{LG}_{l,p}$ en coordenadas cilíndricas. Normalmente, para estudiar la distribución espacial (en un instante de tiempo) de un haz láser suelen utilizarse \emph{haces gaussianos}, que son sencillamente un caso particular de los modos transversales anteriores, con $n=m=l=p=0$. Este modo representa un campo eléctrico descrito por \autocite{Milonni1988}
+\begin{align}
+  \label{eq:1.33}
+  \symrm{HG}_{0,0}=\symrm{LG}_{0,0}(r,z) &= E_{0}\frac{w_{0}}{w(z)}\frac{2r^{2}}{w^{2}(z)}\exp \left(-\frac{r^{2}}{w^{2}(z)}\right)\exp \left(-\iu kz - \iu \frac{kr^{2}}{2R(z)} + \iu \Phi(z)\right), \\
+  \label{eq:1.34}
+  w(z) &= w_{0}\sqrt{1+\left(\frac{z}{z_{R}}\right)^{2}}, \\
+  \label{eq:1.35}
+  R(z) &= z \left[1+\left(\frac{z_{R}}{z}\right)^{2}\right], \\
+  \label{eq:1.36}
+  \psi(z) &= \arctan\left(\frac{z}{z_{R}}\right),
+\end{align}
+donde $w_{0}$ es el valor mínimo del ancho del haz $w(z)$; $R(z)$ es el radio de curvatura del frente de onda; $\psi(z)$ es la \emph{fase de Gouy}, que consiste en un desplazamiento de la fase del haz gaussiano; y $z_{R}$ es el rango de Rayleigh, ya comentado durante la sección \S\ref{sec:1.1.2}. La forma típica de $w(z)$ aparece en la Figura \ref{fig:1.11}, junto a algunos de los parámetros característicos.
 
-\subsection{Armónicos de alto orden}\label{sec:1.3.3}
- 
-\subsection{Radiación betatrón}\label{sec:1.3.4}
+En general, los modos de Laguerre-Gauss, especialmente importantes cuando se incorpora un momento angular a los fotones del haz (estudiado al finalizar el capítulo \ref{cap:4}), pueden descomponerse y medirse (en un laboratorio) en función de los modos de Hermite-Gauss \autocite{DErrico2017} ($\symrm{TEM}_{n,m}$) y tienen una dependencia angular $\phi$ descrita por la ecuación 
+\begin{equation}\label{eq:1.37}
+  \begin{split} 
+    \symrm{LG}_{l,p}(r,\phi,z) = E_{0}\frac{w_{0}}{w(z)}L_{p}^{(l)} \left(\frac{\sqrt{2}r}{w(z)}\right)^{|l|}\frac{2r^{2}}{w^{2}(z)}&\exp \left(-\frac{r^{2}}{w^{2}(z)}\right)\times \\ 
+    & \exp \left(- \iu \phi l - \iu \frac{kr^{2}}{2R(z)} + \iu \Phi(z)\right),
+  \end{split}
+\end{equation}
+con $L_{p}^{|l|}$ los \emph{polinomios de Laguerre}
+\begin{equation}\label{eq:1.38}
+  L_{p}^{|l|}(x) = \sum_{m=0}^{p}(-1)^{m}\frac{(|l|+p)!}{(p-m)!(|l|+m)!m!}x^{m}.
+\end{equation}
 
-\section{Láseres de rayos X basados en plasmas}\label{sec:1.4}
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.7\textwidth]{Figuras/ch1_beam_waist.pdf}
+  \caption{Ángulo de divergencia $\theta$ del ancho del haz láser $w(z)$ con la longitud $z$, rango de Rayleigh $z_{R}$, y ancho inicial $w_{0}$. Observese que, para $z=z_{R}$, el ancho del haz aumenta en un factor $\sqrt{2}$.}
+  \label{fig:1.11}
+\end{figure}
 
-\section{Estado del arte}\label{sec:1.5}
+Analizando la ecuación \eqref{eq:1.37}, el modo de Laguerre-Gauss $\symrm{LG}_{l,p}$ es muy similar al modo fundamental de Hermite-Gauss $\symrm{TEM}_{0,0}$ (y a su propio modo fundamental) que representa un haz gaussiano, añadiendo la dependencia angular exponencial $\exp(-\iu \phi l)$, los polinomios de Laguerre, y el término potencia elevado a $|l|$. Los subíndices $p$ y $l$ contienen el comportamiento radial y angular, respectivamente. El índice radial $p$ está directamente relacionado con el número de anillos concéntricos que aparecen en la sección transversal del haz, de manera que habrá $p+1$ anillos cuando $l\neq 0$ y $p$ anillos cuando $l=0$, como ilustran los ejemplos en la Figura \ref{fig:1.12}. 
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.5\textwidth]{Figuras/ch1_lague_gauss.png}
+  \caption{Ejemplos de modos de Laguerre-Gauss. De izquierda a derecha, índices $p=0$ hasta $p=2$, y de arriba a abajo, índices $l=0$ hasta $l=2$. La intensidad de los colores representa la magnitud del valor tomado por el modo.}
+  \label{fig:1.12}
+\end{figure}
+
+El índice angular $l$, tiene tres nombres, algunos de origen matemático: \autocite{Yao2011} \emph{\acrfull{tc}} (carga topológica, el más común), \emph{winding number} (número de vueltas) o \emph{dislocation strength} (dislocación en tornillo). Este número concede al frente de onda del campo eléctrico una trayectoria helicoidal en su dirección de propagación $z$, su valor determina el número de vueltas o hélices formadas en un periodo de amplitud $2 \pi$, y su signo proporciona el sentido de giro. Esencialmente, el subíndice $l$ es el número de veces que la luz se \enquote{retuerce} al recorrer una longitud de onda. El momento angular aportado a los fotones (en la última parte del capítulo \ref{cap:4}) es consecuencia de este \enquote{alabeo} del frente de onda, apareciendo representada espacialmente la evolución de la fase en la Figura \ref{fig:1.13}.
+
+Estos rayos de luz son conocidos como \enquote{vórtices ópticos} ---del acrónimo \emph{\acrfull{ov}}---, y están caracterizados por una \enquote{singularidad} en su centro, donde las ecuaciones que describen el comportamiento de la onda no tienen solución, pues la fase del frente de onda no está definida y la intensidad es nula, como muestran las Figuras \ref{fig:1.12} y \ref{fig:1.13}. Es un punto donde el modo de Laguerre-Gauss correspondiente no cumple con las condiciones de continuidad y derivabilidad necesarias para formar parte del espacio de soluciones de la ecuación \eqref{eq:1.32}.
+
+En concreto, el concepto de vórtice óptico apareció originalmente \autocite{Shen2019} porque el vector de Poynting (flujo de energía de la luz) gira en el límite del centro del vórtice a velocidad infinita, anulándose la intensidad. La singularidad óptica también puede entenderse como aquel punto donde la fase se repite cada $2 \pi/l$ radianes, provocando un patrón de interferencia destructiva entre las $2l$ parejas de valores iguales de la fase que confluyen en el centro, provocando la anulación de la intensidad en dicho punto. En este sentido, el responsable de este fenómeno es el término $\exp(-\iu l \phi)$, que tiene un periodo de $2 \pi/l$ radianes, originando el patrón de repetición de la fase en torno a la singularidad.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.8\textwidth]{Figuras/ch1_oam_sam.png}
+  \caption{Distribución de la fase para distintos estados $l$ del haz, proporcionando un momento angular orbital al haz, y para distintos estados de polarización $\pm \sigma$, responsable del momento angular de espín \autocite{Shen2019}.}
+  \label{fig:1.13}
+\end{figure}
+
+Una pregunta razonable que podría hacerse es: ¿cómo pueden generarse pulsos con estas características? El esquema básico consiste en hacer pasar una onda plana a través de un sistema óptico conocido como \emph{spiral phase plate (SPP)} \autocite{Yao2011}, formado por un disco óptico de ancho óptico variable $s$ con el ángulo $\phi$ tal que $s \propto l \lambda \phi/\symfrak{n}$ (la superficie es helicoidal), con $\symfrak{n}$ el índice de refracción del disco óptico. En la refracción a la salida de la superficie helicoidal, el momento lineal del fotón adquiere una componente angular, dando lugar al momento angular alrededor del eje óptico de disco.
+
+El problema de este sistema es que la geometría del disco es extremadamente compleja de fabricar, especialmente para las longitudes de onda en el rango óptico. En lugar de utilizar la refracción de la luz, es posible utilizar \emph{rejillas de difracción} o \emph{lentes de Fresnel} como \enquote{hologramas} del elemento óptico deseado, \autocite{Yao2011} con una geometría que consiga el mismos resultado que la refracción del SPP, aunque los modos de Laguerre-Gauss fundamentales no pueden reproducirse con precisión.
+
+\paragraph{Momento angular orbital}
+
+%\section{Plasma}\label{sec:1.2}
+%
+%\subsection{Propiedades físicas}\label{sec:1.2.1}
+%
+%\subsection{Ondas electromagnéticas en plasmas}\label{sec:1.2.2}
+%
+%\subsection{Interacción láser-plasma}\label{sec:1.2.3}
+%
+%\section{Fuentes de radiación X coherente}\label{sec:1.3}
+%
+%\subsection{Radiación sincrotrón}\label{sec:1.3.1}
+%
+%\subsection{Láseres de electrones libres}\label{sec:1.3.2}
+%
+%\subsection{Armónicos de alto orden}\label{sec:1.3.3}
+% 
+%\subsection{Radiación betatrón}\label{sec:1.3.4}
+%
+%\section{Láseres de rayos X basados en plasmas}\label{sec:1.4}
+%
+%\section{Estado del arte}\label{sec:1.5}

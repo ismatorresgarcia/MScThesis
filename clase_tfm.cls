@@ -462,6 +462,8 @@
 \newcommand*{\curl}{\symbf{\nabla}\times}
 \newcommand*{\diver}{\symbf{\nabla}\cdot}
 \newcommand*{\laplacian}{\nabla^2}
+%% combinatoria, probabilidad y estadística
+\newcommand*{\bnn}[2]{\binom{#1}{#2}}
 %% delimitadores importantes
 \newcommand*{\abs}[1]{\left|#1\right|}
 \newcommand*{\bra}[1]{\left\langle#1\right|}
