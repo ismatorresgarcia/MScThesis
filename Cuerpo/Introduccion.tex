@@ -465,7 +465,7 @@ con $L_{p}^{|l|}$ los \emph{polinomios de Laguerre}
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=0.7\textwidth]{Figuras/ch1_beam_waist.pdf}
-  \caption{Ángulo de divergencia $\theta$ del ancho del haz láser $w(z)$ con la longitud $z$, rango de Rayleigh $z_{R}$, y ancho inicial $w_{0}$. Observese que, para $z=z_{R}$, el ancho del haz aumenta en un factor $\sqrt{2}$.}
+  \caption{Ángulo de divergencia $\theta$ del ancho del haz láser $w(z)$ con la longitud $z$, rango de Rayleigh $z_{R}$, y ancho inicial $w_{0}$. Obsérvese que, para $z=z_{R}$, el ancho del haz aumenta en un factor $\sqrt{2}$.}
   \label{fig:1.11}
 \end{figure}
 
@@ -486,25 +486,117 @@ En concreto, el concepto de vórtice óptico apareció originalmente \autocite{S
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.8\textwidth]{Figuras/ch1_oam_sam.png}
-  \caption{Distribución de la fase para distintos estados $l$ del haz, proporcionando un momento angular orbital al haz, y para distintos estados de polarización $\pm \sigma$, responsable del momento angular de espín \autocite{Shen2019}.}
+  \includegraphics[width=0.85\textwidth]{Figuras/ch1_oam_sam.png}
+  \caption{Distribución de la fase para distintos estados $l$ del haz, proporcionando un momento angular orbital al haz, y para distintos estados $\pm \sigma$ de polarización, responsable del momento angular de espín \autocite{Shen2019}.}
   \label{fig:1.13}
 \end{figure}
 
-Una pregunta razonable que podría hacerse es: ¿cómo pueden generarse pulsos con estas características? El esquema básico consiste en hacer pasar una onda plana a través de un sistema óptico conocido como \emph{spiral phase plate (SPP)} \autocite{Yao2011}, formado por un disco óptico de ancho óptico variable $s$ con el ángulo $\phi$ tal que $s \propto l \lambda \phi/\symfrak{n}$ (la superficie es helicoidal), con $\symfrak{n}$ el índice de refracción del disco óptico. En la refracción a la salida de la superficie helicoidal, el momento lineal del fotón adquiere una componente angular, dando lugar al momento angular alrededor del eje óptico de disco.
+Una pregunta razonable que podría hacerse es: ¿cómo pueden generarse pulsos con estas características? El esquema básico consiste en hacer pasar una onda plana a través de un sistema óptico conocido como \emph{\acrfull{spp}} (disco de fase espiral) \autocite{Yao2011}, formado por un disco óptico de ancho óptico variable $s$ con el ángulo $\phi$ tal que $s \propto l \lambda \phi/\symfrak{n}$ (la superficie es helicoidal), con $\symfrak{n}$ el índice de refracción del disco óptico. En la refracción a la salida de la superficie helicoidal, el momento lineal del fotón adquiere una componente angular, dando lugar al momento angular alrededor del eje óptico de disco. 
 
 El problema de este sistema es que la geometría del disco es extremadamente compleja de fabricar, especialmente para las longitudes de onda en el rango óptico. En lugar de utilizar la refracción de la luz, es posible utilizar \emph{rejillas de difracción} o \emph{lentes de Fresnel} como \enquote{hologramas} del elemento óptico deseado, \autocite{Yao2011} con una geometría que consiga el mismos resultado que la refracción del SPP, aunque los modos de Laguerre-Gauss fundamentales no pueden reproducirse con precisión.
 
 \paragraph{Momento angular orbital}
+Aunque el objetivo del presente trabajo, como aparecerá en el próximo capítulo \S\ref{cap:2}, no consiste en estudiar las propiedades de pulsos láser con momento angular (excepto una última parte de las simulaciones del capítulo \S\ref{cap:4}), es interesante proporcionar unas nociones básicas de por qué los fotones tienen momento angular, qué significa, y por qué los modos de Laguerre-Gauss describen haces con esta propiedad. Un desarrollo más profundo, exhaustivo y detallado puede encontrarse en Allen (1999)\autocite{Allen1999}.
 
-%\section{Plasma}\label{sec:1.2}
-%
-%\subsection{Propiedades físicas}\label{sec:1.2.1}
-%
-%\subsection{Ondas electromagnéticas en plasmas}\label{sec:1.2.2}
-%
-%\subsection{Interacción láser-plasma}\label{sec:1.2.3}
-%
+Desde que Louis de Broglie propuso, entre $1923$\autocite{deBroglie1923} y $1924$\autocite{deBroglie1924}, el comportamiento de los electrones y, en general, las partículas como \enquote{ondas de materia}, es conocido que la luz transporta no solo energía, sino también una cantidad de movimiento o momento lineal $p = h/\lambda$. En cambio, el momento angular de la luz no recibió en aquella época la misma atención que el momento lineal, a pesar de que más de una década antes, John Henry Poynting \autocite{Poynting1909} (el mismo físico al que debe su nombre el vector de Poynting) ya había explorado sus fundamentos y propuesto la relación entre polarización y momento angular. 
+
+Sin embargo, es cierto que a principios del siglo \RN{20} la hipótesis propuesta por de Broglie tuvo confirmación experimental muy pocos años después, en el experimento de Davisson y Germer de $1927$ \autocite{Davisson1927} con la observación de la difracción de electrones en un cristal de níquel, mientras que la observación de momento angular en partículas en fotones tardó más tiempo en llegar, en $1936$, con un dispositivo mecánico desarrollado por el físico Richard A. Beth \autocite{Beth1936}.
+
+El momento angular de cualquier sistema físico puede descomponerse en dos partes: el conocido momento angular orbital o \emph{\acrfull{oam}}, y el momento angular de espín o \emph{\acrfull{sam}}. Un ejemplo clásico \autocite{Tipler2021b} es la órbita de la Tierra alrededor del Sol. La Tierra tiene un momento angular orbital $\symbf{L}$ respecto del centro del Sol debido a su movimiento orbital alrededor de éste y un momento angular de espín $\symbf{S}$ debido al movimiento de rotación alrededor de su eje de rotación. La suma de ambos proporciona el momento angular total del sistema $\symbf{J} = \symbf{L} + \symbf{S}$, de manera que el movimiento de traslación terrestre es consecuencia del momento angular orbital y el movimiento de rotación del momento angular de espín.
+
+Los fotones son partículas puntuales sin masa (en reposo), así que estos conceptos clásicos aplicados a la luz necesitan intuiciones distintas y nuevos puntos de vista. En la teoría electromagnética de Maxwell, los fotones tienen momento angular orbital debido a su distribución espacial (de la intensidad y la fase) \autocite{Jackson1998} y momento angular de espín debido a la polarización del campo eléctrico, como demostró Beth \autocite{Beth1936} durante el experimento. El intercambio de fotones con momento lineal $p$ y una superficie opaca, por ejemplo, un bloque de hormigón pintado de negro, produciría una fuerza neta capaz de empujarlo (evidentemente es una fuerza despreciable para un bloque de hormigón, pero ¿y si fuesen átomos? \autocite{Ashkin1970,Ashkin1978}) debido a la conservación de la cantidad de movimiento.
+
+A esta fuerza, la llamada \emph{presión de radiación} de la luz, podría asociarse un par de fuerzas capaz de hacer girar las puertas giratorias de cualquier edificio público. Por otro lado, el momento angular de espín podría interpretarse como un movimiento de giro \enquote{intrínseco} capaz de girar la llave de un cajón, aunque la única condición para conseguir esto sería que la luz estuviese polarizada circularmente \autocite{Beth1936}.
+
+La observación y medición del momento angular (de espín) de la luz realizada por Beth\autocite{Beth1936} empleaba la idea propuesta por Poynting \autocite{Poynting1909} de que, de manera similar al intercambio de momento lineal $p$ de los fotones con un cuerpo opaco, un intercambio de momento angular $\symbf{J}$ con un sistema óptico (por conservación del momento angular) debía provocar un cambio del estado de polarización circular (dextrógiro a levógiro, o viceversa) de los fotones. Técnicamente, Beth midió el par mecánico ejercido por un haz de luz sobre un disco birrefringente de cuarzo (como muestra la Figura \ref{fig:1.14}), verificando las predicciones de la teoría cuántica para el espín de $\pm \hslash $ con polarización a izquierda y derecha.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.26\textwidth]{Figuras/ch1_quartz_plate.png}
+  \caption{Montaje de los platos de cuarzo utilizados por Beth. \autocite{Beth1936}}
+  \label{fig:1.14}
+\end{figure}
+
+Medio siglo más tarde, en 1992, L. Allen \emph{et al} demostraron \autocite{Allen1992} que el término $\exp(-il \phi)$ en los modos de Laguerre-Gauss de la ecuación \eqref{eq:1.37} albergan un \acrshort{oam} propio en ocasiones superior (de hecho, en un factor $l$) que el \acrshort{sam}, de acuerdo con la analogía entre mecánica cuántica y la óptica paraxial \autocite{Born2019} de que, estos modos se corresponden con los autovalores $\pm l \hslash $ del operador momento angular $L_{z}$, tal que $L_{z}u= -\iu \hslash \pdiff_{\phi}u=\pm l \hslash u$. El experimento que propusieron sigue la misma línea que Beth, pero sustituyendo los discos de cuarzo por parejas de lentes cilíndricas.
+
+El campo $u=u(r,\phi,z)$ sobre el que actúa el operador $L_{z}$ podría ser, por ejemplo, cualquiera de los modos de Laguerre-Gauss. Estos modos, en general, pueden escribirse en coordenadas cilíndricas como $u(r,\phi,z) = u_{0}(r,z)\exp(-\iu l \phi)$, que cumplen la ecuación de ondas paraxial \eqref{eq:1.32}. Con esta aproximación, la componente angular del momento lineal $p_{\phi}$ (la densidad de momento) coincide con la parte real vector de Poynting (su componente angular), $p_{\phi} = \epsilon_{0}\langle\symbf{E}\times \symbf{B}\rangle_{\phi}$, promediado en el tiempo. La ecuación completa para la densidad de momento lineal toma la forma
+\begin{equation}\label{eq:1.38}
+  \symbf{p} = \epsilon_{0}\langle\symbf{E}\times \symbf{B}\rangle = \frac{\epsilon_{0}}{2}(\symbf{E}^{*}\times \symbf{B} + \symbf{E}\times \symbf{B}^{*}) = \iu \omega \frac{\epsilon_{0}}{2} (u^{*}\grad u - u \grad u^{*}) + \epsilon_{0} \omega k |u|^{2}\unitvector_{z},
+\end{equation}
+con $k$ el número de onda y $\symbf{e}_{z}$ un vector unitario en la dirección $z$. Desarrollando las componentes de la ecuación \eqref{eq:1.38}, la parte angular de la densidad de momento lineal queda $p_{\phi}=\epsilon_{0} \omega l |u|^{2}/r$, que proporciona el momento angular total de la luz. La componente según $z$ del momento angular $j_{z}$ (esta vez densidad de momento angular) puede calcularse directamente tomando el producto vectorial
+\begin{equation}\label{eq:1.39}
+  \symbf{j}_{z} = \symbf{r}\times \symbf{p}_{\phi} = \epsilon_{0} \omega l |u|^{2}\unitvector_{z}.
+\end{equation}
+Por otro lado, la densidad de energía del campo electromagnético es $w = c \epsilon_{0}\xval{\symbf{E}\times \symbf{B}}_{z} = \epsilon_{0} \omega^{2} |u|^{2}$, es decir, el producto de la velocidad de la luz en el vacío y la densidad de momento lineal, por tanto
+\begin{equation}\label{eq:.1.40}
+  \frac{j_{z}}{w} = \frac{l}{\omega}.
+\end{equation}
+Si ambas densidad de energía y momento angular son integradas en el plano $xy$, la relación entre el momento angular y la densidad de energía de un haz (ambos por unidad de longitud tras la integración) es
+\begin{equation}\label{eq:1.41}
+  \frac{\iint(r \times \xval{\symbf{E}\times \symbf{B}})_{z}\, r\!\diff r\!\diff \phi}{\iint \xval{\symbf{E}\times \symbf{B}}_{z}\, r\!\diff r\!\diff \phi} = \frac{l}{\omega}.
+\end{equation}
+Comparando las componentes según $z$ de las densidades de momento lineal y angular, utilizando las ecuaciones \eqref{eq:1.38} y \eqref{eq:1.39}, resulta que $p_{z}/j_{z}=\omega l /\omega k = l \lambda/2 \pi$, demostrando que el haz tiene un momento angular orbital $l$ por cada fotón, y que no tiene su origen en el momento angular de espín. La ecuación \eqref{eq:1.41} es el equivalente para el momento angular orbital de la relación entre el momento angular de espín y la energía, $\pm \hslash /\hslash \omega = \pm 1/\omega$, para luz polarizada circularmente
+
+Intuitivamente, el término $\exp(- \iu l \phi)$ causante de la aparición del \acrshort{oam} describe una superficie bidimensional formada por un hiperboloide de una hoja, como muestra el frente de onda en la Figura \ref{fig:1.15}. La superficie es consecuencia del campo vectorial formado por el vector de Poynting, esto es, la densidad del flujo de energía del haz, que \enquote{desliza} tangencialmente sobre el hiperboloide de revolución. La orientación del eje hiperboloide (la directriz) tiene la dirección marcada por las componentes axiales del campo eléctrico y magnético, que son paralelas a dicho eje, mientras que las componentes transversales de ambos campos (paralelas al vector normal de la superficie) determinan la forma del hiperboloide. Es una forma geométrica de entender la aparición del \acrshort{oam} en la luz.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.4\textwidth]{Figuras/ch1_helicoidal.png}
+  \caption{Medición del frente de onda helicoidal de un vórtice óptico realizada por Zürch \emph{et al} (2012)\autocite{Zurch2012}.}
+  \label{fig:1.15}
+\end{figure}
+
+En el caso de una polarización circular, con $\sigma = \pm 1$ (ver Figura \ref{fig:1.13}), o $\sigma = 0$ para la polarización lineal, la ecuación \eqref{eq:1.41} se transforma en
+\begin{equation}\label{eq:1.42}
+  \frac{\iint(r \times \xval{\symbf{E}\times \symbf{B}})_{z}\, r\!\diff r\!\diff \phi}{\iint \xval{\symbf{E}\times \symbf{B}}_{z}\, r\!\diff r\!\diff \phi} = \frac{l + \sigma}{\omega},
+\end{equation}
+resultado válido más allá de la aproximación paraxial utilizada, para cualquier potencial vector utilizado para generar la solución de las ecuaciones de Maxwell \autocite{Barnett1994}. La obtención de la ecuación \eqref{eq:1.42} es mucho más compleja que la anterior ecuación \eqref{eq:1.41} porque \autocite{Barnett2001} fuera de la solución paraxial, y en general, para geometrías más complejas, la identificación de la parte orbital y de espín del momento angular no es tan sencilla. Normalmente, por ejemplo, Barnett (2001) \autocite{Barnett2001} propuso y demostró la posibilidad de emplear formulaciones invariantes bajo transformaciones de Lorentz que puedan extenderse a la electrodinámica cuántica para obtener este resultado.
+
+Además, recordando que el campo $u(r,\phi,z)$ puede ser cualquiera de los modos de Laguerre-Gauss $\symrm{LG}_{l,p}$, este análisis demuestra que los haces formados por estos modos tienen un \acrshort{oam} propio, independiente del \acrshort{sam}. Actualmente, pueden generarse otros modos con frentes de onda helicoidales, como los de Ince-Gauss, Bessel, Mathieu o geométricos $\symrm{SU(2)}$ que, también poseen \acrshort{oam}. Escogiendo los modos de Laguerre-Gauss de la ecuación \eqref{eq:1.37} y sustituyéndolos en la ecuación \eqref{eq:1.38}, resulta que su densidad de momento lineal es
+\begin{equation}\label{eq:1.43}
+  \symbf{p} = \epsilon_{0} \left(\frac{\omega k r z}{z^{2}+z_{R}^{2}}\unitvector_{r}+\frac{wl}{r}\unitvector_{\phi}+wl \unitvector_{z}\right)|\symrm{LG_{l,p}}|^{2},
+\end{equation}
+con $z_{R}$ el rango de Rayleigh. Tomando el producto vectorial con el vector de posición $\symbf{r}$, la densidad de momento angular es
+\begin{equation}\label{eq:1.44}
+  \symbf{j} = \symbf{r} \times \symbf{p} = \epsilon_{0} \left(-\frac{\omega l z}{r}\unitvector_{r}-wkr \left(\frac{z_{R}^{2}}{z^{2}+z_{R}^{2}}\right)\unitvector_{\phi}+wl \unitvector_{z}\right)|\symrm{LG_{l,p}|^{2}}.
+\end{equation}
+
+La ventaja de utilizar el vector de Poynting en esta descripción del \acrshort{oam} está en que, como se ha explicado, este campo vectorial representa la densidad del flujo de energía de la luz \autocite{Griffiths2017,Jackson1998}, cuyas líneas de campo se \enquote{arremolinan} siguiendo la dirección de propagación del haz. Además, la velocidad de rotación descrita es proporcional \autocite{Padgett1995} a la fase de Gouy presentada anteriormente en la ecuación \eqref{eq:1.36}, de forma que para el modo $p=0$ no depende del índice angular $l$, realizando una vuelta completa para el radio de máxima intensidad $r_{\mathrm{max, I}}(z)=\sqrt{w(z)l/2}$.
+
+Mencionar que la construcción del equipo que soportaba las lentes cilíndricas para medir el \acrshort{oam}, como propusieron Allen \emph{et al} (1992) \autocite{Allen1992}, nunca se realizó porque resultó ser imposible con los medios que disponían. La demostración experimental y medición del \acrshort{oam} la realizaron He \emph{et al} (1995) \autocite{He1995,Friese1996}, induciendo una rotación en partículas de \ce{CuO} de entre \qty{1}{µm} y \qty{5}{µm} de diámetro mediante la transferencia del \acrshort{oam} de un haz láser \ce{He-Ne} a \qty{632.8}{nm}. Las frecuencias de giro conseguidas alcanzaron los \qty{10}{Hz} (dependiendo de la forma de las partículas), proporcionando otra analogía \autocite{Simpson1997} con la mecánica clásica entre el \acrshort{sam} y \acrshort{oam}.
+
+Hace 34 años, Coullet \emph{et al} (1989) \autocite{Coullet1989} propuso un símil entre las singularidades ópticas (que denominó \emph{vórtices ópticos}) observadas en las cavidades resonantes de los láseres con los vórtices característicos en hidrodinámica de fluidos. Estos haces láser han resultado tener una conexión más profunda entre el mundo macroscópico de la óptica física y el mundo microscópico de la óptica cuántica. Estas propiedades han proporcionado una mayor comprensión de fenómenos como el acoplamiento espín-órbita \autocite{Dorney2019,Bliokh2015}, estructuras plasmónicas\autocite{Zhang2018}, generación de armónicos de alto orden (\acrshort{hhg})\autocite{Zurch2012,Dorney2019,Gui2021}, condensados de Bose-Einstein \autocite{Aranson2002}, etc.
+
+Sus aplicaciones han alcanzado campos tan dispares como la codificación, procesamiento y transmisión de información, por ejemplo, en computación y tecnologías cuánticas \autocite{Erhard2018}; empleando fotones con estados entrelazados; en comunicaciones ópticas, consiguiendo enviar grandes cantidades de datos, del orden de $\qty{1}{Tbit/s}$, mediante la modulación multinivel de la amplitud y fase de la luz con \acrshort{oam} \autocite{Wang2012}; en la formación y reconstrucción de imágenes, obteniendo hologramas de muy alta resolución, capacidad y calidad\autocite{Shi2023}; en astrofísica, para el estudio de agujeros negros en rotación, los agujeros negros de Kerr, \autocite{Tamburini2011} a partir del \acrshort{oam} \enquote{impreso} en la luz que viaja cerca de ellos; o en bioquímica y biomedicina, para manipular y ensamblar proteínas o moléculas complejas como, por ejemplo, el ADN \autocite{Zhuang2004}. La luz en su máximo esplendor está por llegar, como muestra la Figura \ref{fig:1.16}.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.7\textwidth]{Figuras/ch1_app_oam.png}
+  \caption{Aplicaciones y perspectivas de la luz en distintos ámbitos y áreas de investigación \autocite{He2022}.}
+  \label{fig:1.16}
+\end{figure}
+
+\section{Plasma}\label{sec:1.2}
+El plasma es el medio activo encargado en este trabajo de lograr la amplificación láser deseada y, puesto que es un estado de la materia muy particular en relación con la luz y su propagación a través de este, esta sección \S\ref{sec:1.2} prestará atención brevemente a los aspectos fundamentales que resultan interesantes para comprender esta interacción láser-plasma. 
+
+Un plasma consiste en un gas altamente ionizado (mediante, por ejemplo, calentamiento), formado entonces por electrones e iones, y que tienen una densidad suficientemente baja para poder estudiarse dentro del marco de la física clásica (las partículas siguen una estadística de Maxwell-Boltzmann, en lugar de las estadísticas cuánticas de Fermi-Dirac o Bose-Einstein)\autocite{Thorne2017}. Su presencia en diversos campos de la ciencia y la tecnología ha ido en aumento desde la década de 1950, durante el desarrollo del programa de fusión termonuclear controlada (y, también, de la bomba termonuclear), pasando por la radioastronomía y el estudio de objetos astronómicos extragalácticos como cuásares y púlsares.
+
+Estudiar el comportamiento de un plasma es más complejo que en la mayoría de sólidos y líquidos, principalmente por dos motivos:
+
+\begin{enumerate}[label=(\roman*)]
+
+    \item La dispersión Coulombiana entre partículas cargadas en un plasma es extremadamente débil, haciendo que los recorridos medios de las partículas libres sean superiores que el tamaño macroscópico del plasma, introduciendo fuertes anisotropías en las magnitudes dinámicas que describen dichas partículas.
+
+    \item La interacción electromagnética entre las partículas cargadas en un plasma es de largo alcance, dando lugar a \enquote{acoplamientos} entre estas partículas y formando modos de vibración, es decir, ondas en el plasma, que se comportan como entidades físicas propiamente dichas.
+
+\end{enumerate}
+
+\subsection{Propiedades físicas}\label{sec:1.2.1}
+
+\subsection{Ondas electromagnéticas en plasmas}\label{sec:1.2.2}
+
+\subsection{Interacción láser-plasma}\label{sec:1.2.3}
+
 %\section{Fuentes de radiación X coherente}\label{sec:1.3}
 %
 %\subsection{Radiación sincrotrón}\label{sec:1.3.1}

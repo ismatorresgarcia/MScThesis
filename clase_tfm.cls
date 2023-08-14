@@ -145,15 +145,15 @@
   highlight math style = {sharp corners = north, arc = 12pt, outer arc = 4pt, colframe = miazul!80!white, 
     colback = miazul!10!white}
 }
-%% configuro un entorno especial para las tablas de resultados y ecuaciones
+%% configuro un entorno especial para los recuadros resumen de resultados y ecuaciones
 \newtcbtheorem{footheorem}{}%
 {enhanced,frame empty,separator sign= ,rounded corners,
-  colframe = mimorado!50!white, colback = miazul!10!white,
+  colframe = miazul!50!white, colback = miazul!10!white,
   arc = 6pt, 
   outer arc = 8pt, 
-  borderline = {1.5pt}{0pt}{mimorado!10!white},
-  borderline = {1.5pt}{0pt}{mimorado!50!white,dashed},
-  fonttitle=\sffamily\bfseries,coltitle=mimorado!80!black,colbacktitle = mimorado!10!white,
+  borderline = {1.5pt}{0pt}{miazul!10!white},
+  borderline = {1.5pt}{0pt}{miazul!50!white,dashed},
+  fonttitle=\sffamily\bfseries,coltitle=mimorado!80!black,colbacktitle = miazul!10!white,
   attach boxed title to top center = 
   {yshift=-0.25mm-\tcboxedtitleheight/2,yshifttext=2mm-\tcboxedtitleheight/2}, 
   boxed title style = {boxrule=0.5mm,
@@ -466,8 +466,8 @@
 \newcommand*{\bnn}[2]{\binom{#1}{#2}}
 %% delimitadores importantes
 \newcommand*{\abs}[1]{\left|#1\right|}
-\newcommand*{\bra}[1]{\left\langle#1\right|}
-\newcommand*{\ket}[1]{\left|#1\right\rangle}
-\newcommand*{\xval}[1]{\left\langle#1\right\rangle}
-\newcommand*{\Xval}[3]{\left\langle#1\middle|#2\middle|#3\right\rangle}
-\newcommand*{\braket}[2]{\left\langle#1\middle|#2\right\rangle}
+\newcommand*{\bra}[1]{\langle#1|}
+\newcommand*{\ket}[1]{#1\rangle}
+\newcommand*{\xval}[1]{\langle#1\rangle}
+\newcommand*{\Xval}[3]{\langle#1\middle|#2\middle|#3\rangle}
+\newcommand*{\braket}[2]{\langle#1\middle|#2\rangle}
