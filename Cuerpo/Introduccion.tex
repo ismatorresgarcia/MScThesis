@@ -577,11 +577,11 @@ Sus aplicaciones han alcanzado campos tan dispares como la codificación, proces
 \end{figure}
 
 \section{Plasma}\label{sec:1.2}
-El plasma es el medio activo encargado en este trabajo de lograr la amplificación láser deseada y, puesto que es un estado de la materia muy particular en relación con la luz y su propagación a través de este, esta sección \S\ref{sec:1.2} prestará atención brevemente a los aspectos fundamentales que resultan interesantes para comprender esta interacción láser-plasma. 
+El medio activo encargado en este trabajo de lograr la amplificación láser deseada consiste en un plasma y, puesto que es un estado de la materia muy particular en relación con la luz y su propagación a través de este, esta sección \S\ref{sec:1.2} prestará atención brevemente a los aspectos fundamentales que resultan interesantes para comprender esta interacción láser-plasma. 
 
 Un plasma consiste en un gas altamente ionizado (mediante, por ejemplo, calentamiento), formado entonces por electrones e iones, y que tienen una densidad suficientemente baja para poder estudiarse dentro del marco de la física clásica (las partículas siguen una estadística de Maxwell-Boltzmann, en lugar de las estadísticas cuánticas de Fermi-Dirac o Bose-Einstein)\autocite{Thorne2017}. Su presencia en diversos campos de la ciencia y la tecnología ha ido en aumento desde la década de 1950, durante el desarrollo del programa de fusión termonuclear controlada (y, también, de la bomba termonuclear), pasando por la radioastronomía y el estudio de objetos astronómicos extragalácticos como cuásares y púlsares.
 
-Estudiar el comportamiento de un plasma es más complejo que en la mayoría de sólidos y líquidos, principalmente por dos motivos:
+Estudiar el comportamiento de un plasma es más complejo que en la mayoría de sólidos, líquidos y gases principalmente por dos motivos:
 
 \begin{enumerate}[label=(\roman*)]
 
@@ -591,11 +591,48 @@ Estudiar el comportamiento de un plasma es más complejo que en la mayoría de s
 
 \end{enumerate}
 
-\subsection{Propiedades físicas}\label{sec:1.2.1}
+Una manera de acercarse a entender (de forma breve) este estado de la materia es través de los parámetros fundamentales que distinguen un plasma de los demás estados de la materia, que presenta la sección \S\ref{sec:1.2.1}. Después, la sección \S\ref{sec:1.2.2} estará dedicada a obtener la ecuación de ondas para el campo eléctrico a través del plasma, necesaria para estudiar la amplificación y propagación de un haz láser, como mostrará la sección \S\ref{sec:3.1}.
+
+\subsection{Parámetros físicos}\label{sec:1.2.1}
+Sin pérdida de generalidad, puede suponerse un plasma formado por el mismo número de especies cargadas positivamente (iones), con masa $m_{i}$ y carga $e$, y electrones con masa $m_{e}$ y carga $-e$ (con $e$ la carga eléctrica del electrón). Entonces, la energía cinética media de cualquier especie $s$ puede expresarse como la \emph{temperatura cinética} \autocite{Fitzpatrick2022}
+\begin{equation}\label{eq:1.45}
+  T_{s} = \frac{1}{3}m_{s}\xval{v_{s}^{2}},
+\end{equation}
+donde $\xval{v_{s}^{2}}$ es el valor medio de las velocidades para el conjunto formado por la especie $s$.
+
+En este trabajo, el plasma no está formado por el mismo número de electrones e iones, pero cumple la condición de ser \emph{cuasineutral}, es decir, es un plasma formado por dos \enquote{fluidos} con cargas eléctricas opuestas, y en estos casos los efectos macroscópicos (distancias del tamaño del plasma) de la interacción de Coulomb tienden a neutralizarse (de ahí la palabra cuasineutral). Así, puede definirse la densidad de partículas $n$ como $Zn_{i} \simeq n_{e} \equiv n$, con $Z$ el \emph{ionización media} de los iones del plasma, y $n_{s}$ el número de especies por unidad de volumen del plasma. 
+
+Además, la tasa de colisiones entre iones y electrones del plasma empleado es considerablemente más elevada que las tasas de colisiones entre partículas de la misma especie, pudiendo emplear una sola temperatura $T$ para estimar la \emph{velocidad térmica} de cada especie 
+\begin{equation}\label{eq:1.46}
+  v_{ts} \equiv \bigg(\frac{2T}{m_{s}}\bigg)^{1/2},
+\end{equation}
+relacionando directamente las velocidades de los iones y los electrones a través de sus masas, teniendo los iones necesariamente velocidades varios órdenes de magnitud inferiores (son más masivos) que las velocidades de los electrones
+\begin{equation}\label{eq:1.47}
+  v_{ti} \sim \bigg(\frac{m_{e}}{m_{i}}\bigg)^{1/2}v_{te}.
+\end{equation}
+
+Sin duda, el parámetro más fundamental de un plasma es la \emph{frecuencia del plasma}\autocite{Thorne2017} 
+\begin{equation}\label{eq:1.48}
+  \omega_{p} \equiv \bigg(\frac{ne^{2}}{\epsilon_{0}m}\bigg)^{1/2},
+\end{equation}
+diferente en cada especie. Normalmente, la frecuencia del plasma hace referencia exclusivamente a los electrones del plasma, porque tienen frecuencias mucho más elevadas (son más ligeros) que los iones, representando la magnitud temporal más importante. Este parámetro se corresponde con la frecuencia de las oscilaciones electrostáticas de una determinada especie cuando una perturbación cambia su posición inicial. 
+
+Por ejemplo, cogiendo un plano imaginario en el plasma formado por partículas de la misma especie, y desplazándolo de su posición de equilibrio una distancia infinitesimal $x$ (en paralelo al vector normal del plano), la distribución de carga eléctrica dentro del espacio abandonado por el plano es $E = - \sigma/\epsilon_{0} = -en x/\epsilon_{0}$. Aplicando la segunda ley de Newton a cualquier partícula dentro del campo resulta
+\begin{equation}\label{eq:1.49}
+  m \dvN{x}{t}{2} = eE = -m \omega^{2}_{p}x.
+\end{equation}
+Las oscilaciones del plasma solo pueden estudiarse en un laboratorio cuando los intervalos de tiempo de observación $\tau$ son mayores que un \emph{periodo del plasma} $\tau_{p}=2 \pi/\omega_{p}$, y siempre que las perturbaciones exteriores no alteren el sistema a frecuencias mayores que $\omega_{p}$. Análogamente, el comportamiento del plasma tampoco puede detectarse experimentalmente si las longitudes de observación $L$ empleadas, son menores que los recorridos típicos $v_{s} \tau_{p}$ de las especies durante un periodo de oscilación. Esta distancia es el equivalente espacial de $\tau_{p}$, llamada \emph{longitud de Debye}
+\begin{equation}\label{eq:1.50}
+  \lambda_{D} \equiv \frac{1}{\omega_{p}}\bigg(\frac{T}{m}\bigg)^{1/2},
+\end{equation}
+que utilizando la ecuación \eqref{eq:1.48}, es igual a la relación independiente de la masa
+\begin{equation}\label{eq:1.51}
+  \lambda_{D} \equiv \bigg(\frac{\epsilon_{0}T}{ne^{2}}\bigg)^{1/2}.
+\end{equation}
+A partir de esta discusión de los últimos parámetros espaciales y temporales, es frecuente definir en la literatura \autocite{Fitzpatrick2022} un plasma como aquel gas ionizado que cumple $\lambda_{D}/L \ll 1$, y $\tau_{p}/\tau \ll 1$.
 
 \subsection{Ondas electromagnéticas en plasmas}\label{sec:1.2.2}
 
-\subsection{Interacción láser-plasma}\label{sec:1.2.3}
 
 %\section{Fuentes de radiación X coherente}\label{sec:1.3}
 %
