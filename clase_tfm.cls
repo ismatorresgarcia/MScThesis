@@ -137,23 +137,21 @@
 \tcbuselibrary{skins,theorems} %% cargo las librerías que necesito (p. ej. carga paquete 'minted')
 %% opciones de 'tcolorbox' para los recuadros de ecuaciones
 \tcbset{
-  sharp corners = north,
-  arc = 12pt,
-  outer arc = 4pt,
-  colframe = miazul!80!white,
+  sharp corners = all,
+  colframe = miazul!50!white,
   colback = miazul!10!white,
-  highlight math style = {sharp corners = north, arc = 12pt, outer arc = 4pt, colframe = miazul!80!white, 
+  highlight math style = {sharp corners = all, colframe = miazul!50!white, 
     colback = miazul!10!white}
 }
 %% configuro un entorno especial para los recuadros resumen de resultados y ecuaciones
 \newtcbtheorem{footheorem}{}%
 {enhanced,frame empty,separator sign= ,rounded corners,
-  colframe = miazul!50!white, colback = miazul!20!white,
+  colframe = miazul!50!white, colback = miazul!10!white,
   arc = 6pt, 
   outer arc = 8pt, 
   borderline = {1.5pt}{0pt}{miazul!10!white},
   borderline = {1.5pt}{0pt}{miazul!50!white,dashed},
-  fonttitle=\sffamily\bfseries,coltitle=mimorado!80!black,colbacktitle = miazul!15!white,
+  fonttitle=\sffamily\bfseries,coltitle=mimorado!80!black,colbacktitle = miazul!10!white,
   attach boxed title to top center = 
   {yshift=-0.25mm-\tcboxedtitleheight/2,yshifttext=2mm-\tcboxedtitleheight/2}, 
   boxed title style = {boxrule=0.5mm,
@@ -191,6 +189,10 @@
 \RequirePackage{siunitx}                    %% unidades del sistema internacional
 \sisetup{                                   %% opciones de las unidades del paquete
   output-decimal-marker = {,},
+  exponent-product = \times,
+  range-phrase = --,
+  range-exponents = combine-bracket,
+  range-units = repeat,
   uncertainty-mode = separate,
   per-mode = symbol
 }

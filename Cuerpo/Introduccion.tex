@@ -239,7 +239,7 @@ La amplificación de la intensidad láser $I(\nu)$ para una frecuencia $\nu$ deb
 \begin{equation}\label{eq:1.16}
   \pdv{I(z,\nu)}{z} = G(\nu)I(z,\nu) + E(\nu),
 \end{equation}
-con $z$ la distancia recorrida en el medio amplificador, $E(\nu)$ la tasa de emisión espontánea para un ángulo sólido determinado y $G(\nu)$ el coeficiente de ganancia. En la ecuación \eqref{eq:2.14}, puede observarse que la intensidad $I(z,\nu)$ tendrá aproximadamente como solución una función exponencial creciente en la dirección $z$, siempre y cuando el coeficiente de ganancia no sea demasiado pequeño en comparación con la tasa de emisión espontánea $E(\nu)$. En tal circunstancia, el comportamiento de la intensidad, como aparece esquemáticamente en la Figura \ref{fig:1.6}, es
+con $z$ la distancia recorrida en el medio amplificador, $E(\nu)$ la tasa de emisión espontánea para un ángulo sólido determinado y $G(\nu)$ el coeficiente de ganancia. En la ecuación \eqref{eq:1.16}, puede observarse que la intensidad $I(z,\nu)$ tendrá aproximadamente como solución una función exponencial creciente en la dirección $z$, siempre y cuando el coeficiente de ganancia no sea demasiado pequeño en comparación con la tasa de emisión espontánea $E(\nu)$. En tal circunstancia, el comportamiento de la intensidad, como aparece esquemáticamente en la Figura \ref{fig:1.6}, es
 \begin{equation}\label{eq:1.17}
   I(z,\nu) = I_{0}\eu^{G(\nu)z},
 \end{equation}
@@ -354,22 +354,22 @@ Para áreas de apertura mayores, por ejemplo $A = \qty{5}{cm^2}$, la distancia a
 \begin{table}[htpb]
   \centering
   \caption{Ángulos de divergencia típicos en láseres\autocite{Milonni1988}.}
-  \begin{tabular}{ccc}
+  \label{tab:1.1}
+  \begin{tabular}{lSS}
     \toprule
-     Láser           & $\Delta\theta$ (\unit{mrad}) & $\Delta\Omega$ (\unit{sr}) \\
+    Láser             & {$\Delta\theta$ (\unit{mrad})}  & {$\Delta\Omega$ (\unit{sr})} \\
     \midrule
-    \ce{He-Ne}      & $0,2-1$                                & $(0,1-3)\times 10^{-6}$ \\
+    \ce{He-Ne}        & \numrange{0.2}{1}               & \numrange{0.1e-6}{3e-6} \\
     \midrule
-    \ce{CO2}        & $1-10$                                  & $(3-300)\times 10^{-6}$ \\
+    \ce{CO2}          & \numrange{1}{10}                & \numrange{3e-6}{100e-6} \\
     \midrule
-    Rubí            & $1-10$                                  & $(3-300)\times 10^{-6}$ \\
+    Rubí              & \numrange{1}{10}                & \numrange{3e-6}{100e-6} \\
     \midrule
-    \ce{Nd{:}YAG}     & $1-20$                                & $(3-1300)\times 10^{-6}$ \\
+    \ce{Nd{:}YAG}     & \numrange{1}{20}                & \numrange{3e-6}{1300e-6} \\
     \midrule
-    \ce{Nd{:}vidrio} & $0,5-10$                              & $(1-300)\times 10^{-6}$ \\
+    \ce{Nd{:}cristal} & \numrange{0.5}{10}              & \numrange{1e-6}{300e-6} \\
     \bottomrule
   \end{tabular}
-  \label{tab:1.1}
 \end{table}
 
 \paragraph{Luminosidad}
@@ -391,7 +391,7 @@ Dependiendo del tipo de láser pueden hacerse varias estimaciones. Escogiendo un
 \begin{equation}\label{eq:1.30}
     \beta_{\nu} \approx \qty{26}{W/cm^{2}\,sr\,Hz}.
 \end{equation}
-Con láseres de mayor potencia, como el láser de \ce{Nd{:}vidrio}, que puede alcanzar potencias de \qty{e4}{MW}, su luminosidad es $\beta_{\nu} \approx \qty{2e8}{W/cm^{2}\,sr\,Hz}$, y para las potencias de teravatios (\qty{1}{TW} = \qty{e6}{MW}) alcanzadas en algunos láseres, la luminosidad es varios órdenes de magnitud más elevada.
+Con láseres de mayor potencia, como el láser de \ce{Nd{:}cristal}, que puede alcanzar potencias de \qty{e4}{MW}, su luminosidad es $\beta_{\nu} \approx \qty{2e8}{W/cm^{2}\,sr\,Hz}$, y para las potencias de teravatios (\qty{1}{TW} = \qty{e6}{MW}) alcanzadas en algunos láseres, la luminosidad es varios órdenes de magnitud más elevada.
 
 De esta manera, el concepto de luminosidad deja patente la existencia de grandes diferencias entre las fuentes de radiación convencionales y los láseres. Incluso atenuando la luminosidad del láser \ce{He-Ne} hasta alcanzar el valor de la radiación solar y, por otro lado, colimando y filtrando la radiación solar hasta alcanzar la direccionalidad y el ancho de banda del láser \ce{He-Ne}, podrían distinguirse ambas fuentes, contando los fotones emitidos para detectar pequeñas fluctuaciones estadísticas debidas a la naturaleza cuántica de la luz. 
 
@@ -400,7 +400,7 @@ Esta propiedad está relacionada con la monocromaticidad explicada al comienzo d
 
 Empleando la técnica \emph{mode locking} ---habitual en muchos láseres de pulsos ultracortos--- comentada en la sección \S\ref{sec:1.1.1}, es posible producir pulsos de luz con una duración aproximadamente igual al inverso del ancho de banda para la transición $2 \rightarrow 1$. Por ejemplo, en láseres de gas, cuyo ancho de banda es relativamente pequeño, la duración del pulso puede ser $\sim\qty{0,1}{ns}-\qty{1}{ns}$. Esta duración no es especialmente corta teniendo en cuenta que algunas lámparas flash pueden emitir pulsos de luz inferiores a \qty{1}{ns}. Por otra parte, el ancho de banda de algunos láseres de estados sólido o láseres de líquido puede ser $10^3-10^5$ veces mayor que en los láseres de gas, generando pulsos extremadamente cortos (hasta $\sim\qty{10}{fs}$).
 
-La longitud de onda y la duración del pulso tienen especial importancia en muchas aplicaciones tecnológicas y en investigación, por ejemplo, en la reconstrucción de imágenes tridimensionales de moléculas\autocite{vonArdenne2018}, bacterias \autocite{Fan2016}, proteínas \autocite{Neutze2000} o virus\autocite{Ekeberg2015}, donde la resolución necesaria para visualizar escalas tan pequeñas requiere longitudes de onda de nanómetros ($\sim\qty{e-9}{m}$) o ángstroms ($\sim\qty{e-10}{m}$) y pulsos con duraciones de femtosegundos ($\sim\qty{e-15}{s}$) o incluso attosegundos ($\sim\qty{e-18}{s}$). Estas técnicas están basadas en formar cientos de patrones de difracción entre el pulso láser y el blanco objeto de estudio, para después emplear métodos de análisis de Fourier que permiten obtener imágenes tridimensionales a partir de los patrones de difracción bidimensionales, como muestra la Figura \ref{fig:1.9}.
+La longitud de onda y la duración del pulso tienen especial importancia en muchas aplicaciones tecnológicas y en investigación, por ejemplo, en la reconstrucción de imágenes tridimensionales de moléculas\autocite{vonArdenne2018}, bacterias \autocite{Fan2016}, proteínas \autocite{Neutze2000} o virus\autocite{Ekeberg2015}, donde la resolución necesaria para visualizar escalas tan pequeñas requiere longitudes de onda de nanómetros ($\sim\qty{e-9}{m}$) o ångströms ($\sim\qty{e-10}{m}$) y pulsos con duraciones de femtosegundos ($\sim\qty{e-15}{s}$) o incluso attosegundos ($\sim\qty{e-18}{s}$). Estas técnicas están basadas en formar cientos de patrones de difracción entre el pulso láser y el blanco objeto de estudio, para después emplear métodos de análisis de Fourier que permiten obtener imágenes tridimensionales a partir de los patrones de difracción bidimensionales, como muestra la Figura \ref{fig:1.9}.
 
 \begin{figure}[htpb]
   \centering
@@ -409,7 +409,7 @@ La longitud de onda y la duración del pulso tienen especial importancia en much
   \label{fig:1.9}
 \end{figure}
 
-El aspecto clave del ancho de pulso en estas aplicaciones está en conseguir la difracción antes destruir completamente la muestra\autocite{Neutze2000} (ver Figura \ref{fig:1.10}), motivando la necesidad de pulsos extremadamente cortos o ultracortos ($\le\unit{fs}$) para visualizar imágenes. Por otro lado, el papel de la longitud de onda es conseguir la resolución necesaria para observar menores tamaños, ya que longitudes de onda mayores que el tamaño característico del objeto que quiere estudiarse no permiten exhiben el fenómeno de difracción necesario. En la actualidad ---se explicará más detalladamente en la sección \S\ref{sec:1.3}---, las únicas fuentes de radiación que reúnen estos requisitos son los láseres de rayos X blandos o \emph{\acrfull{sxrl}}.
+El aspecto clave del ancho de pulso en estas aplicaciones está en conseguir la difracción antes destruir completamente la muestra\autocite{Neutze2000} (ver Figura \ref{fig:1.10}), motivando la necesidad de pulsos extremadamente cortos o ultracortos ($\le\unit{fs}$) para visualizar imágenes. Por otro lado, el papel de la longitud de onda es conseguir la resolución necesaria para observar menores tamaños, ya que longitudes de onda mayores que el tamaño característico del objeto que quiere estudiarse no permiten exhiben el fenómeno de difracción necesario. En la actualidad ---se explicará más detalladamente en la sección \S\ref{sec:1.3}---, las únicas fuentes de radiación que reúnen estos requisitos son los láseres de rayos X blandos y los láseres de electrones libres.
 
 \paragraph{Modos de Laguerre-Gauss}
 Durante la sección \S\ref{sec:1.1.1}, emergió de forma natural el concepto de cavidad de Fabry-Perot o cavidad resonante. La función de estos sistemas ópticos es fundamental para conseguir una amplificación de la luz láser y, al mismo tiempo, permitir su salida después de penetrar a través del medio activo encargado de proporcionar el \enquote{sustrato} necesario para la emisión estimulada. La Figura \ref{fig:1.4} mostraba como, por ejemplo, una forma de liberar la luz láser consiste en utilizar espejos parcialmente transparentes a la frecuencia amplificada. Las sucesivas vueltas de los fotones atrapados en el interior de la cavidad consiguen multiplicar la energía liberada. 
@@ -613,37 +613,154 @@ relacionando directamente las velocidades de los iones y los electrones a travé
 
 Sin duda, el parámetro más fundamental de un plasma es la \emph{frecuencia del plasma}\autocite{Thorne2017} 
 \begin{equation}\label{eq:1.48}
-  \omega_{p} \equiv \bigg(\frac{ne^{2}}{\epsilon_{0}m}\bigg)^{1/2},
+  \omega_{pe} \equiv \bigg(\frac{ne^{2}}{\epsilon_{0}m}\bigg)^{1/2},
 \end{equation}
 diferente en cada especie. Normalmente, la frecuencia del plasma hace referencia exclusivamente a los electrones del plasma, porque tienen frecuencias mucho más elevadas (son más ligeros) que los iones, representando la magnitud temporal más importante. Este parámetro se corresponde con la frecuencia de las oscilaciones electrostáticas de una determinada especie cuando una perturbación cambia su posición inicial. 
 
-Por ejemplo, cogiendo un plano imaginario en el plasma formado por partículas de la misma especie, y desplazándolo de su posición de equilibrio una distancia infinitesimal $x$ (en paralelo al vector normal del plano), la distribución de carga eléctrica dentro del espacio abandonado por el plano es $E = - \sigma/\epsilon_{0} = -en x/\epsilon_{0}$. Aplicando la segunda ley de Newton a cualquier partícula dentro del campo resulta
+Por ejemplo, cogiendo un plano imaginario en el plasma formado por partículas de la misma especie, y desplazándolo de su posición de equilibrio una distancia $\Delta x$ (en paralelo al vector normal del plano), la distribución de carga eléctrica dentro del espacio abandonado por el plano es $E = - \sigma/\epsilon_{0} = -en \Delta x/\epsilon_{0}$. Aplicando la segunda ley de Newton a cualquier partícula dentro del campo resulta
 \begin{equation}\label{eq:1.49}
-  m \dvN{x}{t}{2} = eE = -m \omega^{2}_{p}x.
+  m \dvN{\Delta x}{t}{2} = eE = -m \omega^{2}_{pe} \Delta x.
 \end{equation}
-Las oscilaciones del plasma solo pueden estudiarse en un laboratorio cuando los intervalos de tiempo de observación $\tau$ son mayores que un \emph{periodo del plasma} $\tau_{p}=2 \pi/\omega_{p}$, y siempre que las perturbaciones exteriores no alteren el sistema a frecuencias mayores que $\omega_{p}$. Análogamente, el comportamiento del plasma tampoco puede detectarse experimentalmente si las longitudes de observación $L$ empleadas, son menores que los recorridos típicos $v_{s} \tau_{p}$ de las especies durante un periodo de oscilación. Esta distancia es el equivalente espacial de $\tau_{p}$, llamada \emph{longitud de Debye}
+Las oscilaciones del plasma solo pueden estudiarse en un laboratorio cuando los intervalos de tiempo de observación $\tau$ son mayores que un \emph{periodo del plasma} $\tau_{p}=2 \pi/\omega_{pe}$, y siempre que las perturbaciones exteriores no alteren el sistema a frecuencias mayores que $\omega_{pe}$. Análogamente, el comportamiento del plasma tampoco puede detectarse experimentalmente si las longitudes de observación $L$ empleadas, son menores que los recorridos típicos $v_{s} \tau_{p}$ de las especies durante un periodo de oscilación. Esta distancia es el equivalente espacial de $\tau_{p}$, llamada \emph{longitud de Debye}
 \begin{equation}\label{eq:1.50}
-  \lambda_{D} \equiv \frac{1}{\omega_{p}}\bigg(\frac{T}{m}\bigg)^{1/2},
+  \lambda_{D} \equiv \frac{1}{\omega_{pe}}\bigg(\frac{T}{m}\bigg)^{1/2},
 \end{equation}
 que utilizando la ecuación \eqref{eq:1.48}, es igual a la relación independiente de la masa
 \begin{equation}\label{eq:1.51}
   \lambda_{D} \equiv \bigg(\frac{\epsilon_{0}T}{ne^{2}}\bigg)^{1/2}.
 \end{equation}
-A partir de esta discusión de los últimos parámetros espaciales y temporales, es frecuente definir en la literatura \autocite{Fitzpatrick2022} un plasma como aquel gas ionizado que cumple $\lambda_{D}/L \ll 1$, y $\tau_{p}/\tau \ll 1$.
+A partir de esta discusión de los últimos parámetros espaciales y temporales, es frecuente definir en la literatura \autocite{Fitzpatrick2022} un plasma como aquel gas ionizado que cumple $\lambda_{D}/L \ll 1$, y $\tau_{p}/\tau \ll 1$. 
+
+Por último, es interesante definir un último parámetro que permita comparar la repulsión electrostática entre partículas de la misma especie y la energía térmica del movimiento. La distancia media entre partículas puede definirse como 
+\begin{equation}\label{eq:1.52}
+  r_{d} \equiv n^{-1/3},
+\end{equation}
+mientras que la \emph{distancia media de máxima aproximación} puede escribirse
+\begin{equation}\label{eq:1.53}
+  r_{c} \equiv \frac{e^{2}}{4 \pi \epsilon_{0}T},
+\end{equation}
+obtenida a partir del equilibrio entre la energía térmica de una partícula y el potencial electrostático de repulsión entre parejas de partículas
+\begin{equation}\label{eq:1.54}
+  \frac{1}{2}mv^{2}_{s} = \frac{e^{2}}{4 \pi \epsilon_{0}r_{c}}.
+\end{equation}
+La relación $r_{d}/r_{c}$ es simple. Si es pequeña entonces las partículas cargadas están dominadas por la interacción electrostática entre ellas, y su energía térmica es menor que la energía potencial de interacción. Estos plasmas se denominan \emph{fuertemente acoplados}. En cambio, si es grande las interacciones electrostáticas fuertes son ocasionales, raramente produciendo un cambio en el estado de movimiento de las partículas. En este caso, los plasmas se dicen \emph{débilmente acoplados} \autocite{Fitzpatrick2022}.
+
+Definiendo el \emph{parámetro del plasma} 
+\begin{equation}\label{eq:1.55}
+  \Lambda \equiv \frac{4 \pi}{3}n \lambda^{3}_{D},
+\end{equation}
+y utilizando las ecuaciones \eqref{eq:1.51}, \eqref{eq:1.52}, \eqref{eq:1.53} y \eqref{eq:1.55} resulta
+\begin{equation}\label{eq:1.56}
+  \Lambda = \frac{\lambda_{D}}{3r_{c}} = \frac{1}{3\sqrt{4 \pi}}\bigg(\frac{r_{d}}{r_{c}}\bigg)^{3/2} = \frac{4 \pi \epsilon^{3/2}_{0}}{3e^{3}}\frac{T^{3/2}}{n^{1/2}}.
+\end{equation}
+Este parámetro representa el número de partículas dentro de una esfera con radio la longitud de Debye. A partir de la ecuación \eqref{eq:1.56}, está claro que cuando $\Lambda \ll 1$ la esfera no contiene un gran número de partículas, correspondiente con un plasma fuertemente acoplado. Análogamente, $\Lambda \gg 1$ constituye una esfera de alta densidad, formando un plasma débilmente acoplado. Además, también puede observarse como, en el primer caso, los plasmas fuertemente acoplados tienden a ser fríos y densos, mientras que los plasmas débilmente acoplados son plasmas calientes y dispersos.
+
+Ejemplos de plasmas fuertemente acoplados incluyen los plasmas formados mediante ablación láser de blancos sólidos, plasmas procedentes de descargas eléctricas a altas presiones, o plasmas formados alrededor de cuerpos masivos colapsados como estrellas de neutrones o enanas blancas. Por otra parte, los plasmas calientes y con baja densidad encontrados en la ionosfera, fusión nuclear o astrofísica son débilmente acoplados, como recogen los parámetros de la Tabla \ref{tab:1.2}.
+
+\begin{footheorem*}{Definición de plasma}
+    En resumen, el comportamiento de un plasma solo puede observarse en escalas temporales $\tau$ mayores que el periodo del plasma $\tau_{p}$, y en escalas espaciales $L$ mayores que la longitud de Debye $\lambda_{D}$, tal que 
+    \begin{equation}
+      \tag{CP.1}
+      \frac{\tau_{p}}{\tau} \ll 1, \qquad \frac{\lambda_{D}}{L} \ll 1.
+    \end{equation}
+    De esta manera, un \emph{plasma} puede definirse formalmente como un gas ionizado, globalmente neutro (cuasineutral), y que posea un comportamiento colectivo.
+\end{footheorem*}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Parámetros típicos de plasmas débilmente acoplados \autocite{Fitzpatrick2022}.}
+  \label{tab:1.2}
+  \begin{tabular}{lSSSSS}
+  \toprule
+    Plasma & {$n$ (\unit{m^{-3}})} & {$T$ (\unit{eV})} & {$\omega_{pe}$ (rad/s)} & {$\lambda_{D}$ (\unit{m})} & {$\Lambda$} \\
+  \midrule
+    Viento solar & e7 & e1 & 2e5 & 7 & 5e10 \\
+  \midrule
+    Tokamak & e20 & e4 & 6e11 & 7e-5 & 4e8 \\
+  \midrule
+    Medio interestelar & e6 & e-2 & 6e4 & 7e-1 & 4e6 \\
+  \midrule
+    Ionosfera & e12 & e-1 & 6e7 & 2e-3 & 1e5 \\
+  \midrule
+    Confinamiento inercial & e28 & e4 & 6e15 & 7e-9 & 5e4 \\
+  \midrule
+    Cromosfera solar & e18 & 2 & 6e10 & 5e-6 & 2e3 \\
+  \midrule
+    Descarga eléctrica & e20 & 1 & 6e11 & 7e-7 & 5e2 \\
+  \bottomrule
+  \end{tabular}
+\end{table}
 
 \subsection{Ondas electromagnéticas en plasmas}\label{sec:1.2.2}
+Existen diversos tipos de fenómenos ondulatorios asociados a la presencia de campos eléctricos y magnéticos que dependen de la naturaleza del plasma y los propios campos eléctricos y magnéticos con los que interacciona. Esta sección \ref{sec:1.2.2}, presenta una teoría linealizada \autocite{Chen2015,Bittencourt2004} (amplitudes de los campos eléctrico y magnético pequeñas) adaptada a un plasma muy caliente (débilmente acoplado), globalmente neutro (cuasineutral), es decir, $\grad \cdot \symbf{E} = 0$ (la densidad total de carga eléctrica es nula a las escalas de estudio del plasma)\autocite{Sureau1995}, y sin magnetización presente ($\symbf{M}=\symbf{0}$).
 
+El objetivo es encontrar una ecuación de ondas que relacione el campo eléctrico $\symbf{E}$ del haz láser con la polarización $\symbf{P}$ originada en el plasma debido a su interacción. En las condiciones propuestas, las leyes de Maxwell para los campos eléctrico y magnético en la materia son \autocite{Griffiths2017}
+\begin{align}
+  \diver \symbf{D} &= 0, &\label{eq:1.57b} \curl \symbf{E} &= -\pdv{\symbf{B}}{t}, \\
+  \diver \symbf{B} &= 0, &\label{eq:1.57d} \curl \symbf{H} &= \symbf{J}_{f} + \pdv{\symbf{D}}{t}, 
+\end{align}
+con $\symbf{D}=\epsilon_{0}\symbf{E} + \symbf{P}$ el vector desplazamiento eléctrico,  $\symbf{H}=\symbf{B}/\mu_{0}$ el campo magnético externo, y $\symbf{J}_{f}$ la densidad de corriente eléctrica libre del plasma.Tomando rotacionales en las ecuaciones de Faraday \eqref{eq:1.57b} y Ampère \eqref{eq:1.57b}, y utilizando la identidad vectorial $\curl (\curl \symbf{E}) = \grad (\diver \symbf{E}) - \laplacian \symbf{E}$, resulta la ecuación de ondas del campo eléctrico
+\begin{equation}\label{eq:1.58}
+  \laplacian \symbf{E} - \frac{1}{c^{2}}\pdvN{\symbf{E}}{t}{2} = \mu_{0}\pdv{\symbf{J}_{f}}{t} + \mu_{0}\pdvN{\symbf{P}}{t}{2}.
+\end{equation}
+Para determinar la densidad de corriente eléctrica libre $\symbf{J}_{f}$, basta recordar que es la intensidad de corriente eléctrica por unidad de superficie. Para campos con frecuencias suficientemente elevadas (como, por ejemplo, los rayos \acrshort{xuv}), los iones pueden considerarse fijos frente al movimiento oscilatorio de los electrones \autocite{Bittencourt2004}, de manera que
+\begin{equation}\label{eq:1.59}
+  \symbf{J}_{f} = \sum_{s=1} n_{s}e \symbf{u}_{s} \simeq -n_{e}e \symbf{u}_{e},
+\end{equation}
+siendo $\symbf{u}_{e}$ la velocidad promedio (técnicamente es la velocidad de la \emph{colectividad estadística} formada por los electrones) del conjunto de los electrones que forman el plasma. De acuerdo con la segunda ley de Newton, el campo láser ejerce una fuerza sobre los electrones $-e\symbf{E}=m_{e}\dot{\symbf{u}}_{e}$. 
 
-%\section{Fuentes de radiación X coherente}\label{sec:1.3}
-%
-%\subsection{Radiación sincrotrón}\label{sec:1.3.1}
-%
-%\subsection{Láseres de electrones libres}\label{sec:1.3.2}
-%
-%\subsection{Armónicos de alto orden}\label{sec:1.3.3}
-% 
-%\subsection{Radiación betatrón}\label{sec:1.3.4}
-%
+A su vez, el campo eléctrico oscilatorio del haz induce un desplazamiento $\Delta x$ en los electrones respecto de su posición de equilibrio, siendo este campo responsable de una distribución de carga eléctrica variable y, por tanto, una polarización del plasma. Recordando la ecuación \eqref{eq:1.49}, y sustituyendo el campo eléctrico en la segunda ley de Newton, se obtiene
+\begin{equation}\label{eq:1.60}
+  \dvN{\Delta x}{t}{2} = \frac{n_{e}e^{2}}{\epsilon_{0}m_{e}} \Delta x = \omega^{2}_{pe} \Delta x,
+\end{equation}
+con $\Delta \symbf{x} = - \epsilon_{0} \symbf{E}/(n_{e}e)$ la separación de los electrones respecto de su posición de equilibrio, es decir, la integral de la velocidad de los electrones $u_{e}$.
+
+Para terminar, combinando la ecuación \eqref{eq:1.60} con el primer término del lado derecho en la ecuación \eqref{eq:1.58}, y empleando la relación $\mu_{0} \epsilon_{0} = 1/c^{2}$, resulta
+\begin{equation}\label{eq:1.61}
+  \mu_{0}\pdv{\symbf{J}}{t} = -\mu_{0}n_{e}e \omega^{2}_{pe} \Delta \symbf{x} = \mu_{0} \epsilon_{0} \omega^{2}_{pe} \symbf{E} = \frac{\omega^{2}_{pe}}{c^{2}} \symbf{E},
+\end{equation}
+que sustituyendo en la ecuación \eqref{eq:1.58} proporciona, finalmente, la interacción entre el campo eléctrico del haz láser y el medio amplificador en estado de plasma
+\begin{equation}\label{eq:1.62}
+  \tcboxmath{\laplacian \symbf{E} - \frac{1}{c^{2}}\pdvN{\symbf{E}}{t}{2} = \frac{\omega^{2}_{pe}}{c^{2}}\symbf{E} + \frac{1}{\epsilon_{0}c^{2}}\pdvN{\symbf{P}}{t}{2}.}\end{equation}
+Esta ecuación es vital para entender la propagación del haz láser a través del plasma, pues relaciona una propiedad intrínseca del medio ---la polarización $\symbf{P}$---, con la luz ---el campo eléctrico $\symbf{E}$--- responsable de la perturbación en la distribución de carga. Esencialmente representa el acoplamiento entre las relaciones constitutivas del medio activo, en este caso un plasma, con las ecuaciones de Maxwell para la luz láser. Naturalmente, es necesario determinar la verdadera naturaleza de la polarización, y su relación con los iones y electrones que conforman el plasma, para realizar cálculos. La sección \S\ref{sec:3.1} será la encargada de prestar atención a estos detalles.
+
+\section{Fuentes de radiación X coherente}\label{sec:1.3}
+Actualmente existen fundamentalmente cuatro formas distintas de producir un haz de luz \acrshort{xuv} coherente, con aplicaciones en investigación básica y en nuevos desarrollos tecnológicos: la radiación sincrotrón, los láseres de electrones libres, los armónicos de alto orden, y la radiación betatrón. Las diferencias entre estas fuentes es muy diversa, y van desde las propiedades de la radiación emitida hasta el tamaño de los equipos y el coste de la inversión.
+
+Por ejemplo, los métodos que generan la radiación sincrotrón y los láseres de electrones libres están basados en grandes aceleradores de partículas, y constituyen las fuentes de luz \acrshort{xuv} más habituales en instalaciones multidisplinares.
+
+Tienen altos grados de coherencia espacial y tasas de repetición de \qty{100}{MHz}, que la convierte en ideal para recoger datos espectroscópicos de materiales, pero las duraciones del pulso por encima de \qty{10}{ps} y la relativamente baja coherencia temporal los convierte en mala elección para estudiar la dinámica de la materia por debajo del picosegundo.
+
+En cambio, los láseres de electrones libres pueden generar pulsos \acrshort{xuv} ultracortos ($\sim \qty{10}{fs}$), con intensidad suficientemente altas para producir interacciones no lineales en la materia,que tiene múltiples aplicaciones en física. Sin embargo, las tasas de repetición capaces de conseguir son bajas en comparación con la radiación sincrotrón, normalmente \qtyrange{10}{120}{Hz} \autocite{Emma2010,Ishikawa2012}, representa un obstáculo considerable en la realización de mediciones.
+
+\paragraph{Radiación sincrotrón}
+
+\paragraph{Láseres de electrones libres}
+Un láser de electrones libres o \emph{\acrfull{fel}}, difiere en muchos aspectos básicos de los demás láseres \enquote{convencionales} del mundo \autocite{Thorne2017}. Esto ocurre porque, la radiación coherente conseguida tiene las propiedades ópticas características de la luz láser, pero no procede de una emisión estimulada de radiación. En estos láseres, un haz colimado de electrones monoenergéticos (equivalente a una \enquote{inversión de población}) con velocidades relativistas pasa a través de unos imanes (formado por dipolos dispuestos alternativamente) capaces de generar un campo magnético senoidal transversal, haciendo que los electrones emitan rayos X en la dirección del haz.
+
+Desde la perspectiva clásica, estas frecuencias en los rayos X inducen, a su vez, un movimiento oscilatorio en los electrones, que emiten nuevamente rayos X de manera coherente, amplificando la emisión de rayos X. Dicho de otra forma, el haz de electrones en su movimiento consigue un \enquote{efecto láser}, conocido frecuentemente como \emph{\acrfull{sase}}. Los electrones interaccionan colectivamente (generando un patrón de interferencia) con la radiación emitida por ellos mismos (una \enquote{autoamplificación} de la emisión), creando un empaquetamiento de los electrones en torno a la longitud de onda de resonancia formada. 
+
+Además, controlando la energía del haz de electrones y la disposición de los imanes, pueden emitir en longitudes de onda que abarcan prácticamente la totalidad del espectro electromagnético \autocite{Davis2014}, desde los rayos X hasta las microondas ($\lambda \sim \qty{1}{mm}$), tal que
+\begin{equation}\label{eq:1.63}
+  \lambda = \frac{\lambda_{u}}{2n \gamma^{2}}\bigg(1 + \frac{K^{2}}{2}\bigg),
+\end{equation}
+con $\lambda_{u}$, $n$, $K$ y $\gamma$ la longitud de repetición entre polos de los imanes, el orden del armónico, el parámetro de deflexión magnético (proporcional al pico máximo del campo magnético) y el factor de Lorentz proporcional a la energía del haz de electrones, respectivamente \autocite{McNeil2010}.
+
+Por ejemplo, el \emph{\acrfull{lcls}} (ver Figura \ref{fig:1.18}) perteneciente al \emph{\acrfull{slac}} (en Menlo Park, California), y el \emph{\acrfull{sacla}} (Hy\=ogo, Japón), pueden producir pulsos de rayos X con energías de \unit{keV}, femtosegundos de duración \autocite{Emma2010} y potencia del orden de $\sim \qty{10}{GW}$ \autocite{Ishikawa2012}, a frecuencias de repetición de \qty{120}{Hz} e intensidades máximas $\sim 10^{9}$ veces superiores a las que podrían alcanzarse en cualquier acelerador sincrotrón. A día de hoy, existen multitud de instalaciones punteras repartidas por todo el mundo, y gracias a la renovación de la tecnología en las instalaciones (por ejemplo, utilizando imanes superconductores), como el reciente LCLS-\RN{2}, pueden conseguirse pulsos con frecuencias de \qty{100}{Hz} y una luminosidad mil veces mayor \autocite{Bostedt2016}. 
+
+En definitiva, los láseres de electrones libres en los rayos X, también llamados \emph{\acrfull{xfel}}, constituyen una de las fuentes más interesantes y desarrolladas tecnológicamente para la obtención de radiación X coherente. Muchas aplicaciones e investigaciones han ocurrido en los últimos 15 años, entre las que están la reconstrucción de imágenes procedentes de muestras biológicas \autocite{Ackermann2007,Chapman2006,Neutze2000,Ekeberg2015}, la interferometría ultrarrápida \autocite{Usenko2017,Singer2013,Mirian2021}, o la cristalografía de rayos X \autocite{Young2010,Echelmeier2020,Bergmann2021}.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{Figuras/ch1_lcls.png}
+  \caption{Esquema del \acrshort{lcls} \autocite{Emma2010}. BC2 y BC2 son dos compresores magnéticos empleados para \enquote{empaquetar} los electrones. Los electrones son acelerados hasta alcanzar \qty{50}{GeV} utilizando radiofrecuencias de \qty{2,856}{MHz}.}
+  \label{fig:1.18}
+\end{figure}
+
+\paragraph{Armónicos de alto orden}
+ 
+\paragraph{Radiación betatrón}
+
 %\section{Láseres de rayos X basados en plasmas}\label{sec:1.4}
 %
 %\section{Estado del arte}\label{sec:1.5}
