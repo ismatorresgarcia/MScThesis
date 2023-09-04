@@ -176,8 +176,8 @@
   backend = biber,                          %% compilador por defecto con biblatex (recomendado)
   natbib = true,                            %% comandos del paquete natbib (autocite, por ejemplo)
   maxnames = 10,                            %% número max. de nombres de autores
-  minnames = 1,                             %% número mix. de nombres de autores
-  sorting = nyt,                            %% ordenar por nombre, año, título
+  minnames = 1,                             %% número min. de nombres de autores
+  sorting = nyt,                            %% ordenar por nombre, título y año 
   autocite = superscript,                   %% estilos de las citas del texto como superíndices
   citestyle = numeric-comp,                 %% estilo de las citas numérico tipo [1-3] (pon numeric-comp, en draft mientras edito)
   bibstyle = numeric,                       %% estilo de bibliografía numérica (pon numeric, en draft mientras edito)  
@@ -417,6 +417,7 @@
 
 \RedeclareSectionCommands[
   tocentryformat = \small\sffamily,
+  tocpagenumberformat = \sffamily,
   toclinefill = \hfill, % me cargo la línea de puntos del ToC
   tocindent = 1.75em,
   tocnumwidth = 2.5em,
@@ -426,6 +427,7 @@
 
 \RedeclareSectionCommands[
   tocentryformat = \small\sffamily,
+  tocpagenumberformat = \sffamily,
   toclinefill = \hfill, % me cargo la línea de puntos del ToC
   tocindent = 4.25em,
   tocnumwidth = 3.5em,
