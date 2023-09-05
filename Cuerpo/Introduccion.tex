@@ -85,7 +85,7 @@ En cambio, en ocasiones puede presentarse la situación contraria en la naturale
 
 El aspecto clave del efecto láser es la inversión de población del medio activo. Sin embargo, la inversión de población es incompatible con el equilibrio termodinámico: por tanto, para conseguir la amplificación es necesario manipular la materia de alguna forma fuera del equilibrio. En la mayoría de los casos, esto se hace siguiendo alguna variante del proceso mostrado en los niveles de energía de la Figura \ref{fig:1.3}. 
 
-Escogiendo un mecanismo de bombeo \autocite{Kastler1950} (para depositar energía) adecuado, los electrones son excitados rápidamente desde el nivel fundamental hasta una banda de estados de absorción característica del átomo o molécula en cuestión. Después, los electrones decaen rápidamente desde los estados de absorción hasta el estado $\ket{2}$, que es metaestable (su tiempo de permanencia en ese estado es mucho mayor que el tiempo de emisión espontánea), quedando los electrones \enquote{esperando} ahí. La transición responsable del efecto láser sucede del estado $\ket{2}$ al estado $\ket{1}$. 
+Escogiendo un mecanismo de bombeo (para depositar energía) adecuado, los electrones son excitados rápidamente desde el nivel fundamental hasta una banda de estados de absorción característica del átomo o molécula en cuestión. Después, los electrones decaen rápidamente desde los estados de absorción hasta el estado $\ket{2}$, que es metaestable (su tiempo de permanencia en ese estado es mucho mayor que el tiempo de emisión espontánea), quedando los electrones \enquote{esperando} ahí. La transición responsable del efecto láser sucede del estado $\ket{2}$ al estado $\ket{1}$. 
 
 \begin{figure}[htbp]
   \centering
@@ -885,6 +885,34 @@ Esta esquema consiste en generar un plasma de alta densidad electrónica con la 
 La inversión de población de los estados inferiores ocurre cuando los electrones en los niveles superiores mencionados experimentan una sucesión de transiciones electrónicas hacia los niveles inferiores, en busca de la estabilidad (recombinación radiativa), o mediante nuevas recombinaciones de tres cuerpos. La propuesta teórica la realizaron Gudzenko y Shelepin (1964), del Instituto Lebedev de Física de Moscú\autocite{Gudzenko1964}, para un plasma denso y ultrafrío de hidrógeno; los primeros indicios experimentales (en iones de \ce{Al^{4+}}) fueron observados por Jaeglé \emph{et al} (1971) \autocite{Jaegle1971}; y la demostración experimental unos años más tarde, por Suckewer \emph{et al} (1985)\autocite{Suckewer1985}, enfocando un láser de \ce{CO2} sobre un blanco sólido de carbono.
 
 \paragraph{Bombeo colisional}
+El bombeo colisional, también conocido como \emph{excitación colisional}, es una variación del concepto de bombeo óptico propuesto por Alfred Kastler (1950)\autocite{Kastler1950}, que trabajaba en el Laboratorio de Física de \emph{l’École Normale Supérieure}, en París. Este método, utilizado en este trabajo, recurre a las colisiones entre electrones libres del plasma con los iones para generar una inversión de población. De esta forma, los electrones excitan a los iones, proporcionando la energía necesaria a los electrones ligados de los iones para su promoción hasta la banda de absorción.
+
+Originalmente, fue sugerido teóricamente por Zherikin \emph{et al} (1976) y Vinogradov \emph{et al} (1977), que además, demostraron la posibilidad de conseguir una emisión de luz \acrshort{vuv} en ciertas transiciones de iones neonoides ($10$ electrones). La confirmación experimental de luz \acrshort{xuv} tuvo lugar unos años más tarde, en 1985 \autocite{Matthews1985,Rosen1985}, apoyándose en iones de selenio e itrio neonoides y técnicas espectroscópicas para medir las ganancias obtenidas, con coeficientes de ganancia de \qty{5.5 +-  1.0}{cm^{-1}}.
+
+En general, la utilización de familias de iones heliumoides (2 electrones), neonoides (10 electrones), niqueloides (28 electrones) y paladiumoides (46 electrones) tiene el propósito de conseguir el mayor número de iones estables electrónicamente en el plasma, pues su banda de valencia está completa. Por otra parte, el plasma debe reunir unas condiciones iniciales básicas, a partir de las cuales pueda producirse la emisión \acrshort{xuv}. Esencialmente, como tratará la sección \S\ref{sec:3.3}, la radiación \acrshort{xuv} tiene que propagarse a través del plasma sin \enquote{escaparse} de sus fronteras, planteando la necesidad de una distribución de electrones que mantenga el haz láser dentro del plasma, pero favoreciendo un equilibrio que permita mantener una inversión de población favorable.
+
+Para conseguir un láser \acrshort{xuv} con iones niqueloides (como los iones de $\ce{Kr^{8+}}$ de este proyecto), hubo que esperar a MacGowan \emph{et al} (1987)\autocite{MacGowan1987}, en el \emph{\acrfull{llnl}}. El experimento mostró la amplificación de la emisión espontánea entre \qtyrange{6.583}{7.1}{nm}, después de enfocar un láser ultracorto muy intenso sobre una lámina delgada de \ce{EuF2}, formando iones de europio niqueloide $\symrm{Eu}^{+35}$ responsables de la transición. También sugirieron la posibilidad de extrapolar sus resultados a iones de \ce{Yb^{+43}}, así como cierta evidencia de amplificación en iones de \ce{W^{+46}}.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.7\textwidth]{Figuras/ch1_niquel_like.pdf}
+  \caption{Esquema simplificado de los niveles de energía que participan en la transición láser de un ión niqueloide. Adaptado de G. J. Tallents (2003) \autocite{Tallents2003}.}
+  \label{fig:1.23}
+\end{figure}
+
+Un diagrama de energía de los iones niqueloides aparece en la Figura \ref{fig:1.23}. El efecto láser tiene lugar gracias a las transiciones $\symrm{3d^{9}4d \rightarrow 3d^{9}4p}$ entre los dos estados del nivel energético inferior y el estado del nivel superior. El diagrama está simplificado, porque la inversión de población del nivel superior $\symrm{3d^{9}4d}$ tiene una segunda vía formada por la transición $\symrm{3d^{10} \rightarrow \symrm{3d^{9}4f}}$ (también por colisiones con los electrones), seguida por una emisión no radiativa hasta el nivel energético de bombeo $\symrm{3d^{9}4d}$ (el estado ocupado es inestable). En cualquier caso, el nivel inferior es despoblado rápidamente mediante la emisión espontánea de radiación. La sección \S\ref{sec:3.4} mostrará un esquema expandido para el caso del ión \ce{Kr^{8+}}.
+
+Una ventaja de los iones niqueloides frente a los neonoides es que necesitan depositar menos energía durante el bombeo para conseguir la misma amplificación de luz \acrshort{xuv}. A igual número de electrones arrancados de la banda de valencia, los iones niqueloides poseen niveles energéticos con transiciones a longitudes de onda más cortas, y por tanto, de mayor energía en la emisión. Sin embargo, la amplificación de los iones neonoides superaba a los niqueloides, por lo que la pérdida de ganancia no estaba siendo compensada por la menor exigencia energética. A finales de la década de 1990, aparecieron nuevos experimentos y tecnologías capaces de eliminar este inconveniente, llegando incluso a alcanzar el régimen de saturación. 
+
+Por ejemplo, Zhang \emph{et al} (1997)\autocite{Zhang1997} demostraron una emisión láser de rayos X de \qty{0.3}{mJ} ($\lambda = \qty{7}{nm}$) con pulsos de \qty{50}{ps} y ganancias de \qty{8.4 +- 0.6}{cm^{-1}}, enfocando un sistema láser de \ce{Nd{:}cristal} (\qty{1.05}{µm}, \qty{75}{ps}) sobre un doble blanco de samario (el ión niqueloide responsable de la transición) en un soporte de vidrio. El doble blanco permitía aumentar el pico de ganancia y reducir el ángulo de divergencia a la salida de los rayos X ($\Delta \theta \approx \qty{1}{mrad}$), mientras que el sistema láser generaba múltiples pulsos capaces de \enquote{preformar} un plasma inicial, cuya menor densidad electrónica facilitaba la propagación de los rayos X. De esta forma, alcanzar la saturación en rayos X permite extraer la máxima potencia posible para un volumen del plasma determinado, añadiendo una mejor escalabilidad de la longitud de onda del ión niqueloide con las fuentes de bombeo.
+
+Es importante mencionar que todos los progresos mencionados hasta ahora recurrían a un plasma en estado \emph{cuasi-estacionario}, es decir, manteniéndose sus propiedades constantes en el tiempo durante el intervalo de estudio ($\sim \qty{100}{ps}$). La excitación colisional que sigue esta condición es conocida por el nombre de \emph{\acrfull{qss}}.
+
+%\subsection{Inyección de armónicos}\label{sec:1.4.1}
+
+%\subsection{Ionización de efecto campo}\label{sec:1.4.2}
+
+
 
 
 %\section{Estado del arte}\label{sec:1.5}

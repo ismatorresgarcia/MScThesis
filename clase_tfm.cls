@@ -471,7 +471,7 @@
 %% delimitadores importantes
 \newcommand*{\abs}[1]{\left|#1\right|}
 \newcommand*{\bra}[1]{\langle#1|}
-\newcommand*{\ket}[1]{#1\rangle}
+\newcommand*{\ket}[1]{|#1\rangle}
 \newcommand*{\xval}[1]{\langle#1\rangle}
 \newcommand*{\Xval}[3]{\langle#1\middle|#2\middle|#3\rangle}
 \newcommand*{\braket}[2]{\langle#1\middle|#2\rangle}
