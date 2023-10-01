@@ -914,11 +914,53 @@ Sin embargo, aunque la ganancia máxima aumenta en el \acrshort{tce} su duració
 
 Otra pregunta muy astuta que aparece en estos esquemas, y en las investigaciones presentadas hasta ahora, es: ¿qué luz está siendo amplificada?, ¿qué está provocando la emisión \acrshort{xuv}? La respuesta a ambas preguntas es el \enquote{ruido}. En realidad, los fotones amplificados han sido emitidos espontáneamente desde el nivel superior de la transición láser, ejerciendo como las semillas necesarias para inducir el efecto resonante entre los estados que participan en la emisión \acrshort{xuv}, de ahí la palabra ruido. Por tanto, estos métodos están basados en la amplificación de la emisión espontánea (ruido) de radiación o, en la literatura especializada, \emph{\acrfull{ase}}.
 
-La coherencia temporal obtenida siguiendo estos esquemas es elevada, pero, en cambio, la coherencia espacial sufre una disminución, porque la emisión espontánea (que es aleatoria) es incoherente al producirse en áreas diferenciadas del medio. La propuesta para solventar este contratiempo, como explicará la sección \S\ref{sec:1.4.1}, consiste en inyectar una semilla de \acrshort{hoh} que aproveche sus extraordinarias cualidades ópticas para ser amplificada. En el futuro, también podrían utilizarse sistemas de doble blanco o doble paso por el plasma que proporcionen mejores coherencias espaciales.
-
-
+La coherencia temporal obtenida siguiendo estos esquemas es elevada, pero, en cambio, la coherencia espacial sufre una disminución, porque la emisión espontánea (que es aleatoria) es incoherente al producirse en áreas diferenciadas del medio. La propuesta para solventar este contratiempo, como explicará la sección \S\ref{sec:1.4.1}, consiste en inyectar una semilla de \acrshort{hoh} que aproveche sus extraordinarias cualidades ópticas para la amplificación. En el futuro, también podrían utilizarse sistemas de doble blanco o doble paso por el plasma que proporcionen mejores coherencias espaciales.
 
 \subsection{Inyección de armónicos}\label{sec:1.4.1}
+A principios de la década de $1990$, los problemas de coherencia en los láseres \acrshort{xuv} y, por otro lado, las bajas tasas de producción de fotones en pulsos de \acrshortpl{hoh}, restringían enormemente sus posibles usos en diversos ámbitos. En $1995$, Ditmire \emph{et al} \autocite{Ditmire1995} demostraron la posibilidad de amplificar radiación \acrshort{xuv} introduciendo el armónico número $21$ de un láser infrarrojo de \ce{Nd{:}cristal} en un plasma formado por iones de galio neonoide. El experimento aprovechaba la capacidad de producción de pulsos ultraintensos, demostrada unos años antes por la técnica \acrshort{cpa} \autocite{Maine1988}, para generar armónicos de alto orden, sirviéndose de las increíbles propiedades ópticas que proporcionan los \acrshortpl{hoh} como semillas para la amplificación.
+
+El equipo obtuvo un coeficiente de ganancia $g = \qty{3}{cm^{-1}}$, ajustando la longitud de onda del armónico con la transición láser $J=2 \rightarrow 1$ a $\lambda = \qty{25.11}{nm}$ del amplificador \acrshort{sxrl} de galio. Sin embargo, a lo largo de los \qty{18}{mm} de longitud del blanco sólido, solamente una pequeña fracción de la energía del armónico había conseguido acoplarse con el amplificador, pues la extensión espacial del armónico (el ancho del haz era aproximadamente de \qty{300}{µm}) superaba el tamaño de la región de ganancia (el diámetro de la región dentro del plasma era de \qty{80}{µm}). Además, el ancho de banda del armónico (\qty{0.01}{nm}) duplicaba el ancho de banda de emisión del blanco de galio (\qty{0.005}{nm}), reduciéndose aún más la amplificación obtenida.
+
+Diez años más tarde, Zeitoun \emph{et al} ($2004$)\autocite{Zeitoun2004} emplearon un blanco gaseoso de kriptón para formar un plasma amplificador de iones de kriptón niqueloide de baja densidad, junto al armónico número $25$ de un láser infrarrojo que actuaba como semilla. Esta aproximación representa, en cierto modo, el primer precursor de las técnicas y métodos utilizados en los experimentos que estudia este trabajo, así pues, debido a su relevancia es importante presentar una descripción más detallada del acontecimiento.
+
+En primer lugar, las dificultades de reducir los efectos espurios (en términos energéticos) de la señal \acrshort{ase} en la amplificación frente a la semilla \acrshort{hoh} a amplificar, y mantener la eficiencia del proceso durante todas las etapas, es complejo. Los anteriores intentos fracasaron cuando escogieron blancos sólidos para la formación del plasma amplificador, provocando un deterioro considerable de la calidad del haz láser debido a la fuerte refracción provocada en estos medios, además del acoplamiento deficiente entre la semilla y el plasma, favoreciendo una mayor energía en la emisión espontánea de la radiación.
+
+Para remediar estos problemas, primero, obtuvieron el armónico enfocando un pulso láser infrarrojo (\qty{20}{mJ}, \qty{30}{fs}) sobre una celda con gas argón. En segundo lugar, la semilla debía enfocarse con intensidad máxima en el plasma para alcanzar el régimen de extracción de energía. Por último, el plasma de baja refracción fue generado mediante la técnica \acrfull{ofi}, que aparece en la sección \S\ref{sec:1.4.2}.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subcaptionblock}{.8\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figuras/ch1_hhg_inyec.pdf}
+    \caption{Producción del \acrshort{hoh}}\label{fig:1.24}
+  \end{subcaptionblock}
+  \begin{subcaptionblock}{.8\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figuras/ch1_hhg_amplif.pdf}
+    \caption{Inyección y amplificación del \acrshort{hoh}}\label{fig:ch1_hhg2}
+  \end{subcaptionblock}
+   \caption{Esquema de la generación e inyección de \acrshortpl{hoh} utilizado para la amplificación de láseres \acrshort{sxrl}.}
+   \label{fig:1.24}
+\end{figure}
+
+El armónico producido pasaba por un espejo toroidal antes de su inyección a la entrada del plasma amplificador \acrshort{sxrl}. El medio estaba formado por iones de kriptón \ce{Kr^{8+}} bombeados longitudinalmente mediante un láser \acrshort{nir} (\qty{1.6}{J}, \qty{30}{fs}), cuya transición $\symrm{3d^{9}4d}_{J=0} \rightarrow \symrm{3d^{9}4p}_{J=1}$ a $\lambda = \qty{32.8}{nm}$ podía ajustarse con la proximidad del armónico número $25$. Finalmente, los haces infrarrojos salientes fueron eliminados mediante un filtro de aluminio de \qty{300}{nm} de espesor, y posteriormente, los rayos X blandos generados fueron analizados y medidos mediante un espectrómetro de rayos X, y un sensor \emph{\acrfull{ccd}} para la formación de las imágenes transversales del pulso \acrshort{sxrl}.
+
+La Figura \ref{fig:1.24} muestra, de manera simplificada, las dos etapas básicas de la cadena de amplificación. De acuerdo con las estimaciones que realizaron, el \enquote{pequeño} coeficiente de ganancia $g_{0}$ obtenido en el experimento fue de \qty{80}{cm^{-1}}, y la saturación fue alcanzada tras recorrer \qty{1.7}{mm} del canal de plasma. Además, el tiempo de retraso entre la formación del canal de plasma y la inyección del armónico es importante para optimizar la obtención final de energía. El intervalo de amplificación comenzaba \qty{5}{ps} después de la interacción del pulso \acrshort{nir} con los \qty{4}{mm} de longitud de la celda de argón, y duraba aproximadamente \qty{8}{ps}. 
+
+También recogieron otros parámetros ópticos interesantes como el ángulo de divergencia de la semilla ($\sim \qty{1}{mrad}$) y de la emisión \acrshort{ase} (>\qty{12}{mrad}). La semilla mantenía la polarización y el alto grado de coherencia espacio-temporal después de penetrar el medio amplificador, mientras que la emisión \acrshort{ase} estaba caracterizada por el bajo grado de coherencia y la ausencia de polarización esperadas. El número de fotones recogidos por pulso mediante metrología de rayos X en el haz \acrshort{xuv} era de \num{1.5e11} (\qty{0.7}{µJ}, \qty{500}{fs}), y \qty{35}{nJ} en la semilla, proporcionando estimaciones de la intensidad láser de \qty{1.5e16}{W/cm^2}.
+
+A modo de resumen, la Figura \ref{fig:1.25} realiza una comparación de los resultados obtenidos durante el experimento. De menor a mayor intensidad, aparecen el carácter espectral de la semilla \acrshort{hoh} aislada, del pulso \acrshort{ase} aislado, de la semilla \acrshort{hoh} inyectada con un desfase respecto a la ganancia del plasma, y la amplificación de la semilla acoplada correctamente con el medio. Naturalmente, el pico de amplificación del último experimento (la intensidad de la señal de entrada aumenta en un factor $13$) está asociado al efecto láser en el \ce{Kr^{8+}} durante la transición a \qty{32.8}{nm}.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.7\textwidth]{Figuras/ch1_espectro_hhg.png}
+  \caption{Intensidad frente a longitud de onda medidos experimentalmente, en distintos casos, por Zeitoun \emph{et al} \autocite{Zeitoun2004}. \textbf{a}, Espectro solo \acrshort{hoh}. \textbf{b}, Espectro solo \acrshort{ase}. \textbf{c}, Espectro \acrshort{hhg} desfasado. \textbf{d}, Espectro de emisión \acrshort{sxrl}.}
+  \label{fig:1.25}
+\end{figure}
+
+Después, multitud de equipos de investigación han realizado estudios para extender los resultados anteriores, y explorar la compleja estructura que constituyen los pulsos \acrshort{sxrl} obtenidos en estos experimentos. Por ejemplo, Wang \emph{et al} \autocite{Wang2006,Wang2008,Wang2014} recogen la amplificación del armónico $25$ producido por un sistema láser \ce{Ti{:}Sa} en un plasma de titanio neonoide, la posibilidad de amplificar simultáneamente dos armónicos diferentes, y la reducción hasta longitudes de onda de \qty{13.9}{nm} y \qty{18.9}{nm} de la amplificación para iones de plata y molibdeno niqueloides.
+
+Los perfiles temporales formados conjuntamente por la semilla \acrshort{hoh}, la emisión \acrshort{ase}, y la estela formada durante la propagación en el plasma\autocite{Wang2008}, fueron estudiados por Oliva \emph{et al} (2011) \autocite{Oliva2011}, desarrollando un código unidimensional (DeepOne) para comparar numéricamente las distintas respuestas temporales del medio activo, descubriendo la aparición de un nuevo régimen de amplificación \enquote{forzado} debido al acoplamiento de la polarización del plasma introducida por la semilla \acrshort{hoh}. Específicamente, el origen del fenómeno \autocite{Almiev2007} era consecuencia de la ausencia de un acoplamiento apropiado entre la polarización atómica inducida por la semilla y la duración del propio pulso \acrshort{hoh}.
 
 %\subsection{Ionización de efecto campo}\label{sec:1.4.2}
 
