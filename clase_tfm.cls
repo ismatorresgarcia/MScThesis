@@ -1,7 +1,7 @@
 %%% Versión V1.2 de la clase .cls
 %%% Plantilla para el TFM de Ismael Torres García en la UPM-ETSII
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{clase_tfm}[2023/04/21 Clase TFM, V1.2, Ismael Torres García]
+\ProvidesClass{clase_tfm}[2023/10/10 Clase TFM, V1.3, Ismael Torres García]
 
 %%% clase de base (KOMA-Script)
 \LoadClass{scrbook}                   %% clase libro KOMA-Script para el documento base
