@@ -1,0 +1,80 @@
+% !TeX program = lualatex
+% Energy levels of a niquel-like simplified diagram for a laser transition
+% Autor: Ismael Torres García
+\documentclass[tikz,border=3pt]{standalone}
+\usetikzlibrary{calc, arrows.meta, decorations.pathmorphing, decorations.markings}
+\usepackage[math-style=ISO,bold-style=ISO]{unicode-math}
+\setmainfont[Renderer=OpenType]{Minion Pro}          %% Fuente comercial MinionPro de Adobe para el texto
+\setmathfont[                                        %% Fuente MinionMath de Johannes Küsner para las matemáticas
+    Extension = .otf,
+    Path = /Users/ytoga/Library/Fonts/,
+    Scale = 1,
+    Script = Math,
+    SizeFeatures = {
+        {Size = -6, Font = MinionMath-Tiny,
+        Style = MathScriptScript},
+        {Size = 6-8.4, Font = MinionMath-Capt,
+        Style = MathScript},
+        {Size = 8.4-, Font = MinionMath-Regular},
+    },
+]{MinionMath-Regular}
+\setmathfont[                         
+    Extension = .otf,
+    Path = /Users/ytoga/Library/Fonts/,
+    version = bold,
+]{MinionMath-Bold}
+
+\usepackage{xcolor}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% COMIENZO DEL DOCUMENTO
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\begin{tikzpicture}[
+  arrow/.style={-{Stealth[length=2mm,width=1.5mm]},shorten >= 2pt, blue},
+  estim/.style={arrow,thick,decorate,decoration={snake,amplitude=1.5,post length=5}},
+  espont/.style={arrow,densely dashed,decorate,decoration={snake,amplitude=1.5,post length=5}},
+]
+
+%% DEFINICIONES
+\def\anchura{90pt}
+\coordinate (sublevel) at (0pt, 10pt);
+\coordinate (sublevel2) at (125pt, 155pt);
+\coordinate (sublevel3) at (250pt, 105pt);
+
+%% NIVELES FUNDAMENTAL Y SUPERIOR
+\coordinate (S00) at ($-1*(sublevel)$);
+
+% Dibujo los niveles de energía 
+\draw[thick] ([xshift=125pt] S00) -- +(215pt, 0) node[midway, below=3pt] {\footnotesize $\mathrm{3d^{10}} (J=0)$};
+
+%% NIVEL SUPERIOR DE LA TRANSICIÓN LASER
+\coordinate (T00) at (sublevel2);
+
+% Dibujo los niveles de energía
+\draw[thick] (T00) node[left=0pt] {\scriptsize $(\mathrm{3d_{3/2},4d_{3/2}}) J=0$} -- +(\anchura, 0) 
+node[midway, above=3pt] {\footnotesize $\mathrm{3d^94d}$};
+
+% Dibujo el bombeo colisional
+\draw[arrow] ([xshift=135pt] S00) -- ([xshift=10pt] T00) node[black, midway, left, align=center] {\footnotesize Excitación\\\footnotesize colisional};
+
+%% NIVELES INFERIORES DE LA TRANSICIÓN LASER
+\coordinate (U00) at (sublevel3);
+\coordinate (U01) at ($(U00) - 2*(sublevel)$);
+
+% Dibujo los niveles de energía
+\draw[thick] (U00) node[left=0pt] {\scriptsize $(\mathrm{3d_{5/2},4p_{3/2}}) J=1$} -- +(\anchura,0) node[right=-20pt, above=2pt] {\footnotesize $\mathrm{3d^94p}$};
+\draw[thick] (U01) node[left=0pt] {\scriptsize $(\mathrm{3d_{3/2},4p_{1/2}}) J=1$} -- +(\anchura,0);
+
+% Dibujo las transiciones espontáneas
+\draw[espont] ([xshift=75pt] U00) -- ([xshift=325pt] S00);
+\draw[espont] ([xshift=60pt] U01) -- ([xshift=310pt] S00) node[black, midway, left, align=center] {\footnotesize Emisión\\\footnotesize espontánea};
+
+% Dibujo las transiciones estimuladas
+\draw[estim] ([xshift=80pt] T00) -- ([xshift=50pt] U00);
+\draw[estim] ([xshift=45pt] T00) -- ([xshift=50pt] U01) node[black, midway, above=1pt, rotate=-28] {\footnotesize Transición láser (XUV)}; 
+
+\end{tikzpicture}
+
+\end{document}

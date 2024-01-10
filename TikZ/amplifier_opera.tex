@@ -1,0 +1,65 @@
+% !TeX program = lualatex
+% Non-inverting operational amplifier with european standards
+% Autor: Ismael Torres García
+\documentclass[border=3pt]{standalone}
+\usepackage[math-style=ISO,bold-style=ISO]{unicode-math}
+\setmainfont[Renderer=OpenType]{Minion Pro}          %% Fuente comercial MinionPro de Adobe para el texto
+\setmathfont[                                        %% Fuente MinionMath de Johannes Küsner para las matemáticas
+    Extension = .otf,
+    Path = /Users/ytoga/Library/Fonts/,
+    Scale = 1,
+    Script = Math,
+    SizeFeatures = {
+        {Size = -6, Font = MinionMath-Tiny,
+        Style = MathScriptScript},
+        {Size = 6-8.4, Font = MinionMath-Capt,
+        Style = MathScript},
+        {Size = 8.4-, Font = MinionMath-Regular},
+    },
+]{MinionMath-Regular}
+\setmathfont[                         
+    Extension = .otf,
+    Path = /Users/ytoga/Library/Fonts/,
+    version = bold,
+]{MinionMath-Bold}
+
+\usepackage[european]{circuitikz}
+\ctikzset{
+monopoles/vcc/arrow={Triangle[width=0.8*\scaledwidth, length=\scaledwidth]},
+monopoles/vee/arrow={Triangle[width=6pt, length=8pt]},
+}
+\usepackage{siunitx}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% COMIENZO DEL DOCUMENTO
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\tikzset{every picture/.style={line width=0.2mm}}
+
+\begin{circuitikz}	
+
+%% CIRCUITO
+\node[op amp] at (0,0) (opamp) {};
+\node[eground] at (-4.5,-0.5) (ground) {};
+\draw (opamp.-) to[R, l_=$R_1$, name=R1] ++(-3.3,0) -- (ground);
+\draw (opamp.+) to[short,-o] ++(-1.2,0) node[left] {$U_e$};
+\draw ($(opamp.-)+(-0.45,0)$) to[short,*-] ++(0,2.3) to[R, l=$R_2$, i>=$i$, name=R2] ++(3.3,0) to [short, -*] ++(0,-2.79);
+\draw (opamp.out) to[short,-o] ++(1.5,0) node[right] {$U_s$};
+
+%% SATURACIÓN
+\draw (opamp.up) -- ++(0,0.5) node[vcc] {$+U_{cc}$};
+\draw (opamp.down) -- ++(0,-0.5) node[vee] {$-U_{cc}$};
+
+%% CORRIENTE ELÉCTRICA
+\draw[-{Triangle[round]}] ($(opamp.-)+(-0.15,0)$) -- ++(0.2,0) 
+node[above,xshift={-2pt}] {\footnotesize $\qty{0}{A}$};
+\draw[-{Triangle[round]}] ($(opamp.+)+(-0.15,0)$) -- ++(0.2,0) 
+node[above,xshift={-2pt}] {\footnotesize $\qty{0}{A}$};
+\draw[-{Triangle[round]}] (ground) -- ++(0,0.5) node[right] {$i$};
+
+%% TEXTO
+\node[shift={(-0.4,-0.27)}] at (opamp.-) {\footnotesize $U_-=U_+$};
+\node[shift={(-0.4,-0.27)}] at (opamp.+) {\footnotesize 
+$U_+=U_e$};
+
+\end{circuitikz}
+\end{document}

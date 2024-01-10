@@ -1,0 +1,103 @@
+% !TeX program = lualatex
+% Work Breakdown Structure of the Master's Thesis Proyect
+% Autor: Ismael Torres García
+\documentclass[tikz,border=3pt]{standalone}
+\usetikzlibrary{arrows.meta,shapes,positioning,shadows,trees}
+\usepackage[math-style=ISO,bold-style=ISO]{unicode-math}
+\setmainfont[Renderer=OpenType]{Minion Pro}          %% Fuente comercial MinionPro de Adobe para el texto
+\setmathfont[                                        %% Fuente MinionMath de Johannes Küsner para las matemáticas
+    Extension = .otf,
+    Path = /Users/ytoga/Library/Fonts/,
+    Scale = 1,
+    Script = Math,
+    SizeFeatures = {
+        {Size = -6, Font = MinionMath-Tiny,
+        Style = MathScriptScript},
+        {Size = 6-8.4, Font = MinionMath-Capt,
+        Style = MathScript},
+        {Size = 8.4-, Font = MinionMath-Regular},
+    },
+]{MinionMath-Regular}
+\setmathfont[                         
+    Extension = .otf,
+    Path = /Users/ytoga/Library/Fonts/,
+    version = bold,
+]{MinionMath-Bold}
+
+\usepackage[edges]{forest}
+
+\usepackage{xcolor}
+\definecolor{miazul}{RGB}{0,30,155}
+\definecolor{mimorado}{RGB}{140,45,165}
+\colorlet{miazull}{white!80!miazul}
+\colorlet{mimoradoo}{white!60!mimorado}
+
+\tikzset{
+  basic/.style = {
+    draw, thin, align=center, 
+    drop shadow
+    },
+  parent/.style = {
+    basic, rounded corners=2pt, 
+    text width=3.5cm,
+   fill=miazul!50},
+  child/.style = {
+    basic, rounded corners=6pt,
+    fill=miazull, text width=7em},
+  grandchild/.style = {
+    basic, 
+    align=left, 
+    fill=mimoradoo, text width=9em},
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% COMIENZO DEL DOCUMENTO
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+%%%%%%%%%%%%%%%%
+%%%  DIBUJO  %%%
+%%%%%%%%%%%%%%%%
+\begin{forest} 
+  for tree = {
+    where level = 0{
+      parent,
+    }{
+      folder,
+      grow' = 0,
+    },
+    where level = 1{
+      child,
+      edge path' = {(!u.parent anchor) -- ++(0,-0.65cm) -| (.child anchor)},
+      for descendants = {
+        grandchild,
+      },
+    }{},
+}
+[Trabajo Fin de Máster, 
+    [Documentación, 
+      [\footnotesize Comprensión de los objetivos del TFM]
+      [\footnotesize Obtención de la bibliografía y artículos]
+      [\footnotesize Iniciación al código Dagon y aprendizaje]
+      [\footnotesize Preparación del entorno de trabajo virtual]
+    ]
+    [Estudio, 
+      [\footnotesize Asimilación de los principios básicos del trabajo]
+      [\footnotesize Ejecución de las primeras simulaciones]
+      [\footnotesize Escritura de los primeros programas y modificaciones]
+    ]
+    [Simulaciones, 
+      [\footnotesize Organización del cuerpo de la memoria]
+      [\footnotesize Continuación con las simulaciones intermedias]
+      [\footnotesize Preparación de la forma y estructura de la memoria]
+    ]
+    [Escritura, 
+      [\footnotesize Finalización del proceso de simulaciones]
+      [\footnotesize Redacción de la memoria]
+      [\footnotesize Revisión y corrección de la memoria preliminar]
+      [\footnotesize Maquetación y entrega de la memoria final]
+    ]
+]
+\end{forest}
+
+\end{document}

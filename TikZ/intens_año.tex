@@ -1,0 +1,139 @@
+% !TeX program = lualatex
+% Laser intensity vs years adapted from "Optics in the relativistic regime
+% Autor: Ismael Torres García
+\documentclass[tikz,border=3pt]{standalone}
+\usetikzlibrary{calc, arrows.meta, shapes.geometric}
+\usepackage[math-style=ISO,bold-style=ISO]{unicode-math}
+\setmainfont[Renderer=OpenType]{Minion Pro}          %% Fuente comercial MinionPro de Adobe para el texto
+\setmathfont[                                        %% Fuente MinionMath de Johannes Küsner para las matemáticas
+    Extension = .otf,
+    Path = /Users/ytoga/Library/Fonts/,
+    Scale = 1,
+    Script = Math,
+    SizeFeatures = {
+        {Size = -6, Font = MinionMath-Tiny,
+        Style = MathScriptScript},
+        {Size = 6-8.4, Font = MinionMath-Capt,
+        Style = MathScript},
+        {Size = 8.4-, Font = MinionMath-Regular},
+    },
+]{MinionMath-Regular}
+\setmathfont[                         
+    Extension = .otf,
+    Path = /Users/ytoga/Library/Fonts/,
+    version = bold,
+]{MinionMath-Bold}
+
+\usepackage{siunitx}
+\usepackage{xcolor}
+\colorlet{mimorado}{purple!60!blue}
+\colorlet{miazul}{blue!60}
+\colorlet{miverde}{green!60}
+\colorlet{miamarillo}{yellow!60}
+\colorlet{minaranja}{orange!60}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% COMIENZO DEL DOCUMENTO
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\tikzset{
+arrow/.style = {-{Triangle[angle'=30]}},
+}
+
+\begin{tikzpicture} 
+
+%% DEFINICIONES
+\def\ancho{4}
+\def\largo{6}
+\def\ymax{1.4}
+\def\xmax{1.6}
+\def\tick#1#2{\draw (#1) ++ (#2:0.1) --++ (#2-180:0.2)}
+
+%% COORDENADAS
+\coordinate (M) at (0.05,0.05);
+\coordinate (Maux) at (0.4,0.4);
+\coordinate (V1) at (0.05*\ancho,0.1*\largo);
+\coordinate (V2) at (0.1*\ancho,0.3*\largo);
+\coordinate (V3) at (0.5*\ancho,0.35*\largo);
+\coordinate (V4) at (0.7*\ancho,0.52*\largo);
+\coordinate (V5) at (1.21*\ancho,0.75*\largo);
+\coordinate (V6) at (1.17*\ancho,0.85*\largo);
+\coordinate (V7) at ($0.4*(V6)-0.4*(V4)$);
+
+%% EJES
+\draw[arrow] (0,0) -- (\xmax*\ancho,0) node[midway, below=0.5cm] {\footnotesize Años};
+\draw[arrow] (0,0) -- (0,\ymax*\largo) node[midway, xshift=-1.0cm, rotate=90] {\footnotesize Intensidad enfocada (\unit{\W\per\cm^2})};
+\draw[arrow] (0.9*\xmax*\ancho,0) -- (0.9*\xmax*\ancho,\ymax*\largo) node[midway, xshift=1.0cm, rotate=90] {\footnotesize Energía de los electrones (\unit{\eV})};
+\draw[dashed] (0.9*\xmax*\ancho,0.2*\largo) -- (0.25*\xmax*\ancho,0.2*\largo);
+
+\foreach \x / \year in {0/1960,0.2*\ancho/1970,0.4*\ancho/1980,0.6*\ancho/1990,0.8*\ancho/2000,\ancho/2010, 1.2*\ancho/2020, 1.4*\ancho/2030}
+    \tick{\x,0}{90} node[below] {\scriptsize $\year$};
+\foreach \y / \intensity in {0.1*\largo/10^{10},0.35*\largo/10^{15},0.6*\largo/10^{20},0.85*\largo/10^{25},1.1*\largo/10^{30},1.35*\largo/10^{35}}
+    \tick{0,\y}{0} node[left] {\scriptsize $\intensity$};
+\foreach \z / \energy in {0.2*\largo/1,0.53*\largo/10^{6},0.8*\largo/10^{12},1.05*\largo/10^{15}}
+    \tick{0.9*\xmax*\ancho,\z}{0} node[right=5pt] {\scriptsize $\energy$};
+
+%% REPRESENTACIÓN DEL FONDO
+% Rectángulos
+\begin{scope}[opacity=0.2]
+    \fill[minaranja] (0,0) rectangle (0.9*\xmax*\ancho,0.38*\largo);
+    \fill[miamarillo] (0,0.38*\largo) rectangle (0.9*\xmax*\ancho,0.53*\largo);
+    \fill[miverde] (0,0.53*\largo) rectangle (0.9*\xmax*\ancho,0.8*\largo);
+    \fill[miazul] (0,0.8*\largo) rectangle (0.9*\xmax*\ancho,1.05*\largo);
+    \fill[mimorado] (0,1.05*\largo) rectangle (0.9*\xmax*\ancho,1.35*\largo);
+\end{scope}
+
+%% CURVA 
+\draw[thick] (M) -- (V1) -- (V2) -- (V3) -- (V4) -- ($(V4)+.4*(V6)-.4*(V4)$);
+\draw[thick,densely dotted,gray] ($(V4)+.4*(V6)-.4*(V4)$) -- (V6);
+\draw[thick,densely dotted,gray] (V6) --++ (V7);
+\draw[thick] ($(V4)+.4*(V6)-.4*(V4)$) to [out=45,in=180] (V5);
+
+%% MARCAS
+% Maiman
+\fill[blue] (M) circle [radius=1.1pt];
+\draw[blue] (M) to [out=0,in=180] (Maux) node[scale=0.5,right] {Maiman};
+
+% Q-switch y mode-locking
+\coordinate (QS) at ($(V1)+.5*(V2)-.5*(V1)$);
+\coordinate (ML) at ($(V1)+.15*(V2)-.15*(V1)$);
+\fill[red] (QS) circle [radius=1.1pt] node[right=1pt,scale=0.5] {Mode-locking} -- (1,1);
+\fill[red] (ML) circle [radius=1.1pt] node[right=1pt,scale=0.5] {Q-switching};
+
+% CPA
+\coordinate (CPA) at (V3);
+\fill[red] (CPA) circle [radius=1.1pt] node[right=1pt,scale=0.5] {CPA};
+
+% OPCPA
+\coordinate (OPCPA) at (V4);
+\fill[red] (OPCPA) circle [radius=1.1pt] node[right=1pt,scale=0.5] {OPCPA};
+
+% Récord 2021 CoReLS
+\node[fill=blue,isosceles triangle,isosceles triangle apex angle=60,scale=0.2] at (V5) {};
+\node[scale=0.5,blue,align=center,below=2pt] at (V5) {CoReLS \\ (récord actual)};
+
+% CUOS
+\coordinate (CUOS) at ($0.8*(V6)-0.8*(V4)$);
+\fill[blue] ($(V4)+.4*(V6)-.4*(V4)$) circle [radius=1.1pt] node[right=1pt,scale=0.5] {CUOS};
+
+% ILE
+\coordinate (ILE) at ($0.8*(V6)-0.8*(V4)$);
+\fill[gray] ($(V4)+.8*(V6)-.8*(V4)$) circle [radius=1.1pt] node[right=1pt,scale=0.5] {ILE};
+
+% ELI
+\coordinate (ELI) at (V6);
+\fill[gray] (ELI) circle [radius=1.1pt] node[right=1pt,scale=0.5] {ELI};
+
+%% ESCALAS DE FUNCIONAMIENTO
+\node[scale=0.5,align=center] at (0.8*\ancho,0.25*\largo) {Átomos: $E_q=h\nu$ \\ (Materia ordinaria)};
+\node[scale=0.5,align=center] at (0.3*\ancho,0.45*\largo) {Electrones ligados: $E_q=e^2/a_0$ \\ (Plasmas)};
+\node[scale=0.5,align=center] at (0.35*\ancho,0.65*\largo) {Óptica relativista: $E_q=m_0c^2$ \\ (Plasmas relativistas, $v_{osc} \sim c$)};
+\node[scale=0.35,align=center] at (0.4*\ancho,0.83*\largo) {Intensidad límite láser: $I=h\nu^3/c^2$ \\ (por \unit{\cm^2} de medio activo)};
+\node[scale=0.5,align=center] at (0.4*\ancho,0.92*\largo) {Óptica ultrarelativista: $E_q=m_pc^2$ \\ (Plasmas cuánticos)};
+\node[scale=0.5,align=center] at (0.45*\ancho,1.2*\largo) {Electrodinámica cuántica: $E_q=2m_0c^2$ \\ (Formación de pares del vacío)};
+\node[scale=0.5] at (0.45*\xmax*\ancho,1.37*\largo) {Cromodinámica cuántica (Plasmas de quarks y gluones)};
+\node[scale=0.5,above=3pt,rotate=45] at ($(V4)+.8*(V6)-.8*(V4)$) {Predicciones};
+
+\end{tikzpicture}
+
+\end{document}

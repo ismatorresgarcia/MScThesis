@@ -1,0 +1,128 @@
+% !TeX program = lualatex
+% Lambert-Beer law for lasers penetrating an amplifier
+% Autor: Ismael Torres García
+\documentclass[tikz,border=3pt]{standalone}
+\usetikzlibrary{calc, arrows.meta, fadings, decorations.markings}
+\usepackage[math-style=ISO,bold-style=ISO]{unicode-math}
+\setmainfont[Renderer=OpenType]{Minion Pro}          %% Fuente comercial MinionPro de Adobe para el texto
+\setmathfont[                                        %% Fuente MinionMath de Johannes Küsner para las matemáticas
+    Extension = .otf,
+    Path = /Users/ytoga/Library/Fonts/,
+    Scale = 1,
+    Script = Math,
+    SizeFeatures = {
+        {Size = -6, Font = MinionMath-Tiny,
+        Style = MathScriptScript},
+        {Size = 6-8.4, Font = MinionMath-Capt,
+        Style = MathScript},
+        {Size = 8.4-, Font = MinionMath-Regular},
+    },
+]{MinionMath-Regular}
+\setmathfont[                         
+    Extension = .otf,
+    Path = /Users/ytoga/Library/Fonts/,
+    version = bold,
+]{MinionMath-Bold}
+
+\usepackage{xcolor}
+\definecolor{atoms}{RGB}{51,153,255}  % Color de los átomos
+\definecolor{laser}{RGB}{76,0,155}    % Color del láser
+
+%% DECORACIÓN DEL LÁSER  
+\makeatletter
+\pgfkeys{/pgf/decoration/.cd,
+    start color/.store in = \colorinicial,
+    end color/.store in   = \colorfinal
+}%
+
+\pgfdeclaredecoration{cambio color}{inicio}{
+
+% Estado inicial
+\state{inicio}[%
+    width                     = 0pt,
+    next state                = linea,
+    persistent precomputation = {\pgfmathdivide{50}{\pgfdecoratedpathlength}\let\increment=\pgfmathresult\def\x{0}}]%
+{}%
+
+% Estado de la línea
+\state{linea}[%
+    width                      = 0.5pt,
+    persistent postcomputation = {\pgfmathadd@{\x}{\increment}\let\x=\pgfmathresult}
+]%
+{%
+  \pgfsetlinewidth{\pgflinewidth}%
+  \pgfsetarrows{-}%
+  \pgfpathmoveto{\pgfpointorigin}%
+  \pgfpathlineto{\pgfqpoint{0.75pt}{0pt}}%
+  \pgfsetstrokecolor{\colorfinal!\x!\colorinicial}% %% sentido de la difuminación
+  \pgfusepath{stroke}%
+}%
+
+% Estado final
+\state{final}{%
+  \pgfsetlinewidth{\pgflinewidth}%
+  \pgfpathmoveto{\pgfpointorigin}%
+  \color{\colorfinal!\x!\colorinicial}%
+  \pgfusepath{stroke}% 
+}
+}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% COMIENZO DEL DOCUMENTO
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+%% DEFINICIONES 
+\def\cols{60}                         % Número de filas
+\def\rows{15}                         % Número de columnas
+\def\SquareUnit{0.35}                 % Lado del cuadrado (cm)
+\pgfmathsetmacro\RmaxParticle{0.13}   % Radio máximo de los átomos
+\def\BeforeLight{5}                   % Distancia antes de los átomos
+
+\begin{tikzpicture}[
+    x          = \SquareUnit cm,
+    y          = \SquareUnit cm,
+    line width = 2pt
+]
+
+%% RECORRIDO  
+% Antes de los átomos
+\draw[laser!20!white, 
+  decoration={markings, mark=at position 0.5 with \arrow[]{latex}}, postaction={decorate}] 
+    (-\BeforeLight,{0.5*\rows*\SquareUnit}) --++ (\BeforeLight,0) 
+    node[midway, above, black]{$I_0$};
+
+% Durante los átomos
+\draw[
+    decoration={cambio color, start color=laser, end color=laser!20!white}, decorate] 
+    (\cols*\SquareUnit,{0.5*\rows*\SquareUnit}) --++ (-\cols*\SquareUnit,0);
+
+% Después de los átomos
+\draw[laser, 
+    decoration={markings, mark=at position 0.5 with \arrow[]{latex}}, postaction={decorate}] 
+    ({\cols*\SquareUnit},{0.5*\rows*\SquareUnit}) --++ (\BeforeLight,0) 
+    node[midway, above, black]{$I$};
+
+%% CANAL AMPLIFICADOR 
+\foreach \i in {1,...,\cols}{
+	\foreach \j in {1,...,\rows}{
+    \pgfmathsetmacro\radius{\RmaxParticle*rnd};
+    \pgfmathsetmacro\l{\SquareUnit-2*\radius};
+    \pgfmathsetmacro\x{(\i-1)*\SquareUnit+\radius+\l*rnd};
+    \pgfmathsetmacro\y{(\j-1)*\SquareUnit+\radius+\l*rnd};
+    \fill[atoms] (\x,\y) circle[radius=\radius];
+  }
+}
+
+%% LONGITUD CANAL 
+\draw[|->, >={Triangle[angle'=30]}, line width = 0.8pt, black] 
+($(0,\rows*\SquareUnit)+(0,1)$)--++(0.25*\cols*\SquareUnit,0) 
+node[midway, above]{$z$};
+
+%% LAMBERT-BEER   
+\node[anchor=north, inner sep = 1ex] at (current bounding box.south) {$I(z,\nu)=I_0\symrm{e}^{G(\nu)z}$};
+
+\end{tikzpicture}
+
+\end{document}

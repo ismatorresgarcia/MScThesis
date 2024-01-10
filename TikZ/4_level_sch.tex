@@ -1,0 +1,85 @@
+% !TeX program = lualatex
+% Energy level diagram of a four-level pumping mechanism
+% Autor: Ismael Torres García
+\documentclass[tikz,border=3pt]{standalone}
+\usetikzlibrary{calc, arrows.meta, decorations.pathmorphing, decorations.markings}
+\usepackage[math-style=ISO,bold-style=ISO]{unicode-math}
+\setmainfont[Renderer=OpenType]{Minion Pro}          %% Fuente comercial MinionPro de Adobe para el texto
+\setmathfont[                                        %% Fuente MinionMath de Johannes Küsner para las matemáticas
+    Extension = .otf,
+    Path = /Users/ytoga/Library/Fonts/,
+    Scale = 1,
+    Script = Math,
+    SizeFeatures = {
+        {Size = -6, Font = MinionMath-Tiny,
+        Style = MathScriptScript},
+        {Size = 6-8.4, Font = MinionMath-Capt,
+        Style = MathScript},
+        {Size = 8.4-, Font = MinionMath-Regular},
+    },
+]{MinionMath-Regular}
+\setmathfont[                         
+    Extension = .otf,
+    Path = /Users/ytoga/Library/Fonts/,
+    version = bold,
+]{MinionMath-Bold}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% COMIENZO DEL DOCUMENTO
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\begin{tikzpicture}[
+  niveles/.style={thick,black},
+  estadosabs/.style={thick,red},
+  arrow/.style={-{Stealth[length=2mm,width=1.5mm]},blue,shorten >= 3pt,shorten <= 2pt},
+  bombeo/.style={arrow,thick},
+  estim/.style={arrow,thick,decorate,decoration={snake,amplitude=2.0,post length=5}},
+]
+
+%% DEFINICIONES
+\def\anchura{90pt}
+\def\espaciado{2pt}
+\def\num{10}
+\coordinate (sublevel) at (0, 10pt);
+\coordinate (sublevel2) at (125pt, 120pt);
+
+%% NIVELES FUNDAMENTAL Y SUPERIOR
+\coordinate (S00) at ($(sublevel)$);
+\coordinate (S01) at ($18*(sublevel)$);
+
+% Dibujo los niveles de energía inferior y superior del bombeo
+\draw[niveles] (S00) -- +(\anchura, 0) node[right] {\footnotesize Estado fundamental};
+\foreach \i in {1,...,\num}{
+  \draw[estadosabs] ([yshift=-\i*\espaciado] S01) -- +(\anchura, 0);
+}
+
+%% NIVELES DE LA TRANSICIÓN LASER
+\coordinate (T00) at (sublevel2);
+\coordinate (T01) at ($(T00) - 4*(sublevel)$);
+
+% Dibujo los niveles de energía
+\draw[niveles] (T00) -- +(\anchura, 0) node[right] {$|2\rangle$ (metaestable)};
+\draw[niveles] (T01) -- +(\anchura, 0) node[right] {$|1\rangle$};
+
+% Dibujo el bombeo hasta los estados de absorción
+\draw[bombeo] ([xshift=.5*\anchura] S00) -- ([xshift=.5*\anchura,yshift=-.05*\anchura] S01);
+
+% Dibujo el decaimiento rápido del nivel de absorción al estado metaestable
+\draw[bombeo] ([xshift=.55*\anchura,yshift=-.1*\anchura] S01) -- ([xshift=.5*\anchura] T00);
+
+% Dibujo la transición láser 
+\draw[estim] ([xshift=.5*\anchura,yshift=-.05*\anchura] T00) -- ([xshift=.5*\anchura] T01);
+
+% Dibujo el decaimiento rápido del nivel inferior al estado fundamental
+\draw[bombeo] ([xshift=.5*\anchura] T01) -- ([xshift=.5*\anchura] S00);
+
+%% TEXTO
+\node at ($(S01)+(.5*\anchura,.1*\anchura)$) {\footnotesize Estados de absorción};
+\node[rotate=-23] at ($.4*([xshift=.5*\anchura] S01)+.62*([xshift=.5*\anchura] T00)$) {\footnotesize Decaimiento rápido};
+\node[align=center] at ($.5*([xshift=.8*\anchura] S00)+.5*([xshift=.8*\anchura] S01)$) {\footnotesize Transición \\\footnotesize por bombeo};
+\node[align=center] at ($.5*([xshift=.8*\anchura] T00)+.5*([xshift=.8*\anchura] T01)$) {\footnotesize Transición \\\footnotesize láser};
+\node[rotate=29] at ($.6*([xshift=.45*\anchura] T01)+.1*([xshift=.5*\anchura] S00)$) {\footnotesize Decaimiento rápido};
+\end{tikzpicture}
+
+\end{document}
