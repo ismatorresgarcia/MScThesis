@@ -220,7 +220,36 @@ A modo de síntesis, el esquema de las \acrshort{mbe} formalmente está constitu
 \end{footheorem*}
 
 \section{Esquema computacional}\label{sec:3.2}
-Los parámetros de entrada sobre el estado del plasma en el momento de la amplificación necesarios para iniciar Dagon proceden de un código llamado OfiKinRad (OFK). Este código simula la interacción a escala atómica de los constituyentes del plasma, aportando datos sobre la temperatura de los electrones, su densidad, la ionización media, la ganancia y las tasas de colisiones entre iones y electrones.
+Esta sección \S\ref{sec:3.2} está dedicada exclusivamente a presentar los distintos códigos que participan en este trabajo, además de sus interrelaciones y dependencias dentro del algoritmo general de la simulación numérica. La utilización individual y conjunta de estos códigos, así como sus aplicaciones en distintos experimentos, tiene un amplio abanico de artículos y publicaciones\autocite{Larroche2000,Almiev2007,Velarde2005,Oliva2009} analizando sus características y comportamiento en el ámbito de los láseres y plasmas. Los métodos matemáticos que aparecen son complejos y extensos de desarrollar, siendo en muchos casos objeto de estudio en sí mismo\autocite{Oliva2010a}, dejando la profundización en este aspecto a futuros estudios.
+
+Por este motivo, a excepción de las pequeñas modificaciones introducidas en los programas utilizados, cada uno de los distintos códigos presentados a continuación deben entenderse como un sistema físico \enquote{termodinámico} en un modelo fenomenológico, que interacciona con su entorno (los programas externos) y tienen una función específica crucial, pero omitiendo el análisis matemático del \enquote{interior} de estos algoritmos. Por ejemplo, los principios básicos de la amplificación (\acrshort{mbe}), presentados en la sección \S\ref{sec:3.1}, están implementados en el código Dagon protagonista de este trabajo, aunque los detalles relativos a su programación han sido omitidos.
+
+A raíz de la introducción presentada en este capítulo \S\ref{cap:3}, puede intuirse la dificultad de introducir satisfactoriamente estos modelos de inyección de \acrshort{hoh} en plasmas amplificadores de radiación \acrshort{xuv} y su simulación numérica. La participación de múltiples fenómenos físicos como la expansión acelerada del plasma, la dispersión entre las especies de iones y los electrones, o la evolución temporal del pulso amplificado, requiere emplear un combinación adecuada de los códigos numéricos mostrados en la Figura \ref{fig:3.2}.
+
+Estos programas proporcionan la información requerida para continuar con el algoritmo de cálculo del proceso de amplificación de la semilla \acrshort{hoh}, a través de parámetros físicos de entrada o salida alimentados a los demás códigos que participan. Por ejemplo, los datos de entrada sobre el estado del plasma en el momento de la amplificación, necesarios para iniciar Dagon, proceden del código llamado OFIKinRad (OFK). Este programa, comúnmente empleado en física de plasmas y física atómica, simula la interacción a escala atómica de los constituyentes del plasma, aportando datos sobre la temperatura de los electrones, su densidad, la ionización media, la ganancia y las tasas de colisiones entre iones y electrones. 
+
+Una puntualización de vital importancia, en relación a la dependencia entre estos programas, es que no es lineal, es decir, no constituyen una cadena o secuencia de códigos acoplados entre sí, aunque una fracción de los parámetros de entrada necesarios por algunos de ellos vienen de una etapa computacional previa asociada a otro código. Una vez mencionado esto, el esquema computacional utilizado en este Trabajo Fin de Máster es el siguiente:
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.8\textwidth]{Figuras/ch3_codig.png}
+  \caption{Relaciones de dependencia básicas entre los programas participantes. \autocite{Gil2021}}
+  \label{fig:3.2}
+\end{figure}
+
+\begin{itemize}
+
+    \item Código ARWEN.
+    \item Código FBPIC.
+    \item Código OFIKinRad.
+    \item Código Dagon
+
+\end{itemize}
+
+
+
+
+
 
 \section{Esquema experimental}\label{sec:3.3}
 
