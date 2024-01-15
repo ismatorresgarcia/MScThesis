@@ -1,0 +1,101 @@
+% !TeX program = lualatex
+% Flux diagram used for solving the Maxwell equations in the FBPIC code
+% Autor: Ismael Torres García
+\documentclass[tikz,border=3pt]{standalone}
+\usetikzlibrary{arrows.meta,shadows,shapes.geometric}
+\usepackage[math-style=ISO,bold-style=ISO]{unicode-math}
+\setmainfont[Renderer=OpenType]{Minion Pro}          %% Fuente comercial MinionPro de Adobe para el texto
+\setmathfont[                                        %% Fuente MinionMath de Johannes Küsner para las matemáticas
+    Extension = .otf,
+    Path = /Users/ytoga/Library/Fonts/,
+    Scale = 1,
+    Script = Math,
+    SizeFeatures = {
+        {Size = -6, Font = MinionMath-Tiny,
+        Style = MathScriptScript},
+        {Size = 6-8.4, Font = MinionMath-Capt,
+        Style = MathScript},
+        {Size = 8.4-, Font = MinionMath-Regular},
+    },
+]{MinionMath-Regular}
+\setmathfont[                         
+    Extension = .otf,
+    Path = /Users/ytoga/Library/Fonts/,
+    version = bold,
+]{MinionMath-Bold}
+\setmathfont{STIXTwoMath}[          %% Fuente STIX Two Math para los estilos matemáticos que faltan en MinionMath
+    Extension = .otf,
+    Path = /System/Library/Fonts/Supplemental/,
+    range = {\symcal,\symfrak,\symbfcal,\symbffrak},
+    StylisticSet = 1
+]
+
+\usepackage{xcolor}
+\definecolor{miazul}{RGB}{0,30,155} 
+\definecolor{miazull}{RGB}{0,30,180} 
+\definecolor{mirojo}{RGB}{180,0,30} 
+\definecolor{miverde}{RGB}{0,153,0}
+\definecolor{mimorado}{RGB}{140,45,165}
+\definecolor{minaranja}{RGB}{250,150,5}
+
+\tikzset{inicio/.style={rectangle, rounded corners, 
+      drop shadow,
+      minimum width=2cm, 
+      minimum height=1cm,
+      align=center, 
+      draw=black, 
+      fill=mirojo!30},
+  fin/.style = {rectangle, rounded corners, 
+      drop shadow,
+      minimum width=2cm, 
+      minimum height=1cm,
+      align=center, 
+      draw=black, 
+      fill=miverde!30},
+  calculo/.style = {trapezium, drop shadow,
+      trapezium stretches=true, 
+      trapezium left angle=110, 
+      trapezium right angle=70, 
+      minimum width=3cm, 
+      minimum height=1cm, 
+      align=center,
+      draw=black, 
+      fill=miazul!20},
+  proceso/.style = {rectangle, drop shadow,
+      minimum width=3cm, 
+      minimum height=1cm, 
+      align=center, 
+      draw=black, 
+      fill=minaranja!30},
+  decision/.style = {diamond, drop shadow, 
+      minimum width=5cm, 
+      minimum height=1cm, 
+      draw=black, 
+      align=center,
+      fill=mimorado!30},
+  arrow/.style = {-{Stealth[length=2mm,width=1.5mm]},shorten >=1pt}
+}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=3cm]
+
+\node (inicio) [inicio] {Inicio};
+\node (push) [proceso, below of=inicio] {Actualización de las magnitudes mecánicas \\ $\symbf{x}_{i}$, $\symbf{p}_i$ de las macropartículas};
+\node (fuentes) [calculo, below of=push] {Cálculo de las fuentes $\rho$, $\symbf{J}$ a partir de $\symbf{x}_i$, $\symbf{p}_i$};
+\node (campos) [proceso, below of=fuentes, yshift=-0.5cm] {Actualización de los campos $\symbfcal{E}$, $\symbfcal{B}$ a partir de $\symbf{J}$};
+\node (interp) [calculo, below of=campos, yshift=-0.5cm] {Interpolación de los campos $\symbfcal{E}$, $\symbfcal{B}$ a partir de $\symbf{J}$};
+\node (preg) [decision, below of=interp, yshift=-0.5cm] {¿Converge?};
+\node (fin) [fin, below of=preg] {Fin};
+
+\draw [arrow] (inicio) -- (push);
+\draw [arrow] (push) -- (fuentes);
+\draw [arrow] (fuentes) -- (campos);
+\draw [arrow] (campos) -- (interp);
+\draw [arrow] (interp) -- (preg);
+\draw [arrow] (preg) -- node[anchor=west] {Sí} (fin);
+\draw [arrow] (preg) -- node[anchor=south,xshift=0.5cm] {No} +(-5,0) |- (push);
+
+\end{tikzpicture}
+
+\end{document}

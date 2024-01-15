@@ -1,0 +1,62 @@
+% !TeX program = lualatex
+% Flux diagram used for solving the energy transport equations in the ARWEN code
+% Autor: Ismael Torres García
+\documentclass[tikz,border=3pt]{standalone}
+\usetikzlibrary{calc,arrows.meta,shadows}
+\usepackage[math-style=ISO,bold-style=ISO]{unicode-math}
+\setmainfont[Renderer=OpenType]{Minion Pro}          %% Fuente comercial MinionPro de Adobe para el texto
+\setmathfont[                                        %% Fuente MinionMath de Johannes Küsner para las matemáticas
+    Extension = .otf,
+    Path = /Users/ytoga/Library/Fonts/,
+    Scale = 1,
+    Script = Math,
+    SizeFeatures = {
+        {Size = -6, Font = MinionMath-Tiny,
+        Style = MathScriptScript},
+        {Size = 6-8.4, Font = MinionMath-Capt,
+        Style = MathScript},
+        {Size = 8.4-, Font = MinionMath-Regular},
+    },
+]{MinionMath-Regular}
+\setmathfont[                         
+    Extension = .otf,
+    Path = /Users/ytoga/Library/Fonts/,
+    version = bold,
+]{MinionMath-Bold}
+
+\usepackage{xcolor}
+\definecolor{bloque1}{RGB}{51,153,255}  
+
+\tikzstyle{arrow} = [-{Stealth[length=2mm,width=1.5mm]},shorten >=1pt]
+
+\tikzstyle{process} = [rectangle, 
+  minimum width=3cm, 
+  minimum height=1cm, 
+  text centered, 
+  text width=3cm, 
+  draw=bloque1, 
+  fill=bloque1!20,
+  drop shadow
+]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% COMIENZO DEL DOCUMENTO
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\begin{tikzpicture}[node distance=5cm]
+
+\node (conv) [process] {Convección};
+\node (cond) [process, right of=conv] {Conducción};
+\node (rad) [process, right of=cond] {Radiación};
+\node (inicio) [left of=conv, yshift=1.5cm, xshift=1cm] {$\rho_{0},\rho_{0} E_{0},\rho_{0} \mathbf{u}_{0}$};
+\node (final) [right of=rad, yshift=1.5cm, xshift=-1cm] {$\rho,\rho (E_{0} + \Delta E_{0}),\rho \mathbf{u}$};
+
+\draw[arrow] (inicio) |- node[anchor=north] {} (conv);
+\draw[arrow] (conv) -- node[anchor=south] {Salida $1$} (cond);
+\draw[arrow] (cond) -- node[anchor=south] {Salida $2$} (rad);
+\draw[arrow] (rad) -| node[anchor=north] {} (final);
+
+\end{tikzpicture}
+
+\end{document}
