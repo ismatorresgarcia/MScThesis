@@ -1,0 +1,119 @@
+% !TeX program = lualatex
+% Stakeholders and impacts related with the Master's Thesis
+% Autor: Ismael Torres García
+\documentclass[tikz,border=3pt]{standalone}
+\usetikzlibrary{arrows.meta}
+\usepackage[math-style=ISO,bold-style=ISO]{unicode-math}
+\setmainfont[Renderer=OpenType]{Minion Pro}          %% Fuente comercial MinionPro de Adobe para el texto
+\setmathfont[                                        %% Fuente MinionMath de Johannes Küsner para las matemáticas
+    Extension = .otf,
+    Path = /Users/ytoga/Library/Fonts/,
+    Scale = 1,
+    Script = Math,
+    SizeFeatures = {
+        {Size = -6, Font = MinionMath-Tiny,
+        Style = MathScriptScript},
+        {Size = 6-8.4, Font = MinionMath-Capt,
+        Style = MathScript},
+        {Size = 8.4-, Font = MinionMath-Regular},
+    },
+]{MinionMath-Regular}
+\setmathfont[                         
+    Extension = .otf,
+    Path = /Users/ytoga/Library/Fonts/,
+    version = bold,
+]{MinionMath-Bold}
+\setmathfont{STIXTwoMath}[          %% Fuente STIX Two Math para los estilos matemáticos que faltan en MinionMath
+    Extension = .otf,
+    Path = /System/Library/Fonts/Supplemental/,
+    range = {\symcal,\symfrak,\symbfcal,\symbffrak},
+    StylisticSet = 1
+]
+
+\usepackage{xcolor}
+%%%%%%%%%%%%%%%%
+% DEFINICIONES %
+%%%%%%%%%%%%%%%%
+\def\circRad{4em}
+\definecolor{miazul}{RGB}{0,30,155} 
+\definecolor{mimorado}{RGB}{140,45,165}
+\definecolor{minaranja}{RGB}{250,150,5}
+\definecolor{mirojo}{RGB}{180,0,30} 
+\definecolor{miverde}{RGB}{0,153,0}
+
+\tikzset{
+  line cap = round, thick,
+  circulo/.style = {shape=circle, draw, font=\bfseries, minimum width=2*\circRad},
+  etiqueta/.style = {draw, thin, inner sep=2, rounded corners=2},
+  every node/.style = {align=center}
+}
+
+\begin{document}
+
+\begin{tikzpicture}
+
+\begin{scope}[local bounding box=challenges]
+  % Ambiental
+  \node [circulo, fill=minaranja!30] (amb) {Impacto\\Ambiental};
+  \foreach \itm [count=\i, evaluate={\a=\i*15+120;}] in
+    {Equipos, Ordenador personal, Servidor remoto, Consumo eléctrico, Conexión a red, Fabricación, Materias primas, Transporte} {
+      \node[etiqueta] at (\a:\circRad + 2mm) [rotate=\a+180, anchor=east] {\footnotesize\itm};
+      \draw (\a:\circRad + 2mm) -- (\a:\circRad);
+    }
+
+  % Económico
+  \begin{scope}[xshift=6cm]
+    \node [circulo, fill=mimorado!30] (eco) {Impacto\\Económico};
+    \foreach \itm [count=\i, evaluate={\a=\i*15+140;}] in
+      {Reducción de costes, Inversión, Mantenimiento, Desmantelación, Industria} {
+        \node[etiqueta] at (\a:\circRad + 2mm) [rotate=\a+180, anchor=east] {\footnotesize\itm};
+        \draw (\a:\circRad + 2mm) -- (\a:\circRad);
+      }
+    \foreach \itm [count=\i, evaluate={\a=30-\i*15;}] in
+      {Mayor eficiencia energética, Más empleos, Más financiación} {
+      \node[etiqueta] at (\a:\circRad + 2mm) [rotate=\a, anchor=west] {\footnotesize\itm};
+      \draw (\a:\circRad + 2mm) -- (\a:\circRad);
+      }
+  \end{scope}
+
+  % Social
+  \begin{scope}[xshift=12cm]
+    \node [circulo, fill=miazul!30] (soc) {Impacto\\Social};
+    \foreach \itm [count=\i, evaluate={\a=70-\i*16;}] in
+      {Biología molecular, Bioquímica, Medicina, Cirugía, Salud, Bienestar} {
+        \node[etiqueta] at (\a:\circRad + 2mm) [rotate=\a, anchor=west] {\footnotesize\itm};
+        \draw (\a:\circRad + 2mm) -- (\a:\circRad);
+      }
+  \end{scope}
+
+  % Grupos de interés directos
+  \begin{scope}[xshift=3cm,yshift=-6cm]
+    \node [circulo, fill=miverde!30] (gdir) {Grupos\\Directos};
+    \foreach \itm [count=\i, evaluate={\a=15*\i+120;}] in
+      {Ismael Torres García, Eduardo Oliva Gonzalo, Instituto de Fusión Nuclear, Departamento de Ingeniería Energética, Escuela Técnica Superior de Ingenieros Industriales, Universidad Politécnica de Madrid} {
+        \node[etiqueta] at (\a:\circRad + 2mm) [rotate=\a+180, anchor=east] {\footnotesize\itm};
+        \draw (\a:\circRad + 2mm) -- (\a:\circRad);
+      }
+  \end{scope}
+
+  % Grupos de interés indirectos
+  \begin{scope}[xshift=9cm,yshift=-6cm]
+    \node [circulo, fill=mirojo!30] (gir) {Grupos\\Indirectos};
+    \foreach \itm [count=\i, evaluate={\a=70-\i*16;}] in
+      {Comunidad de Madrid, Ministerio de Ciencia, Unión Europea, Laboratoire d'Optique Apliquée, École Polytechnique} {
+        \node[etiqueta] at (\a:\circRad + 2mm) [rotate=\a, anchor=west] {\footnotesize\itm};
+        \draw (\a:\circRad + 2mm) -- (\a:\circRad);
+      }
+  \end{scope}
+\end{scope}
+
+\draw[-] (amb.-70) to [bend right] (eco.-110);
+\draw[-] (eco.-70) to [bend right] (soc.-110);
+\draw[-] (amb.-70) to [bend left] (gdir.110);
+\draw[-] (gdir.70) to [bend left] (gir.110);
+\draw[-] (gir.70) to [bend left] (soc.-110);
+\draw[-] (gir.70) to [bend left] (soc.-110);
+
+\end{tikzpicture}
+
+\end{document}
