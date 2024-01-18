@@ -195,6 +195,7 @@
   range-exponents = combine-bracket,
   range-units = repeat,
   uncertainty-mode = separate,
+  list-pair-separator = {; },
   per-mode = symbol
 }
 \RequirePackage[version=4]{mhchem}          %% para escribir reacciones, compuestos químicos, etc.
