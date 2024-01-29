@@ -14,7 +14,7 @@ r_v = 90; % Radio auxiliar del canal de plasma
 N_Kr = @(r) (r<r_c).*(1+(r./r_0).^2) + ... 
     (r>=r_c).*((1+(r_c/r_0).^2).*((r_v-r)./(r_v-r_c)));
 figure(2)
-f = fplot(N_Kr,[0 60]);
+f = fplot(N_Kr,[0 60]); % Densidad de iones de kriptón en la preforma de plasma
 set(f,'linewidth',1);
 grid on
 
@@ -27,43 +27,43 @@ z_0 = 3750; % Posición de la zona de ionización intermedia
 sigmaz = 250; % Desviación estándar de la longitud de propagación
 sigmar = 15; % Desviación estándar del radio del canal
 [ri] = f_sigmoide(50,5,2.5,4.1); % Llamada a la rutina f_sigmoide
+[re] = f_sigmoide(25,3.5,2.5,4.1); % Llamada a la rutina f_sigmoide
 rLi = ri; % Guardo en memoria la sigmoide interior
-% rLe = re; % Guardo en memoria la sigmoide exterior
+rLe = re; % Guardo en memoria la sigmoide exterior
 sigmarL = 15; % Desviación estándar del ancho del canal con Kr8+
 sigmaz0 = 2000; % Longitud de la primera zona de sobreionización
 rL0 = 40; % Anchura máxima del canal con Kr8+
 sigmar0 = 15; % Desviación estándar de r_0
 
 % TÉRMINOS QUE APARECEN EN LA FUNCIÓN DE DENSIDAD DE Kr8+
-fact_exp1i = @(r,z) exp((-0.5.*max(r,rLi(z)).^2)./sigmarL^2) ...
-    ./exp(-0.5.*rLi(z).^2/sigmarL^2);
-% fact_exp1e = @(r,z) exp((-0.5.*max(r,rLe(z)).^2)./sigmarL^2) ... 
-%     ./exp(-0.5.*rLe(z).^2/sigmarL^2);
-fact_exp2 = @(r) exp((-0.5.*max(r,rL0).^2)./sigmar0^2) ...
-    ./exp(-0.5*rL0^2/sigmar0^2);
-par_1 = @(r,z) 1-exp((-0.5.*(z-z_0).^2)./sigmaz^2) ... 
-    .*exp(-0.5.*r.^2./sigmar^2);
+fact_exp1i = @(r,z) exp((-0.5.*max(r,rLi(z)).^2)./sigmarL^2) ... 
+    ./exp(-0.5.*rLi(z).^2/sigmarL^2); % Término cociente exponencial con la sigmoide interior
+fact_exp1e = @(r,z) exp((-0.5.*max(r,rLe(z)).^2)./sigmarL^2) ... 
+    ./exp(-0.5.*rLe(z).^2/sigmarL^2); % Término cociente exponencial con la sigmoide exterior
+fact_exp2 = @(r) exp((-0.5.*max(r,rL0).^2)./sigmar0^2) ... 
+    ./exp(-0.5*rL0^2/sigmar0^2); % Último término cociente exponencial
+par_1 = @(r,z) 1-exp((-0.5.*(z-z_0).^2)./sigmaz^2) ...  
+    .*exp(-0.5.*r.^2./sigmar^2); % Primer paréntesis con exponenciales
 par_2 = @(r,z) 1-exp((-0.5.*z.^2)./sigmaz0^2) ... 
-    .*exp(-0.5.*r.^2./sigmar^2).*fact_exp2(r);
+    .*exp(-0.5.*r.^2./sigmar^2).*fact_exp2(r); % Segundo paréntesis con exponenciales
 
 % PRODUCTOS ESCALARES INTERMEDIOS AUXILIARES
 p1 = @(r,z) N_Kr(r).*par_1(r,z);
 p2_i = @(r,z) fact_exp1i(r,z).*par_2(r,z);
-% p2_e = @(r,z) fact_exp1e(r,z).*par_2(r,z);
+p2_e = @(r,z) fact_exp1e(r,z).*par_2(r,z);
 
 % REPRESENTACIÓN 3D DE LA EVOLUCIÓN DE IONES DE Kr8+ 
 N_Kr8_i = @(r,z) p1(r,z).*p2_i(r,z);
-% N_Kr8_e = @(r,z) p1(r,z).*p2_e(r,z);
+N_Kr8_e = @(r,z) p1(r,z).*p2_e(r,z);
 figure(3)
-fmesh(N_Kr8_i,[0 60 0 5000])
-% figure(4)
-% fmesh(N_Kr8_e,[0 80 0 5000])
-% zlabel({'Densidad de iones de Kr^{8+} exterior','N_{Kr^{8+}}'})
+fmesh(N_Kr8_i,[0 60 0 5000]) % Densidad de kripton 8+ para la frontera interior
+figure(4)
+fmesh(N_Kr8_e,[0 80 0 5000]) % Densidad de kripton 8+ para la frontera exterior
 
 % LEYENDA
 xlabel({'Radio del canal','r (\mum)'})
 ylabel({'Distancia de propagación','z (\mum)'})
-zlabel({'Densidad de iones de Kr^{8+} interior','N_{Kr^{8+}}'})
+zlabel({'Densidad de iones de Kr^{8+}','N_{Kr^{8+}}'})
 
 
 

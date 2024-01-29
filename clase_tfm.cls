@@ -191,11 +191,11 @@
 \sisetup{                                   %% opciones de las unidades del paquete
   output-decimal-marker = {,},
   exponent-product = \times,
-  range-phrase = --,
+  range-phrase = \textup{--},
   range-exponents = combine-bracket,
   range-units = repeat,
   uncertainty-mode = separate,
-  list-pair-separator = {; },
+  list-pair-separator = { | },
   per-mode = symbol
 }
 \RequirePackage[version=4]{mhchem}          %% para escribir reacciones, compuestos químicos, etc.
@@ -208,7 +208,7 @@
 %% (solo si la opción 'newfloat' no está cargada). 'minted' utiliza una librería externa llamada 'Pygment' para resaltar la sintaxis (un programa de python)
 \RequirePackage[newfloat=true]{minted}      %% 'newfloat' es parte del paquete 'caption'
 \setminted{
-  style=colorful,
+  style=borland,
   autogobble,
   frame=lines,
   framesep=2mm,
@@ -227,6 +227,8 @@
 \SetupFloatingEnvironment{listing}{name=Código}    
 \SetupFloatingEnvironment{listing}{placement=htbp}
 \SetupFloatingEnvironment{listing}{listname=Índice de códigos}
+%%% defino un nuevo entorno para códigos muy largos que ocupen varias páginas
+\newenvironment{longlisting}{\captionsetup{type=listing}}{}
   
 %%% PDF
 \RequirePackage{pdfpages}                   %% insertar archivos pdf

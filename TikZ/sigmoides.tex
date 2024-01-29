@@ -26,6 +26,7 @@
 
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.9}
+\usepackage[dvipsnames]{xcolor}
 \usepackage{siunitx}
 
 %% FUNCIONES
@@ -53,26 +54,26 @@
 %%%%%%%%%%%%%%%%
 
 %%% DEFINICIONES
-%\def\rmin{0}                % en micras
-%\def\rmax{5}                % en micras
-%\def\L{\rmax-\rmin}         % en micras
-%\def\ki{4000}               % en metros
-%\def\zi{3.5}                % en mm
+%\def\rmin{15}           % en micras
+%\def\rmax{25}           % en micras
+%\def\L{\rmax-\rmin}     % en micras
+%\def\ki{5000}           % en 1/metros
+%\def\zi{4}            % en mm
 %\def\zmax{5}            
 %\def\ymax{1.1*sigmoide(0,\rmin,\L,\ki,\zi)}
 %
 %\begin{axis}[
 %  every axis plot post/.append style={
-%  mark=none, samples=100, smooth},
+%  mark=none, samples=1000, smooth},
 %  enlargelimits=upper,
 %  ymax=\ymax, ymin=0, 
 %  xmax=1.1*\zmax, xmin=0, 
 %  xlabel=$z(\unit{\mm})$, 
-%  ylabel=$r_L(\unit{\mu\m})$,
+%  ylabel=$\sigma_{rL}(\unit{\um})$,
 %  axis lines=middle,
 %  axis line style={thick, -Latex[round]},
 %  xtick={0, 1, 2, 3, 4, 5}, 
-%  ytick={0, 0.2*\zmax, 0.4*\zmax, 0.6*\zmax, 0.8*\zmax, \zmax},
+%  ytick={0, 0.2*\rmax, 0.4*\rmax, 0.6*\rmax, 0.8*\rmax, \rmax},
 %  extra x ticks={0},
 %  extra y ticks={0},
 %  every axis x label/.style={at={(current axis.right of origin)},anchor=north west},
@@ -80,18 +81,18 @@
 %]
 %
 %%% REPRESENTACIÓN DE LA SIGMOIDE 
-%\addplot[blue, thick, domain=0:\rmax] {sigmoide(x,\rmin,\L,\ki,\zi)};   
-%\node[above right, blue] at (axis cs:1,5.1) {$r_L$};
+%\addplot[Tan, thick, domain=0:\rmax] {sigmoide(x,\rmin,\L,3000,\zi)};   
+%\node[above right] at (axis cs:3.7,11.8) {$r_{ig,min}=\qty{15}{µm}$};
 
 %%%%%%%%%%%%%%%%
 %%% DIBUJO 2 %%%
 %%%%%%%%%%%%%%%%
 
-%% DEFINICIONES
+% DEFINICIONES
 \def\rL{5}
-\def\ru{17}
+\def\ru{18}
 \def\sigL{15}
-\def\sigu{17}
+\def\sigu{20}
 \def\rmax{60}
 \def\ymax{1.1*fL(\rL,\rL,\sigL)}
 \def\Aru{pgauss(\ru,\sigu)}
@@ -122,11 +123,13 @@
 % FUNCIÓN EXPONENCIAL EXTERIOR 
 \addplot[red, thick, domain=\ru:\rmax] 
 {fL(\ru,\rL,\sigL)*\Aru*ngauss(x,\sigu)};
-\node[above right, red] at (axis cs:20,0.45) {$f_u(r)$};
+\node[above right, red] at (axis cs:20.4,0.45) {$f_u(r)$};
 
 % TEXTO
-\addplot[gray, densely dashed, thick] coordinates {(\ru,{fL(\ru,\rL,\sigL)}) (\ru,-0.1)} node[below=12pt, anchor=south] {\color{black}$r_u$}; 
-\addplot[gray, densely dashed, thick] coordinates {(\rL,{fL(\rL,\rL,\sigL)}) (\rL,-0.1)} node[below=12pt,anchor=south] {\color{black}$r_L$};
+\addplot[gray, densely dashed, thick] coordinates {(\ru,{fL(\ru,\rL,\sigL)}) (\ru,0)} node[anchor=south west] {\color{black}$r_u$}; 
+\addplot[gray, densely dashed, thick] coordinates {(\rL,{fL(\rL,\rL,\sigL)}) (\rL,0)} node[anchor=south west] {\color{black}$r_L$};
+\node[above right] at (axis cs:40,0.6) {$r_{u}=\qty{18}{µm}$};
+\node[above right] at (axis cs:40,0.7) {$r_{L}=\qty{5}{µm}$};
 
 \end{axis}
 \end{tikzpicture}
