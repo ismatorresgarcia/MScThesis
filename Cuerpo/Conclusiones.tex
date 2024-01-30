@@ -1,3 +1,28 @@
 \chapter{Conclusiones}\label{cap:5}
+\lettrine{L}{a geometría de la columna de plasma} es un aspecto fundamental a la hora de estudiar la amplificación de un pulso de armónicos (\acrshort{hhg}) durante su propagación, en el ámbito de los láseres de rayos X blandos basados en plasmas densos (\acrshort{sxrl}). El objetivo perseguido durante este trabajo ha sido modificar la densidad de iones \ce{Kr^{8+}}, responsables de amplificar el pulso inyectado a través del canal de plasma, estudiando sus efectos sobre la radiación ultravioleta extrema (\acrshort{xuv}).
 
+Para lograrlo, el procedimiento seguido ha consistido en realizar simulaciones numéricas que permitan analizar los perfiles radiales de intensidad y fase de los fotones a la salida del canal de plasma, comparando los resultados obtenidos con las imágenes reconstruidas a partir de experimentos realizados en el \acrfull{loa} (París, Francia). Las propuestas consisten en introducir regiones de abundancia de \ce{Kr^{8+}} diferentes mediante funciones matemáticas que describan la frontera de separación entre este ión, y el contenido de iones restante.
 
+Considerando los fenómenos físicos principales que participan en la interacción láser-plasma, y la información disponible de las pruebas realizadas en laboratorio, las modificaciones del canal estudiadas tienen la misión de reproducir la distribución compleja de intensidad en el haz amplificado, evaluando distintos parámetros introducidos en curvas logísticas y exponenciales que delimitan el ancho en dirección radial de la columna con presencia de \ce{Kr^{8+}} dentro del plasma gaseoso.
+
+Las principales conclusiones seleccionadas pueden dividirse en tres partes, dependiendo de la función sugerida:
+
+\begin{itemize}
+
+    \item Una sigmoide. La sobreionización inicial de la columna de plasma, caracterizada principalmente por un valle de intensidad acompañado de dos cúspides, simétricamente formados en la dirección radial del canal de plasma, únicamente puede reproducirse suponiendo un radio constante de \ce{Kr^{8+}} que se extiende en dirección axial desde el principio hasta la salida de la columna. 
+      
+      Independientemente del radio variable introducido por la sigmoide, la intensidad máxima responsable de la formación de esta desaparición localizada de \ce{Kr^{8+}} nunca llega a producirse, siendo necesario llenar completamente la columna con el ión para observar la aparición del valle. Este hecho sugiere la necesidad de recurrir a una segunda sigmoide o curva logística, que permita controlar la distribución de intensidad de los fotones.
+
+      Además, la diferencia de altura entre los máximos y mínimos en el perfil de fase puede reducirse modificando las posiciones de las regiones sobreionizadas en la región central e intermedia del canal de plasma. Desplazando ambas zonas hacia coordenadas longitudinales más cercanas al inicio de la columna, esta discrepancia en la profundidad de la curva es reducida, aunque geometría cóncava observada persiste al cambio de la distribución electrónica. 
+    \item Dos sigmoides. Mediante dos funciones sigmoides, el ajuste de los perfiles mejora notablemente, sustituyendo tanto la anchura de la región ---una sigmoide--- como su desviación típica ---segunda sigmoide--- por dos radios o fronteras variables interior y exterior decrecientes con la distancia de propagación. De esta manera, es posible conseguir amoldar aproximadamente el diámetro radial del perfil de intensidad haciendo coincidir el radio exterior de la segunda sigmoide con el cambio de pendiente observable después del valle central.
+
+      Por otro lado, la profundidad del perfil de fase puede modificarse correctamente desplazando el valor medio de la segunda sigmoide en dirección axial, es decir, centrando el gradiente de densidad de electrónica sin alterar excesivamente su gradiente de densidad de \ce{Kr^{8+}} asociado, provocando un ensanchamiento excesivo del perfil de intensidad.
+
+      Sin embargo, para regular con precisión el comportamiento de la curva de intensidad es necesario introducir nuevas modificaciones en la densidad de \ce{Kr^{8+}}, que sean capaces de mantener los acuerdos conseguidos con los radios variables del canal y producir el cambio de tendencia en la pendiente de intensidad cuando aumenta el radio de la columna.
+    \item Exponencial a trozos. Empleando una función separada por diferentes tramos según el radio del canal de plasma, reemplazando las sigmoides, existe la posibilidad de conseguir formar el valle de intensidad y, simultáneamente, el cambio de pendiente mencionado. La concordancia entre experimento y simulación numérica ocurre especialmente cuando este suave cambio en la pendiente del perfil de intensidad está próximo a la coordenada radial donde la exponencial cambia bruscamente de pendiente, manteniendo la continuidad entre ambos trozos exponenciales.
+
+      En cuanto a la adición de momento angular orbital (\acrshort{oam}), en general, necesita futuros estudios que clarifiquen los efectos sobre los perfiles de intensidad y fase. La introducción de esta propiedad óptica en el haz inyectado distorsiona las amplitudes gaussianas de los perfiles intensidad-fase observadas en los fotones, debido a la conducta estocástica intrínseca de la emisión espontánea.
+
+      La amplificación de la emisión espontánea (\acrshort{ase}) resulta estar detrás del valle de intensidad central observado, aunque la amplificación de la semilla de armónicos de alto orden (\acrshort{hoh}) es la responsable de la anchura del perfil de intensidad, dándole su forma característica de distribución gaussiana a partir de radios mayores.
+
+\end{itemize}
