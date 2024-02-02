@@ -20,10 +20,8 @@ f = @(r) (r<r_u).*f_L(r) + (r>=r_u).*f_u(r);         % Función exponencial
 fig = fplot(f); % Gráfica de la función a trozos
 xlim([0 60])
 ylim([0 1.1])
-
 set(fig(1),'linewidth',1,'color','r');
 grid on
-
 % LEYENDA
 xlabel({'Radio del canal','r (\mum)'})
 ylabel({'f(r)','Adimensional'})

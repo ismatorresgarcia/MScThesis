@@ -176,7 +176,7 @@
 \RequirePackage[                            %% gestion de la bibliografía con biblatex
   backend = biber,                          %% compilador por defecto con biblatex (recomendado)
   natbib = true,                            %% comandos del paquete natbib (autocite, por ejemplo)
-  maxnames = 10,                            %% número max. de nombres de autores
+  maxnames = 20,                            %% número max. de nombres de autores
   minnames = 1,                             %% número min. de nombres de autores
   sorting = nyt,                            %% ordenar por nombre, título y año 
   autocite = superscript,                   %% estilos de las citas del texto como superíndices

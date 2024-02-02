@@ -1,10 +1,10 @@
 \chapter{Metodología}\label{cap:3}
-\lettrine{P}{ara modelar el proceso de amplificación} de la semilla de armónicos de alto orden introducida a través del canal de plasma, es necesario plantear y resolver numéricamente las denominadas en la literatura como ecuaciones de Maxwell-Bloch o \emph{\acrfull{mbe}}. El código Dagon empleado durante las simulaciones implementa estas ecuaciones mediante un programa escrito en Fortran que, a su vez, está acoplado con otros códigos numéricos (cuya función se explicará más detalladamente en la sección \S\ref{sec:3.2}), recibiendo información de partida para iniciar el procedimiento de cálculo. De esta forma, los resultados proporcionan los datos necesarios para comprender cómo afectan la densidad de iones y electrones libres en el plasma a la intensidad y perfil de fase del haz \acrshort{xuv} obtenido. 
+\lettrine{P}{ara modelar el proceso de amplificación} de la semilla de armónicos de alto orden introducida a través del canal de plasma es necesario plantear y resolver numéricamente las denominadas en la literatura como ecuaciones de Maxwell-Bloch o \emph{\acrfull{mbe}}. El código Dagon empleado durante las simulaciones implementa estas ecuaciones mediante un programa escrito en Fortran que, a su vez, está acoplado con otros códigos numéricos (cuya función se explicará más detalladamente en la sección \S\ref{sec:3.2}), recibiendo información de partida para iniciar el procedimiento de cálculo. De esta forma, los resultados proporcionan los datos necesarios para comprender cómo afectan la densidad de iones y electrones libres en el plasma a la intensidad y perfil de fase del haz \acrshort{xuv} obtenido. 
 
 Una vez finalizadas las simulaciones, para poder realizar el análisis de las imágenes y los resultados obtenidos, se emplearon dos nuevos programas ---esta vez escritos en Python y GNU Octave---, que permiten almacenar los datos obtenidos en las simulaciones de Dagon y representarlos gráficamente mediante curvas bidimensionales. Además, estos conjuntos de datos pueden introducirse en programas como VisIt para la construcción de imágenes tridimensionales y bidimensionales, por ejemplo, de la propagación del \acrshort{hoh} en la dirección longitudinal del canal.
 
 \section{Ecuaciones de Maxwell-Bloch}\label{sec:3.1}
-En este trabajo, el fenómeno físico de la amplificación del armónico inyectado en el plasma de iones de kriptón conduce inevitablemente hasta estas ecuaciones, puesto que determinan cuáles serán las propiedades de la emisión obtenida. Las \acrshort{mbe} describen la dinámica de la interacción entre los modos de vibración de un campo electromagnético y los átomos de un sistema cuántico con dos estados posibles: el estado base $\ket{1}$, y el estado excitado $\ket{2}$. 
+En este trabajo, el fenómeno físico de la amplificación del armónico inyectado en el plasma de iones de kriptón conduce inevitablemente hasta estas ecuaciones, puesto que determinan cuáles serán las propiedades de la emisión obtenida. Las \acrshort{mbe} describen la dinámica de la interacción entre los modos de vibración de un campo electromagnético y los átomos de un sistema cuántico con dos estados posibles, el de menor energía $\ket{1}$ y el de mayor energía $\ket{2}$. 
 
 El formalismo físico-matemático utilizado en mecánica cuántica para obtener las ecuaciones no es trivial\autocite{Cohen-Tannoudji2019a,Sakurai2020,Milonni1988}, aunque tiene la ventaja de predecir con suficiente exactitud la evolución temporal del pulso, además de propiedades físicas de los fotones como su \acrshort{oam}, mientras que otros métodos más sencillos ---como el programa de trazado de rayos SHADOX--- no ofrecen esta opción, si bien podría utilizarse para resolver el problema de la amplificación en el plasma. 
 
@@ -14,7 +14,7 @@ En primer lugar, el acoplamiento del campo eléctrico con el plasma es la ecuaci
 \begin{equation}\label{eq:3.0}
   \laplacian \symbfcal{E} - \frac{1}{c^{2}}\pdvN{\symbfcal{E}}{t}{2} = \frac{\omega^{2}_{pe}}{c^{2}}\symbfcal{E} + \frac{1}{\epsilon_{0}c^{2}}\pdvN{\symbfcal{P}}{t}{2},
 \end{equation}
-donde, como aparecía mostrado en la sección \S\ref{sec:1.2.2}, el campo eléctrico $\symbfcal{E}$, la polarización $\symbfcal{P}$, la frecuencia de las oscilaciones del plasma $\omega_{pe}$ y la constante dieléctrica $\epsilon_{0}$ son función del espacio y del tiempo. 
+donde, como aparecía mostrado en la sección \S\ref{sec:1.2.2}, el campo eléctrico $\symbfcal{E}$, la polarización $\symbfcal{P}$ y la frecuencia del plasma $\omega_{pe}$ son función del espacio y del tiempo, mientras que la permitividad eléctrica del vacío $\epsilon_{0}$ es una constante. 
 
 Como primera hipótesis, se considera la llamada en óptica\autocite{Born2019} como \emph{aproximación paraxial} del campo eléctrico según la dirección de propagación escogida, en este caso, el eje $z$. Sin pérdida de generalidad ---escogiendo un sistema de referencia adecuado---, suponiendo que la radiación está polarizada linealmente según el eje $x$, esta hipótesis permite tener en cuenta únicamente dicha componente del campo eléctrico y de la polarización \autocite{Larroche2000}, dirección en la que oscilarían ambos campos. Las soluciones pueden escribirse separando la envolvente y las vibraciones como
 \begin{align}
@@ -102,16 +102,14 @@ Por último, la sustitución de las ecuaciones \eqref{eq:3.4} y \eqref{eq:3.6} e
 \end{equation}
 obteniendo una ecuación en derivadas parciales de segundo orden en el espacio y primer orden en el tiempo con un término fuente $P_{LR}$ función de las coordenadas espaciales y temporales. 
 
-Es importante señalar que el subíndice $LR$ utilizado representa una forma reducida de escribir las ondas viajeras en sentido positivo $R$ y negativo $L$ del eje $z$. La ecuación de ondas \eqref{eq:3.0} es lineal, cumpliéndose el principio de superposición y, por tanto, la combinación lineal de ondas utilizada es la solución completa de la ecuación. Expandiendo la ecuación \eqref{eq:3.8}, cada solución debe cumplir
+Es importante señalar que el subíndice $LR$ utilizado representa una forma reducida de escribir las ondas viajeras en sentido positivo $R$ y negativo $L$ del eje $z$. La ecuación de ondas \eqref{eq:3.0} es lineal, cumpliéndose el principio de superposición y, por tanto, la combinación lineal de ondas utilizada es la solución completa de la ecuación. Expandiendo la ecuación \eqref{eq:3.7}, cada solución debe cumplir
 \begin{align}
   \pdv{E_{R}}{t} + c \pdv{E_{R}}{z} &= \frac{\iu c^{2}}{2 \omega}\laplacian_{\perp}E_{R} + \frac{\iu \omega}{2} \left[\mu_{0}c^{2}P_{R} - \left(\frac{\omega_{pe}}{\omega}\right)^{2}E_{R}\right], \\
   \pdv{E_{L}}{t} - c \pdv{E_{L}}{z} &= \frac{\iu c^{2}}{2 \omega}\laplacian_{\perp}E_{L} + \frac{\iu \omega}{2} \left[\mu_{0}c^{2}P_{L} - \left(\frac{\omega_{pe}}{\omega}\right)^{2}E_{L}\right],
 \end{align}
-cuya suma proporciona la ecuación \eqref{eq:3.7}, empleando la notación compacta sugerida.
+proporcionando la suma de estas soluciones el campo eléctrico total, empleando la notación compacta sugerida.
 
-Hasta este momento, el marco teórico utilizado para el tratamiento de la radiación ha sido clásico, pero como se ha explicado al principio de este sección \S\ref{sec:3.1}, la teoría electromagnética clásica no proporciona una descripción satisfactoria \autocite{Griffiths2017} de la interacción entre la luz y la materia a estas escalas, siendo necesario cuantizar el comportamiento de la materia para comprender la polarización resultante.
-
-Por tanto, hay que introducir una ecuación constitutiva que relacione la naturaleza de la interacción entre la luz (el campo eléctrico), y la materia (la polarización). En la teoría cuántica, la relación \autocite{Cohen-Tannoudji2019} viene dada por
+Hasta este momento, el marco teórico utilizado para el tratamiento de la radiación ha sido clásico, pero como se ha explicado al principio de este sección \S\ref{sec:3.1}, la teoría electromagnética clásica no proporciona una descripción satisfactoria \autocite{Griffiths2017} de la interacción entre la luz y la materia a estas escalas, siendo necesario cuantizar el comportamiento de la materia para comprender la polarización resultante. Por tanto, hay que introducir una ecuación constitutiva que relacione la naturaleza de la interacción entre la luz (el campo eléctrico), y la materia (la polarización). En la teoría cuántica, la relación \autocite{Cohen-Tannoudji2019} viene dada por
 \begin{equation}\label{eq:3.8}
   P = \xval{D} = \symrm{Tr} \left(\rho D \right),
 \end{equation}
@@ -125,9 +123,9 @@ donde $\rho$ es el operador de densidad, $D$ el operador momento dipolar eléctr
 \end{equation}
 donde el símbolo $\doteq $ significa \enquote{está representado por}.
 
-Con el objetivo de aportar mayor claridad en la discusión cuántica de la polarización, es necesario realizar una breve explicación de los conceptos introducidos y su significado. El plasma objeto de estudio puede aproximarse \autocite{Milonni1988} como un sistema de dos estados puros $\ket{1}$ y $\ket{2}$ posibles linealmente independientes \autocite{Cohen-Tannoudji2019}, de manera que la probabilidad de encontrarse en cualquiera de ambos estados es $p_{1} + p_{2} = 1$.
+Con el objetivo de aportar mayor claridad en la discusión cuántica de la polarización, es necesario realizar una breve explicación de los conceptos introducidos y su significado. El emisor de radiación (ión, átomo o molécula) se puede aproximar\autocite{Milonni1988} como un sistema de dos estados puros $\ket{1}$ y $\ket{2}$ posibles linealmente independientes \autocite{Cohen-Tannoudji2019}, de manera que la probabilidad de encontrarse en cualquiera de ambos estados es $p_{1} + p_{2} = 1$.
 
-En este contexto, el momento dipolar eléctrico $D$ es el observable que se desea medir, y la polarización $P$ es su valor esperado. El operador de densidad es particularmente importante en sistemas donde no se conoce (o es imposible conocer) la totalidad de la información sobre el estado inicial del sistema ---los iones y electrones del plasma en este caso---, ni tampoco pueden determinarse con total precisión los resultados de las mediciones debido a la naturaleza probabilística de los sistemas cuánticos. 
+En este contexto, el momento dipolar eléctrico $D$ es el observable que se desea medir, y la polarización $P$ es su valor esperado. El operador de densidad es particularmente importante en sistemas donde no se conoce (o es imposible conocer) la totalidad de la información sobre el estado inicial del sistema ---los emisores de radiación en este caso---, ni tampoco pueden determinarse con total precisión los resultados de las mediciones debido a la naturaleza probabilística de los sistemas cuánticos. 
 
 Ambos estados, pertenecientes al espacio vectorial $\symcal{F}$, pueden emplearse como una base ortonormal, pues como se ha comentado anteriormente, son linealmente independientes y están normalizados a la unidad, de tal forma que en el caso más general posible, el estado del sistema consiste en una superposición de ambos estados
 \begin{align}
@@ -135,13 +133,15 @@ Ambos estados, pertenecientes al espacio vectorial $\symcal{F}$, pueden emplears
   \abs{c_{1}}^{2} + \abs{c_{2}}^{2} &= 1,
 \end{align}
 con $k \in \{1,2\}$ un subíndice para designar cualquiera de los dos estados posibles. La combinación lineal de estos estados implica que los elementos $\rho_{nn}$ y $\rho_{nm}$ de la matriz de densidad pueden escribirse como
-\begin{equation}\label{eq:3.10}
-  \rho_{nn} = \abs{c_{n}}^{2}, \quad 
-  \rho_{nm} = c_{n}c^{*}_{m}
-\end{equation}
+\begin{align}
+    \label{eq:3.10a}
+    \rho_{nn} &= \abs{c_{n}}^{2}, \\
+    \label{eq:3.10b}
+    \rho_{nm} &= c_{n}c^{*}_{m},
+\end{align}
 donde $\abs{c_{n}}^{2}$ es un número real positivo que representa la probabilidad, en una medición del sistema en el estado superpuesto $\ket{\Psi}$, de encontrarlo en el estado $\ket{n}$. Por otro lado, los términos cruzados de la forma $c_{n}c^{*}_{m}$ expresan el fenómeno de interferencia que puede aparecer entre dos estados $\ket{n}$ y $\ket{m}$ cuando el estado $\ket{\Psi}$ es una combinación lineal de los anteriores, como ocurre en este modelo. 
 
-Observando la ecuación \eqref{eq:3.10}, está claro que $\rho_{nn}$ es cero solamente si los $c_{n}$ son cero, mientras que $\rho_{nm}$ puede ser cero cuando alguno (o los dos) de los términos cruzados $c_{n}$ o $c^{*}_{m}$ son cero, siendo estos números complejos. Por lo tanto, si $\rho_{nm}$ es cero significa que los efectos de interferencia entre los estados $\ket{n}$ y $\ket{m}$ han desaparecido, mientras que si $\rho_{nm}$ es distinto de cero entonces persiste una cierta \enquote{coherencia} entre ambos estados, motivo por el cual los elementos fuera de la diagonal $\rho_{nm}$ son llamados \emph{coherencias}.
+Observando las ecuaciones \eqref{eq:3.10a} y \eqref{eq:3.10b}, está claro que $\rho_{nn}$ es cero solamente si los $c_{n}$ son cero, mientras que $\rho_{nm}$ puede ser cero cuando alguno (o los dos) de los términos cruzados $c_{n}$ o $c^{*}_{m}$ son cero, siendo estos números complejos. Por lo tanto, si $\rho_{nm}$ es cero significa que los efectos de interferencia entre los estados $\ket{n}$ y $\ket{m}$ han desaparecido, mientras que si $\rho_{nm}$ es distinto de cero entonces persiste una cierta \enquote{coherencia} entre ambos estados, motivo por el cual los elementos fuera de la diagonal $\rho_{nm}$ son llamados \emph{coherencias}.
 
 A raíz de esta exposición, las entradas de la matriz de densidad tienen el siguiente significado: los elementos en la diagonal principal $\rho_{nn}$ representan la probabilidad media de encontrar el sistema en el estado $\ket{n}$, motivo por el que se conocen como las \emph{poblaciones} del estado $\ket{n}$, ya que para un número elevado $N$ de mediciones de la misma propiedad, bajo las mismas condiciones iniciales, $N \rho_{nn}$ sistemas estarán en el estado $\ket{n}$. En cambio, $\rho_{nm}$ es la coherencia entre los dos niveles atómicos del plasma, luego está relacionado con la capacidad del campo eléctrico $\symcal{E}$ del \acrshort{hoh} de provocar la polarización de las partículas que lo constituyen.
 
@@ -149,7 +149,7 @@ Es posible demostrar \autocite{Cohen-Tannoudji2019} que el conocimiento de la ma
 \begin{equation}\label{eq:3.11}
   i \hslash \pdv{\rho(\symbf{r},t)}{t} = \left[H,\rho\right],
 \end{equation}
-con $H(\symbf{r},t) = H_{0} + W(\symbf{r},t)$, siendo $H_{a}$ el operador Hamiltoniano atómico, $W = -\symbfcal{D} \cdot \symbfcal{E}(\symbf{r},t)$ el potencial electrostático que encierra la interacción entre el campo eléctrico $\symbfcal{E}$ y los estados del sistema, y $\left[H, \rho\right] = H \rho - \rho H$ el conmutador de ambos operadores. Esta expansión del Hamiltoniano es conocida como \emph{aproximación dipolar} \autocite{Jackson1998} y es válida cuando la longitud de onda de la radiación emitida ---rayos X blandos en este caso--- es considerablemente superior que el tamaño promedio del átomo estudiado ($\lambda \sim \qty{10}{nm}$ frente a $R_{a} \sim \qty{0.1}{nm}$ de radio atómico). 
+con $H(\symbf{r},t) = H_{0} + W(\symbf{r},t)$, siendo $H_{0}$ el operador Hamiltoniano atómico, $W = -\symbfcal{D} \cdot \symbfcal{E}(\symbf{r},t)$ el potencial electrostático que encierra la interacción entre el campo eléctrico $\symbfcal{E}$ y los estados del sistema, y $\left[H, \rho\right] = H \rho - \rho H$ el conmutador de ambos operadores. Esta expansión del Hamiltoniano es conocida como \emph{aproximación dipolar} \autocite{Jackson1998} y es válida cuando la longitud de onda de la radiación emitida ---rayos X blandos en este caso--- es considerablemente superior que el tamaño promedio del átomo estudiado ($\lambda \sim \qty{10}{nm}$ frente a $R_{a} \sim \qty{0.1}{nm}$ de radio atómico). 
 
 En realidad, el operador momento dipolar eléctrico $D$ puede escribirse como $D = -e \hat{r}_{a}$, siendo $\hat{r}_{a}$ el operador posición relativa entre el núcleo atómico y el electrón, y $e$ la carga eléctrica del electrón. Esto significa que puede representarse como un vector $\symbfcal{D}$ cuyos componentes son los elementos fuera de la diagonal principal de la matriz dipolar asociada, ya que $D$ representa el momento dipolar eléctrico asociado a la transición entre estados ---que naturalmente son diferentes---, y por tanto, los elementos de la diagonal principal tienen que ser cero. Debido a esto, el potencial de interacción puede ponerse como
 \begin{equation}
@@ -184,7 +184,7 @@ Además, también es posible encontrar otra relación mediante la cuantización 
 \begin{equation}\label{eq:3.13}
   d_{21} = \sqrt{3 \pi A_{21} \hslash c^{3} \epsilon_{0}\omega^{-3}_{0}}, 
 \end{equation}
-donde es importante observar, a partir de las ecuaciones \eqref{eq:3.10}, \eqref{eq:3.12a} y \eqref{eq:3.12b} que $\rho_{nm} = \rho^{*}_{mn}$ y, entonces, teniendo en cuenta que el operador $D$ es hermítico, $d_{nm} = d^{*}_{mn}$. Esta igualdad también puede obtenerse a través del producto escalar 
+donde es importante observar, a partir de las ecuaciones \eqref{eq:3.10a}, \eqref{eq:3.10b}, \eqref{eq:3.12a} y \eqref{eq:3.12b} que $\rho_{nm} = \rho^{*}_{mn}$ y, entonces, teniendo en cuenta que el operador $D$ es hermítico, $d_{nm} = d^{*}_{mn}$. Esta igualdad también puede obtenerse a través del producto escalar 
 \begin{equation}\label{eq:3.14}
 d_{nm} = \Xval{n}{D}{m} = -e \int_{\symbb{R}^{3}} \varphi^{*}_{n}(\hat{\symbf{r}}_{a}) \hat{\symbf{r}}_{a} \varphi_{m}(\hat{\symbf{r}}_{a}) \diff^{3}\hat{r}_{a},
 \end{equation}
@@ -195,27 +195,20 @@ Para terminar, combinando las ecuaciones \eqref{eq:3.8}, \eqref{eq:3.12a} y \eqr
 \begin{equation}\label{eq:3.15}
   \tcboxmath{  \pdv{P_{LR}}{t} = \Gamma - \gamma P_{LR} - \frac{\iu d^{2}_{21}}{\hslash }E_{LR}\left(N_{2}-N_{1}\right),}
 \end{equation}
-siendo $\Gamma$ un término fuente introducido \autocite{Oliva2012} para modelar el comportamiento estocástico de la emisión espontánea, que incorpora el perfil Lorentziano de la línea de emisión del láser empleado mediante una función correlación de desvanecimiento. Las poblaciones podrían calcularse a través de las \acrshort{obe} restantes (no incluidas anteriormente) o, empleando el método utilizado en Dagon, a partir de las ecuaciones de tasas acopladas 
-\begin{empheq}[box=\tcbhighmath]{align}
-  \pdv{N_{1}}{t} &= \sum_{i} C_{i1}N_{i} - \frac{1}{2 \hslash }\IM \left(E_{LR}^{*}P_{LR}\right),
-  \label{eq:3.16} \\
-  \pdv{N_{2}}{t} &= \sum_{i} C_{i2}N_{i} + \frac{1}{2 \hslash }\IM \left(E_{LR}^{*}P_{LR}\right),
-  \label{eq:3.17}
-\end{empheq}
-con el sumatorio recorriendo todos los niveles energéticos que participan en las transiciones desde un nivel $i$ hasta los dos estados, incluidas las transiciones entre ambos $i \in \left\{1, 2\right\}$, y donde $C_{ik}$ representa las tasas de excitación y desexcitación del sistema debidas tanto a colisiones como a emisión de radiación. Las poblaciones para los niveles $i \notin \left\{1,2\right\}$ y sus tasas se extraen del código OfiKinRad para emplear como entrada de Dagon, como se explicará durante la sección \S\ref{sec:3.2}. 
+siendo $\Gamma$ un término fuente introducido \autocite{Oliva2012} para modelar el comportamiento estocástico de la emisión espontánea, que incorpora el perfil Lorentziano de la línea de emisión del láser empleado. 
 
-A modo de síntesis, el esquema de las \acrshort{mbe} formalmente está constituido por el sistema de ecuaciones \eqref{eq:3.7}, \eqref{eq:3.15}, \eqref{eq:3.16} y \eqref{eq:3.17} donde aparecen el campo eléctrico, polarización y poblaciones acoplados entre sí, permitiendo tras su resolución conocer la dinámica de evolución del campo eléctrico de la semilla de \acrshort{hh} inyectada a través del plasma.
+A modo de síntesis, el esquema de las ecuaciones de Maxwell-Bloch (\acrshort{mbe}) formalmente está constituido por el sistema de ecuaciones \eqref{eq:3.7} y \eqref{eq:3.15} donde aparecen el campo eléctrico del haz láser, la polarización inducida en el plasma y las poblaciones acoplados entre sí, permitiendo tras su resolución conocer la dinámica de evolución del campo eléctrico de la semilla de \acrshort{hh} inyectada a través del plasma.
 
 \begin{footheorem*}{Ecuaciones de Maxwell-Bloch}
   \begin{align}
     \tag{MB.1}
-    \pdv{E_{LR}}{t} \pm c \pdv{E_{LR}}{z} &= \frac{\iu c^{2}}{2 \omega}\laplacian_{\perp}E_{LR} + \frac{\iu \omega}{2} \left[\mu_{0}c^{2}P_{LR} - \left(\frac{\omega_{pe}}{\omega}\right)^{2}E_{LR}\right], \\
+    \pdv{E_{R}}{t} + c \pdv{E_{R}}{z} &= \frac{\iu c^{2}}{2 \omega}\laplacian_{\perp}E_{R} + \frac{\iu \omega}{2} \left[\mu_{0}c^{2}P_{R} - \left(\frac{\omega_{pe}}{\omega}\right)^{2}E_{R}\right], \\
     \tag{MB.2}
-    \pdv{P_{LR}}{t} &= \Gamma - \gamma P_{LR} - \frac{\iu d^{2}_{21}}{\hslash }E_{LR}\left(N_{2}-N_{1}\right), \\
+    \pdv{E_{L}}{t} - c \pdv{E_{L}}{z} &= \frac{\iu c^{2}}{2 \omega}\laplacian_{\perp}E_{L} + \frac{\iu \omega}{2} \left[\mu_{0}c^{2}P_{L} - \left(\frac{\omega_{pe}}{\omega}\right)^{2}E_{L}\right], \\
     \tag{MB.3}
-    \pdv{N_{1}}{t} &= \sum_{i} C_{i1}N_{i} - \frac{1}{2 \hslash }\IM \left(E_{LR}^{*}P_{LR}\right), \\
+    \pdv{P_{R}}{t} &= \Gamma - \gamma P_{R} - \frac{\iu d^{2}_{21}}{\hslash }E_{R}\left(N_{2}-N_{1}\right), \\
     \tag{MB.4}
-    \pdv{N_{2}}{t} &= \sum_{i} C_{i2}N_{i} + \frac{1}{2 \hslash }\IM \left(E_{LR}^{*}P_{LR}\right).
+    \pdv{P_{L}}{t} &= \Gamma - \gamma P_{L} - \frac{\iu d^{2}_{21}}{\hslash }E_{L}\left(N_{2}-N_{1}\right),
   \end{align}
 \end{footheorem*}
 
@@ -239,13 +232,15 @@ Una puntualización de vital importancia, en relación a la dependencia entre es
 
 \begin{itemize}
 
-    \item Código ARWEN. Es un código 2D desarrollado en el año $2001$ en el Instituto de Fusión Nuclear \enquote{Guillermo Velarde} (IFN-GV) de la Universidad Politécnica de Madrid\autocite{Ogando2001} para simular con precisión el transporte de radiación y la hidrodinámica durante las etapas posteriores a la compresión del blanco en la fusión por confinamiento inercial\autocite{Velarde2005} o \emph{\acrfull{icf}}, concretamente: la implosión de la cápsula, el precalentamiento y el enfriamiento del material comprimido.
+    \item Código ARWEN. Es un código 2D desarrollado en el año $2001$ en el Instituto de Fusión Nuclear \enquote{Guillermo Velarde} (IFN-GV) de la Universidad Politécnica de Madrid\autocite{Ogando2001} para simular con precisión el transporte de radiación y la hidrodinámica durante las etapas posteriores a la compresión del blanco en la fusión por confinamiento inercial\autocite{Velarde2005} o \emph{\acrfull{icf}}, concretamente la implosión de la cápsula, el precalentamiento y el enfriamiento del material comprimido.
 
       Su desarrollo también ha permitido, además de estudiar los láseres \acrshort{xuv} basados en plasmas\autocite{Oliva2009,Oliva2010}, modelar la evolución hidrodinámica y colisión de remanentes de supernovas en un medio interestelar homogéneo\autocite{Velarde2006}, proporcionando adicionalmente la capacidad de reproducir en laboratorios ---mediante la ablación láser de un blanco de plástico--- condiciones similares a pequeñas y grandes escalas. 
 
-      Desde una perspectiva matemática, ARWEN introduce como método numérico un esquema de Godunov de segundo orden, permitiendo extraer resultados a cerca de la distribución de electrones o la ionización media en un plasma, necesarios para iniciar la ejecución de los códigos \acrfull{pic} del próximo punto. Las distintas fases de la dinámica de fluidos (convección térmica), transporte electrónico (conducción térmica) y transporte radiativo (radiación térmica) tienen múltiples ecuaciones acopladas, resultando un sistema complejo que necesita resolverse secuencialmente, pero de forma aislada, ilustrado en la Figura \ref{fig:3.3}
+      Desde una perspectiva matemática, ARWEN utiliza como método numérico un esquema de Godunov de segundo orden, permitiendo extraer resultados a cerca de la distribución de electrones o la ionización media en un plasma, necesarios para iniciar la ejecución de los códigos \acrfull{pic} del próximo punto. Las distintas fases de la dinámica de fluidos (convección térmica), transporte electrónico (conducción térmica) y transporte radiativo (radiación térmica) tienen múltiples ecuaciones acopladas, resultando un sistema complejo que necesita resolverse secuencialmente, pero de forma aislada, ilustrado en la Figura \ref{fig:3.3}
 
-      Individualmente, cada módulo utiliza métodos totalmente distintos para encontrar la solución de las ecuaciones correspondientes. Sin embargo, globalmente, están sujetos a una técnica conocida como \emph{Malla Adaptativa Refinada} o \emph{\acrfull{amr}}\autocite{Berger1989,Rendleman2000}. La técnica incrementa los recursos computacionales dedicados a las regiones del dominio de la solución donde los errores de cálculos son más elevados, aumentando el refinamiento (la finura de las particiones del espacio) del mallado del dominio donde el problema presenta mayor dificultad, ya sea la frontera o el interior del mismo.
+      Individualmente, cada módulo utiliza métodos totalmente distintos para encontrar la solución de las ecuaciones correspondientes. Sin embargo, globalmente, están sujetos a una técnica conocida como \emph{Malla Adaptativa Refinada} o \emph{\acrfull{amr}}\autocite{Berger1989,Rendleman2000}. La técnica incrementa los recursos computacionales dedicados a las regiones del dominio de la solución donde los errores de cálculo son más elevados, aumentando el refinamiento (la finura de las particiones del espacio) del mallado del dominio donde el problema presenta mayor dificultad, ya sea la frontera o el interior del mismo.
+
+     En problemas que presentan regiones con geometrías complejas, como la formación de ondas de choque en perfiles aerodinámicos, o la interacción de estructuras como supernovas y plasmas astrofísicos a grandes distancias, conseguir tiempos de simulación aceptables es imposible cuando esta técnica no está implementada en el algoritmo de cálculo numérico. Este paradigma está introducido a través del paquete de software libre AMReX\autocite{Zhang2019a}, desarrollado conjuntamente por el \emph{\acrfull{lbnl}}, \emph{\acrfull{nrel}} y \emph{\acrfull{anl}} dentro del marco de un proyecto financiado por el Departamento de Energía de los Estados Unidos.
 
       \begin{figure}
         \centering
@@ -254,30 +249,28 @@ Una puntualización de vital importancia, en relación a la dependencia entre es
         \label{fig:3.3}
       \end{figure}
 
-     En problemas que presentan regiones con geometrías complejas, como la formación de ondas de choque en perfiles aerodinámicos, o la interacción de estructuras como supernovas y plasmas astrofísicos a grandes distancias, conseguir tiempos de simulación aceptables es imposible cuando esta técnica no está implementada en el algoritmo de cálculo numérico. Este paradigma está introducido a través del paquete de software libre AMReX\autocite{Zhang2019a}, desarrollado conjuntamente por el \emph{\acrfull{lbnl}}, \emph{\acrfull{nrel}} y \emph{\acrfull{anl}} dentro del marco de un proyecto financiado por el Departamento de Energía de los Estados Unidos.
-
-     Dentro de la temática de este trabajo, la incorporación de una guía de ondas en el plasma amplificador de radiación \acrshort{xuv} necesita utilizar ARWEN para reproducir el comportamiento del plasma\autocite{Oliva2018}, al igual que sucede cuando el blanco que forma el plasma es sólido. En cambio, los esquemas basados exclusivamente en plasmas gaseosos tipo \acrshort{ofi} ---presentados en la sección \S\ref{sec:1.4.2}---, los parámetros físicos mostrados en la sección \S\ref{sec:1.2.1} permanecen aproximadamente constantes a las escalas temporales ($\sim \qty{10}{ps}$) que participan en la amplificación.
-    \item Código FBPIC. Los algoritmos \acrfull{pic} están dedicados a resolver fundamentalmente problemas relacionados con plasmas astrofísicos\autocite{Godfrey1974,Kirchen2016}, aunque también han sido empleados en otras áreas de la física. Existen varios códigos basados en este algoritmo, donde el código \emph{\acrfull{fbpic}}\autocite{Lehe2016} es especialmente útil cuando el problema presenta simetría cilíndrica en plasmas de distintas densidades, mientras que otros códigos como WAKE-EP están restringidos a plasmas de baja densidad. Este primer ejemplo, es empleado para estudiar la propagación del pulso \acrshort{nir} de bombeo a través de la columna de plasma originada con anterioridad y, permite estudiar la formación de los iones de kriptón \ce{Kr^{8+}} que amplifican la luz \acrshort{xuv}.
+     Dentro de la temática de este trabajo, la incorporación de una guía de ondas en el plasma amplificador de radiación \acrshort{xuv} necesita utilizar ARWEN para reproducir el comportamiento del plasma\autocite{Oliva2018}, al igual que sucede cuando el blanco que forma el plasma es sólido. En cambio, los esquemas basados exclusivamente en plasmas gaseosos tipo \acrshort{ofi} ---presentados en la sección \S\ref{sec:1.4.2}---, los parámetros físicos mostrados en la sección \S\ref{sec:1.2.1} permanecen aproximadamente constantes en las escalas temporales ($\sim \qty{10}{ps}$) características de la amplificación.
+    \item Código FBPIC. Los algoritmos \acrfull{pic} están dedicados a resolver fundamentalmente problemas relacionados con plasmas astrofísicos\autocite{Godfrey1974,Kirchen2016}, aunque también han sido empleados en otras áreas de la física. Existen varios códigos basados en este algoritmo, donde el código \emph{\acrfull{fbpic}}\autocite{Lehe2016} es especialmente útil cuando el problema presenta simetría cilíndrica en plasmas de distintas densidades, mientras que otros códigos como WAKE-EP están restringidos a plasmas de baja densidad. Este primer ejemplo es empleado para estudiar la propagación del pulso \acrshort{nir} de bombeo a través de la columna de plasma originada con anterioridad y, permite estudiar la formación de los iones de kriptón \ce{Kr^{8+}} que amplifican la luz \acrshort{xuv}.
 
       En analogía directa con el concepto de \enquote{partícula fluida} estudiado en mecánica de fluidos, este código considera el plasma como un conjunto de \enquote{macropartículas} que engloban una gran cantidad de partículas cargadas en su interior ($\sim 10^{20}$ iones y electrones), esto es, tantas como moléculas encierran las partículas fluidas contempladas normalmente en dinámica de fluidos. La macropartícula es escogida como unidad elemental para realizar los cálculos, y determinar los campos eléctricos $\symbfcal{E}$ y magnéticos $\symbfcal{B}$, a partir de las posiciones y velocidades de la macropartícula, y viceversa.
 
       Naturalmente, las fuentes y los campos están acoplados mediante las ecuaciones de Maxwell, siendo necesario recurrir a un método de cálculo en lazo cerrado, que discretiza el intervalo temporal de la simulación y repite los cálculos en cada subintervalo de la división realizada hasta conseguir la precisión necesaria, como muestra la Figura \ref{fig:3.4}. Además, \acrshort{fbpic} está diseñado para reducir el esfuerzo computacional necesario para simular velocidades relativistas en escenarios tridimensionales, descomponiendo en modos de Fourier los campos electromagnéticos de las macropartículas, o bien, resolviendo las ecuaciones de Maxwell en el espacio de fases.
 
-      \begin{figure}[htbp]
-        \centering
-        \includegraphics[width=0.4\textwidth]{Figuras/ch3_fbpic.pdf}
-        \caption{Diagrama de flujo utilizado por el código \acrshort{fbpic}}
-        \label{fig:3.4}
-      \end{figure}
-
     \item Código OFIKinRad. Es un código encargado de estudiar, exclusivamente, la física atómica del plasma amplificador. Recibe como parámetros de entrada la intensidad del pulso \acrshort{nir}, después del primer máximo de intensidad y su focalización por la columna de plasma, la longitud de onda y su polarización, obteniendo como parámetros de salida información fundamental para continuar la simulación del proceso de amplificación, por ejemplo, la temperatura del plasma, las tasas de colisiones entre iones y electrones, o la distribución de los electrones en el canal de plasma.
 
       Además, la distribución electrónica en el espacio incorpora el perfil de energías de los electrones después de la inyección del pulso \acrshort{nir} inicial, a partir del cual pueden determinarse las tasas de colisiones mencionadas, importantes para resolver las ecuaciones de Maxwell-Bloch descritas durante la sección \S\ref{sec:3.1}. Los iones \ce{Kr^{8+}} son muy masivos ---en comparación con los electrones--- y sus choques apenas modifican la distribución de energías de los electrones. Sin embargo, las colisiones entre electrones multiplican la distribución de energías por un factor de escala, cambiando también la forma del perfil, mientras que las colisiones ión-electrón repercuten en la densidad de electrones y sus energías medias.
 
+      \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.45\textwidth]{Figuras/ch3_fbpic.pdf}
+        \caption{Diagrama de flujo utilizado por el código \acrshort{fbpic}}
+        \label{fig:3.4}
+      \end{figure}
+
       Los niveles de energía contemplados en el código se corresponden únicamente con el ión de kriptón \ce{Kr^{8+}}, responsable del efecto láser que amplifica la radiación \acrshort{xuv}. También calcula las probabilidades de ionización y excitación asociadas al kriptón (las secciones eficaces microscópicas), necesarias también a la hora de predecir la dinámica temporal del perfil de energías de los electrones mediante la ecuación de transporte de Boltzmann. En última instancia, el código determina la inversión poblacional conseguida y su evolución en el tiempo, es decir, la ganancia del medio.
     \item Código Dagon. Está escrito específicamente para modelar y simular la amplificación de láseres \acrshort{sxrl} basados en plasmas calientes y densos. Como mostraba la sección \S\ref{sec:3.1}, resuelve las ecuaciones de Maxwell-Bloch (\acrshort{mbe}) en tres dimensiones introduciendo algunas hipótesis de partida, partiendo de los parámetros de salida obtenidos mediante OFIKinRad, como la frecuencia de las colisiones entre iones y electrones, los niveles poblacionales de la transición láser, o la densidad electrónica de la preforma de plasma.
       
-      Apareció en el Instituto de Fusión Nuclear \enquote{Guillermo Velarde} (IFN-GV)\autocite{Oliva2017}, dentro de un proyecto respaldado por el Ministerio de Educación, Cultura y Deporte de España a través del programa de investigación \enquote{Plan Nacional}, el programa \emph{People Programme} (\emph{Marie Curie Actions}) de la Unión Europea (FP7/\numrange{2007}{2013}) bajo el Acuerdo de Subvención de la Agencia Ejecutiva de Investigación (REA), y el programa de investigación e innovación \emph{Horizon 2020} de la Unión Europea. Su misión principal es reproducir satisfactoriamente la amplificación de \acrshortpl{hoh} cuando las heterogeneidades presentes en el plasma impedían conseguir una descripción precisa del proceso, como ocurría con códigos anteriores como COLAX (código bidimensional)\autocite{Larroche2000,Almiev2007} o DeepOne (código unidimensional, precursor de Dagon)\autocite{Oliva2011}.
+      Se desarrolló en el Instituto de Fusión Nuclear \enquote{Guillermo Velarde} (IFN-GV)\autocite{Oliva2017}, dentro de un proyecto respaldado por el Ministerio de Educación, Cultura y Deporte de España a través del programa de investigación \enquote{Plan Nacional} y el programa \emph{People Programme} (\emph{Marie Curie Actions}) de la Unión Europea (FP7/\numrange{2007}{2013}) bajo el Acuerdo de Subvención de la Agencia Ejecutiva de Investigación (REA). Su misión principal es reproducir satisfactoriamente la amplificación de \acrshortpl{hoh} cuando las heterogeneidades presentes en el plasma impedían conseguir una descripción precisa del proceso, como ocurría con códigos anteriores como COLAX (código bidimensional)\autocite{Larroche2000,Almiev2007} o DeepOne (código unidimensional, precursor de Dagon)\autocite{Oliva2011}.
 
       Una vez resueltas las ecuaciones diferenciales para el campo eléctrico, polarización y los niveles poblacionales, la información de salida es dirigida a programas de postprocesamiento como VisIt que permiten representar y visualizar estos resultados. En este trabajo, la utilización de Dagon es fundamental para estudiar en tres dimensiones la evolución temporal del armónico inyectado a través de la columna de plasma.
 
@@ -298,21 +291,24 @@ En resumen, las diferentes escalas y fenómenos físicos que participan en los \
 
 \end{footheorem*}
 
+\newpage
+
 \section{Esquema experimental}\label{sec:3.3}
 La ejecución del experimento y los detalles básicos de los instrumentos utilizados tienen un papel fundamental en las simulaciones llevadas a cabo en este proyecto. En el plano histórico, este proyecto forma parte de una línea de investigación que, a su vez, tiene su origen en una serie de experimentos realizados en el \emph{\acrfull{loa}} en colaboración con investigadores del Instituto de Fusión Nuclear \enquote{Guillermo Velarde} (IFN-GV), entre otros grupos alrededor del mundo. Este esfuerzo conjunto ha conseguido alcanzar hitos como la obtención de \acrshortpl{hoh} amplificados con duraciones de femtosegundos, o la demostración de la diagnosis de plasmas mediante la medición de la fase e intensidad del armónico amplificado\autocite{Depresseux2015,Tuitje2020}.
 
 Este laboratorio es un centro de investigación mixto formado por el \emph{\acrfull{cnrs}}, la \emph{\acrfull{ep}} y la \emph{\acrfull{ensta}}, ubicado en el interior del campus sur de la \acrshort{ep}, en Palaiseau, Francia. Los campos de investigación tratados en su interior abarcan múltiples áreas relacionadas con la óptica de láseres-plasmas ultrarrápidos, entre los cuales se encuentra la puesta en marcha, operación, modelización y simulación del láser \acrshort{sxrl} basado en un plasma de iones \ce{Kr^{8+}}, centro de estudio de este trabajo.
 
-Las instalaciones que albergan la infraestructura (ver Figura \ref{fig:3.5}) donde el experimento fue realizado inicialmente están dentro de una gran habitación llamada \emph{Salle Jaune} (una sala amarilla), donde un sistema láser \ce{Ti{:}Zafiro} ---un cristal de zafiro (\ce{Al2O3}) dopado con iones de titanio \ce{Ti^{3+} neonoide}--- tiene la función de generar todos los pulsos necesarios. El sistema, con \qty{120}{TW} de potencia, repartidos en dos canales de \qty{60}{TW}, posee seis líneas láser sincronizadas con capacidad para generar pulsos de \qty{30}{fs}, de las cuales tres están dedicadas a la aceleración de electrones y generación de rayos X.
+Las instalaciones que albergan la infraestructura (ver Figura \ref{fig:3.5}) donde el experimento fue realizado inicialmente están dentro de una gran habitación llamada \emph{Salle Jaune}, donde un sistema láser \ce{Ti{:}Zafiro} ---un cristal de zafiro (\ce{Al2O3}) dopado con iones de titanio \ce{Ti^{3+} neonoide}--- tiene la función de generar todos los pulsos necesarios. El sistema, con \qty{120}{TW} de potencia, repartidos en dos canales de \qty{60}{TW}, posee seis líneas láser sincronizadas con capacidad para generar pulsos de \qty{30}{fs}, de las cuales tres están dedicadas a la aceleración de electrones y generación de rayos X.
 
 En el esquema seguido para conseguir amplificar la semilla \acrshort{hoh} pueden distinguirse cuatro fases:
 
 \begin{enumerate}
 
     \item En primer lugar, un primer pulso láser penetra sobre un chorro de gas de kriptón de alta densidad, depositando la energía necesaria para ionizar rápidamente los átomos y producir la inversión poblacional requerida mediante colisiones con los electrones producidos. Es una secuencia formada por los efectos de la ionización de efecto túnel (\acrshort{ofi}) y excitación colisional, desarrollados durante el capítulo \S\ref{cap:1}.
-    \item En segundo lugar, comienza la preparación para inyectar la semilla de armónicos de alto orden (\acrshortpl{hoh}) para su amplificación. Las elevadas densidades electrónicas utilizadas, en torno a aproximadamente \qtyrange{e19}{e20}{cm^{-3}}\autocite{Tuitje2020}, y próximas a la densidad crítica ($\simeq \qty{e21}{cm^{-3}}$) para la frecuencia de la radiación \acrshort{xuv}, provocan un desenfoque de la semilla que disminuye la distancia de propagación recorrida, reduciendo drásticamente la longitud efectiva del medio y, por tanto, la ganancia conseguida.
 
-      Como solución a este problema, se introduce una columna de plasma que actúa como guía de ondas de la semilla\autocite{Depresseux2015}. En la Figura \ref{fig:3.6}, aparece la secuencia de pulsos utilizados para crear la preforma de plasma. Primero, un pulso infrarrojo ($\lambda = \qty{800}{nm}$) llamado \enquote{cebador} o \emph{ignitor} (\qty{130}{mJ}, \qty{30}{fs}) forma el canal de plasma y, inmediatamente después (con \qty{600}{ps} de retraso), otro pulso infrarrojo denominado \enquote{calentador} o \emph{heater} (\qty{690}{mJ}, \qty{600}{ps}) calienta los electrones. De esta manera, se produce una expansión hidrodinámica que induce un gradiente de densidad electrónica creciente en la dirección radial de la columna de plasma, permitiendo enfocar el haz de armónicos cuando comienza a desenfocarse.
+      En segundo lugar, las elevadas densidades electrónicas utilizadas, en torno a aproximadamente \qtyrange{e19}{e20}{cm^{-3}}\autocite{Tuitje2020}, y próximas a la densidad crítica ($\simeq \qty{e21}{cm^{-3}}$) para la frecuencia de la radiación \acrshort{nir}, provocan un desenfoque del haz de bombeo que disminuye la distancia de propagación recorrida, reduciendo drásticamente la longitud efectiva del medio y, por tanto, la ganancia conseguida.
+
+      Como solución a este problema, se introduce una columna de plasma que actúa como guía de ondas de la semilla de armónicos (\acrshort{hoh})\autocite{Depresseux2015}. En la Figura \ref{fig:3.6}, aparece la secuencia de pulsos utilizados para crear la preforma de plasma. Primero, un pulso infrarrojo ($\lambda = \qty{800}{nm}$) llamado \enquote{cebador} o \emph{ignitor} (\qty{130}{mJ}, \qty{30}{fs}) forma el canal de plasma y, inmediatamente después (con \qty{600}{ps} de retraso), otro pulso infrarrojo denominado \enquote{calentador} o \emph{heater} (\qty{690}{mJ}, \qty{600}{ps}) calienta los electrones. De esta manera, se produce una expansión hidrodinámica que induce un gradiente de densidad electrónica creciente en la dirección radial de la columna de plasma, permitiendo enfocar el haz \acrshort{nir} de bombeo cuando comienza a desenfocarse.
 
       \begin{figure}[htbp]
         \centering
@@ -320,7 +316,8 @@ En el esquema seguido para conseguir amplificar la semilla \acrshort{hoh} pueden
         \caption{Sistema láser \emph{Salle Jaune} del \acrshort{loa} utilizado para la amplificación de láseres \acrshort{sxrl} basados en plasmas. Salle Jaune. Laboratoire d'Optique Apliquée. \url{https://loa.ensta-paris.fr/fr/le-laboratoire/infrastructures-experimentales/salle-jaune/}.}
         \label{fig:3.5}
       \end{figure}
-    \item En tercer lugar, una vez preparado el canal de plasma para el guiado de los pulsos, un tercer pulso infrarrojo de bombeo (\qty{1.36}{J}, \qty{30}{fs}) es enfocado en la entrada del canal mediante un espejo esférico, transfiriendo parte de su energía para producir el ión \ce{Kr^{8+}}, responsable de la transición láser, y calentando los electrones encargados de producir la inversión de población mediante choques ión-electrón. En resumen, esta etapa del proceso está basada en el bombeo colisional producido por un haz infrarrojo.
+
+    \item En tercer lugar, una vez preparado el canal de plasma para el guiado del pulso, el pulso \acrshort{nir} de bombeo (\qty{1.36}{J}, \qty{30}{fs}) es enfocado en la entrada del canal mediante un espejo esférico, transfiriendo parte de su energía para producir el ión \ce{Kr^{8+}}, responsable de la transición láser, y calentando los electrones encargados de producir la inversión de población mediante choques ión-electrón. En resumen, esta etapa del proceso está basada en el bombeo colisional producido por un haz infrarrojo.
     \item Finalmente, un cuarto pulso láser infrarrojo (\qty{16}{mJ}, \qty{350}{fs}) es obligado a pasar a través de una celda llena gas argón a alta presión. La fuerte interacción no lineal de ambos genera el armónico de alto orden deseado (\acrshort{hhg}), en este experimento, el modo número $25$, multiplicando su energía y manteniendo las propiedades ópticas excelentes del \acrshort{hoh} generado. Visualmente, la Figura \ref{fig:3.6} muestra un esquema de todas las etapas presentadas, obteniendo la emisión \acrshort{sxrl} buscada.
 
 \end{enumerate}
@@ -348,13 +345,13 @@ Los parámetros iniciales empleados en Dagon reflejan una situación inicial don
 \begin{equation}\label{eq:3.18}
   N_{Kr} =   
   \begin{cases}
-    1 + (r/r_{0})^{2}, & \text{si $r<r_{0}$},\\
-    \left[1 + (r_{c}/r_{0})^{2}\right]^{\frac{r_{v}-r}{r_{v}-r_{c}}}, & \text{si $r\ge r_{0}$},
+    1 + \Big(\frac{r}{r_{0}}\Big)^{2}, & \text{si $r<r_{0}$},\\
+    \left[1 + \Big(\frac{r_{c}}{r_{0}}\Big)^{2}\right]\Big(\frac{r_{v}-r}{r_{v}-r_{c}}\Big), & \text{si $r\ge r_{0}$},
   \end{cases}
 \end{equation}
 donde $r_{c} = \qty{38}{µm}$ es el radio del canal de plasma, y los parámetros $r_{0} = \qty{80}{µm}$, $r_{v} = \qty{90}{µm}$ controlan la forma parabólica de la densidad de neutros. Esta función permite modelar el perfil parabólico creciente con el radio producido por la secuencia de pulsos infrarrojos mencionada, y la desaparición de los iones a partir de un determinado radio del canal $r_{c}$.
 
-A lo largo de la longitud del canal ($z_{0} = \qty{5}{mm}$) de plasma, representado por una celda de \qtyproduct{5000 x 100 x 100}{mm}, la intensidad del pulso láser de bombeo disminuye con la distancia recorrida, además de presentar la forma de una distribución Gaussiana en dirección radial. Adicionalmente, los experimentos observaron una sobreionización\autocite{Tuitje2020} a la entrada (la intensidad máxima es alcanzada a la entrada del canal) y en la región intermedia de la columna de plasma (debido al fenómeno de focalización producido durante el guiado). A raíz de estos sucesos, la densidad de iones \ce{Kr^{8+}} disminuye y la densidad de electrones aumenta en ambas regiones.
+A lo largo de la longitud del canal ($z_{0} = \qty{5}{mm}$) de plasma, representado por un dominio de cálculo de \qtyproduct{5000 x 100 x 100}{mm}, la intensidad del pulso láser de bombeo disminuye con la distancia recorrida, además de presentar la forma de una distribución Gaussiana en dirección radial. Adicionalmente, los experimentos observaron una sobreionización\autocite{Tuitje2020} a la entrada (la intensidad máxima es alcanzada a la entrada del canal) y en la región intermedia de la columna de plasma (debido al fenómeno de focalización producido durante el guiado). A raíz de estos sucesos, la densidad de iones \ce{Kr^{8+}} disminuye y la densidad de electrones aumenta en ambas regiones.
 
 Las funciones de densidad implementadas en las simulaciones para la modelización de estos fenómenos, antes de comenzar el proceso de modificación y estudio de los parámetros, que ocupará el capítulo \S\ref{cap:4}, siguen las expresiones
 \begin{align}
@@ -365,7 +362,7 @@ Las funciones de densidad implementadas en las simulaciones para la modelizació
 \end{align}
 donde $\mathtt{zshift}$ es un parámetro introducido para controlar la posición de la región intermedia sobreionizada, y $\mathtt{cen\_fac}$, $\mathtt{z0\_fac}$ son factores de escala que regulan la magnitud de la densidad electrónica en las regiones sobreionizadas. 
 
-Por otra parte, las variables $z$, $r$ representan la longitud recorrida por la semilla y el radio del canal, respectivamente, mientras que las dispersiones de cada dimensión están representadas mediante los parámetros $\sigma_{r,z}$ asociadas a cada variable. Los parámetros más importantes, que serán constantemente modificados y objeto de estudio durante el próximo capítulo \S\ref{cap:4}, son $r_{L} = \qty{5}{µm}$ y $\sigma_{rL} = \qty{15}{µm}$: el radio de anchura del canal con abundancia de iones \ce{Kr^{8+}} y su dispersión Gaussiana asociada, respectivamente. De este modo, delimitan la región del canal con presencia del ión amplificador suponiendo una distribución constante a lo largo de toda la celda. 
+Por otra parte, las variables $z$, $r$ representan la longitud recorrida por la semilla y el radio del canal, respectivamente, mientras que la anchura en cada dimensión esta relacionada con los parámetros $\sigma_{r,z}$ asociadas a cada variable. Los parámetros más importantes, que serán constantemente modificados y objeto de estudio durante el próximo capítulo \S\ref{cap:4}, son $r_{L} = \qty{5}{µm}$ y $\sigma_{rL} = \qty{15}{µm}$: el radio de anchura del canal con abundancia de iones \ce{Kr^{8+}} y la desviación típica de la Gaussiana, respectivamente. De este modo, delimitan la región del canal con presencia del ión amplificador suponiendo una distribución constante a lo largo de toda la celda. 
 
 Esta hipótesis, es el sujeto principal al comienzo de las modificaciones realizadas en este proyecto, introduciendo un ancho variable con la longitud del canal $z$ que represente, de forma aproximada, la región donde se encuentran los iones \ce{Kr^{8+}}. Los perfiles utilizados para sustituir estos valores homogéneos están expresados por \emph{curvas logísticas} o \emph{sigmoides}, que aparecerán detallados en la sección \S\ref{sec:4.1}. 
 
@@ -376,7 +373,7 @@ La Tabla \ref{tab:3.1} recoge los parámetros más importantes que se han mencio
 \begin{table}[htpb]
   \centering
   \scriptsize
-  \caption{Condiciones iniciales utilizadas en un archivo ASCII para alimentar a Dagon. Parámetros en unidades del Sistema Internacional de unidades.}
+  \caption{Condiciones iniciales utilizadas en un archivo ASCII para alimentar a Dagon. Parámetros en unidades del Sistema Internacional de Unidades.}
   \label{tab:3.1}
   \begin{tabular}{lSlSlS}
   \toprule

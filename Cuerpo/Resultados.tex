@@ -7,11 +7,11 @@ A continuación, una vez determinada y decidida la forma de los perfiles de \ce{
 
 La primera función utilizada es una curva logística o función sigmoide que sustituye un ancho constante del canal $r_{L}$ con \ce{Kr^{8+}} por un radio variable $r_{L}(z)$ decreciente con la longitud de propagación $z$ de la semilla \acrshort{hoh}, produciéndose un cambio del haz \acrshort{sxrl} amplificado. Posteriormente, se introduce una segunda sigmoide para reemplazar la desviación típica constante del radio del canal $\sigma_{r}$ por una función variable $\sigma_{r}(z)$, también dependiente de la distancia recorrida por la semilla. De esta manera, la secuencia final está formada por una primera sigmoide encargada de reproducir el valle central o \enquote{meseta} de intensidad y fase de la columna de plasma (el radio o frontera interior), mientras que una segunda sigmoide representa la región exterior o \enquote{falda} del canal (el radio o frontera exterior) donde disminuye la concentración de iones.
 
-En segundo lugar, ocupando el papel de las funciones sigmoides empleadas en las secciones \S\ref{sec:4.1} y \S\ref{sec:4.2}, aparece utilizada una nueva función exponencial por tramos que sustituye el primer término exponencial de la ecuación \eqref{eq:3.19a}. La finalidad buscada durante la sección \S\ref{sec:4.3} consiste en controlar la frontera con \ce{Kr^{8+}}, ajustando el cambio en la pendiente de intensidad cuando los radios pertenecen a la falda del perfil. De esta forma, los nuevos parámetros introducidos persiguen regular el perfil de intensidad completo, incluyendo las discrepancias y dificultades observadas en la sección \S\ref{sec:4.2} empleando ambas sigmoides.
+En segundo lugar, ocupando el papel de las funciones sigmoides empleadas durante las siguientes secciones \S\ref{sec:4.1} y \S\ref{sec:4.2}, aparece utilizada una nueva función exponencial por tramos que sustituye el primer término exponencial de la ecuación \eqref{eq:3.19a}. La finalidad buscada durante la sección \S\ref{sec:4.3} consiste en controlar la frontera con \ce{Kr^{8+}}, ajustando el cambio en la pendiente de intensidad cuando los radios pertenecen a la falda del perfil. De esta forma, los nuevos parámetros introducidos persiguen regular el perfil de intensidad completo, incluyendo las discrepancias y dificultades observadas en la sección \S\ref{sec:4.2} empleando ambas sigmoides.
 
 Finalmente, después de conseguir los perfiles radiales de intensidad y fase esperados, se incorpora el momento angular orbital (\acrshort{oam}) a la semilla \acrshort{hoh} inyectada, manteniendo la función exponencial a tramos empleada para modular la distribución radial de intensidad. En este punto, el haz gaussiano es sustituido por un haz de Laguerre-Gauss con índice angular $l=25$ e índice radial $p=0$, viajando a través del canal de plasma definido al comienzo de la sección \S\ref{sec:4.3}. Adicionalmente, también aparece explorado brevemente la importancia de la amplificación de la emisión espontánea (\acrshort{ase}) en los perfiles observados.
 
-\section{Con una sigmoide}\label{sec:4.1}
+\section{Ajuste de la densidad de iones con una sigmoide}\label{sec:4.1}
 Antes de introducir el ancho variable del canal, es necesario comprender los aspectos claves relativos a la frontera con \ce{Kr^{8+}} y, por tanto, recordar las características básicas de la columna de plasma cuando el \acrshort{hoh} es inyectado y comienza a propagarse a través del canal. De acuerdo con los experimentos realizados en el \acrshort{loa}\autocite{Tuitje2020}, por un lado, el perfil radial de intensidad tiene un forma de distribución gaussiana con un valle central debido a la formación de una zona sobreionizada en el centro del canal de plasma. Por otro lado, el perfil radial de fase tiene forma de parábola creciente, debido al índice de refracción decreciente con el radio introducido por la preforma de plasma durante su expansión hidrodinámica. La Figura \ref{fig:4.1} muestra la forma de ambos perfiles, acompañados de su desviación estándar.
 
 \begin{figure}[htbp]
@@ -66,9 +66,9 @@ Además, este programa también incorpora una segunda curva logística. Ambas si
   \label{cod:4.1}
 \end{listing}
 
-Dentro de la estructura del código Dagon, el programa principal encargado de realizar las simulaciones ---escrito en FORTRAN--- se denomina \texttt{plasma3D.f03} y, en su interior, la subrutina dedicada a definir las densidades de iones y electrones del plasma es \texttt{fillplasma}. Cuando las simulaciones finalizan, un segundo programa auxiliar \texttt{hdf\_save\_Ok.py} recopila los datos obtenidos y los escribe en un fichero \texttt{.hdf} mediante un vínculo simbólico entre la carpeta de la simulación y el programa de Python. Por último, un tercer programa \texttt{computePhaseIntegrated.m} de Octave carga el fichero \texttt{.hdf} y representa los perfiles de intensidad y fase a través de otro vínculo simbólico con la carpeta de la simulación.
+Dentro de la estructura del código Dagon, escrito en FORTRAN, las propiedades y dinámica del plasma se han implementado en el fichero \texttt{plasma3D.f03} y, en su interior, la subrutina dedicada a definir las densidades de iones y electrones del plasma es \texttt{fillplasma}. Cuando las simulaciones finalizan, un segundo programa auxiliar \texttt{hdf\_save\_Ok.py} recopila los datos obtenidos y los escribe en un fichero \texttt{.hdf} mediante un vínculo simbólico entre la carpeta de la simulación y el programa de Python. Por último, un tercer programa \texttt{computePhaseIntegrated.m} de Octave carga el fichero \texttt{.hdf} y representa los perfiles de intensidad y fase a través de otro vínculo simbólico con la carpeta de la simulación.
 
-La sintaxis de FORTRAN y la estructura empleada en \texttt{plasma3D.f03} es muy diferente a la estructura del código \ref{cod:4.1}, diseñado para realizar pruebas con los parámetros de las sigmoides. Con el objetivo de salvaguardar estos problemas, la segunda etapa del proceso consiste en escribir dos programas separados consistentes en una función \texttt{f\_sigmoide.m} y \texttt{d\_kripton.m} similares en estructura a la utilizada en Dagon, aunque la sintaxis de ambos lenguajes de programación son distintos. 
+La sintaxis de FORTRAN y la estructura empleada en \texttt{plasma3D.f03} es muy diferente a la estructura del código \ref{cod:4.1}, diseñado para realizar pruebas con los parámetros de las sigmoides. Con el objetivo de evitar posibles problemas, la segunda etapa del proceso consiste en escribir dos programas separados consistentes en una función \texttt{f\_sigmoide.m} y \texttt{d\_kripton.m} similares en estructura a la utilizada en Dagon, aunque la sintaxis de ambos lenguajes de programación son distintos. 
 
 El primer programa, mostrado en el código \ref{cod:4.2}, es una función que recibe como argumentos los parámetros de las sigmoides que delimitan la región de abundancia y las representa visualmente, mientras que el segundo programa, mostrado en el código \ref{cod:4.3}, está destinado a declarar todos los parámetros que aparecen en la densidad de \ce{Kr^{8+}} (ecuación \eqref{eq:3.19a} de densidad de \ce{Kr^{8+}}) y hacer una llamada a la función \texttt{f\_sigmoide.m} para terminar de representar el perfil de densidad.
 
@@ -139,7 +139,7 @@ En la Tabla \ref{tab:4.1}, aparecen recogidos todos los parámetros introducidos
 \subsection{Variando el parámetro $r_{i,min}$}\label{sec:4.1.1}
 El inicio de las simulaciones comienza fijando $r_{i,max}=\qty{5}{µm}$ y haciendo variar el parámetro $r_{i,min}$ entre \qty{0}{µm} y \qty{5}{µm} de micrómetro en micrómetro. De esta manera, pueden observarse cuáles son los efectos de $r_{i,min}$ en los perfiles de intensidad y fase, es decir, modificando el radio mínimo con presencia de \ce{Kr^{8+}} de la columna de plasma. También es posible entender esta aproximación como la frontera del canal que contiene \ce{Kr^{8+}} cuando $\lim_{z \to \infty}r_{L}(z)$. La Figura \ref{fig:4.5} muestra las sigmoides utilizadas junto a su $r_{i,min}$ correspondiente.
 
-La transición brusca entre ambos radios mínimo y máxima es conseguida utilizando una magnitud para la pendiente de las curvas logísticas elevada de $k_{i}=\qty{50e6}{m^{-1}}$, centrando el cambio rápido de la frontera mediante $z=\qty{3.8}{mm}$. Este método permite simular regiones de abundancia formadas por dos anchos del canal constantes, asociadas a dos mitades de la columna de plasma separadas cuando la longitud $z=\qty{3.8}{mm}$ es alcanzada. 
+La transición brusca entre ambos radios mínimo y máxima es conseguida utilizando una magnitud para la pendiente de las curvas logísticas elevada de $k_{i}=\qty{50e6}{m^{-1}}$, centrando el cambio rápido de la frontera en la coordenada $z=\qty{3.8}{mm}$. Este método permite simular regiones de abundancia formadas por dos anchos del canal constantes, asociadas a dos partes de la columna de plasma separadas cuando la longitud $z=\qty{3.8}{mm}$ es alcanzada. 
 
 El primer caso $r_{i,min}=r_{i,max}=\qty{5}{µm}$ representa un ancho del canal constante de \qty{5}{µm} en todo el canal de plasma, mientras que $r_{i,min}=\qty{0}{µm}$ y $r_{i,max}=\qty{5}{µm}$ consiste en una frontera de \qty{5}{µm} durante los primeros $z=\qty{3.8}{mm}$ de recorrido, seguidos de una desaparición súbita de \ce{Kr^{8+}}. Ambas situaciones encierran la máxima y mínima amplificación obtenible, respectivamente.
 
@@ -179,7 +179,7 @@ También es importante resaltar el cambio de pendiente de la curva de intensidad
   \label{fig:4.7}
 \end{figure}
 
-Sin embargo, cuando el ión amplificador ocupa completamente la columna de plasma (caso $r_{i,min}=r_{i,max}=\qty{5}{µm}$), la amplificación de la semilla \acrshort{hoh} es máxima. Ahora, la Figura \ref{fig:4.8} muestra la formación del valle de intensidad buscado, consiguiendo una adaptación precisa de la meseta del perfil, como aparece en la Figura \ref{fig:4.9}. De todo el grupo de simulaciones realizadas en esta sección \S\ref{sec:4.1.1} (consultar el anexo \S\ref{anx:1}), solamente presenta el valle correctamente formado este caso. La argumentación más plausible que explica este fenómeno, sugiere que la intensidad necesaria para conseguir la sobreionización del valle tiene que ser la mayor posible, cubriendo el canal de plasma con \ce{Kr^{8+}} en su totalidad.
+Sin embargo, cuando el ión amplificador ocupa completamente la columna de plasma (caso $r_{i,min}=r_{i,max}=\qty{5}{µm}$), la amplificación de la semilla \acrshort{hoh} es máxima. Ahora, la Figura \ref{fig:4.8} muestra la formación del valle de intensidad buscado, consiguiendo una adaptación precisa de la meseta del perfil, como aparece en la Figura \ref{fig:4.9}. De todo el grupo de simulaciones realizadas en esta sección \S\ref{sec:4.1.1} (consultar el anexo \S\ref{anx:1}), solamente presenta el valle correctamente formado este caso. La argumentación más plausible que explica este fenómeno sugiere que la intensidad necesaria para conseguir la sobreionización del valle tiene que ser la mayor posible, cubriendo el canal de plasma con \ce{Kr^{8+}} en su totalidad.
 
 \begin{figure}[htbp]
   \centering
@@ -318,12 +318,12 @@ En este punto, está claro que la curva de intensidad es imposible controlarla t
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.7\textwidth]{Figuras/ch4_cmp22.png}
+  \includegraphics[width=0.68\textwidth]{Figuras/ch4_cmp22.png}
   \caption{Comparación entre los perfiles radiales de intensidad--fase con $z_{0i}=\qty{3.5}{mm}$ y $k_{i}=\qty{4000}{m^{-1}}$, manteniendo los valores de los parámetros $r_{i,min}=\qty{0}{µm}$ y $r_{i,max}=\qty{5}{µm}$; y el experimento.}
   \label{fig:4.15}
 \end{figure}
 
-Además, el perfil radial de fase mantiene la diferencia de alturas entre los máximos locales en $r=\qty{40}{µm}$ (los picos de la fase) y el mínimo local en $r=\qty{0}{µm}$, debido al cambio de concavidad producido en las simulaciones. La manera más sencilla de intentar adecuar la fase de los fotones amplificados es modificar la distribución de densidad electrónica, como en la sección \S\ref{sec:4.1.4}.
+Además, el perfil radial de fase mantiene la diferencia de alturas entre los máximos locales en $r=\qty{40}{µm}$ (los picos de la fase) y el mínimo local en $r=\qty{0}{µm}$, debido al cambio de concavidad producido en las simulaciones. La manera más sencilla de intentar adecuar la fase de los fotones amplificados es modificar la densidad electrónica e iónica, como en la sección \S\ref{sec:4.1.4}.
 
 \begin{table}[htpb]
   \centering
@@ -343,7 +343,7 @@ Además, el perfil radial de fase mantiene la diferencia de alturas entre los m�
 \end{table}
 
 \subsection{Variando el parámetro \texttt{zshift}}\label{sec:4.1.4}
-Antes de iniciar el análisis de las simulaciones con dos sigmoides, es importante determinar la influencia de las zonas sobreionizadas en el perfil radial de fase. ¿Cómo afectan la extensión de las zonas sobreionizadas y su posición a este perfil de fase?. El procedimiento a seguir consiste en modificar la longitud $\sigma_{z0}$ de la primera zona de sobreionización, manteniendo distancia de separación entre el final de la primera y el comienzo de la segunda zona.  
+Antes de iniciar el análisis de las simulaciones con dos sigmoides, es importante determinar la influencia de las zonas sobreionizadas en el perfil radial de fase. ¿Cómo afectan la extensión de las zonas sobreionizadas y su posición a este perfil de fase? El procedimiento a seguir consiste en modificar la longitud $\sigma_{z0}$ de la primera zona de sobreionización, manteniendo distancia la de separación entre el final de la primera y el comienzo de la segunda zona.  
 
 De forma análoga a la sección \S\ref{sec:4.1.2}, este grupo de simulaciones están agrupadas en pares con y sin sigmoide, esto es, alternando anchos del canal variable y constante. El parámetro \texttt{zshift} utilizado es una fracción de la unidad que multiplica a la longitud total ($L=\qty{5}{mm}$) de la columna de plasma, situando el inicio de la segunda zona de sobreionización en $z_{ion,2}$. Por tanto, si se desea conservar la distancia (en las simulaciones realizadas durante las secciones anteriores de $z_{ion,2}-\sigma_{z0}=\qty{1.75}{mm}$) entre el final de la primera zona y el comienzo de la segunda, también es necesario cambiar la longitud $\sigma_{z0}$ de sobreionización inicial. En la Tabla \ref{tab:4.5} aparecen recogidos estos parámetros y, en la Figura \ref{fig:4.16}, los dos tipos de sigmoides insertadas.
 
@@ -368,7 +368,7 @@ La Figura \ref{fig:4.17} muestra el resultado obtenido cuando el ancho del canal
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=0.7\textwidth]{Figuras/ch4_cmp31.png}
-  \caption{Comparación entre los perfiles radiales de intensidad--fase con $r_{i,min}=r_{i,max}=\qty{5}{µm}$, manteniendo los valores de los parámetros $k_{i}=\qty{50e6}{m^{-1}}$ y $z_{0i}=\qty{3.5}{mm}$; y el experimento.}
+  \caption{Comparación entre los perfiles radiales de intensidad--fase con $\texttt{zshift}=0.55$, manteniendo los valores de los parámetros $r_{i,min}=r_{i,max}=\qty{5}{µm}$, $k_{i}=\qty{50e6}{m^{-1}}$ y $z_{0i}=\qty{3.5}{mm}$; y el experimento.}
   \label{fig:4.17}
 \end{figure}
 
@@ -381,7 +381,7 @@ A medida que estas regiones sobreionizadas recuperan lentamente las posiciones y
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=0.75\textwidth]{Figuras/ch4_cmp32.png}
-  \caption{Comparación entre los perfiles radiales de intensidad--fase con $r_{i,min}=\qty{0}{µm}$ y $r_{i,max}=\qty{5}{µm}$, manteniendo los valores de los parámetros $k_{i}=\qty{50e6}{m^{-1}}$ y $z_{0i}=\qty{3.5}{mm}$; y el experimento.}
+  \caption{Comparación entre los perfiles radiales de intensidad--fase con $\texttt{zshift}=0.55$, manteniendo los valores de los parámetros $r_{i,min}=\qty{0}{µm}$, $r_{i,max}=\qty{5}{µm}$, $k_{i}=\qty{50e6}{m^{-1}}$ y $z_{0i}=\qty{3.5}{mm}$; y el experimento.}
   \label{fig:4.18}
 \end{figure}
 
@@ -410,7 +410,7 @@ Con esta sección \S\ref{sec:4.1.4} finaliza el proceso de simulaciones con una 
   \end{tabular}
 \end{table}
 
-\section{Con dos sigmoides}\label{sec:4.2}
+\section{Ajuste de la densidad de iones con dos sigmoides}\label{sec:4.2}
 La introducción de una sigmoide estaba destinada a controlar la parte superior del perfil de intensidad, es decir, la formación del valle de intensidad y el ajuste entre picos y valles en el perfil de fase. Sin embargo, esta hipótesis no permite controlar los perfiles completamente, en especial la anchura de la curva de intensidad a partir de $r=\qty{17}{µm}$. Identificada la raiz del problema, esta sección \S\ref{sec:4.2} incluye una combinación de dos sigmoides $r_{L}(z)$ y $\sigma_{rL}(z)$, descritas por las ecuaciones
 \begin{align}
   \label{eq:4.1a}
@@ -575,18 +575,9 @@ El fenómeno de las sobreoscilaciones producido a partir de $z_{0ig}=\qty{3}{mm}
 \end{figure}
 
 \subsection{Variando el parámetro $k_{ig}$}\label{4.2.3}
-Finalmente, apoyándose en las observaciones realizadas en la anterior sección \S\ref{sec:4.2.2}, el último grupo de simulaciones está destinado a conocer los efectos de la rapidez de la transición entre los radios mínimo $r_{ig,min}=\qty{15}{µm}$ y máximo $r_{ig,max}=\qty{25}{µm}$, centrándose en la región exterior del perfil a través del parámetro $k_{0ig}$. La Figura \ref{fig:4.27} recoge el último conjunto de parejas de sigmoides empleadas.
+Finalmente, apoyándose en las observaciones realizadas en la anterior sección \S\ref{sec:4.2.2}, el último grupo de simulaciones está destinado a conocer los efectos de la rapidez de la transición entre los radios mínimo $r_{ig,min}=\qty{15}{µm}$ y máximo $r_{ig,max}=\qty{25}{µm}$, centrándose en la región exterior del perfil a través del parámetro $k_{0ig}$. La Figura \ref{fig:4.26} recoge el último conjunto de parejas de sigmoides empleadas.
 
-Los resultados obtenidos demuestran un comportamiento muy parecido, originándose un perfil de intensidad con una anchura excesivamente elevada, capaz de englobar completamente la curva experimental. En representación de este comportamiento, se escoge la Figura \ref{fig:4.26}, dejando las demás para consultar si es necesario en el anexo \S\ref{anx:2}. Aunque el incremento de la tasa de cambio termina distorsionando el resultado, escogiendo una coordenada media $z_{0ig}<\qty{4}{µm}$ podría haberse reducido el ancho de la falda, para intentar ajustarla correctamente.
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.75\textwidth]{Figuras/ch4_cmp61.png}
-  \caption{Comparación entre los perfiles radiales de intensidad--fase con $k_{ig}=\qty{4500}{m^{-1}}$, manteniendo los valores de los parámetros $r_{ig,min}=\qty{15}{µm}$, $r_{ig,max}=\qty{25}{µm}$ y $z_{0ig}=\qty{4}{mm}$; y el experimento.}
-  \label{fig:4.26}
-\end{figure}
-
-Terminada esta sección \S\ref{sec:4.2}, pueden extraerse las conclusiones a cerca de los resultados. La combinación de dos sigmoides para el modelado completo del perfil de intensidad es bueno, pero no alcanza a ser completamente satisfactorio. La anchura de la falda puede conseguirse fácilmente mediante esta segunda curva logística, pero el cambio de pendiente de la falda no aparece mediante este recurso. 
+Los resultados obtenidos demuestran un comportamiento muy parecido, originándose un perfil de intensidad con una anchura excesivamente elevada, capaz de englobar completamente la curva experimental. En representación de este comportamiento, se escoge la Figura \ref{fig:4.27}, dejando las demás para consultar si es necesario en el anexo \S\ref{anx:2}. Aunque el incremento de la tasa de cambio termina distorsionando el resultado, escogiendo una coordenada media $z_{0ig}<\qty{4}{µm}$ podría haberse reducido el ancho de la falda, para intentar ajustarla correctamente.
 
 \begin{figure}[htbp]
   \centering
@@ -601,7 +592,16 @@ Terminada esta sección \S\ref{sec:4.2}, pueden extraerse las conclusiones a cer
     \caption{Segundas sigmoides para la falda}\label{fig:ch4_sigm2_rg}
   \end{subcaptionblock}
   \caption{Segunda sigmoide con el parámetro $k_{ig}\in[\qty{3500}{m^{-1}},\qty{6000}{m^{-1}}]$; manteniendo los valores de los parámetros $r_{ig,max}=\qty{25}{µm}$, $r_{ig,min}=\qty{15}{µm}$ y $z_{0ig}=\qty{4}{mm}$.}
-   \label{fig:4.27}
+   \label{fig:4.26}
+\end{figure}
+
+Terminada esta sección \S\ref{sec:4.2}, pueden extraerse las conclusiones a cerca de los resultados. La combinación de dos sigmoides para el modelado completo del perfil de intensidad es bueno, pero no alcanza a ser completamente satisfactorio. La anchura de la falda puede conseguirse fácilmente mediante esta segunda curva logística, pero el cambio de pendiente de la falda no aparece mediante este recurso. 
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.75\textwidth]{Figuras/ch4_cmp61.png}
+  \caption{Comparación entre los perfiles radiales de intensidad--fase con $k_{ig}=\qty{4500}{m^{-1}}$, manteniendo los valores de los parámetros $r_{ig,min}=\qty{15}{µm}$, $r_{ig,max}=\qty{25}{µm}$ y $z_{0ig}=\qty{4}{mm}$; y el experimento.}
+  \label{fig:4.27}
 \end{figure}
 
 En cierto modo, el perfil obtenido es un \enquote{promedio} entre la parte superior e inferior de la curva, capaz en algunos casos de aproximar los anchos de ambas partes. Sin embargo, para conseguir ajustar completamente la curva es necesario introducir un cambio en la pendiente, sujeto de análisis en la sección \S\ref{sec:4.3}. La Tabla \ref{tab:4.8} tiene recogidos los últimos parámetros introducidos. 
@@ -626,12 +626,12 @@ En cierto modo, el perfil obtenido es un \enquote{promedio} entre la parte super
   \end{tabular}
 \end{table}
 
-\section{Con funciones exponenciales}\label{sec:4.3}
+\section{Ajuste de la densidad de iones con funciones exponenciales}\label{sec:4.3}
 Asumiendo las limitaciones de emplear la combinación de funciones sigmoides para controlar la curva, esta sección \S\ref{sec:4.3} elimina ambas curvas logísticas, introducidas a lo largo de la columna de plasma. En su lugar, el objetivo consiste en reemplazarlas por una sola función exponencial que juegue el papel del término cociente de exponenciales en la ecuación \eqref{eq:3.19a}, donde estaban introducidas las sigmoides.
 
-De esta manera, esta función tiene que ajustar el ancho del perfil intensidad totalmente, adaptándose por tanto al cambio de pendiente regular que se produce aproximadamente cuando $r=\qty{17}{µm}$, separando el  valle de intensidad y la falda de la distribución radial. Partiendo de la influencia de los parámetros estudiados, una sugerencia de función interesante a utilizar es una exponencial dividida en dos tramos. Un primer tramo horizontal hasta un radio del canal $r_{u}$ próximo a la variación de la pendiente, y un segundo tramo exponencial para radios mayores.
+De esta manera, esta función tiene que ajustar el ancho del perfil de intensidad totalmente, adaptándose por tanto al cambio de pendiente regular que se produce aproximadamente cuando $r=\qty{17}{µm}$, separando el  valle de intensidad y la falda de la distribución radial. Partiendo de la influencia de los parámetros estudiados, una sugerencia de función interesante a utilizar es una exponencial dividida en dos tramos. Un primer tramo horizontal hasta un radio del canal $r_{u}$ próximo a la variación de la pendiente, y un segundo tramo exponencial para radios mayores.
 
-En resumen, la función tiene un parámetro auxiliar $r_{u}$ que fragmenta la curva de intensidad en dos partes, una para radios $r<r_{u}$ y otra para radios $r\geq r_{u}$, donde la pendiente tiene que cambiar de forma continua. La condición de continuidad es fundamental para mantener el buen comportamiento del perfil radial, aunque no es necesaria la derivabilidad de la función exponencial para implementarla en Dagon. La función exponencial a trozos introducida tiene la forma
+En resumen, la función tiene un parámetro auxiliar $r_{u}$ que fragmenta la curva de intensidad en dos partes, una para radios $r<r_{u}$ y otra para radios $r\geq r_{u}$, donde la pendiente tiene que cambiar de forma continua. La condición de continuidad es fundamental para mantener el buen comportamiento del perfil radial, aunque no es necesaria la derivabilidad de la función exponencial para implementarla en Dagon. La función exponencial a trozos introducida es 
 \begin{equation}\label{eq:4.1}
   f(r) =  
   \begin{cases}
@@ -641,18 +641,18 @@ En resumen, la función tiene un parámetro auxiliar $r_{u}$ que fragmenta la cu
 \end{equation}
 junto con la condición de continuidad 
 \begin{equation}\label{eq:4.2}
-  A = f(r_{u})\exp\left(\frac{r_{u}^{2}}{\sigma_{u}^{2}}\right).
+  A = f(r_{u})\exp\bigg(\frac{r_{u}}{\sigma_{u}}\bigg)^{2}.
 \end{equation}
 
 Hay que mencionar que el coeficiente $A$ viene determinado adicionalmente por el hecho de que $r_{L}<r_{u}$, pues retoma el valor $r_{L}=\qty{5}{µm}$ anterior a la introducción de las sigmoides, y $r_{u}$ es la coordenada radial asociada a la variación de la pendiente de la falda, siempre mayor que este parámetro. Una vez establecida la función exponencial, es importante comprobar previamente su comportamiento antes de introducirla definitivamente en Dagon, escribiendo un nuevo programa en MATLAB. El código \ref{cod:4.6} muestra este programa de MATLAB completo.
 
 \begin{listing}[htbp]
   \caption{Programa auxiliar de MATLAB para representar la función exponencial por tramos.} 
-  \inputminted[firstline=1, lastline=29]{matlab}{Programas/f_trozos.m}
+  \inputminted[firstline=1, lastline=27]{matlab}{Programas/f_trozos.m}
   \label{cod:4.6}
 \end{listing}
 
-En realidad, los parámetros introducidos también incluyen las desviaciones típicas de ambos radios $\sigma_{L}$ y $\sigma_{u}$, puesto que las exponenciales siguen manteniendo la forma de distribución gaussiana utilizada durante las anteriores secciones. Además, el código \ref{cod:4.6} es útil como primera aproximación para introducir los nuevos cambios dentro del programa \texttt{fillplasma3D} en Dagon. Tras verificar la adecuación de la función a las expectativas previstas, el último paso es implementar los cambios en Dagon, escritos en el código \ref{cod:4.7}.
+En realidad, los parámetros introducidos también incluyen las desviaciones típicas de ambos radios $\sigma_{L}$ y $\sigma_{u}$, puesto que las exponenciales siguen manteniendo la forma de distribución gaussiana utilizada durante las anteriores secciones. Además, el código \ref{cod:4.6} es útil como primera aproximación para introducir los nuevos cambios dentro de la subrutina \texttt{fillplasma} en Dagon. Tras verificar la adecuación de la función a las expectativas previstas, el último paso es implementar los cambios en Dagon, escritos en el código \ref{cod:4.7}.
 
 \begin{longlisting}
   \caption{Fragmento del código Dagon dedicado a introducir la función exponencial.}
@@ -741,7 +741,7 @@ Los efectos de la desviación típica $\sigma_{u}$ pueden resumirse en un rápid
   \label{fig:4.32}
 \end{figure}
 
-Una de las tres comparaciones entre los casos simulados es la Figura \ref{fig:4.33}, cuya función exponencial asociada aparece representada en la Figura \ref{fig:4.32}, presentando una mayor profundidad en la fase.
+Cuando la función exponencial empleada viene dada gráficamente por la Figura \ref{fig:4.32}, los resultados observados presentan una mayor profundidad en la fase, mostrados en la Figura \ref{fig:4.33}.
 
 \begin{figure}[htbp]
   \centering
@@ -809,9 +809,9 @@ También es posible emplear VisIt para extraer secciones transversales de la int
    \label{fig:4.35}
 \end{figure}
 
-Estas imágenes demuestran algunas de las características típicas del haz de Laguerre-Gauss y también confirman algunas sospechas sobre el \acrshort{ase}. La sección transversal de intensidad está restringida a una región circular de \qty{30}{µm}, con un máximo global centrado en dicha región, atribuible exclusivamente entonces la amplificación en la zona al \acrshort{ase}, y no a la amplificación de la propia semilla. 
+Estas imágenes demuestran algunas de las características típicas del haz de Laguerre-Gauss y también confirman algunas sospechas sobre el \acrshort{ase}. La sección transversal de intensidad está restringida a una región circular de \qty{30}{µm}, con un máximo global centrado en dicha región, atribuible exclusivamente entonces la amplificación en la zona al \acrshort{ase}, y no a la amplificación de la propia semilla \acrshort{hoh}. 
 
-Por otra parte, la fase está formada por un anillo rodeado de $25$ líneas rectas alabeadas. El número de línea viene determinado por la magnitud de la carga topológica $l=25$, mientras que la curvatura adquirida por las líneas es una desviación respecto de los segmentos rectos que deberían aparecer. Teniendo en cuenta que es la fase de los fotones amplificados, esta discrepancia está relacionada con la densidad electrónica del canal, probablemente debida a la alta concentración de electrones o gradientes pronunciados de la densidad electrónica.
+Por otra parte, la fase está formada por un anillo rodeado de $25$ líneas rectas alabeadas. El número de línea viene determinado por la magnitud de la carga topológica $l=25$, mientras que la curvatura adquirida por las líneas es una desviación respecto de los segmentos rectos que deberían aparecer. Teniendo en cuenta que se trata de la fase de los fotones amplificados, esta discrepancia está relacionada con la densidad electrónica del canal, debida a gradientes de densidad electrónica pronunciados.
 
 \begin{figure}[htbp]
   \centering
@@ -831,9 +831,9 @@ Por otra parte, la fase está formada por un anillo rodeado de $25$ líneas rect
 
 Siguiendo con los resultados de intensidad y fase obtenidos, el último paso ejecutado consiste en incrementar el parámetro para la amplitud del pulso \texttt{fwhm}, duplicando el valor inicial empleado. En esta situación, $\texttt{fwhm}=\texttt{fwhmx}=\texttt{fwhmy}=\qty{50}{µm}$, y los demás parámetros relativos a la columna de plasma permanecen constantes. Para sintetizar estos últimos resultados, se presenta el único caso especial donde, en contra de lo esperado y de forma sorprendente, desaparecen los perfiles estocásticos en intensidad y fase.
 
-Las Figuras \ref{fig:ch4_oam7} y \ref{fig:ch4_oam8} muestran los perfiles conseguidos cuando el radio de la transición entre los tramos de la función exponencial es $r_{u}=\qty{20}{µm}$. Sin duda se trata de un suceso extraño, porque el único parámetro responsable de conseguir amplificar la semilla \acrshort{hoh} parece ser $r_{u}=\qty{20}{µm}$, pues las otras simulaciones (ver anexo \S\ref{anx:3}) difieren únicamente en el valor de ese parámetro.
+Las Figuras \ref{fig:ch4_oam7} y \ref{fig:ch4_oam8} muestran los perfiles conseguidos cuando el radio de la transición entre los tramos de la función exponencial es $r_{u}=\qty{20}{µm}$. Sin duda se trata de un suceso extraño, porque el único parámetro responsable de conseguir amplificar la semilla \acrshort{hoh} parece ser $r_{u}=\qty{20}{µm}$, pues las otras simulaciones (ver el anexo \S\ref{anx:3}) difieren únicamente en el valor de ese parámetro. Por el contrario, las Figuras \ref{fig:ch4_oam7u} y \ref{fig:ch4_oam8u} presentan el mismo fondo estocástico observado anteriormente cuando $\texttt{fwhm}=\qty{25}{µm}$.
 
-¿Por qué $r_{u}=\qty{20}{µm}$ marca la diferencia entre el dominio del \acrshort{ase} frente al dominio de la amplificación del haz de Laguerre-Gauss? Las secciones transversales en $XY$ de intensidad y fase, representadas en las Figuras \ref{fig:ch4_oam9} y \ref{fig:ch4_oam10}, presentan el comportamiento esperable del modo de Laguerre-Gauss, siendo necesario arrojar más luz sobre este asunto en futuros estudios. Una posible propuesta consiste en asociar el dominio de la amplificación estimulada de la semilla con una región de abundancia de \ce{Kr^{8+}} suficientemente amplia, acompañada por densidades electrónicas con una distribución que favorezcan la inversión de población.
+¿Por qué el radio $r_{u}=\qty{20}{µm}$ marca la diferencia entre el dominio del \acrshort{ase} frente al dominio de la amplificación del haz de Laguerre-Gauss? Las secciones transversales en $XY$ de intensidad y fase, representadas en las Figuras \ref{fig:ch4_oam9} y \ref{fig:ch4_oam10}, presentan el comportamiento esperable del modo de Laguerre-Gauss, siendo necesario arrojar más luz sobre este asunto en futuros estudios. Una posible propuesta consiste en asociar el dominio de la amplificación estimulada de la semilla con una región de abundancia de \ce{Kr^{8+}} suficientemente amplia, acompañada por densidades electrónicas con una distribución que favorezcan la inversión de población.
 
 \begin{figure}[htbp]
   \centering
@@ -848,6 +848,22 @@ Las Figuras \ref{fig:ch4_oam7} y \ref{fig:ch4_oam8} muestran los perfiles conseg
     \caption{Perfil radial de fase (\unit{rad}) frente al radio (\unit{µm})}\label{fig:ch4_oam8}
   \end{subcaptionblock}
    \caption{Distribución radial de intensidad--fase para un haz de Laguerre--Gauss con $p=0$, $l=25$ y $\texttt{fwhm}=\qty{50}{µm}$; manteniendo $r_{L}=\qty{5}{µm}$, $r_{u}=\qty{20}{µm}$, $\sigma_{L}=\qty{15}{µm}$ y $\sigma_{u}=\qty{17}{µm}$.}
+   \label{fig:4.37}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subcaptionblock}{.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figuras/ch4_oam7u.png}
+    \caption{Perfil radial de intensidad (\unit{W/cm^2}) frente al radio (\unit{µm})}\label{fig:ch4_oam7u}
+  \end{subcaptionblock}
+  \begin{subcaptionblock}{.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figuras/ch4_oam8u.png}
+    \caption{Perfil radial de fase (\unit{rad}) frente al radio (\unit{µm})}\label{fig:ch4_oam8u}
+  \end{subcaptionblock}
+   \caption{Distribución radial de intensidad--fase para un haz de Laguerre--Gauss con $p=0$, $l=25$ y $\texttt{fwhm}=\qty{50}{µm}$; manteniendo $r_{L}=\qty{5}{µm}$, $r_{u}=\qty{18}{µm}$, $\sigma_{L}=\qty{15}{µm}$ y $\sigma_{u}=\qty{17}{µm}$.}
    \label{fig:4.37}
 \end{figure}
 
@@ -878,12 +894,12 @@ Anulando la \acrshort{ase}, las Figuras \ref{fig:ch4_ase1} y \ref{fig:ch4_ase2} 
   \centering
   \begin{subcaptionblock}{.4\textwidth}
     \centering
-    \includegraphics[width=0.8\textwidth]{Figuras/ch4_int_ase.png}
+    \includegraphics[width=\textwidth]{Figuras/ch4_int_ase.png}
     \caption{Perfil radial de intensidad (\unit{W/cm^2}) frente al radio (\unit{µm})}\label{fig:ch4_ase1}
   \end{subcaptionblock}
   \begin{subcaptionblock}{.4\textwidth}
     \centering
-    \includegraphics[width=0.8\textwidth]{Figuras/ch4_fs_ase.png}
+    \includegraphics[width=\textwidth]{Figuras/ch4_fs_ase.png}
     \caption{Perfil radial de fase (\unit{rad}) frente al radio (\unit{µm})}\label{fig:ch4_ase2}
   \end{subcaptionblock}
    \caption{Distribución radial de intensidad--fase para un haz de Laguerre--Gauss con $p=0$, $l=25$ y $\texttt{fwhm}=\qty{25}{µm}$; manteniendo $r_{L}=\qty{5}{µm}$, $r_{u}=\qty{20}{µm}$, $\sigma_{L}=\qty{15}{µm}$ y $\sigma_{u}=\qty{17}{µm}$.}
@@ -896,12 +912,12 @@ Las secciones transversales en el plano $XY$ de intensidad y fase, en las Figura
   \centering
   \begin{subcaptionblock}{.4\textwidth}
     \centering
-    \includegraphics[width=0.8\textwidth]{Figuras/ch4_ase1.png}
+    \includegraphics[width=\textwidth]{Figuras/ch4_ase1.png}
     \caption{Sección transversal de intensidad en el plano $XY$}\label{fig:ch4_ase3}
   \end{subcaptionblock}
   \begin{subcaptionblock}{.4\textwidth}
     \centering
-    \includegraphics[width=0.8\textwidth]{Figuras/ch4_ase2.png}
+    \includegraphics[width=\textwidth]{Figuras/ch4_ase2.png}
     \caption{Sección transversal de fase en el plano $XY$}\label{fig:ch4_ase4}
   \end{subcaptionblock}
    \caption{Secciones transversales de intensidad--fase del pulso de Laguerre-Gauss con $p=0$, $l=25$ y $\texttt{fwhm}=\qty{25}{µm}$; manteniendo $r_{L}=\qty{5}{µm}$, $r_{u}=\qty{20}{µm}$, $\sigma_{L}=\qty{15}{µm}$ y $\sigma_{u}=\qty{17}{µm}$.}
