@@ -1,10 +1,8 @@
-# TFM
+# TFM - Ismael Torres García
 
 Trabajo Fin de Master - Master's Thesis
 
 ETSII-UPM
-
-Ismael Torres García
 
 This is a project for a Master's Thesis written during the academic year 2022/2023 at the Polytechnic University of Madrid by Ismael Torres García.
 
