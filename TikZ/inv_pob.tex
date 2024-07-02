@@ -1,0 +1,87 @@
+% !TeX program = lualatex
+% Broken thermodynamic equilibrium in eight-folded krypton with an infrared laser pumping
+% Autor: Ismael Torres García
+\documentclass[tikz,border=3pt]{standalone}
+\usetikzlibrary{calc, arrows.meta, decorations.pathmorphing, decorations.markings}
+\usepackage[math-style=ISO,bold-style=ISO]{unicode-math}
+\setmainfont[Renderer=OpenType]{Minion Pro}          %% Fuente comercial MinionPro de Adobe para el texto
+\setmathfont[                                        %% Fuente MinionMath de Johannes Küsner para las matemáticas
+    Extension = .otf,
+    Path = /Users/ytoga/Library/Fonts/,
+    Scale = 1,
+    Script = Math,
+    SizeFeatures = {
+        {Size = -6, Font = MinionMath-Tiny,
+        Style = MathScriptScript},
+        {Size = 6-8.4, Font = MinionMath-Capt,
+        Style = MathScript},
+        {Size = 8.4-, Font = MinionMath-Regular},
+    },
+]{MinionMath-Regular}
+\setmathfont[                         
+    Extension = .otf,
+    Path = /Users/ytoga/Library/Fonts/,
+    version = bold,
+]{MinionMath-Bold}
+
+\usepackage{xcolor}
+\definecolor{elc}{RGB}{204,204,0}      % Color de los electrones
+\definecolor{laseruv}{RGB}{76,0,155}   % Color de los fotones
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% COMIENZO DEL DOCUMENTO
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\begin{tikzpicture}[
+  arrow/.style={-{Stealth[length=2mm,width=1.5mm]},shorten >=1pt},
+  electron/.style={circle,fill=elc,draw=black},
+  hueco/.style={circle,fill=elc!20,draw=black,densely dashed},
+  fotones/.style={arrow,laseruv,thick,decorate,decoration={snake,amplitude=3,segment length=8,post length=7}},
+]
+
+%% ABSORCIÓN
+\draw[-, thick] (0,0) node[left] {$E_1$} -- (3,0) node[electron, left=10pt] (a1) {} node[electron, left=22pt] (b1) {} node[electron, left=34pt] (c1) {} node[electron, left=46pt] (d1) {} node[electron, left=58pt] (e1) {} node[electron, left=70pt] (f1) {} node[right] {$|1\rangle$};
+\draw[-, thick] (0,3) node[left] {$E_2$} -- (3,3) node[hueco, left=10pt] (a2) {} node[hueco, left=22pt] (b2) {} node[hueco, left=34pt] (c2) {} node[hueco, left=46pt] (d2) {} node[hueco, left=58pt] (e2) {} node[hueco, left=70pt] (f2) {} node[right] {$|2\rangle$};
+\draw[arrow, thick] (a1) -- (a2);
+\draw[arrow, thick] (b1) -- (b2);
+\draw[arrow, thick] (c1) -- (c2);
+\draw[arrow, thick] (d1) -- (d2);
+\draw[arrow, thick] (e1) -- (e2);
+\draw[arrow, thick] (f1) -- (f2);
+
+\draw[fotones] (-1,0.5) -- (0,0.5);
+\draw[fotones] (-1,0.8) -- (0,0.8);
+\draw[fotones] (-1,1.1) -- (0,1.1);
+\draw[fotones] (-1,1.4) -- (0,1.4);
+\draw[fotones] (-1,1.7) -- (0,1.7);
+\draw[fotones] (-1,2) -- (0,2); 
+\draw[fotones] (-1,2.3) -- (0,2.3);
+\draw[fotones] (-1,2.6) -- (0,2.6);
+
+\node[below=5pt] at (c1) {\footnotesize Transición electrónica};
+
+%% EMISIÓN ESTIMULADA
+\draw[-, thick] (6.5,0) node[left] {$E_1$} -- (9.5,0) node[hueco, left=10pt] (a1p) {} node[hueco, left=22pt] (b1p) {} node[hueco, left=34pt] (c1p) {} node[hueco, left=46pt] (d1p) {} node[hueco, left=58pt] (e1p) {} node[hueco, left=70pt] (f1p) {} node[right] {$|1\rangle$};
+\draw[-, thick] (6.5,3) node[left] {$E_2$} -- (9.5,3) node[electron, left=10pt] (a2p) {} node[electron, left=22pt] (b2p) {} node[electron, left=34pt] (c2p) {} node[electron, left=46pt] (d2p) {} node[electron, left=58pt] (e2p) {} node[electron, left=70pt] (f2p) {} node[right] {$|2\rangle$};
+\draw[arrow, thick] (a2p) -- (a1p);
+\draw[arrow, thick] (b2p) -- (b1p);
+\draw[arrow, thick] (c2p) -- (c1p);
+\draw[arrow, thick] (d2p) -- (d1p);
+\draw[arrow, thick] (e2p) -- (e1p);
+\draw[arrow, thick] (f2p) -- (f1p);
+\draw[fotones] (5.5,1.5) -- (6.5,1.5);
+\draw[fotones] (10.5,1.5) -- (11.5,1.5);
+\draw[fotones] (9.5,0.5) -- (10.5,0.5);
+\draw[fotones] (9.5,0.8) -- (10.5,0.8);
+\draw[fotones] (9.5,1.1) -- (10.5,1.1);
+\draw[fotones] (9.5,1.4) -- (10.5,1.4);
+\draw[fotones] (9.5,1.7) -- (10.5,1.7);
+\draw[fotones] (9.5,2) -- (10.5,2); 
+\draw[fotones] (9.5,2.3) -- (10.5,2.3);
+\draw[fotones] (9.5,2.6) -- (10.5,2.6);
+\node[below=5pt] at (c1p) {\footnotesize Inversión poblacional};
+
+\end{tikzpicture}
+
+\end{document}

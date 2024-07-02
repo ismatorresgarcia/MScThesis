@@ -17,7 +17,7 @@
   numbers = noenddot                  %% números de capítulos, secciones, ... sin punto
 }
 %%% paquetes básicos
-%% fórmulas, símbolos y teoremas matemáticos.'unicode-math' sobrescribirá las definiciones necesarias después
+%% fórmulas, símbolos y teoremas matemáticos. 'unicode-math' sobrescribirá las definiciones necesarias después
 \RequirePackage{amsmath}              %% fórmulas y entornos matemáticos. Cargar antes de 'unicode-math' por recomendación de este  
 \RequirePackage{amssymb}              %% fuentes y símbolos matemáticos (carga 'amsfonts' también)
 
@@ -70,7 +70,7 @@
 \newcommand*{\nomtutor}{Eduardo Oliva Gonzalo}
 \newcommand*{\dirinst}{C/ José Gutiérrez Abascal, 2}
 \newcommand*{\cpinst}{28006 Madrid (España)}
-\newcommand*{\titproy}{Trabajo Fin de Master}
+\newcommand*{\titproy}{Trabajo Fin de Máster}
 \newcommand*{\titenc}{Estudio del impacto de la forma de un canal de plasma en la amplificación de un haz XUV}
 \newcommand*{\unienc}{Universidad Politécnica de Madrid}
 \newcommand*{\etsiienc}{Escuela Técnica Superior de Ingenieros Industriales (UPM)}
