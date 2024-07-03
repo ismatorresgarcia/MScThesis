@@ -1,6 +1,6 @@
-# Trabajo Fin de Máster - Ismael Torres García
+# Master's Thesis - Ismael Torres García
 
-***Master's Thesis - Modelling the influence of the shape of a plasma channel in the amplification of XUV beams***
+***Modelling the influence of the shape of a plasma channel in the amplification of XUV beams***
 
 **ETSII-UPM. Instituto de Fusión Nuclear _Guillermo Velarde_**
 
