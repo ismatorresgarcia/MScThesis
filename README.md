@@ -1,8 +1,8 @@
 # TFM - Ismael Torres García
 
-Trabajo Fin de Master - Master's Thesis
+**Master's Thesis - Study of the impact of the shape of a plasma channel on the amplification of a XUV beam**
 
-ETSII-UPM
+**ETSII-UPM. Instituto de Fusión Nuclear _Guillermo Velarde_**
 
 This is a project for a Master's Thesis written during the academic year 2022/2023 at the Polytechnic University of Madrid by Ismael Torres García.
 
