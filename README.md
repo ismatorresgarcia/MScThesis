@@ -4,7 +4,7 @@
 
 ***Modelling the influence of the shape of a plasma channel in the amplification of XUV beams***
 
-**ETSII-UPM. Instituto de Fusión Nuclear >Guillermo Velarde**
+**ETSII-UPM. Instituto de Fusión Nuclear "Guillermo Velarde"**
 
 This is a project for my Master's Thesis written during the academic year 2022/2023 at the Polytechnic University of Madrid.
 
