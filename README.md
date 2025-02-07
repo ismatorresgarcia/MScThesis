@@ -6,7 +6,6 @@
 
 **ETSII-UPM. Instituto de Fusión Nuclear "Guillermo Velarde"**
 
-This is a project for my Master's Thesis written during the academic year 2022/2023 at the Polytechnic University of Madrid.
+This project was part of my Master's Thesis, completed during the academic year 2022/2023 at the Polytechnic University of Madrid.
 
-The goal was to study the amplification of a HOH seed injected through a niquel-like plasma column of kripton and to modify the numerical codes 
-employed, for example, the plasma channel geometry, to see if the experimental evidence agrees with the results obtained during the numerical simulations.
+The goal of this project was to study the amplification of a HOH seed injected into a nickel-like plasma column of krypton and to modify the numerical codes used, including adjustments to the plasma channel geometry. The aim was to determine whether the experimental evidence aligns with the results obtained from the numerical simulations.
